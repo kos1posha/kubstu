@@ -4,7 +4,7 @@
 
 <p style="text-align:center">
   <a href="https://kubstu.ru/">
-    <img src="https://student.kubstu.ru/images/Logo_Kubstu.png" alt="КубГТУ" width="240">
+    <img src="kubstu.png" alt="КубГТУ" width="240">
   </a>
 </p>
 
