@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}Создание статьи{% endblock %}
+
+{% block content %}
+  {% if user.is_superuser %}
+    <form method="post" action="{% url 'writer' %}" enctype="multipart/form-data">
+      {% csrf_token %}
+      {% for error in form.non_field_errors %}
+        <div class="text-danger small">
+          {{ error }}<br>
+        </div>
+      {% endfor %}
+      <div class="w-50 mt-1">
+        {% for field in form %}
+          <label for="{{ field.auto_id }}" class="col-form-label">{{ field.label }}</label>
+          {% if field.widget_type == 'textarea' %}
+            <textarea id="{{ field.auto_id }}" class="form-control" name="{{ field.name }}"></textarea>
+          {% elif field.widget_type == 'clearablefile' %}
+            <input type="file" accept="image/*" id="{{ field.auto_id }}" class="form-control" name="{{ field.name }}">
+          {% else %}
+            <input type="{{ field.widget_type }}" id="{{ field.auto_id }}" class="form-control" name="{{ field.name }}">
+          {% endif %}
+          {% for error in field.errors %}
+            <div class="text-danger small">
+              {{ error }}<br>
+            </div>
+          {% endfor %}
+        {% endfor %}
+        <div class="mt-3">
+          <input class="btn btn-link link-danger text-decoration-none px-0" formaction="{% url 'admin:logout' %}" type="submit" value="Выйти из системы">
+          <input class="float-end btn btn-light bg-primary-subtle px-5" type="submit" value="Создать">
+        </div>
+      </div>
+    </form>
+  {% else %}
+    <form method="post" action="{% url 'auth' %}">
+      {% csrf_token %}
+      <div class="w-50 mt-1">
+        {% for field in auth_form %}
+          <div class="col-auto">
+            <label for="{{ field.auto_id }}" class="col-form-label">{{ field.label }}</label>
+          </div>
+          <div class="col-auto">
+            <input type="{{ field.widget_type }}" id="{{ field.auto_id }}" class="form-control" name="{{ field.name }}">
+          </div>
+        {% endfor %}
+        <div class="text-end">
+          <input class="btn btn-light bg-primary-subtle mt-3 px-5" type="submit" value="Войти">
+        </div>
+      </div>
+    </form>
+  {% endif %}
+{% endblock %}

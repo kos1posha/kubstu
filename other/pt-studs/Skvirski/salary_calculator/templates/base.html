@@ -1,0 +1,174 @@
+{% load static %}
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>{% block title %}ЗиК РЛД{% endblock %}</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      min-height: 100vh;
+    }
+
+    main {
+      height: 100vh;
+      max-height: 100vh;
+      overflow-x: auto;
+      overflow-y: hidden;
+    }
+
+    .btn-toggle {
+      padding: .25rem .5rem;
+      font-weight: 600;
+      color: var(--bs-emphasis-color);
+      background-color: transparent;
+    }
+
+    .btn-toggle:hover,
+    .btn-toggle:focus {
+      color: rgba(var(--bs-emphasis-color-rgb), .85);
+      background-color: var(--bs-tertiary-bg);
+    }
+
+    .btn-toggle::before {
+      width: 1.25em;
+      line-height: 0;
+      content: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='rgba%280,0,0,.5%29' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 14l6-6-6-6'/%3e%3c/svg%3e");
+      transition: transform .35s ease;
+      transform-origin: .5em 50%;
+    }
+
+    [data-bs-theme="dark"] .btn-toggle::before {
+      content: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='rgba%28255,255,255,.5%29' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 14l6-6-6-6'/%3e%3c/svg%3e");
+    }
+
+    .btn-toggle[aria-expanded="true"] {
+      color: rgba(var(--bs-emphasis-color-rgb), .85);
+    }
+
+    .btn-toggle[aria-expanded="true"]::before {
+      transform: rotate(90deg);
+    }
+
+    .btn-toggle-nav a {
+      padding: .1875rem .5rem;
+      margin-top: .125rem;
+      margin-left: 1.25rem;
+    }
+
+    .btn-toggle-nav a:hover,
+    .btn-toggle-nav a:focus {
+      background-color: var(--bs-tertiary-bg);
+    }
+  </style>
+</head>
+<body class="bg-primary-subtle">
+<nav class="navbar bg-primary" style="height: 7vh">
+  <div class="container-fluid px-4">
+    <a class="navbar-brand px-2" href="{% url 'calculate_salary' %}"><span class="fw-bold text-white">ЗиК</span> Ремонтное-локомотивное депо</a>
+  </div>
+</nav>
+<div class="row w-100" style="height: 93vh">
+  <div class="flex-shrink-0 py-4 px-0 col position-relative" style="background: url({% static 'salary_calculator/bg.jpg' %}) no-repeat; background-size: 100%">
+    <div class="mx-5 p-4 text-white rounded-4 bg-dark bg-opacity-50">
+      {% block content %}{% endblock %}
+    </div>
+  </div>
+  <div class="flex-shrink-0 bg-primary-subtle col-3" style="width: 280px">
+    <div class="py-3 sticky-top">
+      <ul class="list-unstyled ps-0">
+        <li class="mb-1 ps-3">
+          <a class="btn btn-toggle bg-transparent border-0 d-inline-flex align-items-center" href="{% url 'update_taxes' %}">
+            Налоги
+          </a>
+        </li>
+        <li class="mb-1 ps-3">
+          <button class="btn btn-toggle bg-transparent border-0 d-inline-flex align-items-center" data-bs-toggle="collapse" data-bs-target="#create-collapse">
+            Добавить
+          </button>
+          <div class="collapse" id="create-collapse">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              <li class="pe-5">
+                <a href="{% url 'create_position' %}" class="link-body-emphasis d-inline-flex text-decoration-none rounded w-100">
+                    <span class="w-100">
+                      Должность
+                    </span>
+                </a>
+              </li>
+              <li class="pe-5">
+                <a href="{% url 'create_employee' %}" class="link-body-emphasis d-inline-flex text-decoration-none rounded w-100">
+                    <span class="w-100">
+                      Сотрудника
+                    </span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li class="mb-1 ps-3">
+          <button class="btn btn-toggle bg-transparent border-0 d-inline-flex align-items-center" data-bs-toggle="collapse" data-bs-target="#positions-collapse">
+            Должности
+          </button>
+          <div class="collapse" id="positions-collapse">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              {% for position in positions %}
+                <li class="pe-5">
+                  <a href="{% url 'update_position' pk=position.pk %}" class="link-body-emphasis d-inline-flex text-decoration-none rounded w-100">
+                    <span class="w-100">
+                      <strong class="mb-1">{{ position.name }}</strong>
+                      <div class="mb-1">Ставка: {{ position.salary_f }}</div>
+                    </span>
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </li>
+        <li class="mb-1 ps-3">
+          <button class="btn btn-toggle bg-transparent border-0 d-inline-flex align-items-center" data-bs-toggle="collapse" data-bs-target="#employees-collapse">
+            Сотрудники
+          </button>
+          <div class="collapse" id="employees-collapse">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              {% for employee in employees %}
+                <li class="pe-5">
+                  <a href="{% url 'update_employee' pk=employee.pk %}" class="link-body-emphasis d-inline-flex text-decoration-none rounded w-100">
+                    <span class="w-100">
+                      <strong class="mb-1">{{ employee.full_name }}</strong>
+                      <br>{{ employee.position_f }}
+                    </span>
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.0/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script>
+  $('.form-select').select2({
+    theme: "bootstrap-5",
+    width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
+    placeholder: $(this).data('placeholder'),
+  });
+  (() => {
+    'use strict'
+    const tooltipTriggerList = Array.from(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    tooltipTriggerList.forEach(tooltipTriggerEl => {
+      new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+  })()
+</script>
+</body>
+</html>

@@ -1,0 +1,432 @@
+{% load static %}
+{% load get_attr %}
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="{% static 'storager/sidebars.css' %}" rel="stylesheet">
+  <title>Онлайн кладовщик</title>
+</head>
+<body class="vh-100 overflow-hidden">
+<nav class="navbar bg-primary" style="height: 8%">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-bold text-white">Онлайн Кладовщик</a>
+    <div class="ms-auto">
+      {% if user.is_authenticated %}
+        <div class="btn-group my-1">
+          <button type="button" class="btn btn-link link-light text-decoration-none" id="login-dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            {{ user.full_name }}
+          </button>
+          <div class="dropdown-menu dropdown-menu-end">
+            <form class="d-inline-block mt-1" method="post" action="{% url 'logout' %}">
+              {% csrf_token %}
+              <input class="btn btn-link link-danger text-decoration-none ms-1 pb-2" value="Выйти" type="submit">
+            </form>
+          </div>
+        </div>
+      {% else %}
+        <div class="btn-group my-1">
+          <button type="button" class="btn btn-primary text-dark dropdown-toggle" id="login-dropdown" data-bs-toggle="dropdown" data-bs-auto-close="false" aria-expanded="false">
+            Войти
+          </button>
+          <div class="dropdown-menu dropdown-menu-end" style="min-width: 250px">
+            <div class="px-4 py-3">
+              <form action="{% url 'login' %}" method="post">
+                {% csrf_token %}
+                {% if auth_error %}
+                  <small class="text-danger">{{ auth_error }}</small>
+                {% endif %}
+                <p>
+                  <label class="form-label" for="id_username">Адрес электронной почты:</label>
+                  <input class="form-control" type="email" name="username" autofocus="" autocapitalize="none" autocomplete="username" maxlength="254" required id="id_username">
+                </p>
+                <p>
+                  <label class="form-label" for="id_password">Пароль:</label>
+                  <input class="form-control" type="password" name="password" autocomplete="current-password" required id="id_password">
+                </p>
+                <input class="btn btn-primary w-100" type="submit" value="Войти">
+                <div class="text-center mt-2">
+                  <small><a class="link-primary" href="#" id="register-a" data-bs-toggle="modal" data-bs-target="#register-modal">Зарегистрироваться</a></small>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</nav>
+{% if user.is_authenticated %}
+  <div class="row" style="height: 92%">
+    <div class="col-auto d-flex flex-column align-items-stretch flex-shrink-0 border-end pe-0" style="width: 360px">
+      <div class="d-flex align-items-center flex-shrink-0 px-3 py-2 link-body-emphasis border-bottom">
+        <div class="fs-5 fw-semibold text-warning-emphasis" style="cursor: default">Склады</div>
+        <div class="ms-auto fs-1 py-0 my-0" style="cursor: default">
+          <div class="dropend">
+            <a href="#" class="list-group-item list-group-item-action border-0 py-3 lh-sm" id="create-storage-dropdown" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+              <div class="row pe-3">
+                <span class="col-auto fs-6">➕</span>
+              </div>
+            </a>
+            <form class="dropdown-menu position-fixed ms-1 p-3" method="post" action="{% url 'create-storage' %}" id="sus" style="width: 320px">
+              <h4>Новый склад</h4>
+              {% csrf_token %}
+              {% for field in create_storage_form %}
+                <div class="mb-3">
+                  <label class="form-label" for="{{ field.name }}">{{ field.label }}</label>
+                  <input class="form-control{% if field.errors or form.non_field_errors %} is-invalid{% endif %}" type="{{ field.field.widget.input_type }}" id="{{ field.name }}" name="{{ field.name }}" {% if field.help_text %}aria-describedby="{{ field.name }}_help"{% endif %} required>
+                  {% if field.help_text %}
+                    <div class="form-text" id="{{ field.name }}_help">{{ field.help_text }}</div>
+                  {% endif %}
+                  {% if field.errors %}
+                    <p class="text-danger small">
+                      {% for error in field.errors %}{% if error != '' %}{{ error }}<br>{% endif %}{% endfor %}
+                    </p>
+                  {% endif %}
+                </div>
+              {% endfor %}
+              <input type="submit" class="btn btn-primary w-100" value="Создать">
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="list-group list-group-flush border-bottom overflow-y-auto position-relative" role="tablist">
+        {% for storage in user.storages %}
+          <a href="#" class="list-group-item list-group-item-action py-3 lh-sm {% if storage.id == init_storage_id %} active{% endif %}" id="storage{{ storage.id }}-tab" data-bs-toggle="tab" data-bs-target="#storage{{ storage.id }}-content" type="button" role="tab" aria-controls="storage{{ storage.id }}-content" aria-selected="true">
+            <div class="d-flex w-100 align-items-center justify-content-between">
+              {{ storage.name }}
+            </div>
+          </a>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="col">
+      <div class="tab-content" id="content">
+        {% for storage in user.storages %}
+          <div class="tab-pane fade{% if storage.id == init_storage_id %} active show{% endif %}" id="storage{{ storage.id }}-content" role="tabpanel" aria-labelledby="storage{{ storage.id }}-tab" tabindex="0">
+            <div class="p-4">
+              <div class="row">
+                <h4 class="col-auto">{{ storage.name }}</h4>
+                <div class="col-auto px-0">
+                  <a class="text-decoration-none px-0 fs-5" href="#" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">
+                    ✏
+                  </a>
+                  <div class="dropdown-menu dropdown-center w-auto">
+                    <div class="ps-3 py-0">
+                      <a class="link-info text-decoration-none" type="submit" data-bs-toggle="modal" data-bs-target="#edit-storage{{ storage.id }}-modal">
+                        Изменить
+                      </a>
+                      <br>
+                      <a class="link-danger text-decoration-none" type="submit" data-bs-toggle="modal" data-bs-target="#delete-storage{{ storage.id }}-confirm-modal">
+                        Удалить
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {% if storage.description %}
+                <span class="text-secondary">{{ storage.description }}</span>
+              {% endif %}
+              <table class="table table-hover caption-top">
+                <caption>
+                  <a class="float-end link-success text-decoration-none" href="#" id="create-product-dropdown" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">Добавить товар</a>
+                  <div class="dropdown-menu dropdown-menu-end" style="min-width: 250px">
+                    <div class="px-4 py-3">
+                      <form action="{% url 'create-product' storage_id=storage.id %}" method="post">
+                        {% csrf_token %}
+                        {% for field in create_product_form %}
+                          <div class="mb-3">
+                            <label class="form-label" for="{{ field.name }}">{{ field.label }}</label>
+                            <input class="form-control{% if field.errors or form.non_field_errors %} is-invalid{% endif %}" type="{{ field.field.widget.input_type }}" id="{{ field.name }}" name="{{ field.name }}" {% if field.help_text %}aria-describedby="{{ field.name }}_help"{% endif %} required>
+                            {% if field.help_text %}
+                              <div class="form-text" id="{{ field.name }}_help">{{ field.help_text }}</div>
+                            {% endif %}
+                            {% if field.errors %}
+                              <p class="text-danger small">
+                                {% for error in field.errors %}{% if error != '' %}{{ error }}<br>{% endif %}{% endfor %}
+                              </p>
+                            {% endif %}
+                          </div>
+                        {% endfor %}
+                        <input type="submit" class="btn btn-primary w-100" value="Добавить">
+                      </form>
+                    </div>
+                  </div>
+                  Содержимое
+                  {% if storage.products %}
+                    <span class="col-auto px-0">
+                      <a class="link-dark text-decoration-none px-0 text-info h6 col-auto" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                        🛈
+                      </a>
+                      <div class="dropdown-menu dropdown-center w-auto">
+                        <div class="p-1 pb-0">
+                          <p class="dropdown-item-text">Товаров: {{ storage.product_total_count }} шт.</p>
+                          <p class="dropdown-item-text">Уникальных товаров: {{ storage.product_unique_count }}</p>
+                          <p class="dropdown-item-text">Общий вес: {{ storage.products_weight }} кг.</p>
+                        </div>
+                      </div>
+                    </span>
+                  {% endif %}
+                </caption>
+                <thead>
+                <tr>
+                  <th scope="col">Название</th>
+                  <th scope="col">Количество</th>
+                  <th scope="col">Вес</th>
+                  <th scope="col">Общий вес</th>
+                  <th scope="col"></th>
+                </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                {% for product in storage.products %}
+                  <tr>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.count }} шт.</td>
+                    <td>{{ product.weight }} кг.</td>
+                    <td>{{ product.total_weight }} кг.</td>
+                    <td>
+                      <a class="btn btn-primary py-0 dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false"></a>
+                      <div class="dropdown-menu dropdown-center w-auto">
+                        <div class="ps-3 py-0">
+                          <a class="link-warning text-decoration-none" type="submit" data-bs-toggle="modal" data-bs-target="#product{{ product.id }}-count-modal">
+                            Выгрузить
+                          </a>
+                          <br>
+                          <a class="link-info text-decoration-none" type="submit" data-bs-toggle="modal" data-bs-target="#edit-product{{ product.id }}-modal">
+                            Изменить
+                          </a>
+                          <br>
+                          <a class="link-danger text-decoration-none" type="submit" data-bs-toggle="modal" data-bs-target="#delete-product{{ product.id }}-confirm-modal">
+                            Удалить
+                          </a>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+              {% if not storage.products %}
+                <div class="text-center text-secondary display-4 mt-5">Пусто...</div>
+              {% endif %}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% else %}
+  <div class="container-fluid">
+    <h3 class="pt-3">Требуется аутентификация</h3>
+  </div>
+  <div class="modal fade" id="register-modal" tabindex="-1" aria-labelledby="register-modal-label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <form method="post" action="{% url 'register' %}">
+          <div class="modal-header bg-primary-subtle">
+            <h1 class="modal-title fs-5" id="register-modal-label">Регистрация</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            {% csrf_token %}
+            <div class="row">
+              {% for field in register_form.visible_fields|slice:":2" %}
+                <div class="mb-3 col-6">
+                  <label class="form-label" for="{{ field.name }}">{{ field.label }}</label>
+                  <input class="form-control{% if field.errors or form.non_field_errors %} is-invalid{% endif %}" type="{{ field.field.widget.input_type }}" id="{{ field.name }}" name="{{ field.name }}" {% if field.help_text %}aria-describedby="{{ field.name }}_help"{% endif %} required>
+                  {% if field.help_text %}
+                    <div class="form-text" id="{{ field.name }}_help">{{ field.help_text }}</div>
+                  {% endif %}
+                  {% if field.errors %}
+                    <p class="text-danger small">
+                      {% for error in field.errors %}{% if error != '' %}{{ error }}<br>{% endif %}{% endfor %}
+                    </p>
+                  {% endif %}
+                </div>
+              {% endfor %}
+            </div>
+            {% for field in register_form.visible_fields|slice:"2:" %}
+              <div class="mb-3">
+                <label class="form-label" for="{{ field.name }}">{{ field.label }}</label>
+                <input class="form-control{% if field.errors or form.non_field_errors %} is-invalid{% endif %}" type="{{ field.field.widget.input_type }}" id="{{ field.name }}" name="{{ field.name }}" {% if field.help_text %}aria-describedby="{{ field.name }}_help"{% endif %} required>
+                {% if field.help_text %}
+                  <div class="form-text" id="{{ field.name }}_help">{{ field.help_text }}</div>
+                {% endif %}
+                {% if field.errors %}
+                  <p class="text-danger small">
+                    {% for error in field.errors %}{% if error != '' %}{{ error }}<br>{% endif %}{% endfor %}
+                  </p>
+                {% endif %}
+              </div>
+            {% endfor %}
+            <input class="btn btn-primary w-100" type="submit" value="Регистрация">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endif %}
+{% for storage in user.storages %}
+  <div class="modal fade" id="delete-storage{{ storage.id }}-confirm-modal" tabindex="-1" aria-labelledby="delete-storage{{ storage.id }}-confirm-modal-label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <form method="post" action="{% url 'delete-storage' pk=storage.id %}">
+          <div class="modal-header bg-danger-subtle">
+            <h1 class="modal-title fs-5" id="delete-storage{{ storage.id }}-confirm-modal-label">Удалить склад «{{ storage.name }}»?</h1>
+          </div>
+          <div class="modal-body">
+            Данное действие невозможно обратить.
+            <br>
+            <span class="text-danger">Внимание!</span> При удалении склада, все его содержимое тоже будет удалено.
+            {% csrf_token %}
+          </div>
+          <div class="text-end p-3">
+            <button type="button" class="btn" data-bs-dismiss="modal">Отмена</button>
+            <input class="btn btn-danger" type="submit" value="Удалить">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="edit-storage{{ storage.id }}-modal" tabindex="-1" aria-labelledby="edit-storage{{ storage.id }}-modal-label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <form method="post" action="{% url 'edit-storage' pk=storage.id %}">
+          <div class="modal-header bg-info-subtle">
+            <h1 class="modal-title fs-5" id="edit-storage{{ storage.id }}-modal-label">Изменить склад «{{ storage.name }}»</h1>
+          </div>
+          <div class="modal-body">
+            {% csrf_token %}
+            {% for field in edit_storage_form %}
+              <div class="mb-3">
+                <label class="form-label" for="{{ field.name }}">{{ field.label }}</label>
+                <input class="form-control{% if field.errors or form.non_field_errors %} is-invalid{% endif %}" type="{{ field.field.widget.input_type }}" id="{{ field.name }}" name="{{ field.name }}" {% if field.help_text %}aria-describedby="{{ field.name }}_help"{% endif %} value="{{ storage|get_attr:field.name }}" required>
+                {% if field.help_text %}
+                  <div class="form-text" id="{{ field.name }}_help">{{ field.help_text }}</div>
+                {% endif %}
+                {% if field.errors %}
+                  <p class="text-danger small">
+                    {% for error in field.errors %}{% if error != '' %}{{ error }}<br>{% endif %}{% endfor %}
+                  </p>
+                {% endif %}
+              </div>
+            {% endfor %}
+          </div>
+          <div class="text-end p-3">
+            <button type="button" class="btn" data-bs-dismiss="modal">Отмена</button>
+            <input class="btn btn-info" type="submit" value="Сохранить">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  {% for product in storage.products %}
+    <div class="modal fade" id="delete-product{{ product.id }}-confirm-modal" tabindex="-1" aria-labelledby="delete-product{{ product.id }}-confirm-modal-label" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <form method="post" action="{% url 'delete-product' pk=product.id %}">
+            <div class="modal-header bg-danger-subtle">
+              <h1 class="modal-title fs-5" id="delete-product{{ product.id }}-confirm-modal-label">Удалить «{{ product.name }}»?</h1>
+            </div>
+            <div class="modal-body">
+              Данное действие невозможно обратить.
+              {% csrf_token %}
+            </div>
+            <div class="text-end p-3">
+              <button type="button" class="btn" data-bs-dismiss="modal">Отмена</button>
+              <input class="btn btn-danger" type="submit" value="Удалить">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="edit-product{{ product.id }}-modal" tabindex="-1" aria-labelledby="edit-product{{ product.id }}-modal-label" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <form method="post" action="{% url 'edit-product' pk=product.id %}">
+            <div class="modal-header bg-info-subtle">
+              <h1 class="modal-title fs-5" id="edit-product{{ product.id }}-modal-label">Изменить «{{ product.name }}»</h1>
+            </div>
+            <div class="modal-body">
+              {% csrf_token %}
+              {% for field in edit_product_form %}
+                <div class="mb-3">
+                  <label class="form-label" for="{{ field.name }}">{{ field.label }}</label>
+                  <input class="form-control{% if field.errors or form.non_field_errors %} is-invalid{% endif %}" type="{{ field.field.widget.input_type }}" id="{{ field.name }}" name="{{ field.name }}" {% if field.help_text %}aria-describedby="{{ field.name }}_help"{% endif %} value="{{ product|get_attr:field.name }}" required>
+                  {% if field.help_text %}
+                    <div class="form-text" id="{{ field.name }}_help">{{ field.help_text }}</div>
+                  {% endif %}
+                  {% if field.errors %}
+                    <p class="text-danger small">
+                      {% for error in field.errors %}{% if error != '' %}{{ error }}<br>{% endif %}{% endfor %}
+                    </p>
+                  {% endif %}
+                </div>
+              {% endfor %}
+            </div>
+            <div class="text-end p-3">
+              <button type="button" class="btn" data-bs-dismiss="modal">Отмена</button>
+              <input class="btn btn-info" type="submit" value="Сохранить">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="product{{ product.id }}-count-modal" tabindex="-1" aria-labelledby="product{{ product.id }}-count-modal-label" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <form method="post" action="{% url 'product-count' pk=product.id %}">
+            <div class="modal-header bg-info-subtle">
+              <h1 class="modal-title fs-5" id="product{{ product.id }}-count-modal-label">Изменить количество «{{ product.name }}»</h1>
+            </div>
+            <div class="modal-body">
+              {% csrf_token %}
+              {% for field in product_count_form %}
+                <div class="mb-3">
+                  <label class="form-label" for="{{ field.name }}">{{ field.label }}</label>
+                  <input class="form-control{% if field.errors or form.non_field_errors %} is-invalid{% endif %}" type="{{ field.field.widget.input_type }}" id="{{ field.name }}" name="{{ field.name }}" {% if field.help_text %}aria-describedby="{{ field.name }}_help"{% endif %} value="{{ product.count }}" required>
+                  {% if field.help_text %}
+                    <div class="form-text" id="{{ field.name }}_help">{{ field.help_text }}</div>
+                  {% endif %}
+                  {% if field.errors %}
+                    <p class="text-danger small">
+                      {% for error in field.errors %}{% if error != '' %}{{ error }}<br>{% endif %}{% endfor %}
+                    </p>
+                  {% endif %}
+                </div>
+              {% endfor %}
+            </div>
+            <div class="text-end p-3">
+              <button type="button" class="btn" data-bs-dismiss="modal">Отмена</button>
+              <input class="btn btn-info" type="submit" value="Сохранить">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+{% endfor %}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="{% static 'storager/sidebars.js' %}"></script>
+<script>
+  history.pushState(null, null, '/');
+  {% if auth_error %}
+    let loginDropdown = document.getElementById('login-dropdown')
+    loginDropdown.click()
+    loginDropdown.blur()
+  {% endif %}
+  {% if register_form.errors %}
+    let registerModal = bootstrap.Modal.getOrCreateInstance(document.getElementById('register-modal'))
+    registerModal.show()
+  {% endif %}
+  {% if create_storage_form.errors %}
+    let createStorageDropdown = document.getElementById('create-storage-dropdown')
+    createStorageDropdown.click()
+    createStorageDropdown.blur()
+  {% endif %}
+</script>
+</body>
+</html>

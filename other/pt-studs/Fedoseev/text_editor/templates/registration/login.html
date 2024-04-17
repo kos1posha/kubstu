@@ -1,0 +1,41 @@
+{% extends 'registration/form.html' %}
+{% load static %}
+
+{% block body %}
+  <body class="d-flex align-items-center bg-body-tertiary py-4">
+  <form class="form m-auto" method="post" novalidate>
+    {% csrf_token %}
+    <a href="{% url 'index' %}" class="display-5 text-start link-primary text-decoration-none">Форум хорошего программиста</a>
+    {% if form.non_field_errors %}
+      <div class="text-danger">
+        {% for error in form.non_field_errors %}{% if error != '' %}{{ error }}<br>{% endif %}{% endfor %}
+      </div>
+    {% endif %}
+    {% for field in form %}
+      <div class="mb-3">
+        <label class="form-label" for="{{ field.name }}">{{ field.label }}</label>
+        <input class="form-control{% if field.errors or form.non_field_errors %} is-invalid{% endif %}" type="{{ field.field.widget.input_type }}" id="{{ field.name }}" name="{{ field.name }}" {% if field.help_text %}aria-describedby="{{ field.name }}_help"{% endif %}>
+        {% if field.help_text %}
+          <div class="form-text" id="{{ field.name }}_help">{{ field.help_text }}</div>
+        {% endif %}
+        {% if field.errors %}
+          <p class="text-danger small">
+            {% for error in field.errors %}{% if error != '' %}{{ error }}<br>{% endif %}{% endfor %}
+          </p>
+        {% endif %}
+        {% if field.name == 'password' and sign == 'in' %}
+          <div class="text-end me-1">
+            <a class="link-primary text-decoration-none" href="{% url 'users:password-reset' %}">Забыли пароль?</a>
+          </div>
+        {% endif %}
+      </div>
+    {% endfor %}
+    <div>
+      <button class="btn btn-primary text-white w-100 mt-3" type="submit">Войти</button>
+    </div>
+    <div class="text-center mt-3">
+      Нет аккаунта? <a class="link-primary text-decoration-none" href="{% url 'register' %}">Зарегистрируйтесь</a>
+    </div>
+  </form>
+  </body>
+{% endblock %}

@@ -1,0 +1,17 @@
+[2023-05-19 18:47:26.182476] 200: Connection established
+
+[2023-05-19 18:47:26.194474] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = "table" and sm.name = "Movies"
+
+[2023-05-19 18:47:26.195474] 200: Query completed successfully
+SELECT * FROM "Movies" 
+
+[2023-05-19 18:47:56.021478] 200: Connection established
+
+[2023-05-19 18:47:56.023477] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = "table" and sm.name = "Movies"
+

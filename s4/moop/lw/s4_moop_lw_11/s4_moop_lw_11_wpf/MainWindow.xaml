@@ -1,0 +1,225 @@
+﻿<!-- ReSharper disable once Xaml.RedundantNamespaceAlias -->
+<Window x:Class="s4_moop_lw_11_wpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:s4_moop_lw_11_wpf"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="650" Width="700" ResizeMode="CanMinimize">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition ScrollViewer.VerticalScrollBarVisibility="Auto"/>
+            <RowDefinition Height="15"/>
+        </Grid.RowDefinitions>
+
+        <Label Content="Декораторы"  FontSize="20"
+               HorizontalAlignment="Center" VerticalAlignment="Bottom"
+               Grid.Row="0" Grid.Column="0"/>
+
+        <StackPanel Margin="15 0 15 5" Grid.Row="1" Grid.Column="0">
+
+            <StackPanel>
+                <Border BorderBrush="Black" BorderThickness="1"
+                        Margin="10 10 10 0" Padding="5 0">
+                    <WrapPanel>
+                        <Label Content="Заголовок" FontSize="16" Width="235"
+                               HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        <CheckBox x:Name="Titled"
+                                  VerticalContentAlignment="Center" HorizontalAlignment="Center"
+                                  Click="Titled_Click"/>
+                    </WrapPanel>
+                </Border>
+
+                <Border x:Name="TitleBlock"
+                        BorderBrush="Black" BorderThickness="1" Margin="15 -1" Padding="10"
+                        Visibility="Collapsed">
+                    <StackPanel>
+                        <TextBox x:Name="TitleBox" Panel.ZIndex="1"
+                                 Text="Введите заголовок" FontSize="14" Foreground="LightGray"
+                                 MaxLines="3" TextWrapping="Wrap" AcceptsReturn="True"
+                                 Margin="5 0"
+                                 GotFocus="TitleBox_GotFocus" TextChanged="TitleBox_TextChanged" PreviewTextInput="TitleBox_PreviewTextInput"/>
+                        <TextBox x:Name="TitleSeparatorBox" Panel.ZIndex="1"
+                                 Margin="5 -1" 
+                                 Visibility="Collapsed" IsReadOnly="True"/>
+                        <WrapPanel Margin="10 0">
+                            <Button x:Name="TitleSeparatedButton"
+                                    Content="Добавить разделитель" FontSize="9"
+                                    HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"
+                                    Width="100" Height="15" Margin="5 -4 0 5" Padding="-1"
+                                    Click="TitleSeparatedButton_Click"/>
+                            <TextBlock x:Name="TitleLinesLeftCount"
+                                       Text="Осталось строк: 3" FontSize="9" Foreground="Gray"
+                                       HorizontalAlignment="Right" VerticalAlignment="Top" 
+                                       Margin="30 -1 0 0"/>
+                        </WrapPanel>
+
+                        <Label Content="Выравнивание" FontSize="14" Margin="5 -10 5 -5"/>
+                        <RadioButton x:Name="TitleLeftAlign" Content="По левому краю" Margin="10 0" 
+                                     Checked="TitleAlign_Checked" IsChecked="True"/>
+                        <RadioButton x:Name="TitleRightAlign" Content="По правому краю" Margin="10 0"
+                                     Checked="TitleAlign_Checked"/>
+                        <RadioButton x:Name="TitleCenterAlign" Content="По центру" Margin="10 0"
+                                     Checked="TitleAlign_Checked"/>
+                    </StackPanel>
+                </Border>
+
+            </StackPanel>
+
+            <StackPanel>
+                <Border BorderBrush="Black" BorderThickness="1"
+                        Margin="10 10 10 0" Padding="5 0">
+                    <WrapPanel>
+                        <Label Content="Колонтитул" FontSize="16" Width="235"
+                               HorizontalAlignment="Left" VerticalAlignment="Center" />
+                        <CheckBox x:Name="Commented"
+                                  VerticalContentAlignment="Center" HorizontalAlignment="Center"
+                                  Click="Commented_Click"/>
+                    </WrapPanel>
+                </Border>
+
+                <Border x:Name="CommentBlock"
+                        BorderBrush="Black" BorderThickness="1" Margin="15 -1" Padding="10"
+                        Visibility="Collapsed">
+                    <StackPanel>
+                        <TextBox x:Name="CommentSeparatorBox" Panel.ZIndex="1"
+                                 Margin="5 -1" 
+                                 Visibility="Collapsed" IsReadOnly="True"/>
+                        <TextBox x:Name="CommentBox" Panel.ZIndex="1"
+                                 Text="Введите колонтитул" FontSize="14" Foreground="LightGray"
+                                 MaxLines="3" TextWrapping="Wrap" AcceptsReturn="True"
+                                 Margin="5 0"
+                                 GotFocus="CommentBox_GotFocus" TextChanged="CommentBox_TextChanged" PreviewTextInput="CommentBox_PreviewTextInput"/>
+                        <WrapPanel Margin="10 0">
+                            <Button x:Name="CommentSeparatedButton"
+                                    Content="Добавить разделитель" FontSize="9"
+                                    HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"
+                                    Width="100" Height="15" Margin="5 -4 0 5" Padding="-1"
+                                    Click="CommentSeparatedButton_Click"/>
+                            <TextBlock x:Name="CommentLinesLeftCount"
+                                       Text="Осталось строк: 3" FontSize="9" Foreground="Gray"
+                                       HorizontalAlignment="Right" VerticalAlignment="Top" 
+                                       Margin="30 -1 0 0"/>
+                        </WrapPanel>
+
+                        <Label Content="Выравнивание" FontSize="14" Margin="5 -10 5 -5"/>
+                        <RadioButton x:Name="CommentLeftAlign" Content="По левому краю" Margin="10 0" 
+                                     Checked="CommentAlign_Checked" IsChecked="True"/>
+                        <RadioButton x:Name="CommentRightAlign" Content="По правому краю" Margin="10 0"
+                                     Checked="CommentAlign_Checked"/>
+                        <RadioButton x:Name="CommentCenterAlign" Content="По центру" Margin="10 0"
+                                     Checked="CommentAlign_Checked"/>
+                    </StackPanel>
+                </Border>
+
+            </StackPanel>
+
+            <StackPanel>
+                <Border BorderBrush="Black" BorderThickness="1"
+                        Margin="10 10 10 0" Padding="5 0">
+                    <WrapPanel>
+                        <Label Content="Нумерация строк" FontSize="16" Width="235"
+                               HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        <CheckBox x:Name="Indexed"
+                                  VerticalContentAlignment="Center" HorizontalAlignment="Center"
+                                  Click="Indexed_Click"/>
+                    </WrapPanel>
+                </Border>
+
+                <Border x:Name="IndexedBlock"
+                        BorderBrush="Black" BorderThickness="1" Margin="15 -1" Padding="10"
+                        Visibility="Collapsed">
+                    <StackPanel>
+                        <WrapPanel HorizontalAlignment="Center">
+                            <Label Content="Символ-разделитель: "/>
+                            <ComboBox x:Name="IndexSeparatorComboBox" Height="25" Width="40"
+                                      HorizontalContentAlignment="Center">
+                                <ComboBoxItem IsSelected="True" Content="."/>
+                                <ComboBoxItem Content=","/>
+                                <ComboBoxItem Content=" "/>
+                                <ComboBoxItem Content="\n"/>
+                                <ComboBoxItem Content=")"/>
+                                <ComboBoxItem Content="]"/>
+                                <ComboBoxItem Content="}"/>
+                                <ComboBoxItem Content=">"/>
+                            </ComboBox>
+                        </WrapPanel>
+                        <WrapPanel HorizontalAlignment="Center">
+                            <Label Content="Смещение: в начале "/>
+                            <TextBox x:Name="StartOffsetIndex"
+                                     Text="0" MaxLength="2" Height="20" Width="20"
+                                     VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                                     PreviewTextInput="OnlyDigits_PreviewTextInput" TextChanged="PadLeft_TextChanged"/>
+                            <Label Content=" в конце "/>
+                            <TextBox x:Name="EndOffsetIndex"
+                                     Text="0" MaxLength="2" Height="20" Width="20"
+                                     VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                                     PreviewTextInput="OnlyDigits_PreviewTextInput" TextChanged="PadLeft_TextChanged"/>
+                        </WrapPanel>
+                        <WrapPanel HorizontalAlignment="Center">
+                            <Label Content="Длина: блока "/>
+                            <TextBox x:Name="IndexLengthTextBox"
+                                     Text="0" MaxLength="2" Height="20" Width="20"
+                                     VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                                     PreviewTextInput="OnlyDigits_PreviewTextInput" TextChanged="PadLeft_TextChanged"/>
+                            <Label Content=" разделителя "/>
+                            <TextBox x:Name="IndexSeparatorTextBox"
+                                     Text="0" MaxLength="2" Height="20" Width="20"
+                                     VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                                     PreviewTextInput="OnlyDigits_PreviewTextInput" TextChanged="PadLeft_TextChanged"/>
+                        </WrapPanel>
+                    </StackPanel>
+                </Border>
+
+                <!--<StackPanel>
+                    <Border BorderBrush="Black" BorderThickness="1"
+                        Margin="10 10 10 0" Padding="5 0">
+                        <WrapPanel>
+                            <Label Content="Деление на блоки" FontSize="16" Width="235"
+                                   HorizontalAlignment="Left" VerticalAlignment="Center" />
+                            <CheckBox x:Name="Blocked"
+                                  VerticalContentAlignment="Center" HorizontalAlignment="Center"
+                                  Click="Blocked_Click"
+                                  IsChecked="true"/>
+                        </WrapPanel>
+                    </Border>
+
+                    <Border x:Name="BlockedBlock"
+                            BorderBrush="Black" BorderThickness="1" Margin="15 -1" Padding="10"
+                            Visibility="Visible">
+                        -->
+                <!-- ПОТОМ УБРАТЬ -->
+                <!--
+                        <StackPanel>
+                            
+                        </StackPanel>
+                    </Border>
+
+                </StackPanel>-->
+
+
+
+            </StackPanel>
+
+        </StackPanel>
+
+
+
+        <Label Content="Документ" 
+               FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Bottom"
+               Grid.Row="0" Grid.Column="1"/>
+
+        <StackPanel Grid.Row="1" Grid.Column="1">
+            <TextBox Margin="10" Height="500" x:Name="DocumentTextBox" AcceptsReturn="True" TextWrapping="Wrap"/>
+            <Button x:Name="Buid" Content="Построить" Margin="40 0" Click="Buid_Click"/>
+        </StackPanel>
+
+        <Rectangle Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Fill="#FFC9C9C9"/>
+    </Grid>
+</Window>

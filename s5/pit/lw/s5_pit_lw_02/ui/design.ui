@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ImageEditorWindow</class>
+ <widget class="QMainWindow" name="ImageEditorWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>400</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>400</width>
+    <height>400</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Редактор изображений</string>
+  </property>
+  <widget class="QWidget" name="w_main">
+   <layout class="QGridLayout" name="gl_main">
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <item row="0" column="0">
+     <widget class="QLabel" name="i">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>800</width>
+        <height>800</height>
+       </size>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="mb_main">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>400</width>
+     <height>18</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="m_file">
+    <property name="title">
+     <string>Файл</string>
+    </property>
+    <addaction name="a_open"/>
+    <addaction name="a_close"/>
+    <addaction name="separator"/>
+    <addaction name="a_save"/>
+    <addaction name="a_save_as"/>
+    <addaction name="separator"/>
+    <addaction name="a_return"/>
+   </widget>
+   <widget class="QMenu" name="m_convert">
+    <property name="title">
+     <string>Цвет</string>
+    </property>
+    <widget class="QMenu" name="m_gs">
+     <property name="title">
+      <string>Черно-белый</string>
+     </property>
+     <addaction name="a_gs_simple"/>
+     <addaction name="separator"/>
+     <addaction name="a_gs_ntscrgb"/>
+     <addaction name="a_gs_srgb"/>
+     <addaction name="a_gs_difference"/>
+     <addaction name="separator"/>
+     <addaction name="a_gs_histogram"/>
+    </widget>
+    <widget class="QMenu" name="m_rgb">
+     <property name="title">
+      <string>RGB</string>
+     </property>
+     <addaction name="a_rgb_red"/>
+     <addaction name="a_rgb_green"/>
+     <addaction name="a_rgb_blue"/>
+     <addaction name="separator"/>
+     <addaction name="a_rgb_histogram"/>
+    </widget>
+    <addaction name="m_gs"/>
+    <addaction name="m_rgb"/>
+   </widget>
+   <widget class="QMenu" name="m_hsv">
+    <property name="title">
+     <string>HSV</string>
+    </property>
+    <addaction name="a_hsv_edit"/>
+   </widget>
+   <addaction name="m_file"/>
+   <addaction name="m_convert"/>
+   <addaction name="m_hsv"/>
+  </widget>
+  <action name="a_open">
+   <property name="text">
+    <string>Открыть</string>
+   </property>
+  </action>
+  <action name="a_close">
+   <property name="text">
+    <string>Закрыть</string>
+   </property>
+  </action>
+  <action name="a_save">
+   <property name="text">
+    <string>Сохранить</string>
+   </property>
+  </action>
+  <action name="a_save_as">
+   <property name="text">
+    <string>Сохранить как</string>
+   </property>
+  </action>
+  <action name="a_gs_simple">
+   <property name="text">
+    <string>Обычный</string>
+   </property>
+  </action>
+  <action name="a_gs_ntscrgb">
+   <property name="text">
+    <string>NTSC RGB</string>
+   </property>
+  </action>
+  <action name="a_gs_histogram">
+   <property name="text">
+    <string>Гистограмма...</string>
+   </property>
+  </action>
+  <action name="a_rgb_red">
+   <property name="text">
+    <string>Красный</string>
+   </property>
+  </action>
+  <action name="a_rgb_green">
+   <property name="text">
+    <string>Зеленый</string>
+   </property>
+  </action>
+  <action name="a_rgb_blue">
+   <property name="text">
+    <string>Синий</string>
+   </property>
+  </action>
+  <action name="a_rgb_histogram">
+   <property name="text">
+    <string>Гистограмма...</string>
+   </property>
+  </action>
+  <action name="a_gs_difference">
+   <property name="text">
+    <string>Разница</string>
+   </property>
+  </action>
+  <action name="a_gs_srgb">
+   <property name="text">
+    <string>sRGB</string>
+   </property>
+  </action>
+  <action name="a_hsv_edit">
+   <property name="text">
+    <string>Изменить...</string>
+   </property>
+  </action>
+  <action name="a_hsv_return">
+   <property name="text">
+    <string>Вернуть </string>
+   </property>
+  </action>
+  <action name="a_return">
+   <property name="text">
+    <string>Отменить изменения</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

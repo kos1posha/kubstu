@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ block.super }} - Главная страница{% endblock %}
+
+{% block content %}
+  {% for article in articles %}
+    <div class="w-100 border-bottom border-secondary-subtle py-4">
+        <div class="row">
+          {% if article.main_photo %}
+            <div class="col-auto">
+              <img src="{{ article.main_photo.url }}" alt="" style="max-height: 150px; max-width: 250px;">
+            </div>
+          {% endif %}
+          <div class="col">
+            <h3 class="border-bottom border-primary border-2">
+              <span class="fs-6 fw-normal text-secondary float-end pt-2 mt-1">опубликовано: {{ article.createf }}</span>
+              <a class="link-primary text-black text-decoration-none" href="{% url 'article' slug=article.get_absolute_url %}">{{ article.title }}</a>
+            </h3>
+            <span class="fs-5">{{ article.preview }}</span>
+          </div>
+        </div>
+      </div>
+  {% endfor %}
+{% endblock %}

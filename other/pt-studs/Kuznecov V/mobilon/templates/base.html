@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>{% block title %}На связи{% endblock %}</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-info-subtle">
+  <div class="container-fluid px-4">
+    <a class="navbar-brand" href="{% url 'catalog' %}">
+      <img src="https://cdn-icons-png.flaticon.com/512/9961/9961398.png" alt="" height="48">
+      <span class="fw-semibold text-secondary-emphasis">Салон</span> <span class="fw-bold">«На связи»</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link fw-bold text-info-emphasis" href="{% url 'history' %}">
+            <img class="pb-1" src="https://cdn-icons-png.flaticon.com/512/2961/2961948.png" alt="" height="22">
+            История
+          </a>
+        </li>
+        <li class="nav-item dropdown" style="z-index: 69420;">
+          <a class="nav-link fw-bold text-success" href="#" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+            <img class="pb-1" src="https://cdn-icons-png.flaticon.com/512/481/481384.png" alt="" height="22">
+            Корзина
+            {% if not purchase.is_clear %}
+              <div class="badge bg-white text-primary-emphasis">{{ purchase.product_count }}</div>
+            {% endif %}
+          </a>
+          {% if purchase.is_clear %}
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li>
+                <h6 class="dropdown-header text-center">
+                  Корзина пуста
+                </h6>
+              </li>
+            </ul>
+          {% else %}
+            <ul class="dropdown-menu dropdown-menu-end" style="min-width: 360px;">
+              <li>
+                <h6 class="dropdown-header">
+                  Корзина ({{ purchase.product_count }})
+                  <span class="float-end">Итого {{ purchase.total_cost_format }}</span>
+                </h6>
+              </li>
+              <li>
+                <div class="px-3 pt-2">
+                  <form method="post" action="#">
+                    <div class="overflow-hidden border rounded-3">
+                      <div class="list-group list-group-flush list-unstyled overflow-y-auto" style="max-height: 220px;">
+                        {% for basket_product in purchase.basket.all %}
+                          <a href="#" class="list-group-item list-group-item-action" style="cursor: default;">
+                            {{ basket_product.category.name }} {{ basket_product.name }}<br>
+                            <small class="text-secondary fw-semibold text-opacity-50">{{ basket_product.cost_format }}</small>
+                            <button class="btn btn-sm btn-link text-decoration-none float-end text-danger" formaction="{% url 'remove_product' id=basket_product.id %}" type="submit">Удалить</button>
+                          </a>
+                        {% endfor %}
+                      </div>
+                    </div>
+                    <div class="mt-3 mb-2 float-end">
+                      {% csrf_token %}
+                      <button class="btn btn-link link-secondary text-opacity-50 text-decoration-none" formaction="{% url 'clear_basket' %}" type="submit">Очистить</button>
+                      <button class="btn btn-light text-success" formaction="{% url 'done_purchase' %}" type="submit">Создать заказ</button>
+                    </div>
+                  </form>
+                </div>
+              </li>
+            </ul>
+          {% endif %}
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+{% block sabnav %}{% endblock %}
+{% if messages %}
+  <div class="bg-success-subtle">
+    {% for message in messages %}
+      <div class="container-fluid px-4">
+        <div class="w-100 alert alert-success alert-dismissible fade show border-0 rounded-0 my-0 mx-0 py-3 px-0" role="alert">
+          <div class="row">
+            <div class="col overflow-hidden">
+              <span class="fw-bold">{{ message }}</span>
+            </div>
+            <div class="col-auto">
+              <button class="btn-close position-static p-1 me-1 me-md-3" type="button" data-bs-dismiss="alert" aria-label="Закрыть"></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}
+<div class="container-fluid p-4">
+  {% block content %}{% endblock %}
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+</body>
+</html>

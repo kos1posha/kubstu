@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Автовокзалы и автостанции города Краснодар</h1>
+  <div class="bg-white border border-2 border-danger rounded rounded-5 overflow-hidden mt-3">
+    <table class="table table-hover table-borderless">
+      <thead>
+      <tr>
+        <th class="fs-5 px-4 py-3" scope="col">Название</th>
+        <th class="fs-5 px-4 py-3" scope="col">Адрес</th>
+        <th class="fs-5 px-4 py-3" scope="col">Контакты</th>
+      </tr>
+      </thead>
+      <tbody class="border-2 border-bottom-0 border-start-0 border-end-0 border-danger-subtle">
+      {% for station in stations %}
+        <tr>
+          <td class="w-25 px-4 py-4 align-middle">
+            <span class="text-danger-emphasis">{{ station.name }}</span>
+          </td>
+          <td class="w-25 px-4 align-middle">
+            <a class="link-primary text-decoration-none" href="{{ station.gis_link }}">{{ station.address }}</a>
+          </td>
+          <td class="w-50 px-4 align-middle">
+            {% for contact in station.contacts %}
+              <span class="text-success">{{ contact.phonef }}</span>&nbsp;&nbsp;–&nbsp;&nbsp;<span class="text-secondary-emphasis">{{ contact.description }}</span><br>
+            {% endfor %}
+          </td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31624.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlgorithmKMP_wpr", "AlgorithmKMP_wpr\AlgorithmKMP_wpr.csproj", "{967862AA-36B3-4AA0-BD9C-4351688ACAD1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{967862AA-36B3-4AA0-BD9C-4351688ACAD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{967862AA-36B3-4AA0-BD9C-4351688ACAD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{967862AA-36B3-4AA0-BD9C-4351688ACAD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{967862AA-36B3-4AA0-BD9C-4351688ACAD1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DAD5FAA7-858E-4671-B554-D1AD10D9F94B}
+	EndGlobalSection
+EndGlobal

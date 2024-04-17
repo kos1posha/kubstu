@@ -1,0 +1,112 @@
+{% load static %}
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>{% block title %}Автовокзал{% endblock %}</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css"/>
+</head>
+<body style="background: url({% static 'autostop/img/krasnodar-1.jpg' %}) no-repeat; background-size: 100%">
+<nav class="navbar bg-white bg-opacity-50">
+  <div class="container px-5">
+    <a class="navbar-brand" href="{% url 'index' %}">
+      <img src="{% static 'autostop/img/logo.png' %}" alt="" height="80px">
+      <span class="fw-bold">Краснодарский автовокзал</span>
+    </a>
+    <div class="nav-link">
+      <a class="link-danger fw-semibold text-decoration-none" href="#" data-bs-toggle="modal" data-bs-target="#about-modal">О нас</a>
+    </div>
+  </div>
+</nav>
+<div class="bg-white bg-opacity-50 sticky-top">
+  <div class="container">
+    <form class="container px-5 pt-3 pb-4 mx-2" method="get" action="{% url 'trips' %}">
+      <div class="row mx-0">
+        {% if form.non_field_errors %}
+          <div class="text-danger col-12 mb-2">
+            {% for error in form.non_field_errors %}{% if error != '' %}{{ error }}<br>{% endif %}{% endfor %}
+          </div>
+        {% endif %}
+        {% for field in form %}
+          {% if field.name == 'to' %}
+            <div class="col-6 ps-0 pe-3">
+              <div class="form-floating h-100">
+                <select class="form-select form-select-lg focus-ring focus-ring-danger border-danger rounded-5 border-2 px-4 h-100" id="{{ field.name }}" name="{{ field.name }}" style="max-height: 65px">
+                  {% for option in field.subwidgets %}
+                    {{ option }}
+                  {% endfor %}
+                </select>
+                <label class="form-label ps-2 ms-3" for="to">Куда</label>
+                {% if field.errors %}
+                  <p class="text-danger small text-center">
+                    {% for error in field.errors %}{% if error != '' %}{{ error }}<br>{% endif %}{% endfor %}
+                  </p>
+                {% endif %}
+              </div>
+            </div>
+          {% elif field.name == 'date' %}
+            <div class="col-4 px-3">
+              <div class="form-floating h-100">
+                <input class="form-control form-control-lg focus-ring focus-ring-danger border-danger rounded-5 border-2 px-4 h-100" type="{% if field.initial != 'Когда угодно' %}date{% else %}text{% endif %}" id="{{ field.name }}" name="{{ field.name }}" value="{{ field.initial }}" onfocus="convertToDatePicker()" onblur="convertToText()" style="max-height: 65px">
+                <label class="form-label ps-2 ms-3" for="to">Когда</label>
+                {% if field.errors %}
+                  <p class="text-danger small text-center">
+                    {% for error in field.errors %}{% if error != '' %}{{ error }}<br>{% endif %}{% endfor %}
+                  </p>
+                {% endif %}
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+        <div class="col-2 ps-3 pe-0">
+          <button class="btn btn-outline-light focus-ring focus-ring-danger border-danger text-danger rounded-5 border-2 bg-white fs-5 w-100 h-100" style="max-height: 65px">Найти</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="container">
+  <div class="container px-5 mx-2 mt-3">
+    {% block content %}{% endblock %}
+  </div>
+</div>
+<div class="modal fade" id="about-modal" tabindex="-1" aria-labelledby="about-modal-label" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-danger-subtle">
+        <h1 class="modal-title fs-5" id="about-modal-label">О нас</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Мы молодцы
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.0/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script>
+  function convertToDatePicker() {
+    const input = document.getElementById("date");
+    input.type = "date";
+    if (input.value === "") {
+      input.value = "";
+    }
+  }
+
+  function convertToText() {
+    const input = document.getElementById("date");
+    if (input.value === "") {
+      input.type = "text";
+      input.value = "Когда угодно";
+    }
+  }
+</script>
+</body>
+</html>

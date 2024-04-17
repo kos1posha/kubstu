@@ -1,0 +1,112 @@
+html {
+    font-family: Calibri, math;
+}
+
+body {
+    height: 100vh;
+    background: linear-gradient(to bottom right, darkslategrey, forestgreen);
+    overflow: hidden;
+}
+
+
+.card {
+    border-top: none;
+    width: 44%;
+    height: 44%;
+    border-radius: 2rem;
+    background: linear-gradient(to bottom, #f0f0f0, #ffffff);
+    transition: transform 0.6s;
+}
+
+.card:hover {
+    transform: scale(1.1) translate(-44%, -44%);
+}
+
+.me {
+    top: -20%;
+    border-radius: 5rem;
+    border: 3px solid white;
+    border-top: 2px solid white;
+}
+
+.title {
+    top: 3%;
+    font-size: 28px;
+}
+
+.subtitle {
+    top: 11%;
+    color: grey;
+    font-size: 18px;
+}
+
+.secret {
+    opacity: 0;
+    transition: opacity 0.8s;
+}
+
+.secret:hover {
+    opacity: 100%;
+    display: inline-block;
+}
+
+.h {
+    font-size: 22px;
+}
+
+.c {
+    font-size: 18px;
+}
+
+.hr {
+    position: absolute;
+    top: 17%;
+    left: 34%;
+    width: 57%;
+}
+
+.btn {
+    border: 1px solid lightgray;
+    border-radius: 1rem;
+    padding: 8px 0;
+    font-size: 20px;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    transition: background-color 0.2s;
+}
+
+.btn:hover {
+    background-color: lightgray;
+}
+
+.btn:active {
+    background-color: darkgray;
+}
+
+.btn-black {
+    background-color: black;
+    color: white;
+    transition: color 0.2s;
+}
+
+.btn-black:hover {
+    background-color: black;
+    color: lightgray;
+}
+
+.btn-blue {
+    background-color: royalblue;
+    color: white;
+    transition: background-color 0.2s;
+}
+
+.btn-blue:hover {
+    background-color: cornflowerblue;
+}
+
+.kubstu-schedule-logo {
+    color: dodgerblue;
+    font-size: 18px;
+    font-family: "Times New Roman", cursive;
+}

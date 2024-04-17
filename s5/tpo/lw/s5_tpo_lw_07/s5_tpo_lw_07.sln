@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "s5_tpo_lw_07", "s5_tpo_lw_07\s5_tpo_lw_07.csproj", "{8BA474D6-91E0-4566-8417-29080A022E1C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "s5_tpo_lw_07_tests", "..\s5_tpo_lw_07_tests\s5_tpo_lw_07_tests\s5_tpo_lw_07_tests.csproj", "{085234FA-3B96-4470-8934-0EBFE6E5683E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8BA474D6-91E0-4566-8417-29080A022E1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BA474D6-91E0-4566-8417-29080A022E1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BA474D6-91E0-4566-8417-29080A022E1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BA474D6-91E0-4566-8417-29080A022E1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{085234FA-3B96-4470-8934-0EBFE6E5683E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{085234FA-3B96-4470-8934-0EBFE6E5683E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{085234FA-3B96-4470-8934-0EBFE6E5683E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{085234FA-3B96-4470-8934-0EBFE6E5683E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

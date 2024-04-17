@@ -1,0 +1,53 @@
+body {
+    padding-left: 25%;
+    padding-right: 25%;
+}
+
+.align-center {
+    text-align: center;
+}
+
+
+.align-left {
+    text-align: left;
+}
+
+.align-right {
+    text-align: right;
+}
+
+.fw-bold {
+    font-weight: bold;
+}
+
+.fw-semibold {
+    font-weight: bolder;
+}
+
+.fs-3 {
+    font-size: small;
+}
+
+.fs-4 {
+    font-size: medium;
+}
+
+.fs-6 {
+    font-size: large;
+}
+
+.fs-7 {
+    font-size: x-large;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+.line-through {
+    text-decoration: line-through;
+}

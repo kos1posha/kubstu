@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}Должность - {{ position.name }}{% endblock %}
+
+{% block content %}
+  <h3>Изменить должность</h3>
+  <form class="col-8" method="post" novalidate>
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    {% for field in form.visible_fields %}
+      <div class="row pb-2">
+        <div class="col">
+          <label class="form-label" for="{{ field.auto_id }}">{{ field.label }}</label>
+          <input class="{% if forloop.counter == 1 %}form-control-plaintext text-white{% else %}form-control border-secondary-subtle border-opacity-50{% endif %}" type="{{ field.widget_type }}" name="{{ field.name }}" id="{{ field.auto_id }}" placeholder="{% firstof field.field.widget.attrs.placeholder field.label %}"{% if field.initial %} value="{{ field.initial }}"{% endif %}{% if forloop.counter == 1 %} readonly{% endif %}>
+          {% if field.help_text %}
+            <span class="small text-white-50"{% if field.auto_id %} id="{{ field.auto_id }}_helptext"{% endif %}>{{ field.help_text|safe }}</span>
+          {% endif %}
+          {% if field.errors %}
+            <div class="small text-danger">
+              {{ field.errors.as_text }}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+    <div class="row">
+      <div class="col">
+        <input class="btn btn-light text-info" type="submit" value="Сохранить">
+        <input class="btn btn-link link-danger text-decoration-none float-end" formaction="{% url 'delete_position' pk=position.pk %}" type="submit" value="Удалить">
+      </div>
+    </div>
+  </form>
+{% endblock %}

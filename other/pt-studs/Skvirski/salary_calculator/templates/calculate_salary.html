@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h3>Рассчитать зарплату сотрудника</h3>
+  <form class="col-8" method="post" novalidate>
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    {% for field in form.visible_fields %}
+      {% if forloop.counter != 3 %}
+        <div class="row pb-2">
+      {% endif %}
+    <div class="col">
+      {% if field.widget_type == 'select' %}
+        <label class="form-label" for="{{ field.auto_id }}">{{ field.label }}</label>
+        <select class="form-select border-secondary-subtle border-opacity-50" name="{{ field.name }}" id="{{ field.auto_id }}" data-placeholder="{{ field.subwidgets.0.data.label }}">
+          <option></option>
+          {% for option in field.subwidgets|slice:"1:" %}
+            {{ option }}
+          {% endfor %}
+        </select>
+      {% elif field.widget_type == 'checkbox' %}
+        <input class="form-check-input border-secondary-subtle border-opacity-50" type="checkbox" name="{{ field.name }}" id="{{ field.auto_id }}" {% if field.initial is True %} checked{% endif %}>
+        <label class="form-check-label" for="{{ field.auto_id }}">{{ field.label }}</label>
+      {% else %}
+        <label class="form-label" for="{{ field.auto_id }}">{{ field.label }}</label>
+        <input class="{% if forloop.counter == 2 or forloop.counter == 3 %}form-control-plaintext text-white{% else %}form-control border-secondary-subtle border-opacity-50{% endif %}" type="{{ field.widget_type }}" name="{{ field.name }}" id="{{ field.auto_id }}"{% if forloop.counter == 2 or forloop.counter == 3 %} readonly{% endif %} placeholder="{% firstof field.field.widget.attrs.placeholder field.label %}"{% if field.initial %} value="{{ field.initial }}"{% endif %}>
+      {% endif %}
+      {% if field.help_text %}
+        <span class="small text-white-50"{% if field.auto_id %} id="{{ field.auto_id }}_helptext"{% endif %}>{{ field.help_text|safe }}</span>
+      {% endif %}
+      {% if field.errors %}
+        <div class="small text-danger">
+          {{ field.errors.as_text }}
+        </div>
+      {% endif %}
+      {% if forloop.counter != 2 %}</div>{% endif %}
+    </div>
+    {% endfor %}
+    <input class="btn btn-light" type="submit" value="Рассчитать">
+  </form>
+{% endblock %}

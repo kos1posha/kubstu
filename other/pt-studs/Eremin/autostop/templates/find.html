@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="mb-3">
+    {% if trips %}
+      <h1>Найдено поездок: {{ trips.count }}</h1>
+      {% for trip in trips %}
+        <div class="card rounded-5 border-2 border-danger mt-3">
+          <div class="card-header px-4 py-3">
+            <span class="badge bg-danger fs-5 mt-3 float-end">До выезда осталось: {{ trip.leftf }}</span>
+            <span class="h3 d-inline-flex">{{ trip.direction }}</span><br>
+            <span class="text-secondary">{{ trip.station }}</span>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item px-4 py-3">
+              <span class="fs-5">Выезд: {{ trip.start_dt }}</span><br>
+              <span class="fs-5">Окончание: {{ trip.end_dt }}</span><br>
+            </li>
+            <li class="list-group-item px-4 py-3">
+              <span class="fs-5">Всего мест: {{ trip.ticket_count }}</span><br>
+              <span class="fs-5">Свободных мест: {{ trip.free_places.count }}</span><br>
+              <div class="container mt-3">
+                <div class="row gap-1">
+                  {% for ticket in trip.free_places %}
+                    <div class="btn btn-light border rounded-2 col-auto">
+                      {{ ticket.place }}
+                    </div>
+                  {% endfor %}
+                </div>
+              </div>
+            </li>
+          </ul>
+          <div class="card-footer px-4 py-4">
+            <span class="fw-semibold">Цена поездки:</span> <span class="text-success">{{ trip.pricef }}</span>
+          </div>
+        </div>
+      {% endfor %}
+    {% else %}
+      <h1>По вашему запросу не найдено ни одной поездки</h1>
+    {% endif %}
+  </div>
+{% endblock %}

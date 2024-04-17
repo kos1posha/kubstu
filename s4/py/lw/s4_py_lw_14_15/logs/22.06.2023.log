@@ -1,0 +1,27 @@
+[2023-06-22 11:28:12.660881] 200: Connection established
+
+[2023-06-22 11:28:12.668880] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Movies'
+
+[2023-06-22 11:29:24.889635] 200: Connection established
+
+[2023-06-22 11:29:24.891625] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Movies'
+
+[2023-06-22 11:29:24.908626] 200: Query completed successfully
+INSERT INTO Movies VALUES ('555555', 'я лох', 'ковтун заебал', '01:00', '2014-03-31', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1')
+
+[2023-06-22 11:29:34.332732] 200: Connection established
+
+[2023-06-22 11:29:34.335728] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Movies'
+
+[2023-06-22 11:29:34.335728] 200: Query completed successfully
+SELECT * FROM Movies 
+

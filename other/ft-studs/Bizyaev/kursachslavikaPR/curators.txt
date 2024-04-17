@@ -1,0 +1,2 @@
+log pass
+root 12345qwerty

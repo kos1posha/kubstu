@@ -1,0 +1,14 @@
+[2023-06-08 12:30:58.452118] 200: Connection established
+
+[2023-06-08 12:30:58.471332] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Genres'
+
+[2023-06-08 19:01:28.181293] 200: Connection established
+
+[2023-06-08 19:01:28.193292] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Movies'
+

@@ -1,0 +1,9 @@
+from .administrator_panel_view import AdministratorPanelView
+from .employee_panel_view import EmployeePanelView
+from .index_view import IndexView
+from .register_view import RegisterView
+from .create_brunch_view import CreateBankBrunchView
+from .create_employee_view import CreateEmployeeView
+from .create_service_ticket_view import CreateServiceTicketView
+from .delete_views import DeleteEmployeeView, DeleteServiceTicketView
+from .set_service_state_view import SetServiceStateView

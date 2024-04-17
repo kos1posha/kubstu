@@ -1,0 +1,307 @@
+[2023-05-23 09:58:25.748043] 200: Connection established
+
+[2023-05-23 09:58:25.763046] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Genres'
+
+[2023-05-23 09:59:32.431132] 200: Connection established
+
+[2023-05-23 09:59:32.433171] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Genres'
+
+[2023-05-23 09:59:32.433171] 200: Query completed successfully
+SELECT * FROM Genres 
+
+[2023-05-23 09:59:43.433469] 200: Connection established
+
+[2023-05-23 09:59:43.435469] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Genres'
+
+[2023-05-23 09:59:55.323848] 200: Connection established
+
+[2023-05-23 09:59:55.325846] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Genres'
+
+[2023-05-23 09:59:55.338847] 200: Query completed successfully
+INSERT INTO Genres VALUES ('10', 'Трагедия', 'Ну тут над плакать')
+
+[2023-05-23 10:00:05.359101] 200: Connection established
+
+[2023-05-23 10:00:05.414578] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Genres'
+
+[2023-05-23 10:00:05.415594] 200: Query completed successfully
+SELECT * FROM Genres 
+
+[2023-05-23 10:00:15.242839] 200: Connection established
+
+[2023-05-23 10:00:15.244842] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Genres'
+
+[2023-05-23 10:00:15.245840] 200: Query completed successfully
+SELECT * FROM Genres WHERE ID = 10
+
+[2023-05-23 10:00:22.891445] 200: Connection established
+
+[2023-05-23 10:00:22.894447] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Genres'
+
+[2023-05-23 10:00:22.894447] 200: Query completed successfully
+SELECT * FROM Genres WHERE ID = 10
+
+[2023-05-23 10:00:22.950220] 200: Query completed successfully
+DELETE FROM Genres WHERE ID = 10
+
+[2023-05-23 10:00:22.961234] 200: Query completed successfully
+INSERT INTO Genres VALUES ('10', 'Трагедия', 'Ну тут надо плакать')
+
+[2023-05-23 10:00:38.648624] 200: Connection established
+
+[2023-05-23 10:00:38.651637] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Genres'
+
+[2023-05-23 10:00:38.652635] 200: Query completed successfully
+SELECT * FROM Genres WHERE ID = 10
+
+[2023-05-23 10:00:46.805301] 200: Connection established
+
+[2023-05-23 10:00:46.807302] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Genres'
+
+[2023-05-23 10:00:54.443174] 200: Connection established
+
+[2023-05-23 10:00:54.447174] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Genres'
+
+[2023-05-23 10:00:54.447174] 500: SQL error
+IntegrityError: UNIQUE constraint failed: Genres.ID
+INSERT INTO Genres VALUES ('10', '231', '213')
+
+[2023-05-23 10:01:20.314034] 200: Connection established
+
+[2023-05-23 10:01:20.315035] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Genres'
+
+[2023-05-23 10:01:20.316035] 200: Query completed successfully
+SELECT * FROM Genres WHERE ID = 10
+
+[2023-05-23 10:01:20.332138] 200: Query completed successfully
+DELETE FROM Genres WHERE ID = 10
+
+[2023-05-23 10:01:30.444364] 200: Connection established
+
+[2023-05-23 10:01:30.448366] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Genres'
+
+[2023-05-23 10:01:30.449362] 200: Query completed successfully
+SELECT * FROM Genres 
+
+[2023-05-23 10:01:50.766626] 200: Connection established
+
+[2023-05-23 10:01:50.768624] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Directors'
+
+[2023-05-23 10:01:50.769629] 200: Query completed successfully
+SELECT * FROM Directors 
+
+[2023-05-23 10:02:17.313463] 200: Connection established
+
+[2023-05-23 10:02:17.316466] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Directors'
+
+[2023-05-23 10:02:17.317464] 200: Query completed successfully
+SELECT * FROM Directors WHERE ID = 2
+
+[2023-05-23 10:09:00.985033] 200: Connection established
+
+[2023-05-23 10:09:00.988035] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Issuances'
+
+[2023-05-23 10:09:00.988035] 200: Query completed successfully
+SELECT * FROM Issuances 
+
+[2023-05-23 10:09:09.452845] 200: Connection established
+
+[2023-05-23 10:09:09.454848] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'AgeRatings'
+
+[2023-05-23 10:09:09.455841] 200: Query completed successfully
+SELECT * FROM AgeRatings WHERE ID = 1
+
+[2023-05-23 10:09:42.409498] 200: Connection established
+
+[2023-05-23 10:09:42.410501] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Movies'
+
+[2023-05-23 10:09:42.411499] 200: Query completed successfully
+SELECT * FROM Movies WHERE ID = 1
+
+[2023-05-23 10:10:27.432511] 200: Connection established
+
+[2023-05-23 10:10:27.434511] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Movies'
+
+[2023-05-23 10:10:27.435517] 200: Query completed successfully
+SELECT * FROM Movies WHERE ID = 1
+
+[2023-05-23 10:10:36.391332] 200: Connection established
+
+[2023-05-23 10:10:36.395333] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Cinematographers'
+
+[2023-05-23 10:10:36.396331] 200: Query completed successfully
+SELECT * FROM Cinematographers WHERE ID = 1
+
+[2023-05-23 10:10:48.382025] 200: Connection established
+
+[2023-05-23 10:10:48.384027] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Issuances'
+
+[2023-05-23 10:10:48.384027] 200: Query completed successfully
+SELECT * FROM Issuances 
+
+[2023-05-23 10:10:54.395383] 200: Connection established
+
+[2023-05-23 10:10:54.397385] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Movies'
+
+[2023-05-23 10:10:54.398427] 200: Query completed successfully
+SELECT * FROM Movies 
+
+[2023-05-23 10:11:05.821667] 200: Connection established
+
+[2023-05-23 10:11:05.823669] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Movies'
+
+[2023-05-23 10:11:05.824667] 200: Query completed successfully
+SELECT * FROM Movies WHERE ID = 19
+
+[2023-05-23 10:11:20.665360] 200: Connection established
+
+[2023-05-23 10:11:20.668363] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Movies'
+
+[2023-05-23 10:11:20.669401] 200: Query completed successfully
+SELECT * FROM Movies 
+
+[2023-05-23 10:11:26.420050] 200: Connection established
+
+[2023-05-23 10:11:26.422093] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Movies'
+
+[2023-05-23 10:11:26.422093] 200: Query completed successfully
+SELECT * FROM Movies WHERE ID = 10
+
+[2023-05-23 10:11:37.667508] 200: Connection established
+
+[2023-05-23 10:11:37.669504] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Movies'
+
+[2023-05-23 10:11:37.669504] 200: Query completed successfully
+SELECT * FROM Movies WHERE ID = 20
+
+[2023-05-23 10:12:35.695153] 200: Connection established
+
+[2023-05-23 10:12:35.697147] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'FilmCompanies'
+
+[2023-05-23 10:12:35.698153] 200: Query completed successfully
+SELECT * FROM FilmCompanies 
+
+[2023-05-23 10:12:51.971657] 200: Connection established
+
+[2023-05-23 10:12:51.972658] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Adapters'
+
+[2023-05-23 10:12:51.973657] 200: Query completed successfully
+SELECT * FROM Adapters 
+
+[2023-05-23 10:13:02.360168] 200: Connection established
+
+[2023-05-23 10:13:02.362170] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Adapters'
+
+[2023-05-23 10:13:02.363212] 200: Query completed successfully
+SELECT * FROM Adapters WHERE ID = 2
+
+[2023-05-23 10:13:07.437015] 200: Connection established
+
+[2023-05-23 10:13:07.440062] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Adapters'
+
+[2023-05-23 10:13:07.440062] 200: Query completed successfully
+SELECT * FROM Adapters WHERE ID = 2
+
+[2023-05-23 10:13:07.492341] 200: Query completed successfully
+DELETE FROM Adapters WHERE ID = 2
+
+[2023-05-23 10:13:07.503340] 200: Query completed successfully
+INSERT INTO Adapters VALUES ('2', 'DVD-ROM', 'Дивиди-диск', 'Digital Versatile Disc Read-Only Memory — цифровой многоцелевой диск')
+
+[2023-05-23 10:13:23.331990] 200: Connection established
+
+[2023-05-23 10:13:23.335003] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Adapters'
+
+[2023-05-23 10:13:23.336002] 200: Query completed successfully
+SELECT * FROM Adapters 
+

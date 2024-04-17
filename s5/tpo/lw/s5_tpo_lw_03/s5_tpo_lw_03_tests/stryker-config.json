@@ -1,0 +1,9 @@
+{
+  "stryker-config": {
+    "solution": "..\\s5_tpo_lw_03.sln",
+    "reporters": [
+      "progress",
+      "html"
+    ]
+  }
+}

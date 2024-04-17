@@ -1,0 +1,44 @@
+a {
+    text-decoration: none;
+    font-size: x-large;
+}
+
+.container {
+    margin: 25px 40px;
+}
+
+.f {
+    font-family: Arial, serif;
+}
+
+.next {
+    color: forestgreen;
+}
+
+.next:visited {
+    color: forestgreen;
+}
+
+.next:hover {
+    color: green;
+}
+
+.back {
+    color: red;
+}
+
+.back:visited {
+    color: red;
+}
+
+.back:hover {
+    color: darkred;
+}
+
+.fw-bold {
+    font-weight: bold;
+}
+
+.text-center {
+    text-align: center;
+}

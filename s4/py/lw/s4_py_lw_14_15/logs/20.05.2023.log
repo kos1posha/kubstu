@@ -1,0 +1,904 @@
+[2023-05-20 17:46:20.276051] 200: Connection established
+
+[2023-05-20 17:46:20.287054] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = "table" and sm.name = "Movies"
+
+[2023-05-20 18:00:52.131783] 200: Connection established
+
+[2023-05-20 18:00:52.132783] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = "table" and sm.name = "Movies"
+
+[2023-05-20 18:00:52.133784] 200: Query completed successfully
+SELECT * FROM "Movies" 
+
+[2023-05-20 18:02:09.181578] 200: Connection established
+
+[2023-05-20 18:02:09.184574] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = "table" and sm.name = "Movies"
+
+[2023-05-20 18:02:09.184574] 200: Query completed successfully
+SELECT * FROM "Movies" 
+
+[2023-05-20 18:02:11.413376] 200: Connection established
+
+[2023-05-20 18:02:11.415377] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = "table" and sm.name = "Movies"
+
+[2023-05-20 18:02:11.415377] 200: Query completed successfully
+SELECT * FROM "Movies" 
+
+[2023-05-20 18:03:40.241402] 200: Connection established
+
+[2023-05-20 18:03:40.245400] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = "table" and sm.name = "Movies"
+
+[2023-05-20 18:03:40.247406] 200: Query completed successfully
+SELECT * FROM "Movies" 
+
+[2023-05-20 18:03:52.878625] 200: Connection established
+
+[2023-05-20 18:03:52.881625] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = "table" and sm.name = "Movies"
+
+[2023-05-20 18:03:52.881625] 200: Query completed successfully
+SELECT * FROM "Movies" 
+
+[2023-05-20 18:06:44.171910] 200: Connection established
+
+[2023-05-20 18:06:44.173914] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = "table" and sm.name = "Movies"
+
+[2023-05-20 18:06:44.174913] 200: Query completed successfully
+SELECT * FROM "Movies" 
+
+[2023-05-20 18:07:18.677455] 200: Connection established
+
+[2023-05-20 18:07:18.680460] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = "table" and sm.name = "Movies"
+
+[2023-05-20 18:13:02.850122] 200: Connection established
+
+[2023-05-20 18:13:02.852121] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = "table" and sm.name = "Movies"
+
+[2023-05-20 18:13:05.813811] 200: Connection established
+
+[2023-05-20 18:13:05.815812] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = "table" and sm.name = "Movies"
+
+[2023-05-20 18:17:32.400711] 200: Connection established
+
+[2023-05-20 18:17:32.402714] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = "table" and sm.name = "Movies"
+
+[2023-05-20 18:21:54.047080] 200: Connection established
+
+[2023-05-20 18:21:54.049082] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = "table" and sm.name = "Movies"
+
+[2023-05-20 18:21:57.728276] 200: Connection established
+
+[2023-05-20 18:21:57.730277] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = "table" and sm.name = "Movies"
+
+[2023-05-20 18:22:04.911403] 200: Connection established
+
+[2023-05-20 18:22:04.914406] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = "table" and sm.name = "Movies"
+
+[2023-05-20 18:23:07.502375] 200: Connection established
+
+[2023-05-20 18:23:07.504364] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = "table" and sm.name = "Movies"
+
+[2023-05-20 18:23:52.026049] 200: Connection established
+
+[2023-05-20 18:23:52.028047] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = "table" and sm.name = "Movies"
+
+[2023-05-20 18:45:48.081544] 200: Connection established
+
+[2023-05-20 18:45:48.083546] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = "table" and sm.name = "Users"
+
+[2023-05-20 18:46:38.812490] 200: Connection established
+
+[2023-05-20 18:46:38.813451] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = "table" and sm.name = "Users"
+
+[2023-05-20 18:47:05.399457] 200: Connection established
+
+[2023-05-20 18:47:05.400457] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = "table" and sm.name = "Users"
+
+[2023-05-20 18:47:33.832434] 200: Connection established
+
+[2023-05-20 18:47:33.835438] 500: SQL error
+IntegrityError: UNIQUE constraint failed: Users.ID
+INSERT INTO "Users" VALUES ('1', '1', '1', '1', '1', '1', '2023-05-03')
+
+[2023-05-20 18:47:33.836458] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = "table" and sm.name = "Users"
+
+[2023-05-20 18:47:48.557826] 200: Connection established
+
+[2023-05-20 18:47:48.558828] 500: SQL error
+IntegrityError: UNIQUE constraint failed: Users.ID
+INSERT INTO "Users" VALUES ('1', '1', '1', '1', '1', '1', '2023-05-03')
+
+[2023-05-20 18:47:48.559826] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = "table" and sm.name = "Users"
+
+[2023-05-20 18:47:54.172714] 200: Connection established
+
+[2023-05-20 18:47:54.174715] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = "table" and sm.name = "Users"
+
+[2023-05-20 18:48:04.349609] 200: Connection established
+
+[2023-05-20 18:48:04.351582] 500: SQL error
+IntegrityError: UNIQUE constraint failed: Users.ID
+INSERT INTO "Users" VALUES ('1', '1', '1', '1', '1', '1', '2023-05-03')
+
+[2023-05-20 18:48:04.352581] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = "table" and sm.name = "Users"
+
+[2023-05-20 18:55:07.330828] 200: Connection established
+
+[2023-05-20 18:55:07.331829] 500: SQL error
+IntegrityError: UNIQUE constraint failed: Users.ID
+INSERT INTO Users VALUES ('1', '1', '1', '1', '1', '1', '2023-05-03')
+
+[2023-05-20 18:55:07.332829] 500: SQL error
+OperationalError: no such column: Users
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = Users
+
+[2023-05-20 18:56:10.768535] 200: Connection established
+
+[2023-05-20 18:56:10.769480] 500: SQL error
+IntegrityError: UNIQUE constraint failed: Users.ID
+INSERT INTO Users VALUES ('1', '1', '1', '1', '1', '1', '2023-05-03')
+
+[2023-05-20 18:56:10.770519] 500: SQL error
+OperationalError: no such column: Users
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = Users
+
+[2023-05-20 18:56:16.801340] 200: Connection established
+
+[2023-05-20 18:56:16.802344] 500: SQL error
+OperationalError: no such column: Movies
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = Movies
+
+[2023-05-20 18:56:36.133505] 200: Connection established
+
+[2023-05-20 18:56:36.134491] 500: SQL error
+OperationalError: near ")": syntax error
+INSERT INTO Movies VALUES ()
+
+[2023-05-20 18:56:36.135468] 500: SQL error
+OperationalError: no such column: Movies
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = Movies
+
+[2023-05-20 18:56:41.069962] 200: Connection established
+
+[2023-05-20 18:56:41.070963] 500: SQL error
+OperationalError: no such column: Movies
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = Movies
+
+[2023-05-20 18:56:41.071963] 200: Query completed successfully
+SELECT * FROM Movies 
+
+[2023-05-20 18:57:14.924781] 200: Connection established
+
+[2023-05-20 18:57:14.926779] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Movies'
+
+[2023-05-20 18:57:14.926779] 200: Query completed successfully
+SELECT * FROM Movies 
+
+[2023-05-20 18:57:19.472157] 200: Connection established
+
+[2023-05-20 18:57:19.473156] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Issuances'
+
+[2023-05-20 18:57:28.555297] 200: Connection established
+
+[2023-05-20 18:57:28.557294] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Languages'
+
+[2023-05-20 18:57:31.053752] 200: Connection established
+
+[2023-05-20 18:57:31.055752] 500: SQL error
+IntegrityError: UNIQUE constraint failed: Languages.ID
+INSERT INTO Languages VALUES ('1', '1', '1')
+
+[2023-05-20 18:57:31.055752] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Languages'
+
+[2023-05-20 18:58:38.525479] 200: Connection established
+
+[2023-05-20 18:58:38.526479] 500: SQL error
+IntegrityError: UNIQUE constraint failed: Languages.ID
+INSERT INTO Languages VALUES ('1', '1', '1')
+
+[2023-05-20 18:58:38.526479] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Languages'
+
+[2023-05-20 18:59:09.007719] 200: Connection established
+
+[2023-05-20 18:59:09.009719] 500: SQL error
+IntegrityError: UNIQUE constraint failed: Languages.ID
+INSERT INTO Languages VALUES ('1', '1', '1')
+
+[2023-05-20 18:59:09.009719] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Languages'
+
+[2023-05-20 18:59:15.676779] 200: Connection established
+
+[2023-05-20 18:59:15.678779] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Issuances'
+
+[2023-05-20 18:59:15.678779] 200: Query completed successfully
+SELECT * FROM Issuances 
+
+[2023-05-20 18:59:37.139698] 200: Connection established
+
+[2023-05-20 18:59:37.141697] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Movies'
+
+[2023-05-20 18:59:37.141697] 200: Query completed successfully
+SELECT * FROM Movies 
+
+[2023-05-20 18:59:50.058169] 200: Connection established
+
+[2023-05-20 18:59:50.059171] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Librarians'
+
+[2023-05-20 18:59:50.060170] 200: Query completed successfully
+SELECT * FROM Librarians 
+
+[2023-05-20 19:00:02.963299] 200: Connection established
+
+[2023-05-20 19:00:02.964341] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Issuances'
+
+[2023-05-20 19:00:02.965302] 200: Query completed successfully
+SELECT * FROM Issuances 
+
+[2023-05-20 19:01:20.446987] 200: Connection established
+
+[2023-05-20 19:01:20.449987] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Issuances'
+
+[2023-05-20 19:01:20.450987] 200: Query completed successfully
+SELECT * FROM Issuances 
+
+[2023-05-20 19:01:28.509563] 200: Connection established
+
+[2023-05-20 19:01:28.510564] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Issuances'
+
+[2023-05-20 19:07:44.070760] 200: Connection established
+
+[2023-05-20 19:07:44.072760] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Adapters'
+
+[2023-05-20 19:07:47.653980] 200: Connection established
+
+[2023-05-20 19:07:47.654981] 500: SQL error
+IntegrityError: UNIQUE constraint failed: Adapters.ID
+INSERT INTO Adapters VALUES ('1', '1', '1', '1')
+
+[2023-05-20 19:07:47.655982] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Adapters'
+
+[2023-05-20 19:08:05.834623] 200: Connection established
+
+[2023-05-20 19:08:05.850607] 200: Query completed successfully
+INSERT INTO Adapters VALUES ('100', '10', 'sdfsdf', 'f xt ')
+
+[2023-05-20 19:08:05.851609] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Adapters'
+
+[2023-05-20 19:09:27.545789] 200: Connection established
+
+[2023-05-20 19:09:27.547790] 500: SQL error
+IntegrityError: UNIQUE constraint failed: Adapters.ID
+INSERT INTO Adapters VALUES ('100', '10', 'sdfsdf', 'f xt ')
+
+[2023-05-20 19:09:27.547790] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Adapters'
+
+[2023-05-20 19:11:54.306499] 200: Connection established
+
+[2023-05-20 19:11:54.308513] 500: SQL error
+IntegrityError: UNIQUE constraint failed: Adapters.ID
+INSERT INTO Adapters VALUES ('100', '10', 'sdfsdf', 'f xt ')
+
+[2023-05-20 19:11:54.308513] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Adapters'
+
+[2023-05-20 19:11:54.638500] 200: Connection established
+
+[2023-05-20 19:11:54.640500] 500: SQL error
+OperationalError: near ")": syntax error
+INSERT INTO None VALUES ()
+
+[2023-05-20 19:11:54.642499] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'None'
+
+[2023-05-20 19:12:28.122187] 200: Connection established
+
+[2023-05-20 19:12:28.135188] 200: Query completed successfully
+INSERT INTO Adapters VALUES ('101', '101', 'sdfsdfdw', 'f xt ew')
+
+[2023-05-20 19:12:28.135188] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Adapters'
+
+[2023-05-20 19:13:13.733040] 200: Connection established
+
+[2023-05-20 19:13:13.734040] 500: SQL error
+IntegrityError: UNIQUE constraint failed: Adapters.ID
+INSERT INTO Adapters VALUES ('101', '101', 'sdfsdfdw', 'f xt ew')
+
+[2023-05-20 19:13:13.734040] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Adapters'
+
+[2023-05-20 19:13:20.016175] 200: Connection established
+
+[2023-05-20 19:13:20.032182] 200: Query completed successfully
+INSERT INTO Adapters VALUES ('102', '102', 'sdfsdfdw2123', 'f xt ew123')
+
+[2023-05-20 19:13:20.032182] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Adapters'
+
+[2023-05-20 19:13:27.988093] 200: Connection established
+
+[2023-05-20 19:13:27.990060] 500: SQL error
+IntegrityError: UNIQUE constraint failed: Adapters.ID
+INSERT INTO Adapters VALUES ('102', '102', 'sdfsdfdw2123', 'f xt ew123')
+
+[2023-05-20 19:13:27.991060] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Adapters'
+
+[2023-05-20 19:14:39.934198] 200: Connection established
+
+[2023-05-20 19:14:39.936165] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Users'
+
+[2023-05-20 19:15:04.936644] 200: Connection established
+
+[2023-05-20 19:15:04.948644] 200: Query completed successfully
+INSERT INTO Users VALUES ('1000', 'Руслан', 'Хер', 'м', '124123123', 'нрмр', '2023-05-03')
+
+[2023-05-20 19:15:04.949643] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Users'
+
+[2023-05-20 19:15:14.434970] 200: Connection established
+
+[2023-05-20 19:15:14.435971] 500: SQL error
+IntegrityError: UNIQUE constraint failed: Users.ID
+INSERT INTO Users VALUES ('1000', 'Руслан', 'Хер', 'м', '124123123', 'нрмр', '2023-05-03')
+
+[2023-05-20 19:15:14.436935] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Users'
+
+[2023-05-20 19:15:30.773088] 200: Connection established
+
+[2023-05-20 19:15:30.774091] 500: SQL error
+IntegrityError: UNIQUE constraint failed: Users.Email
+INSERT INTO Users VALUES ('1001', 'Руслан', 'Хер', 'м', '124123123', 'нрмр', '2023-05-03')
+
+[2023-05-20 19:15:30.775051] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Users'
+
+[2023-05-20 19:15:40.742332] 200: Connection established
+
+[2023-05-20 19:15:40.743336] 500: SQL error
+IntegrityError: UNIQUE constraint failed: Users.PhoneNumber
+INSERT INTO Users VALUES ('1001', 'Руслан', 'Хер', 'м', '124123123', 'нрмр123', '2023-05-03')
+
+[2023-05-20 19:15:40.743336] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Users'
+
+[2023-05-20 19:15:47.174096] 200: Connection established
+
+[2023-05-20 19:15:47.185094] 200: Query completed successfully
+INSERT INTO Users VALUES ('1001', 'Руслан', 'Хер', 'м', '1241231232131', 'нрмр123', '2023-05-03')
+
+[2023-05-20 19:15:47.186095] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Users'
+
+[2023-05-20 20:30:54.139653] 200: Connection established
+
+[2023-05-20 20:30:54.140690] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Issuances'
+
+[2023-05-20 20:30:54.141652] 200: Query completed successfully
+SELECT * FROM Issuances 
+
+[2023-05-20 20:31:01.153485] 200: Connection established
+
+[2023-05-20 20:31:01.154487] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Movies'
+
+[2023-05-20 20:31:01.155486] 200: Query completed successfully
+SELECT * FROM Movies 
+
+[2023-05-20 20:31:16.034157] 200: Connection established
+
+[2023-05-20 20:31:16.036159] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Genres'
+
+[2023-05-20 20:31:16.037157] 200: Query completed successfully
+SELECT * FROM Genres 
+
+[2023-05-20 20:31:26.347085] 200: Connection established
+
+[2023-05-20 20:31:26.348088] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'AgeRatings'
+
+[2023-05-20 20:31:26.349088] 200: Query completed successfully
+SELECT * FROM AgeRatings 
+
+[2023-05-20 20:31:35.233240] 200: Connection established
+
+[2023-05-20 20:31:35.234241] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Countries'
+
+[2023-05-20 20:31:35.235201] 200: Query completed successfully
+SELECT * FROM Countries 
+
+[2023-05-20 20:31:48.136882] 200: Connection established
+
+[2023-05-20 20:31:48.138881] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'FilmCompanies'
+
+[2023-05-20 20:31:48.138881] 200: Query completed successfully
+SELECT * FROM FilmCompanies 
+
+[2023-05-20 20:32:03.043327] 200: Connection established
+
+[2023-05-20 20:32:03.045298] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Cinematographers'
+
+[2023-05-20 20:32:03.046359] 200: Query completed successfully
+SELECT * FROM Cinematographers 
+
+[2023-05-20 20:32:13.102113] 200: Connection established
+
+[2023-05-20 20:32:13.104113] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Distributors'
+
+[2023-05-20 20:32:13.104113] 200: Query completed successfully
+SELECT * FROM Distributors 
+
+[2023-05-20 20:32:20.695621] 200: Connection established
+
+[2023-05-20 20:32:20.697623] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Producers'
+
+[2023-05-20 20:32:20.697623] 200: Query completed successfully
+SELECT * FROM Producers 
+
+[2023-05-20 20:32:30.204209] 200: Connection established
+
+[2023-05-20 20:32:30.206306] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'MovieInstances'
+
+[2023-05-20 20:32:30.206306] 500: SQL error
+OperationalError: no such table: MovieInstances
+SELECT * FROM MovieInstances 
+
+[2023-05-20 20:32:42.364422] 200: Connection established
+
+[2023-05-20 20:32:42.367422] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'DubbingStudios'
+
+[2023-05-20 20:32:42.367422] 200: Query completed successfully
+SELECT * FROM DubbingStudios 
+
+[2023-05-20 20:32:50.028293] 200: Connection established
+
+[2023-05-20 20:32:50.032290] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Adapters'
+
+[2023-05-20 20:32:50.033289] 200: Query completed successfully
+SELECT * FROM Adapters 
+
+[2023-05-20 20:33:22.063490] 200: Connection established
+
+[2023-05-20 20:33:22.065485] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Adapters'
+
+[2023-05-20 20:33:22.065485] 200: Query completed successfully
+SELECT * FROM Adapters WHERE ID BETWEEN 100 AND 102
+
+[2023-05-20 20:33:22.076481] 200: Query completed successfully
+DELETE FROM Adapters WHERE ID BETWEEN 100 AND 102
+
+[2023-05-20 20:33:34.819972] 200: Connection established
+
+[2023-05-20 20:33:34.821972] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Adapters'
+
+[2023-05-20 20:33:34.822971] 200: Query completed successfully
+SELECT * FROM Adapters 
+
+[2023-05-20 20:33:46.149729] 200: Connection established
+
+[2023-05-20 20:33:46.151816] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Languages'
+
+[2023-05-20 20:33:46.151816] 200: Query completed successfully
+SELECT * FROM Languages 
+
+[2023-05-20 20:34:55.941356] 200: Connection established
+
+[2023-05-20 20:34:55.943356] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Users'
+
+[2023-05-20 20:34:55.943356] 200: Query completed successfully
+SELECT * FROM Users 
+
+[2023-05-20 20:35:07.283279] 200: Connection established
+
+[2023-05-20 20:35:07.285279] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Users'
+
+[2023-05-20 20:36:23.330783] 200: Connection established
+
+[2023-05-20 20:36:23.331825] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Users'
+
+[2023-05-20 20:36:48.615168] 200: Connection established
+
+[2023-05-20 20:36:48.617249] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Users'
+
+[2023-05-20 20:36:59.011237] 200: Connection established
+
+[2023-05-20 20:36:59.013278] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Users'
+
+[2023-05-20 20:37:03.197733] 200: Connection established
+
+[2023-05-20 20:37:03.198774] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Users'
+
+[2023-05-20 20:37:08.632667] 200: Connection established
+
+[2023-05-20 20:37:08.633709] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Users'
+
+[2023-05-20 21:05:40.010971] 200: Connection established
+
+[2023-05-20 21:05:40.012971] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Issuances'
+
+[2023-05-20 21:06:51.569591] 200: Connection established
+
+[2023-05-20 21:06:51.570594] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Issuances'
+
+[2023-05-20 21:07:07.548505] 200: Connection established
+
+[2023-05-20 21:07:07.549506] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Issuances'
+
+[2023-05-20 21:07:26.925663] 200: Connection established
+
+[2023-05-20 21:07:26.927703] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Issuances'
+
+[2023-05-20 21:07:49.277671] 200: Connection established
+
+[2023-05-20 21:07:49.279671] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Issuances'
+
+[2023-05-20 21:08:01.233064] 200: Connection established
+
+[2023-05-20 21:08:01.234064] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Issuances'
+
+[2023-05-20 21:08:10.555099] 200: Connection established
+
+[2023-05-20 21:08:10.556101] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Issuances'
+
+[2023-05-20 21:08:26.878140] 200: Connection established
+
+[2023-05-20 21:08:26.879142] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Issuances'
+
+[2023-05-20 21:08:41.760072] 200: Connection established
+
+[2023-05-20 21:08:41.761072] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Issuances'
+
+[2023-05-20 21:08:50.791643] 200: Connection established
+
+[2023-05-20 21:08:50.793645] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Issuances'
+
+[2023-05-20 21:09:00.852683] 200: Connection established
+
+[2023-05-20 21:09:00.854714] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Issuances'
+
+[2023-05-20 21:09:19.099340] 200: Connection established
+
+[2023-05-20 21:09:19.101305] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Issuances'
+
+[2023-05-20 21:09:40.535998] 200: Connection established
+
+[2023-05-20 21:09:40.536998] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Issuances'
+
+[2023-05-20 21:10:04.223055] 200: Connection established
+
+[2023-05-20 21:10:04.225002] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Issuances'
+
+[2023-05-20 21:10:22.003266] 200: Connection established
+
+[2023-05-20 21:10:22.005268] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Issuances'
+
+[2023-05-20 21:11:09.800848] 200: Connection established
+
+[2023-05-20 21:11:09.801832] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Issuances'
+
+[2023-05-20 21:11:21.790087] 200: Connection established
+
+[2023-05-20 21:11:21.792088] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Issuances'
+
+[2023-05-20 21:11:45.029663] 200: Connection established
+
+[2023-05-20 21:11:45.030664] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Issuances'
+
+[2023-05-20 21:13:35.055289] 200: Connection established
+
+[2023-05-20 21:13:35.056332] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Issuances'
+
+[2023-05-20 21:13:51.398173] 200: Connection established
+
+[2023-05-20 21:13:51.399173] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Issuances'
+
+[2023-05-20 21:14:08.320473] 200: Connection established
+
+[2023-05-20 21:14:08.322472] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Issuances'
+
+[2023-05-20 21:15:20.329869] 200: Connection established
+
+[2023-05-20 21:15:20.331874] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Issuances'
+
+[2023-05-20 21:16:20.627640] 200: Connection established
+
+[2023-05-20 21:16:20.628682] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Issuances'
+
+[2023-05-20 21:19:03.036711] 200: Connection established
+
+[2023-05-20 21:19:03.038711] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Issuances'
+
+[2023-05-20 21:19:21.452022] 200: Connection established
+
+[2023-05-20 21:19:21.455022] 200: Query completed successfully
+SELECT pti.name, pti.type, pti.dflt_value
+FROM sqlite_master AS sm, pragma_table_info(sm.name) AS pti
+WHERE sm.type = 'table' and sm.name = 'Issuances'
+

@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Лабораторная работа 5</title>
+  <link href="css/styles.css" rel="stylesheet">
+  <link href="css/links.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+  <ul class="links">
+    <li link="l1"><a href="tasks/task1.html" id="l1">Задание 1 - Создание нумерованных и ненумерованных списков на Web-странице по образцу 1</a></li>
+    <li link="l2"><a href="tasks/task2.html" id="l2">Задание 2 - Создание нумерованных и ненумерованных списков на Web-странице по образцу 2</a></li>
+    <li link="l3"><a href="tasks/task3.html" id="l3">Задание 3 - Любимые актеры</a></li>
+    <li link="l4"><a href="tasks/task4.html" id="l4">Задание 4 - Цвета радуги</a></li>
+    <li link="l5"><a href="tasks/task5.html" id="l5">Задание 5 - Породы собак</a></li>
+    <li link="l6"><a href="tasks/task6.html" id="l6">Задание 6 - Автомобили</a></li>
+    <li link="l7"><a href="tasks/task7.html" id="l7">Задание 7 - Принтеры</a></li>
+    <li link="l8"><a href="tasks/task8.html" id="l8">Задание 8 - Мониторы</a></li>
+  </ul>
+</div>
+<script>
+  const clickableElements = document.getElementsByTagName('li');
+
+  for (const ce of clickableElements) {
+    ce.addEventListener('click', function () {
+      let link = document.getElementById(ce.getAttribute('link'));
+      link.click();
+    });
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}История{% endblock %}
+
+{% block content %}
+  <div class="row">
+    {% for done_purchase in done_purchases %}
+      <div class="col-4">
+        <div class="card mb-3">
+          <div class="card-header bg-white pb-0 border-bottom-0">
+            <h5 class="card-title">
+              Заказ №{{ done_purchase.id }}
+              <span class="text-success float-end">{{ done_purchase.total_cost_format }}</span>
+            </h5>
+            <h6 class="card-subtitle">
+              <small class="pt-1">{{ done_purchase.datetime|time }} {{ done_purchase.datetime|date }}</small>
+              <button class="btn btn-sm btn-link text-secondary text-opacity-50 text-decoration-none p-0 float-end" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-history-{{ done_purchase.id }}" aria-expanded="false" aria-controls="collapse-history-{{ done_purchase.id }}">
+                Скрыть/раскрыть
+              </button>
+            </h6>
+          </div>
+          <div class="card-body pt-0">
+            <div class="collapse" id="collapse-history-{{ done_purchase.id }}">
+              <div class="overflow-hidden border rounded-3">
+                <div class="list-group list-group-flush list-unstyled overflow-y-auto" style="max-height: 220px;">
+                  {% for basket_product in done_purchase.basket.all %}
+                    <a href="#" class="list-group-item list-group-item-action" style="cursor: default;">
+                      {{ basket_product.category.name }} {{ basket_product.name }}<br>
+                      <small class="text-secondary fw-semibold text-opacity-50">{{ basket_product.cost_format }}</small>
+                    </a>
+                  {% endfor %}
+                </div>
+              </div>
+              <span class="dropdown-header text-secondary text-opacity-50 float-end">Товаров: {{ done_purchase.product_count }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      <div class="col">
+        <div class="display-3">
+          История заказов пуста...
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}

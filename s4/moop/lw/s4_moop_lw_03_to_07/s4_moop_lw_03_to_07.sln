@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.33214.272
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "s4_moop_lw_03_to_07_test", "s4_moop_lw_03_to_07_test\s4_moop_lw_03_to_07_test.csproj", "{45E20DF6-7F6F-4E30-A9ED-E8A03D37E9A2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "s4_moop_lw_03_to_07", "s4_moop_lw_03_to_07\s4_moop_lw_03_to_07.csproj", "{81CCA372-69EF-4772-AF6F-DCC283991B78}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{45E20DF6-7F6F-4E30-A9ED-E8A03D37E9A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45E20DF6-7F6F-4E30-A9ED-E8A03D37E9A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45E20DF6-7F6F-4E30-A9ED-E8A03D37E9A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45E20DF6-7F6F-4E30-A9ED-E8A03D37E9A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81CCA372-69EF-4772-AF6F-DCC283991B78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81CCA372-69EF-4772-AF6F-DCC283991B78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81CCA372-69EF-4772-AF6F-DCC283991B78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81CCA372-69EF-4772-AF6F-DCC283991B78}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5B02B600-736F-4288-905D-727F9B08E1A2}
+	EndGlobalSection
+EndGlobal

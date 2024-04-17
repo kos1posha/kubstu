@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32901.82
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "s3_evm_lw_03", "s3_evm_lw_03.csproj", "{35BBA51E-5779-4579-89A0-A93B81974E40}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{35BBA51E-5779-4579-89A0-A93B81974E40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35BBA51E-5779-4579-89A0-A93B81974E40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35BBA51E-5779-4579-89A0-A93B81974E40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35BBA51E-5779-4579-89A0-A93B81974E40}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F8E7B9A8-D0C8-4E87-9DDE-5509C2297B12}
+	EndGlobalSection
+EndGlobal

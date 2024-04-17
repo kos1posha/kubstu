@@ -1,0 +1,13 @@
+{% extends 'form.html' %}
+
+{% block title %}Логин{% endblock %}
+
+{% block form_title %}Логин{% endblock %}
+
+{% block form_submit %}Войти{% endblock %}
+
+{% block form_footer %}
+  <div class="text-center mt-3">
+    Нет аккаунта? <a class="link-primary text-decoration-none" href="{% url 'register' %}">Зарегистрироваться</a>
+  </div>
+{% endblock %}

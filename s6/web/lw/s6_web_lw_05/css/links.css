@@ -1,0 +1,32 @@
+html {
+    overflow: hidden;
+}
+
+ul.links {
+    font-family: Arial, serif;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul.links li {
+    cursor: pointer;
+    padding: 28px 32px;
+    margin-bottom: 12px;
+    border-radius: 20px;
+    background: linear-gradient(to right, rgb(100, 149, 237), white);
+    transition: transform 0.3s ease;
+}
+
+ul.links li:hover {
+    background: linear-gradient(to right, rgb(130, 149, 237), rgba(100, 149, 237, 0.5), white);
+    transform: translateX(15px);
+}
+
+a {
+    color: darkblue;
+}
+
+a.active {
+    color: blue;
+}

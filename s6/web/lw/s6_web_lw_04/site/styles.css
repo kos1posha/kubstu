@@ -1,0 +1,28 @@
+html {
+    scroll-behavior: smooth;
+}
+
+a {
+    color: white;
+}
+
+a:active {
+    color: red;
+}
+
+a:visited {
+    color: grey;
+}
+
+.active {
+    color: red;
+}
+
+.active:visited {
+    color: red;
+}
+
+.text {
+    color: white;
+    font-size: x-large;
+}

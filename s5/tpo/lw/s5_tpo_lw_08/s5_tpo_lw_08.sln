@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "s5_tpo_lw_08", "s5_tpo_lw_08\s5_tpo_lw_08.csproj", "{4E42581C-CE30-4792-927C-2FD8E8EC41ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "s5_tpo_lw_08_tests", "s5_tpo_lw_08_tests\s5_tpo_lw_08_tests.csproj", "{F3B18499-8065-4922-B992-B08586D80575}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4E42581C-CE30-4792-927C-2FD8E8EC41ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E42581C-CE30-4792-927C-2FD8E8EC41ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E42581C-CE30-4792-927C-2FD8E8EC41ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E42581C-CE30-4792-927C-2FD8E8EC41ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3B18499-8065-4922-B992-B08586D80575}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3B18499-8065-4922-B992-B08586D80575}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3B18499-8065-4922-B992-B08586D80575}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3B18499-8065-4922-B992-B08586D80575}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

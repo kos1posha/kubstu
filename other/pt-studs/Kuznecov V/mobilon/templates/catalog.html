@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block title %}Каталог{% endblock %}
+
+{% block sabnav %}
+  <style>
+    .active {
+      background-color: var(--bs-info-bg-subtle) !important;
+      color: var(--bs-dark) !important;
+    }
+  </style>
+  <nav class="navbar bg-body-tertiary sticky-top py-0 border-top border-info" id="nav-spy">
+    <div class="container-fluid">
+      <ul class="nav nav-pills bg-body-tertiary">
+        {% for category in categories %}
+          <li class="nav-item">
+            <a class="nav-link text-info rounded-0" href="#scrollspy-category-{{ category.id }}">
+              {{ category.name_plural }}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </nav>
+{% endblock %}
+
+
+{% block content %}
+  <div data-bs-spy="scroll" data-bs-target="#nav-spy" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" tabindex="0">
+    {% for category in categories %}
+      <div class="row">
+        <div class="col">
+          <h3 class="d-inline-flex" id="scrollspy-category-{{ category.id }}">{{ category.name_plural }}</h3>
+          <button class="btn btn-sm btn-link text-opacity-50 text-secondary pb-2 mb-1" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-category-{{ category.id }}" aria-expanded="false" aria-controls="collapse-category-{{ category.id }}">
+            Cкрыть/открыть категорию
+          </button>
+        </div>
+      </div>
+      <div class="collapse show" id="collapse-category-{{ category.id }}">
+        <ul class="list-group list-group-horizontal overflow-x-auto">
+          {% for product in category.products %}
+            <style>
+              .multi-collapse-{{ product.id }} {
+              }
+            </style>
+            <li class="list-group-item border-0" style="max-width: 370px; min-width: 370px;">
+              <div class="card overflow-hidden rounded-4 w-100 h-100">
+                <div class="card-body pb-1 pt-1">
+                  <div class="py-0 mb-3" style="min-height: 300px; max-height: 300px;">
+                    <div class="py-3 h-100 overflow-y-auto">
+                      <div class="multi-collapse-{{ product.id }} collapse show" id="collapse-product-{{ product.id }}-img">
+                        <img src="{{ product.image.url }}" class="card-img-top p-4" alt="">
+                      </div>
+                      <div class="multi-collapse-{{ product.id }} pe-2 collapse" id="collapse-product-{{ product.id }}" style="max-height: 275px;">
+                      <span class="text-secondary text-opacity-50">
+                        {{ product.description }}
+                      </span>
+                      </div>
+                    </div>
+                  </div>
+                  <h6 class="card-subtitle text-secondary text-opacity-50">{{ product.category.name }}</h6>
+                  <h5 class="card-title">{{ product.name }}</h5>
+                  <h6 class="card-title">Цена {{ product.cost_format }}</h6>
+                </div>
+                <div class="card-footer pt-0 pb-3 bg-white border-0">
+                  <form method="post" action="{% url 'add_product' id=product.id %}">
+                    {% csrf_token %}
+                    <button class="btn btn-sm btn-light text-info" type="submit">
+                      Добавить в корзину
+                    </button>
+                    <button class="btn btn-sm btn-link text-secondary text-opacity-50 text-decoration-none px-0" type="button" data-bs-toggle="collapse" data-bs-target=".multi-collapse-{{ product.id }} " aria-expanded="false" aria-controls="collapse-product-{{ product.id }} collapse-product-{{ product.id }}-img">
+                      Описание
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}

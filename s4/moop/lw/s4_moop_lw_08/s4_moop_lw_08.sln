@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "s4_moop_lw_08", "s4_moop_lw_08\s4_moop_lw_08.csproj", "{BA0B9837-3253-4B2C-AA2D-74E51A947FAC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "s4_moop_lw_08_test", "s4_moop_lw_08_test\s4_moop_lw_08_test.csproj", "{506EF0E6-793B-4668-9623-587D234EB586}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BA0B9837-3253-4B2C-AA2D-74E51A947FAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA0B9837-3253-4B2C-AA2D-74E51A947FAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA0B9837-3253-4B2C-AA2D-74E51A947FAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA0B9837-3253-4B2C-AA2D-74E51A947FAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{506EF0E6-793B-4668-9623-587D234EB586}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{506EF0E6-793B-4668-9623-587D234EB586}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{506EF0E6-793B-4668-9623-587D234EB586}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{506EF0E6-793B-4668-9623-587D234EB586}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

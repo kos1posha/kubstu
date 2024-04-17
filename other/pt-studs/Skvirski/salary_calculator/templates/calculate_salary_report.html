@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}Отчет о вычислениях{% endblock %}
+
+{% block content %}
+  <h3>Отчет о зарплате сотрудника за {{ month|lower }}</h3>
+  <h4>{{ employee.full_name }}</h4>
+  <h5 class="text-body-secondary">{{ employee.position.name }}</h5>
+  <div class="col-8">
+    <div class="input-group mb-2">
+      <span class="input-group-text col-3">Ставка</span>
+      <input type="text" class="form-control" value="{{ employee.position.salary_f }} в месяц" readonly>
+    </div>
+    <div class="row">
+      <div class="input-group mb-2 col">
+        <span class="input-group-text">Премиальные</span>
+        <input type="text" class="form-control" value="{{ bonus }}" readonly>
+      </div>
+    </div>
+    <div class="input-group mb-2">
+      <span class="input-group-text col-3">Чистая зарплата</span>
+      <input type="text" class="form-control" value="{{ worked_salary }}" readonly>
+    </div>
+    <div class="row pb-2">
+      <div class="input-group mb-2 w-auto">
+        <span class="input-group-text">НДФЛ</span>
+        <input type="text" class="form-control" value="{{ personal_taxes_value }}" readonly>
+      </div>
+      <div class="input-group mb-2 col">
+        <span class="input-group-text">Пенсионные отчисления</span>
+        <input type="text" class="form-control" value="{{ pensionary_taxes_value }}" readonly>
+      </div>
+    </div>
+    <h5>Зарплата с учетом налогов</h5>
+    <h6 class="text-success">{{ taxed_salary }}</h6>
+    <h5>Налоговые отчисления</h5>
+    <h6 class="text-white">{{ total_taxes }}</h6>
+    <h5>Траты работодателя</h5>
+    <h6 class="text-danger">{{ taxed_labor }}</h6>
+    <a class="btn btn-light">Готово</a>
+  </div>
+{% endblock %}

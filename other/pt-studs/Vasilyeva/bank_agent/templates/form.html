@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}Логин{% endblock %}
+
+{% block content %}
+  <div class="col-5 mx-auto mt-5">
+    <form method="post" novalidate>
+      {% csrf_token %}
+      <h1>{% block form_title %}Заполните следующую форму{% endblock %}</h1>
+      {% if form.non_field_errors %}
+        <div class="text-danger">
+          {% for error in form.non_field_errors %}{% if error != '' %}{{ error }}<br>{% endif %}{% endfor %}
+        </div>
+      {% endif %}
+      {% for field in form %}
+        <div class="mb-3">
+          <label class="form-label" for="{{ field.name }}">{{ field.label }}</label>
+          <input class="form-control{% if field.errors or form.non_field_errors %} is-invalid{% endif %}" type="{{ field.field.widget.input_type }}" id="{{ field.name }}" name="{{ field.name }}" {% if field.help_text %}aria-describedby="{{ field.name }}_help"{% endif %}>
+          {% if field.help_text %}
+            <div class="form-text" id="{{ field.name }}_help">{{ field.help_text }}</div>
+          {% endif %}
+          {% if field.errors %}
+            <p class="text-danger small">
+              {% for error in field.errors %}{% if error != '' %}{{ error }}<br>{% endif %}{% endfor %}
+            </p>
+          {% endif %}
+        </div>
+      {% endfor %}
+      <div>
+        <button class="btn btn-outline-light text-dark-emphasis border-2 w-100 mt-3" type="submit">{% block form_submit %}Отправить{% endblock %}</button>
+      </div>
+    </form>
+    {% block form_footer %}{% endblock %}
+  </div>
+{% endblock %}

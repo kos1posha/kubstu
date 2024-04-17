@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}Сотрудник - {{ employee.full_name }}{% endblock %}
+
+{% block content %}
+  <h3>Изменить сотрудника</h3>
+  <form class="col-8" method="post" novalidate>
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    {% for field in form.visible_fields %}
+      {% if forloop.counter != 2 %}
+        <div class="row pb-2">
+      {% endif %}
+    <div class="col">
+      {% if field.widget_type == 'select' %}
+        <label class="form-label" for="{{ field.auto_id }}">{{ field.label }}</label>
+        <select class="form-select border-secondary-subtle border-opacity-50" name="{{ field.name }}" id="{{ field.auto_id }}" data-placeholder="{{ field.subwidgets.0.data.label }}">
+          <option></option>
+          {% for option in field.subwidgets|slice:"1:" %}
+            {{ option }}
+          {% endfor %}
+        </select>
+      {% else %}
+        <label class="form-label" for="{{ field.auto_id }}">{{ field.label }}</label>
+        <input class="{% if forloop.counter == 1 or forloop.counter == 2 %}form-control-plaintext text-white{% else %}form-control border-secondary-subtle border-opacity-50{% endif %}" type="{{ field.widget_type }}" name="{{ field.name }}" id="{{ field.auto_id }}" placeholder="{% firstof field.field.widget.attrs.placeholder field.label %}"{% if field.initial %} value="{{ field.initial }}"{% endif %}{% if forloop.counter == 1 or forloop.counter == 2 %} readonly{% endif %}>
+      {% endif %}
+      {% if field.help_text %}
+        <span class="small text-white-50"{% if field.auto_id %} id="{{ field.auto_id }}_helptext"{% endif %}>{{ field.help_text|safe }}</span>
+      {% endif %}
+      {% if field.errors %}
+        <div class="small text-danger">
+          {{ field.errors.as_text }}
+        </div>
+      {% endif %}
+      {% if forloop.counter != 1 %}</div>{% endif %}
+    </div>
+    {% endfor %}
+    <div class="row">
+      <div class="col">
+        <input class="btn btn-light text-info" type="submit" value="Сохранить">
+        <input class="btn btn-link link-danger text-decoration-none float-end" formaction="{% url 'delete_employee' pk=employee.pk %}" type="submit" value="Удалить">
+      </div>
+    </div>
+  </form>
+{% endblock %}
