@@ -2,6 +2,8 @@ from transport.base import BaseTransportProblemSolver
 
 
 class NorthWestCornerTransportProblemSolver(BaseTransportProblemSolver):
+    verbose_name = 'Метод юго-западного угла'
+
     def _solve_implementation(self, costs, supply, demand):
         next_demand_i = 0
         for i, row in enumerate(self.given_costs):
