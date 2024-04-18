@@ -1,19 +1,19 @@
 from copy import deepcopy
 import time
-from typing import List
+from typing import Dict, List
 
 from tests.source import all_tests
 
 
-def pretty_list(lst: List, w: int = 5):
+def pretty_list(lst: List, w: int = 5) -> str:
     return '[' + ', '.join([str(i).rjust(w) for i in lst]) + ']'
 
 
-def pretty_matrix(mtx: List[List], w: int = 3):
+def pretty_matrix(mtx: List[List], w: int = 3) -> str:
     return '\n'.join([pretty_list(lst, w) for lst in mtx])
 
 
-def run_test(test, p=False):
+def run_test(test: Dict, p: bool = False) -> None:
     test = deepcopy(test)
     name, solver, expected = test.pop('name'), test.pop('solver'), test.pop('expected')
 
@@ -28,7 +28,7 @@ def run_test(test, p=False):
     return True
 
 
-def run_tests(tests, p=False):
+def run_tests(tests: List[Dict], p: bool = False) -> None:
     for test in tests:
         run_test(test, p)
 

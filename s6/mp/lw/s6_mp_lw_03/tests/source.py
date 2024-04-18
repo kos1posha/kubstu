@@ -1,7 +1,9 @@
-from transport import MinCostSolver, NWCSolver, VogelsSolver
+from typing import Dict, List, Type
+
+from transport import BaseTransportProblemSolver, MinCostSolver, NWCSolver, VogelsSolver
 
 
-def test1(name, solver, expected):
+def test1(name: str, solver: Type[BaseTransportProblemSolver], expected: (int, List[List[int]])) -> Dict:
     return {
         'costs': [
             [10, 7, 4, 1, 4],
@@ -18,7 +20,7 @@ def test1(name, solver, expected):
     }
 
 
-def test2(name, solver, expected):
+def test2(name: str, solver: Type[BaseTransportProblemSolver], expected: (int, List[List[int]])) -> Dict:
     return {
         'costs': [
             [2, 3, 8, 7],
