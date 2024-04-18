@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="icon">
+    <file>clf.ico</file>
+  </qresource>
+</RCC>
