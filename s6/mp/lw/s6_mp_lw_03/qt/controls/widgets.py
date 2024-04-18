@@ -4,9 +4,10 @@ from PySide6 import QtCore as qtc, QtGui as qtg, QtWidgets as qtw
 
 
 class NumericDelegate(qtw.QStyledItemDelegate):
-    def __init__(self, table: qtw.QTableWidget):
+    def __init__(self, table: qtw.QTableWidget, highlight_empty: bool = False):
         super().__init__()
         self.table = table
+        self.highlight_empty = highlight_empty
 
     def createEditor(self, parent: qtw.QWidget, option: qtw.QStyleOptionViewItem, index: Union[qtc.QModelIndex, qtc.QPersistentModelIndex]) -> qtw.QWidget:
         editor = super().createEditor(parent, option, index)
@@ -18,17 +19,33 @@ class NumericDelegate(qtw.QStyledItemDelegate):
     def initStyleOption(self, option: qtw.QStyleOptionViewItem, index: Union[qtc.QModelIndex, qtc.QPersistentModelIndex]) -> None:
         super().initStyleOption(option, index)
         if (index.column() == self.table.columnCount() - 1) or (index.row() == self.table.rowCount() - 1):
-            option.backgroundBrush = qtg.QBrush(qtg.QColor('#242424'))
+            option.backgroundBrush = qtg.QBrush(qtg.QColor(36, 36, 36, 255))
+        if self.highlight_empty:
+            item = self.table.item(index.row(), index.column())
+            if '-' in item.text() and item.text().split('\n')[-1] == '0':
+                option.backgroundBrush = qtg.QBrush(qtg.QColor(160, 20, 20, 160))
+            elif item.text() == '0':
+                option.backgroundBrush = qtg.QBrush(qtg.QColor(160, 20, 20, 80))
+
+
+class ColorDelegate(qtw.QStyledItemDelegate):
+    def __init__(self, brush):
+        super().__init__()
+        self.brush = brush
+
+    def initStyleOption(self, option: qtw.QStyleOptionViewItem, index: Union[qtc.QModelIndex, qtc.QPersistentModelIndex]) -> None:
+        super().initStyleOption(option, index)
+        option.backgroundBrush = self.brush
 
 
 class TransportTableWidget(qtw.QTableWidget):
-    def __init__(self, costs: List[List[int]], supply: List[int], demand: List[int]):
+    def __init__(self, costs: List[List[int]], supply: List[int], demand: List[int], highlight_empty: bool = False):
         super().__init__()
-        self.setup_ui()
+        self.setup_ui(highlight_empty)
         self.put_data(costs, supply, demand)
 
-    def setup_ui(self):
-        self.setItemDelegate(NumericDelegate(self))
+    def setup_ui(self, highlight_empty: bool):
+        self.setItemDelegate(NumericDelegate(self, highlight_empty))
         self.horizontalHeader().setSectionResizeMode(qtw.QHeaderView.ResizeMode.Stretch)
         self.verticalHeader().setSectionResizeMode(qtw.QHeaderView.ResizeMode.Stretch)
 

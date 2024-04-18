@@ -1,8 +1,8 @@
-from pprint import pprint
 from typing import List
 
 from PySide6 import QtWidgets as qtw
 
+from qt.controls.result_control import ResultControl
 from qt.controls.widgets import TransportTableWidget
 from qt.ui.given_view import Ui_TransportProblemGivenWindow
 from transport import MinCostSolver, NWCSolver, VogelsSolver
@@ -33,8 +33,9 @@ class TransportProblemGivenControl(Ui_TransportProblemGivenWindow, qtw.QMainWind
         data = self.fetch_data()
         solvers = [MinCostSolver, NWCSolver, VogelsSolver]
         solver = solvers[self.cb_solvers.currentIndex()](**data)
-        solution = solver.solve()
-        pprint(solution)
+        solver.solve()
+        result = ResultControl(solver)
+        result.exec()
 
     def fetch_data(self):
         rows = self.tw_given.rowCount() - 1
