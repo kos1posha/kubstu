@@ -1,40 +1,26 @@
 from pprint import pprint
+from typing import List
 
-from PySide6 import QtCore as qtc, QtGui as qtg, QtWidgets as qtw
+from PySide6 import QtWidgets as qtw
 
+from qt.controls.widgets import TransportTableWidget
 from qt.ui.given_view import Ui_TransportProblemGivenWindow
 from transport import MinCostSolver, NWCSolver, VogelsSolver
 
 
-class NumericDelegate(qtw.QStyledItemDelegate):
-    def __init__(self, table):
-        super().__init__()
-        self.table = table
-
-    def createEditor(self, parent, option, index):
-        editor = super().createEditor(parent, option, index)
-        if isinstance(editor, qtw.QLineEdit):
-            validator = qtg.QIntValidator(bottom=1)
-            editor.setValidator(validator)
-        return editor
-
-    def initStyleOption(self, option, index):
-        super().initStyleOption(option, index)
-        if (index.column() == self.table.columnCount() - 1) or (index.row() == self.table.rowCount() - 1):
-            option.backgroundBrush = qtg.QBrush(qtg.QColor('#242424'))
-
-
 class TransportProblemGivenControl(Ui_TransportProblemGivenWindow, qtw.QMainWindow):
-    def __init__(self):
+    def __init__(self, costs: List[List[int]], supply: List[int], demand: List[int]):
         super().__init__()
+        self.costs, self.supply, self.demand = costs, supply, demand
+        self.tw_given = TransportTableWidget(costs, supply, demand)
+
         self.setup_ui()
         self.connect_ui()
 
     def setup_ui(self):
         super().setupUi(self)
-        self.tw_given.setItemDelegate(NumericDelegate(self.tw_given))
-        self.tw_given.horizontalHeader().setSectionResizeMode(qtw.QHeaderView.ResizeMode.Stretch)
-        self.tw_given.verticalHeader().setSectionResizeMode(qtw.QHeaderView.ResizeMode.Stretch)
+        self.tw_given.setSizePolicy(qtw.QSizePolicy.Policy.Expanding, qtw.QSizePolicy.Policy.Expanding)
+        self.vl_main.insertWidget(2, self.tw_given)
 
     def connect_ui(self):
         self.pb_supply_add.clicked.connect(self.supply_add)
@@ -59,44 +45,44 @@ class TransportProblemGivenControl(Ui_TransportProblemGivenWindow, qtw.QMainWind
             'demand': [int(self.tw_given.item(rows, j).text()) for j in range(columns)],
         }
 
+    def put_data(self, costs, supply, demand):
+        self.costs, self.supply, self.demand = costs, supply, demand
+        self.tw_given.put_data(costs, supply, demand)
+        self.l_supply_count.setText(str(len(supply)))
+        self.l_demand_count.setText(str(len(demand)))
+
     def supply_add(self):
         row = self.tw_given.rowCount()
         if row == 10:
             return self.sb_main.showMessage('Количество поставщиков не может быть больше девяти.', 2500)
 
-        self.tw_given.insertRow(row - 1)
-        self.tw_given.setVerticalHeaderItem(row - 1, qtw.QTableWidgetItem(f'П{row}'))
-        for column in range(self.tw_given.columnCount()):
-            item = qtw.QTableWidgetItem('1')
-            item.setTextAlignment(qtc.Qt.AlignmentFlag.AlignCenter)
-            self.tw_given.setItem(row - 1, column, item)
-        self.l_supply_count.setText(f'{row}')
+        self.costs.append([1 for _ in range(len(self.demand))])
+        self.supply.append(1)
+        self.put_data(self.costs, self.supply, self.demand)
 
     def supply_remove(self):
         row = self.tw_given.rowCount()
         if row == 3:
             return self.sb_main.showMessage('Количество поставщиков не может быть меньше двух.', 2500)
 
-        self.tw_given.removeRow(row - 2)
-        self.l_supply_count.setText(f'{row - 2}')
+        self.costs.pop()
+        self.supply.pop()
+        self.put_data(self.costs, self.supply, self.demand)
 
     def demand_add(self):
         column = self.tw_given.columnCount()
         if column == 10:
             return self.sb_main.showMessage('Количество магазинов не может быть больше девяти.', 2500)
 
-        self.tw_given.insertColumn(column - 1)
-        self.tw_given.setHorizontalHeaderItem(column - 1, qtw.QTableWidgetItem(f'М{column}'))
-        for row in range(self.tw_given.rowCount()):
-            item = qtw.QTableWidgetItem('1')
-            item.setTextAlignment(qtc.Qt.AlignmentFlag.AlignCenter)
-            self.tw_given.setItem(row, column - 1, item)
-        self.l_demand_count.setText(f'{column}')
+        [row.append(1) for row in self.costs]
+        self.demand.append(1)
+        self.put_data(self.costs, self.supply, self.demand)
 
     def demand_remove(self):
         column = self.tw_given.columnCount()
         if column == 3:
             return self.sb_main.showMessage('Количество магазинов не может быть меньше двух.', 2500)
 
-        self.tw_given.removeColumn(column - 2)
-        self.l_demand_count.setText(f'{column - 2}')
+        [row.pop() for row in self.costs]
+        self.demand.pop()
+        self.put_data(self.costs, self.supply, self.demand)
