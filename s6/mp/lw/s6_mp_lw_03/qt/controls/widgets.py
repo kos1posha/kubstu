@@ -26,7 +26,7 @@ class NumericDelegate(qtw.QStyledItemDelegate):
                 if item.text().split('\n')[-1] == '0':
                     option.backgroundBrush = qtg.QBrush(qtg.QColor(160, 20, 20, 160))
                 else:
-                    option.backgroundBrush = qtg.QBrush(qtg.QColor(180, 160, 60, 160))
+                    option.backgroundBrush = qtg.QBrush(qtg.QColor(60, 160, 60, 120))
             elif item.text() == '0':
                 option.backgroundBrush = qtg.QBrush(qtg.QColor(160, 20, 20, 80))
 
@@ -37,19 +37,19 @@ class TransportTableWidget(qtw.QTableWidget):
         self.setup_ui(highlight_empty)
         self.put_data(costs, supply, demand)
 
-    def setup_ui(self, highlight_empty: bool):
+    def setup_ui(self, highlight_empty: bool) -> None:
         self.setItemDelegate(NumericDelegate(self, highlight_empty))
         self.horizontalHeader().setSectionResizeMode(qtw.QHeaderView.ResizeMode.Stretch)
         self.verticalHeader().setSectionResizeMode(qtw.QHeaderView.ResizeMode.Stretch)
 
-    def insert_zz_item(self, row: int, column: int):
+    def insert_zz_item(self, row: int, column: int) -> None:
         self.setVerticalHeaderItem(row, qtw.QTableWidgetItem('*'))
         self.setHorizontalHeaderItem(column, qtw.QTableWidgetItem('*'))
         item = qtw.QTableWidgetItem()
         item.setFlags(item.flags() ^ ~qtc.Qt.ItemFlag.ItemIsEditable)
         self.setItem(row, column, item)
 
-    def put_data(self, costs: List[List[int]], supply: List[int], demand: List[int]):
+    def put_data(self, costs: List[List[int]], supply: List[int], demand: List[int]) -> None:
         super().setRowCount(0)
         super().setColumnCount(0)
         rows, columns = len(supply), len(demand)
@@ -63,14 +63,14 @@ class TransportTableWidget(qtw.QTableWidget):
             self.setItem(len(supply), j, qtw.QTableWidgetItem(str(d)))
         self.insert_zz_item(rows, columns)
 
-    def insertRow(self, row):
+    def insertRow(self, row: int) -> None:
         super().insertRow(row)
         self.setVerticalHeaderItem(row, qtw.QTableWidgetItem(f'П{row + 1}'))
         for column in range(self.columnCount()):
             item = qtw.QTableWidgetItem('1')
             self.setItem(row, column, item)
 
-    def insertColumn(self, column):
+    def insertColumn(self, column: int) -> None:
         super().insertColumn(column)
         self.setHorizontalHeaderItem(column, qtw.QTableWidgetItem(f'М{column + 1}'))
         for row in range(self.rowCount()):

@@ -1,10 +1,12 @@
+from typing import List
+
 from transport.base import BaseTransportProblemSolver
 
 
 class NorthWestCornerTransportProblemSolver(BaseTransportProblemSolver):
     verbose_name = 'Метод северо-западного угла'
 
-    def _solve_implementation(self, costs, supply, demand):
+    def _solve_implementation(self, costs: List[List[int]], supply: List[int], demand: List[int]) -> None:
         next_demand_i = 0
         for i, row in enumerate(self.given_costs):
             for j in range(next_demand_i, self._width):

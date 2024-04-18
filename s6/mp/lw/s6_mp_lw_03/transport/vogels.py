@@ -1,4 +1,5 @@
 import sys
+from typing import List, Tuple
 
 from transport import BaseTransportProblemSolver
 
@@ -10,7 +11,7 @@ def transpose_matrix(mtx):
 class VogelsApproximationTransportProblemSolver(BaseTransportProblemSolver):
     verbose_name = 'Метод аппроксимации Фогеля'
 
-    def _solve_implementation(self, costs, supply, demand):
+    def _solve_implementation(self, costs: List[List[int]], supply: List[int], demand: List[int]) -> None:
         costs_transposed = transpose_matrix(costs)
 
         while any(supply) and any(demand):
@@ -26,8 +27,8 @@ class VogelsApproximationTransportProblemSolver(BaseTransportProblemSolver):
             diff = self._calculate_diff(i, j, supply, demand)
             self._solution[i][j] = diff
             self._output.append({
-                'supply_penalties': (supply_penalties, supply_max_penalty_i),
-                'demand_penalties': (demand_penalties, demand_max_penalty_i),
+                'supply_penalties': supply_penalties,
+                'demand_penalties': demand_penalties,
                 'min_max': min_max,
                 'cell': (i, j),
                 'diff': diff,
@@ -35,7 +36,7 @@ class VogelsApproximationTransportProblemSolver(BaseTransportProblemSolver):
                 'demand': demand.copy(),
             })
 
-    def _calculate_penalties(self, costs, passed_rows, passed_cols):
+    def _calculate_penalties(self, costs: List[List[int]], passed_rows: List[int], passed_cols: List[int]) -> Tuple[int, int, List[Tuple[int, int]]]:
         penalties = []
         max_penalty, max_penalty_i = 1 - sys.maxsize, -1
         for i, row in [(i, row) for i, row in enumerate(costs) if passed_rows[i] != 0]:
@@ -47,6 +48,6 @@ class VogelsApproximationTransportProblemSolver(BaseTransportProblemSolver):
             max_penalty = max(max_penalty, current)
         return max_penalty, max_penalty_i, penalties
 
-    def _find_min_penalty(self, costs, max_penalty_i, passed_indexes):
+    def _find_min_penalty(self, costs: List[List[int]], max_penalty_i: int, passed_indexes: List[int]) -> int:
         penalties = [(i, el) for i, el in enumerate(costs[max_penalty_i]) if passed_indexes[i] != 0]
         return min(penalties, key=lambda p: p[1])[0]

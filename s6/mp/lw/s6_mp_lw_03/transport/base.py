@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Tuple
 
 
 class BaseTransportProblemSolver:
@@ -20,16 +20,17 @@ class BaseTransportProblemSolver:
         self._solution = [[0 for _ in range(self._width)] for _ in range(self._height)]
         self._output = []
 
-    def __call__(self) -> List[List[int]]:
+    def __call__(self) -> Tuple[int, List[List[int]]]:
         return self.solve()
 
-    def solve(self) -> (List[List[int]], int):
+    def solve(self) -> Tuple[int, List[List[int]]]:
         if not self._solution:
-            return self._solution
+            return self.calculate_cost(self._solution), self._solution
+
         self._solve_implementation(self.given_costs.copy(), self.given_supply.copy(), self.given_demand.copy())
         return self.calculate_cost(self._solution), self._solution
 
-    def calculate_cost(self, solution: List[List[int]]):
+    def calculate_cost(self, solution: List[List[int]]) -> int:
         return sum(sum(s * c for s, c in zip(s, c)) for s, c in zip(solution, self.given_costs))
 
     def _problem_is_valid(self, table: List[List[int]], supply: List[int], demand: List[int]) -> bool:
@@ -40,10 +41,10 @@ class BaseTransportProblemSolver:
     def _problem_is_balanced(self, supply: List[int], demand: List[int]) -> bool:
         return sum(supply) == sum(demand)
 
-    def _solve_implementation(self, costs, supply, demand):
+    def _solve_implementation(self, costs: List[List[int]], supply: List[int], demand: List[int]) -> None:
         raise NotImplementedError('Solve method should be implemented in subclasses')
 
-    def _calculate_diff(self, i, j, supply, demand):
+    def _calculate_diff(self, i: int, j: int, supply: List[int], demand: List[int]) -> int:
         diff = min(supply[i], demand[j])
         demand[j] -= diff
         supply[i] -= diff
