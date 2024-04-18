@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32901.82
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "s3_kt_cw", "s3_kt_cw.csproj", "{BE5D6F3B-D209-4B73-AB0A-CE7014A4AE4A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BE5D6F3B-D209-4B73-AB0A-CE7014A4AE4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE5D6F3B-D209-4B73-AB0A-CE7014A4AE4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE5D6F3B-D209-4B73-AB0A-CE7014A4AE4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE5D6F3B-D209-4B73-AB0A-CE7014A4AE4A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CDC28546-60A9-4146-B981-F4689DDC105D}
+	EndGlobalSection
+EndGlobal
