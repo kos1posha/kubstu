@@ -11,7 +11,7 @@ class NorthWestCornerTransportProblemSolver(BaseTransportProblemSolver):
                 if supply[i] == 0 or demand[j] == 0:
                     break
                 next_demand_i += int(supply[i] > demand[j])
-                diff = self._calculate_cell(i, j, supply, demand)
+                diff = self._calculate_diff(i, j, supply, demand)
                 self._solution[i][j] = diff
                 self._output.append({
                     'cell': (i, j),

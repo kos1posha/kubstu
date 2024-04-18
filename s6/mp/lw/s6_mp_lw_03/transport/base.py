@@ -43,7 +43,7 @@ class BaseTransportProblemSolver:
     def _solve_implementation(self, costs, supply, demand):
         raise NotImplementedError('Solve method should be implemented in subclasses')
 
-    def _calculate_cell(self, i, j, supply, demand):
+    def _calculate_diff(self, i, j, supply, demand):
         diff = min(supply[i], demand[j])
         demand[j] -= diff
         supply[i] -= diff

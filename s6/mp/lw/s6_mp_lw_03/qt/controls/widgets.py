@@ -31,16 +31,6 @@ class NumericDelegate(qtw.QStyledItemDelegate):
                 option.backgroundBrush = qtg.QBrush(qtg.QColor(160, 20, 20, 80))
 
 
-class ColorDelegate(qtw.QStyledItemDelegate):
-    def __init__(self, brush):
-        super().__init__()
-        self.brush = brush
-
-    def initStyleOption(self, option: qtw.QStyleOptionViewItem, index: Union[qtc.QModelIndex, qtc.QPersistentModelIndex]) -> None:
-        super().initStyleOption(option, index)
-        option.backgroundBrush = self.brush
-
-
 class TransportTableWidget(qtw.QTableWidget):
     def __init__(self, costs: List[List[int]], supply: List[int], demand: List[int], highlight_empty: bool = False):
         super().__init__()
