@@ -1,7 +1,11 @@
+from typing import List
+
 from transport import BaseTransportProblemSolver
 
 
 class MinimalCostTransportProblemSolver(BaseTransportProblemSolver):
+    verbose_name = 'Метод наименьшей стоимости'
+
     def _solve_implementation(self, costs, supply, demand):
         inline_costs = sum([[(cost, i, j) for j, cost in enumerate(row)] for i, row in enumerate(costs)], [])
         sorted_costs = sorted(inline_costs, key=lambda c: c[0])

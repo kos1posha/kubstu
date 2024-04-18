@@ -2,6 +2,8 @@ from typing import List
 
 
 class BaseTransportProblemSolver:
+    verbose_name = 'База'
+
     def __init__(self, costs: List[List[int]], supply: List[int], demand: List[int]):
         if not self._problem_is_valid(costs, supply, demand):
             raise ValueError('Problem\'s given is not valid')

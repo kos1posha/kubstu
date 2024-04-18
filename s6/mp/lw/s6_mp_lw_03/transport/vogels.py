@@ -8,6 +8,8 @@ def transpose_matrix(mtx):
 
 
 class VogelsApproximationTransportProblemSolver(BaseTransportProblemSolver):
+    verbose_name = 'Метод аппроксимации Фогеля'
+
     def _solve_implementation(self, costs, supply, demand):
         costs_transposed = transpose_matrix(costs)
 
