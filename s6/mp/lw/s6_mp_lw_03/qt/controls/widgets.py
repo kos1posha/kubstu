@@ -19,11 +19,14 @@ class NumericDelegate(qtw.QStyledItemDelegate):
     def initStyleOption(self, option: qtw.QStyleOptionViewItem, index: Union[qtc.QModelIndex, qtc.QPersistentModelIndex]) -> None:
         super().initStyleOption(option, index)
         if (index.column() == self.table.columnCount() - 1) or (index.row() == self.table.rowCount() - 1):
-            option.backgroundBrush = qtg.QBrush(qtg.QColor(36, 36, 36, 255))
+            option.backgroundBrush = qtg.QBrush(qtg.QColor(35, 35, 35, 255))
         if self.highlight_empty:
             item = self.table.item(index.row(), index.column())
-            if '-' in item.text() and item.text().split('\n')[-1] == '0':
-                option.backgroundBrush = qtg.QBrush(qtg.QColor(160, 20, 20, 160))
+            if '-' in item.text():
+                if item.text().split('\n')[-1] == '0':
+                    option.backgroundBrush = qtg.QBrush(qtg.QColor(160, 20, 20, 160))
+                else:
+                    option.backgroundBrush = qtg.QBrush(qtg.QColor(180, 160, 60, 160))
             elif item.text() == '0':
                 option.backgroundBrush = qtg.QBrush(qtg.QColor(160, 20, 20, 80))
 

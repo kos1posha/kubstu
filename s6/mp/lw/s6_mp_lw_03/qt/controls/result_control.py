@@ -5,13 +5,18 @@ from PySide6 import QtGui as qtg, QtWidgets as qtw
 
 from qt.controls.widgets import TransportTableWidget
 from qt.ui.result_view import Ui_ResultWindow
-from transport import BaseTransportProblemSolver, MinCostSolver
+from transport import BaseTransportProblemSolver, MinCostSolver, NWCSolver
 
 
 class ResultControl(Ui_ResultWindow, qtw.QDialog):
     def __init__(self, solver: BaseTransportProblemSolver):
         super().__init__()
         self.setup_ui()
+        self.output_iteration = None
+        if isinstance(solver, MinCostSolver):
+            self.output_iteration = self._mincost_iteration
+        elif isinstance(solver, NWCSolver):
+            self.output_iteration = self._nwc_interation
         self.put_data(solver)
 
     def setup_ui(self):
@@ -24,24 +29,14 @@ class ResultControl(Ui_ResultWindow, qtw.QDialog):
         self.put_result(costs, len(solver._output), solver.calculate_cost(solver._solution), highlight)
 
     def put_given(self, costs, supply, demand, solver_verbose_name):
-        label_text = f'Для поиска оптимального решения использовался {solver_verbose_name}.\nТак как общие запасы ({sum(supply)}) равны требованиям ({sum(demand)}) задача сбалансирована и имеет решение.\n'
+        label_text = f'Для поиска оптимального решения используется {solver_verbose_name}.\nТак как общие запасы ({sum(supply)}) равны требованиям ({sum(demand)}) задача сбалансирована и имеет решение.\n'
         w_given = self.create_tab(costs, supply, demand, label_text)
         self.tw_iterations.addTab(w_given, 'Дано')
 
     def put_iterations(self, costs, iterations):
         highlight = []
-        for i, r in enumerate(iterations):
-            min_cost, cell, diff, supply, demand = r['min_cost'], r['cell'], r['diff'], r['supply'], r['demand']
-            current_cost, current_supply, current_demand = costs[cell[0]][cell[1]], supply[cell[0]], demand[cell[1]]
-            costs[cell[0]][cell[1]] = f'{current_cost}\n[{diff}]'
-            supply[cell[0]], demand[cell[1]] = f'{diff + current_supply} - {diff}\n{current_supply}', f'{diff + current_demand} - {diff}\n{current_demand}'
-            label_text = ''.join([f'Наименьшая доступная стоимость равна {min_cost} (П{cell[0] + 1}; М{cell[1] + 1}).\n',
-                                  f'Из запасов П{cell[0] + 1} перемещено {diff} единиц груза в М{cell[1] + 1}.\n',
-                                  f'Запасы П{cell[0] + 1} полностью истощены. ' if current_supply == 0 else '',
-                                  f'Требования М{cell[1] + 1} полностью удовлетворены.' if current_demand == 0 else ''])
-            highlight.append(cell)
-            w_iteration = self.create_tab(costs, supply, demand, label_text, highlight)
-            self.tw_iterations.addTab(w_iteration, f'{i + 1}')
+        for i, iteration in enumerate(iterations):
+            self.output_iteration(costs, i, highlight, **iteration)
         return highlight
 
     def put_result(self, costs, n, result, highlight):
@@ -62,11 +57,35 @@ class ResultControl(Ui_ResultWindow, qtw.QDialog):
         w_given = qtw.QWidget()
         w_given.setLayout(vl_given)
         if highlight:
-            for i, j in highlight[:-1]:
+            for i, j in highlight[:-1] if last_active else highlight:
                 tw_given.item(i, j).setBackground(qtg.QColor(120, 135, 240, 45))
             if last_active:
                 tw_given.item(*highlight[-1]).setBackground(qtg.QColor(120, 135, 240, 120))
         return w_given
+
+    def _mincost_iteration(self, costs, i, highlight, min_cost, cell, diff, supply, demand):
+        current_cost, current_supply, current_demand = costs[cell[0]][cell[1]], supply[cell[0]], demand[cell[1]]
+        costs[cell[0]][cell[1]] = f'{current_cost}\n[{diff}]'
+        supply[cell[0]], demand[cell[1]] = f'{diff + current_supply} - {diff}\n{current_supply}', f'{diff + current_demand} - {diff}\n{current_demand}'
+        label_text = ''.join([f'Наименьшая доступная стоимость равна {min_cost} (П{cell[0] + 1}; М{cell[1] + 1}).\n',
+                              f'Из запасов П{cell[0] + 1} перемещено {diff} единиц груза в М{cell[1] + 1}.\n',
+                              f'Требования М{cell[1] + 1} полностью удовлетворены. ' if current_demand == 0 else '',
+                              f'Запасы П{cell[0] + 1} полностью истощены.' if current_supply == 0 else ''])
+        highlight.append(cell)
+        w_iteration = self.create_tab(costs, supply, demand, label_text, highlight)
+        self.tw_iterations.addTab(w_iteration, f'{i + 1}')
+
+    def _nwc_interation(self, costs, i, highlight, cell, diff, supply, demand):
+        current_cost, current_supply, current_demand = costs[cell[0]][cell[1]], supply[cell[0]], demand[cell[1]]
+        costs[cell[0]][cell[1]] = f'{current_cost}\n[{diff}]'
+        supply[cell[0]], demand[cell[1]] = f'{diff + current_supply} - {diff}\n{current_supply}', f'{diff + current_demand} - {diff}\n{current_demand}'
+        label_text = ''.join([f'Доступный крайний северо-западный элемент находится в ячейке П{cell[0] + 1}; М{cell[1] + 1}.\n',
+                              f'Из запасов П{cell[0] + 1} перемещено {diff} единиц груза в М{cell[1] + 1}.\n',
+                              f'Требования М{cell[1] + 1} полностью удовлетворены. ' if current_demand == 0 else '',
+                              f'Запасы П{cell[0] + 1} полностью истощены.' if current_supply == 0 else ''])
+        highlight.append(cell)
+        w_iteration = self.create_tab(costs, supply, demand, label_text, highlight)
+        self.tw_iterations.addTab(w_iteration, f'{i + 1}')
 
 
 if __name__ == '__main__':
