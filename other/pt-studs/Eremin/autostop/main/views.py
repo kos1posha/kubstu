@@ -39,3 +39,14 @@ class FindTripsView(TemplateView):
             'trips': Trip.objects.filter(**filters)
         })
         return context
+
+
+class AnalyticsView(TemplateView):
+    template_name = 'analytics.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+
+
+        return context
