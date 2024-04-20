@@ -1,12 +1,12 @@
 ### My ###
 
 ## Private
-s6/pis/
-**/cw/
+cw/
 !s1/prog/cw/
 !s2/asd/cw/
 !s3/kt/cw/
 !s5/kaivd/cw/
+s6/pis/
 
 ### My ###
 
@@ -14,10 +14,10 @@ s6/pis/
 ### IntelliJ IDEA ###
 
 ## IDE settings
-**/.idea/
+.idea/
 
 ## Rider
-**/*.sln.DotSettings.user
+*.sln.DotSettings.user
 
 ### IntelliJ IDEA ###
 
@@ -25,11 +25,11 @@ s6/pis/
 ### Visual Studio ###
 
 ## IDE settings
-**/.vs
+.vs
 
 ## Log files
-**/UpgradeLog*.XML
-**/UpgradeLog*.htm
+UpgradeLog*.XML
+UpgradeLog*.htm
 
 ### Visual Studio ###
 
@@ -37,27 +37,27 @@ s6/pis/
 ### Csharp ###
 
 ## Build results
-**/[Dd]ebug/
-**/[Rr]elease/
-**/x64/
-**/x86/
-**/[Bb]in/
-**/[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Bb]in/
+[Oo]bj/
 
 ## Properties
-**/Properties/
+Properties/
 
 ## NuGet
-**/packages/
+packages/
 
 ## MSTest
-**/[Tt]est[Rr]esult*/
-**/[Bb]uild[Ll]og.*
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
 
 ## NUnit
-**/*.VisualState.xml
-**/TestResult.xml
-**/nunit-*.xml
+*.VisualState.xml
+TestResult.xml
+nunit-*.xml
 
 ### Csharp ###
 
@@ -65,17 +65,17 @@ s6/pis/
 ### Python ###
 
 ## Environments
-**/.env
-**/.venv
-**/env/
-**/venv/
+.env
+.venv
+env/
+venv/
 
 ## Cache
-**/__pycache__/
+__pycache__/
 
 ## Coverage
-**/.coverage
-**/.coveragerc
+.coverage
+.coveragerc
 
 ### Python ###
 
@@ -83,20 +83,20 @@ s6/pis/
 ### Flutter ###
 
 ## Flutter/Dart/Pub related
-**/doc/api/
-**/.dart_tool/
-**/.flutter-plugins
-**/.flutter-plugins-dependencies
-**/.fvm/flutter_sdk
-**/.packages
-**/.pub-cache/
-**/.pub/
-**/build/
-**/coverage/
-**/.metadata
+doc/api/
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.fvm/flutter_sdk
+.packages
+.pub-cache/
+.pub/
+build/
+coverage/
+.metadata
 
 ## Android/iOS/XCode related
-**/android/
-**/ios/
+android/
+ios/
 
 ### Flutter ###
