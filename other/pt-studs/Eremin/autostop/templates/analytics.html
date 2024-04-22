@@ -1,7 +1,68 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}Аналитика{% endblock %}
 
-{% block content %}
+{% block extra_head %}
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/charts.css/dist/charts.min.css">
+  <link rel="stylesheet" href="{% static 'autostop/styles.css' %}">
+{% endblock %}
 
+{% block base_content %}
+  <div class="container">
+    <div class="container row px-5 mx-2 mt-3">
+      <ul class="list-unstyled ps-0 w-100">
+        {% for group in metrics_groups %}
+          <li class="mb-1 ps-3 w-100">
+            <button class="btn btn-toggle bg-transparent fs-3 border-0 d-inline-flex align-items-center" data-bs-toggle="collapse" data-bs-target="#metrics{{ forloop.counter0 }}-collapse">
+              {{ group.name }}
+            </button>
+            <div class="collapse w-100" id="metrics{{ forloop.counter0 }}-collapse">
+              <table class="bg-white rounded rounded-4 mt-3 w-100">
+                {% for metrics in group.metric_rows %}
+                  <tr>
+                    {% for key in metrics.keys %}
+                      <th class="text-center text-danger fs-3">{{ key }}</th>
+                    {% endfor %}
+                  </tr>
+                  <tr>
+                    {% for value in metrics.values %}
+                      <td class="text-center text-dark fw-bold fs-2">{{ value|join:'' }}</td>
+                    {% endfor %}
+                  </tr>
+                {% endfor %}
+              </table>
+              <div class="row ">
+                {% for chart in group.charts %}
+                  <div class="col-{{ chart.size }}">
+                    <div class="rounded bg-white mt-3">
+                      <table class="charts-css {{ chart.classes }} p-3" style="--color: {{ chart.color }}">
+                        <caption class="fw-bold text-center">{{ chart.name }}</caption>
+                        <thead>
+                        <tr>
+                          <th scope="col">label</th>
+                          <th scope="col">data</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for label, data in chart.data %}
+                          <tr>
+                            <th scope="row">{{ label }}</th>
+                            <td style="--size: calc({{ data }}/{{ chart.max_data }})">
+                              <span class="data">{{ data }}</span>
+                            </td>
+                          </tr>
+                        {% endfor %}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
 {% endblock %}
