@@ -66,6 +66,14 @@ class To(models.Model):
     def __str__(self):
         return self.city
 
+    @property
+    def trips(self):
+        return Trip.objects.filter(to=self)
+
+    @property
+    def owned_tickets(self):
+        return Ticket.objects.filter(trip__in=self.trips, owned=True)
+
 
 class Trip(models.Model):
     class Meta:
