@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Лабораторная работа 8. Формы</title>
+  <style>
+    .tab, .preview {
+      display: none;
+    }
+
+    .tab h2 {
+      margin: 12px 0 4px 0;
+    }
+
+    .tab input:not([type='radio']), .tab select {
+      width: 21%;
+    }
+  </style>
+</head>
+<body>
+<button onclick="openTab(0)">Профиль</button>
+<button onclick="openTab(1)">Персональные данные</button>
+<button onclick="openTab(2)">Дополнительно</button>
+<form>
+  <div class="tab">
+    <h2>Профиль</h2>
+    <label for="email">Адрес электронной почты</label><br>
+    <input id="email" autocomplete="email" type="email" placeholder="example@gmail.com"><br>
+    <label for="password">Пароль</label><br>
+    <input id="password" type="password" placeholder="Введите пароль"><br>
+  </div>
+  <div class="tab">
+    <h2>ФИО</h2>
+    <label for="lastname">Фамилия</label><br>
+    <input id="lastname" autocomplete type="text" placeholder="Введите фамилию"><br>
+    <label for="firstname">Имя</label><br>
+    <input id="firstname" autocomplete type="text" placeholder="Введите имя"><br>
+    <label for="surname">Отчество</label><br>
+    <input id="surname" autocomplete type="text" placeholder="Введите фамилию"><br>
+    <h2>Возраст и пол</h2>
+    <label for="age">Возраст</label><br>
+    <input id="age" autocomplete="age" type="number" placeholder="Введите возраст" min="13" max="99"><br>
+    <label for="sex">Пол</label><br>
+    <div id="sex">
+      <input type="radio">Мужчина<br>
+      <input type="radio">Женщина<br>
+      <input type="radio">Боевой вертолет Ми-28<br>
+    </div>
+  </div>
+  <div class="tab">
+    <h2>Фото</h2>
+    <label for="photo">Ваше фото</label><br>
+    <img id="preview" class="preview" src="#" alt="Выбранное изображение" style="max-width: 100%; max-height: 200px"><br>
+    <input id="photo" type="file" accept="image/*" onchange="previewImage(event)">
+    <h2>Увлечения</h2>
+    <label for="hobbies"></label>
+    <select id="hobbies" size="7" style="overflow:hidden" multiple>
+      <option>Музыка</option>
+      <option>Одежда</option>
+      <option>Авто</option>
+      <option>Искусство</option>
+      <option>Готовка</option>
+      <option>Чтение</option>
+      <option>Астрология</option>
+    </select><br>
+    <span style="color:darkgrey;font-size:small">Удерживайте Ctrl для выбора нескольких вариантов</span>
+  </div>
+</form>
+<script>
+  function previewImage(event) {
+    let input = document.getElementById('photo');
+    let reader = new FileReader();
+    reader.onload = function () {
+      let img = document.getElementById('preview');
+      img.src = reader.result;
+      img.style.display = 'block'
+    };
+    reader.readAsDataURL(input.files[0]);
+  }
+
+  function openTab(tabIndex) {
+    let tabs = document.getElementsByClassName('tab');
+    for (let i = 0; i < tabs.length; i++) {
+      tabs[i].style.display = 'none';
+    }
+    tabs[tabIndex].style.display = 'block';
+  }
+
+  openTab(0)
+</script>
+</body>
+</html>
