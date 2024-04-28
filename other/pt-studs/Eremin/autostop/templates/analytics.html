@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load list_extras %}
 
 {% block title %}Аналитика{% endblock %}
 
@@ -14,10 +15,10 @@
       <ul class="list-unstyled ps-0 w-100">
         {% for group in metrics_groups %}
           <li class="mb-1 ps-3 w-100">
-            <button class="btn btn-toggle bg-transparent fs-3 border-0 d-inline-flex align-items-center" data-bs-toggle="collapse" data-bs-target="#metrics{{ forloop.counter0 }}-collapse">
+            <button class="btn btn-toggle bg-transparent fs-3 border-0 d-inline-flex align-items-center collapsed" data-bs-toggle="collapse" data-bs-target="#metrics{{ forloop.counter0 }}-collapse" aria-expanded="true">
               {{ group.name }}
             </button>
-            <div class="collapse w-100" id="metrics{{ forloop.counter0 }}-collapse">
+            <div class="collapse w-100 show" id="metrics{{ forloop.counter0 }}-collapse">
               <table class="bg-white rounded rounded-4 mt-3 w-100">
                 {% for metrics in group.metric_rows %}
                   <tr>
@@ -32,11 +33,11 @@
                   </tr>
                 {% endfor %}
               </table>
-              <div class="row ">
+              <div class="row">
                 {% for chart in group.charts %}
-                  <div class="col-{{ chart.size }}">
-                    <div class="rounded bg-white mt-3">
-                      <table class="charts-css {{ chart.classes }} p-3" style="--color: {{ chart.color }}">
+                  <div class="col-{{ chart.size }}{% if chart.offset %} offset-{{ chart.offset }}{% endif %}">
+                    <div class="rounded rounded-4 bg-white mt-3">
+                      <table class="charts-css {{ chart.type }} {{ chart.classes }} p-3" {% if chart.color %}style="--color: {{ chart.color }}"{% endif %}>
                         <caption class="fw-bold text-center">{{ chart.name }}</caption>
                         <thead>
                         <tr>
@@ -48,8 +49,8 @@
                         {% for label, data in chart.data %}
                           <tr>
                             <th scope="row">{{ label }}</th>
-                            <td style="--size: calc({{ data }}/{{ chart.max_data }})">
-                              <span class="data">{{ data }}</span>
+                            <td style="{% if chart.type == 'area' %}--start: {{ data }};--end: {{ chart.data|area_n:forloop.counter0 }};{% elif chart.type == 'pie' %}--start: {{ chart.data|pie_p:forloop.counter0 }}; --end: {{ data.1 }};{% else %}--size: calc({{ data }}/{{ chart.max_data }}){% endif %}">
+                              <span class="data">{% if chart.type == 'pie' %}<span class="fs-5">{{ label }}&nbsp;{% widthratio data.0 1 100 %}%</span>{% else %}{{ data }}{% endif %}</span>
                             </td>
                           </tr>
                         {% endfor %}
