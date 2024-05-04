@@ -11,7 +11,6 @@ tables = {
         '"weight" INTEGER NOT NULL',
         '"price" INTEGER NOT NULL',
         '"description" TEXT NOT NULL',
-        '"has_complectation" INTEGER NOT NULL',
     ],
     'income_history': [
         '"datetime" TEXT NOT NULL',

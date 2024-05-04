@@ -407,11 +407,6 @@
            <string>Подробнее</string>
           </property>
          </column>
-         <column>
-          <property name="text">
-           <string>Комплектация</string>
-          </property>
-         </column>
         </widget>
        </item>
        <item row="9" column="13">
