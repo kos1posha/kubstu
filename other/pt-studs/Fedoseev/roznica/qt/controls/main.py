@@ -58,12 +58,6 @@ class MainControl(Ui_MainWindow, qtw.QMainWindow):
             widget.clicked.connect(lambda: qtw.QMessageBox(qtw.QMessageBox.Icon.Information, 'Описание', el, qtw.QMessageBox.StandardButton.NoButton).exec())
             return widget
 
-        def complectation_widget(el):
-            widget = qtw.QCheckBox()
-            widget.setChecked(el == '1')
-            widget.setAttribute(qtc.Qt.WidgetAttribute.WA_TransparentForMouseEvents, True)
-            return widget
-
         self.tw_products.setRowCount(0)
         products = map(list, dbm.products.all())
         for row, product in enumerate(products):
@@ -72,7 +66,7 @@ class MainControl(Ui_MainWindow, qtw.QMainWindow):
                 item = qtw.QTableWidgetItem(str(data))
                 item.setTextAlignment(qtc.Qt.AlignmentFlag.AlignCenter)
                 self.tw_products.setItem(row, column, item)
-        specials = [(7, description_widget), (8, complectation_widget)]
+        specials = [(7, description_widget)]
         for column, spec in specials:
             for row in range(self.tw_products.rowCount()):
                 item = self.tw_products.item(row, column)

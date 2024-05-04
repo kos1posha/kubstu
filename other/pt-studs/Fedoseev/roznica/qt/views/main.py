@@ -208,8 +208,8 @@ class Ui_MainWindow(object):
         self.gl_top.addWidget(self.l_products, 1, 0, 1, 13)
 
         self.tw_products = QTableWidget(self.f_top)
-        if (self.tw_products.columnCount() < 9):
-            self.tw_products.setColumnCount(9)
+        if (self.tw_products.columnCount() < 8):
+            self.tw_products.setColumnCount(8)
         __qtablewidgetitem = QTableWidgetItem()
         self.tw_products.setHorizontalHeaderItem(0, __qtablewidgetitem)
         __qtablewidgetitem1 = QTableWidgetItem()
@@ -226,8 +226,6 @@ class Ui_MainWindow(object):
         self.tw_products.setHorizontalHeaderItem(6, __qtablewidgetitem6)
         __qtablewidgetitem7 = QTableWidgetItem()
         self.tw_products.setHorizontalHeaderItem(7, __qtablewidgetitem7)
-        __qtablewidgetitem8 = QTableWidgetItem()
-        self.tw_products.setHorizontalHeaderItem(8, __qtablewidgetitem8)
         self.tw_products.setObjectName(u"tw_products")
         self.tw_products.setEditTriggers(QAbstractItemView.EditTrigger.NoEditTriggers)
         self.tw_products.setSelectionMode(QAbstractItemView.SelectionMode.SingleSelection)
@@ -415,8 +413,6 @@ class Ui_MainWindow(object):
         ___qtablewidgetitem6.setText(QCoreApplication.translate("MainWindow", u"\u0426\u0435\u043d\u0430 (\u20bd)", None));
         ___qtablewidgetitem7 = self.tw_products.horizontalHeaderItem(7)
         ___qtablewidgetitem7.setText(QCoreApplication.translate("MainWindow", u"\u041f\u043e\u0434\u0440\u043e\u0431\u043d\u0435\u0435", None));
-        ___qtablewidgetitem8 = self.tw_products.horizontalHeaderItem(8)
-        ___qtablewidgetitem8.setText(QCoreApplication.translate("MainWindow", u"\u041a\u043e\u043c\u043f\u043b\u0435\u043a\u0442\u0430\u0446\u0438\u044f", None));
         self.tb_add_category.setText(QCoreApplication.translate("MainWindow", u"+", None))
         self.tb_remove_category.setText(QCoreApplication.translate("MainWindow", u"-", None))
 #if QT_CONFIG(tooltip)

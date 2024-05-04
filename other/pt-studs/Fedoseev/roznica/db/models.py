@@ -53,11 +53,10 @@ class Products(DatabaseModel):
     def get(self, code):
         return super().get(code)
 
-    def insert(self, code, title, category, on_storage_count, weight, price, description=None, has_complectation=None):
+    def insert(self, code, title, category, on_storage_count, weight, price, description=None):
         description = description or 'Описание отсутствует'
-        has_complectation = has_complectation or 0
         category_id = Categories().get(category)[0]
-        return super().insert((code, title, category_id, on_storage_count, weight, price, description, has_complectation))
+        return super().insert((code, title, category_id, on_storage_count, weight, price, description))
 
     def remove(self, code):
         return super().remove(code)

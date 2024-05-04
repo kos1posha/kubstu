@@ -78,7 +78,6 @@ class AddProductDialog(qtw.QDialog):
         self.le_weight = IntegerLineEdit()
         self.le_price = IntegerLineEdit()
         self.pte_description = qtw.QPlainTextEdit()
-        self.cb_has_complectation = qtw.QCheckBox()
         self.pb_add = qtw.QPushButton('Добавить')
         self.pb_cancel = qtw.QPushButton('Отмена')
         self.l_status = qtw.QLabel('')
@@ -95,14 +94,12 @@ class AddProductDialog(qtw.QDialog):
         self.le_weight.setPlaceholderText('Вес*')
         self.le_price.setPlaceholderText('Цена*')
         self.pte_description.setPlaceholderText('Описание')
-        self.cb_has_complectation.setText('Комплектация')
         self.gl.addWidget(self.cmb_categories, 0, 0, 1, 2)
         self.gl.addWidget(self.le_code, 1, 0, 1, 2)
         self.gl.addWidget(self.le_title, 2, 0, 1, 2)
         self.gl.addWidget(self.le_weight, 3, 0)
         self.gl.addWidget(self.le_price, 3, 1)
         self.gl.addWidget(self.pte_description, 4, 0, 1, 2)
-        self.gl.addWidget(self.cb_has_complectation, 5, 0, 1, 2)
         self.gl.addWidget(self.pb_cancel, 6, 0)
         self.gl.addWidget(self.pb_add, 6, 1)
         self.gl.addWidget(self.l_status, 7, 0, 1, 2)
@@ -123,7 +120,6 @@ class AddProductDialog(qtw.QDialog):
             self.le_weight.text(),
             self.le_price.text(),
             self.pte_description.toPlainText().strip(),
-            int(self.cb_has_complectation.isChecked())
         ]
 
     def validate(self, code, title, weight, price):
@@ -139,10 +135,9 @@ class AddProductDialog(qtw.QDialog):
         return True
 
     def add(self):
-        code, title, category, weight, price, description, has_complectation = self.fetch_data()
+        code, title, category, weight, price, description = self.fetch_data()
         if self.validate(code, title, weight, price):
-            print(1)
-            dbm.products.insert(code, title, category, 0, weight, price, description, has_complectation)
+            dbm.products.insert(code, title, category, 0, weight, price, description)
             self.close()
 
 
