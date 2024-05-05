@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extra_styles %}
+  <link rel="stylesheet" href="{% static 'cover.css' %}">
+{% endblock %}
+{% block content %}
+  <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <header class="mb-auto sticky-top">
+      <div>
+        <h3 class="float-md-start mb-0">Киношка</h3>
+        <nav class="nav nav-masthead justify-content-center float-md-end">
+          <a class="nav-link fw-bold py-1 px-0 active" href="#">Главная</a>
+          <a class="nav-link fw-bold py-1 px-0" href="#">Сеансы</a>
+          <a class="nav-link fw-bold py-1 px-0" href="#">Войти</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="text-center px-3">
+      <h1>Киношка</h1>
+      <p class="lead">
+        Ищите у нас билеты на сеансы с 10 утра до 10 вечера.<br>
+        Более 0 кинокартин самых разных жанров: от детективных триллеров до фентезийной романтики.
+        Что посмотреть не найдет даже тот, кому любая картина по душе.
+      </p>
+      <p class="lead">
+        <a href="#" class="btn btn-lg btn-light fw-bold border-white bg-white">Войти и начать поиск</a>
+      </p>
+    </main>
+
+    <footer class="text-center sticky-bottom mt-auto text-white-50">
+      <p>Хорошие <a href="#" class="text-white">фильмы</a> в хорошем <a href="#" class="text-white">месте</a>.</p>
+    </footer>
+  </div>
+{% endblock %}
