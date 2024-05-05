@@ -75,6 +75,9 @@ AUTH_PASSWORD_VALIDATORS = [
 LANGUAGE_CODE = 'ru'
 
 TIME_ZONE = 'Europe/Moscow'
+DATETIME_FORMAT = 'H:i d.m.Y'
+DATE_FORMAT = 'd.m.Y'
+TIME_FORMAT = 'H:i'
 
 USE_I18N = True
 
