@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from django.core.validators import MinValueValidator
 from django.db import models as m
+from django.utils import timezone
 
 
 class Hall(m.Model):
@@ -73,7 +74,7 @@ class FilmShow(m.Model):
     datetime = m.DateTimeField(verbose_name='Время показа')
 
     def __str__(self):
-        return f'{self.hall.title}: {self.film.title} на {self.datetime}'
+        return f'{self.hall.title}: {self.film.title} на {self.datetime.date().strftime("%d.%m.%Y")}'
 
 
 class Ticket(m.Model):
@@ -85,7 +86,7 @@ class Ticket(m.Model):
     owner = m.ForeignKey(verbose_name='Владелец', to=User, on_delete=m.CASCADE)
     filmshow = m.ForeignKey(verbose_name='Сеанс', to=FilmShow, on_delete=m.CASCADE)
     place = m.ForeignKey(verbose_name='Место', to=HallPlace, on_delete=m.CASCADE)
-    datetime = m.DateTimeField(verbose_name='Дата приобретения', auto_now_add=True)
+    datetime = m.DateTimeField(verbose_name='Дата приобретения', default=timezone.now())
 
     def __str__(self):
-        return f'{self.owner}: {self.filmshow.film.title} на {self.datetime}'
+        return f'{self.owner}: {self.filmshow.film.title} на {self.filmshow.datetime.date().strftime("%d.%m.%Y")}'
