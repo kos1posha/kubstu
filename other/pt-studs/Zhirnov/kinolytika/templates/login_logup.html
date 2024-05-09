@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extra_styles %}
+  <link rel="stylesheet" href="{% static 'cover.css' %}">
+  <style>
+    .sep {
+      overflow: hidden;
+      text-align: center;
+      font-size: 16px;
+    }
+
+    .sep span {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .sep:before,
+    .sep:after {
+      content: "";
+      display: inline-block;
+      vertical-align: middle;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(to bottom, black, darkgrey);
+      position: relative;
+    }
+
+    .sep:before {
+      margin-left: -100%;
+      left: -14px;
+    }
+
+    .sep:after {
+      margin-right: -100%;
+      right: -14px;
+    }
+  </style>
+{% endblock %}
+{% block content %}
+  <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <header class="mb-auto sticky-top">
+      <div>
+        <h3 class="float-md-start mb-0">Киношка</h3>
+        <nav class="nav nav-masthead justify-content-center float-md-end">
+          <a class="nav-link fw-bold py-1 px-0" href="{% url 'index' %}">Главная</a>
+          <a class="nav-link fw-bold py-1 px-0" href="#">Сеансы</a>
+          <a class="nav-link fw-bold py-1 px-0 active" style="cursor: pointer">Войти</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="text-center px-3">
+      {% if user.is_authenticated %}
+      {% else %}
+        <h2>Войдите</h2>
+        <form method="post" action="">
+          {% csrf_token %}
+          {% for field in form.visible_fields %}
+            <label class="form-label col-8">{{ field.label }}
+              <input class="form-control form-control-sm" type="{{ field.widget_type }}" name="{{ field.name }}">
+            </label>
+          {% endfor %}
+          <p class="lead col-8 offset-2">
+            <input type="submit" class="btn btn-sm mt-3 btn-lg btn-light fw-bold border-white bg-white w-100" value="Войти">
+          </p>
+        </form>
+        <div class="sep col-8 offset-2">или</div>
+        <h2>Зарегистрируйтесь</h2>
+        <form method="post" action="{% url 'kino:register' %}">
+          {% csrf_token %}
+          {% for field in register_form.visible_fields %}
+            <div class="col-8 offset-2 mb-0">
+              <label class="form-label w-100">{{ field.label }}
+                <input class="form-control form-control-sm" type="{{ field.widget_type }}" name="{{ field.name }}">
+              </label>
+              <p class="small text-start text-secondary m-0">{{ field.help_text }}</p>
+            </div>
+          {% endfor %}
+          <p class="lead col-8 offset-2">
+            <input type="submit" class="btn btn-sm mt-3 btn-lg btn-light fw-bold border-white bg-white w-100" value="Зарегистрироваться">
+          </p>
+        </form>
+        </main>
+      {% endif %}
+
+    <footer class="text-center sticky-bottom mt-auto text-white-50">
+      <p>Хорошие <a href="#" class="text-white">фильмы</a> в хорошем <a href="#" class="text-white">месте</a>.</p>
+    </footer>
+  </div>
+{% endblock %}
