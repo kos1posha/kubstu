@@ -40,13 +40,8 @@ class RegisterView(generic_views.FormView):
 class FilmsView(generic_views.ListView):
     template_name = 'films.html'
 
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['now'] = timezone.now()
-        return context
-
     def get_queryset(self):
-        active_films = sorted(FilmShow.objects.all().filter(datetime__gt=timezone.now()), key=lambda f: f.datetime)
+        active_films = sorted(FilmShow.objects.filter(datetime__gt=timezone.now()), key=lambda f: f.datetime)
         return active_films
 
 
