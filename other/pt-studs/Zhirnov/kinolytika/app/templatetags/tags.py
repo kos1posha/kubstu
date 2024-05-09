@@ -4,6 +4,8 @@ from django import template
 from django.template.defaultfilters import date as _
 from django.utils import timezone
 
+from app.models import HallPlace, Ticket
+
 
 register = template.Library()
 
@@ -24,5 +26,6 @@ def date_format(value):
 
 
 @register.filter
-def owned(value):
-    pass
+def places_owned_by(value, user_id):
+    tickets = Ticket.objects.filter(filmshow=value, owner_id=user_id)
+    return HallPlace.objects.filter(hall=value.hall, ticket__in=tickets)

@@ -65,3 +65,11 @@ class AddFilmView(generic_views.TemplateView):
             ticket.save()
             context = {'response': 'Оплата прошла успешно. Билет появился у вас в профиле...'}
         return render(request, self.template_name, context)
+
+
+class ProfileView(generic_views.ListView):
+    template_name = 'profile.html'
+
+    def get_queryset(self):
+        owned_films = sorted(FilmShow.objects.filter(datetime__gt=timezone.now(), ticket__owner=self.request.user), key=lambda f: f.datetime)
+        return {*owned_films}
