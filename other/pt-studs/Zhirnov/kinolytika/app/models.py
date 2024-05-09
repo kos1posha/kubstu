@@ -22,6 +22,9 @@ class Hall(m.Model):
             place = HallPlace(number=p, hall=hall)
             place.save()
 
+    def places(self):
+        return HallPlace.objects.filter(hall=self)
+
 
 class HallPlace(m.Model):
     class Meta:
@@ -62,6 +65,9 @@ class Film(m.Model):
     def __str__(self):
         return self.title
 
+    def genres_lower(self):
+        return [str(g).lower() for g in self.genres.all()]
+
 
 class FilmShow(m.Model):
     class Meta:
@@ -75,6 +81,14 @@ class FilmShow(m.Model):
 
     def __str__(self):
         return f'{self.hall.title}: {self.film.title} на {self.datetime.date().strftime("%d.%m.%Y")}'
+
+    def owned_places(self):
+        tickets = Ticket.objects.filter(filmshow=self)
+        return HallPlace.objects.filter(ticket__in=tickets)
+
+    def free_places(self):
+        tickets = Ticket.objects.filter(filmshow=self)
+        return HallPlace.objects.filter(hall=self.hall).exclude(ticket__in=tickets)
 
 
 class Ticket(m.Model):
