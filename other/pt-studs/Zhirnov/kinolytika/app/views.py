@@ -1,11 +1,12 @@
 from django.contrib.auth import authenticate, login
 import django.contrib.auth.forms as auth_forms
 import django.contrib.auth.views as auth_views
+from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.utils import timezone
 import django.views.generic as generic_views
 
-from app.models import FilmShow
+from app.models import FilmShow, HallPlace, Ticket
 
 
 class LoginView(auth_views.LoginView):
@@ -47,3 +48,20 @@ class FilmsView(generic_views.ListView):
     def get_queryset(self):
         active_films = sorted(FilmShow.objects.all().filter(datetime__gt=timezone.now()), key=lambda f: f.datetime)
         return active_films
+
+
+class AddFilmView(generic_views.TemplateView):
+    template_name = 'add_film.html'
+
+    def post(self, request, *args, **kwargs):
+        hall_id = self.request.POST.get('hall_id')
+        filmshow_id = self.request.POST.get('filmshow_id')
+        number = self.request.POST.get('number')
+        if not hall_id or not number or not filmshow_id:
+            context = {'response': 'Во время оплаты произошла ошибка...'}
+        else:
+            place = HallPlace.objects.get(hall_id=hall_id, number=number)
+            ticket = Ticket(owner=self.request.user, filmshow_id=filmshow_id, place=place)
+            ticket.save()
+            context = {'response': 'Оплата прошла успешно. Билет появился у вас в профиле...'}
+        return render(request, self.template_name, context)
