@@ -59,11 +59,16 @@
                 {% if user.is_authenticated %}
                   <h3 class="mb-0">Комната показа: {{ film.hall.title }}</h3>
                   <span class="small text-secondary">Нажмите на место, чтобы выбрать...</span>
-                  <div class="text-center">
-                    {% for place in film.hall.places %}
-                      <input type="submit" class="btn btn-sm p-1 {% if place not in film.owned_places %}btn-dark {% endif %}m-1"{% if place in film.owned_places %} disabled{% endif %} style="width: 40px; height: 40px" name="number" value="{{ place.number }}">
-                    {% endfor %}
-                  </div>
+                  <form method="post" action="{% url 'kino:add_film' %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="filmshow_id" value="{{ film.id }}">
+                    <input type="hidden" name="hall_id" value="{{ film.hall.id }}">
+                    <div class="text-center">
+                      {% for place in film.hall.places %}
+                        <input type="submit" class="btn btn-sm p-1 {% if place not in film.owned_places %}btn-dark {% endif %}m-1"{% if place in film.owned_places %} disabled{% endif %} style="width: 40px; height: 40px" name="number" value="{{ place.number }}">
+                      {% endfor %}
+                    </div>
+                  </form>
                 {% else %}
                   <div class="w-100 text-center">
                     <a class="link-light" href="{% url 'kino:login' %}">Войдите</a>, чтобы продолжить.

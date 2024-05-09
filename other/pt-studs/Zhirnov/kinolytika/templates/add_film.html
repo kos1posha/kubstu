@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extra_styles %}
+  <link rel="stylesheet" href="{% static 'cover.css' %}">
+{% endblock %}
+{% block content %}
+  <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <header class="mb-auto sticky-top">
+      <div>
+        <h3 class="float-md-start mb-0">Киношка</h3>
+        <nav class="nav nav-masthead justify-content-center float-md-end">
+          <a class="nav-link fw-bold py-1 px-0" href="{% url 'index' %}">Главная</a>
+          <a class="nav-link fw-bold py-1 px-0" href="{% url 'kino:films' %}">Сеансы</a>
+          {% if user.is_authenticated %}
+            <a class="nav-link fw-bold py-1 px-0" href="#">Профиль</a>
+          {% else %}
+            <a class="nav-link fw-bold py-1 px-0" href="{% url 'kino:login' %}">Войти</a>
+          {% endif %}
+        </nav>
+      </div>
+    </header>
+
+    <main class="text-center px-3">
+      <h1>{{ response }}</h1>
+    </main>
+
+    <footer class="text-center sticky-bottom mt-auto text-white-50">
+      <p>Хорошие <a href="{% url 'kino:films' %}" class="text-white">фильмы</a> в хорошем <a href="#" class="text-white">месте</a>.</p>
+    </footer>
+  </div>
+{% endblock %}
