@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load tags %}
+{% load static %}
+{% block extra_styles %}
+  <link rel="stylesheet" href="{% static 'cover.css' %}">
+{% endblock %}
+{% block content %}
+  <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <header class="mb-auto sticky-top">
+      <div>
+        <h3 class="float-md-start mb-0">Киношка</h3>
+        <nav class="nav nav-masthead justify-content-center float-md-end">
+          <a class="nav-link fw-bold py-1 px-0" href="{% url 'index' %}">Главная</a>
+          <a class="nav-link fw-bold py-1 px-0 active" style="cursor: pointer">Сеансы</a>
+          {% if user.is_authenticated %}
+            <a class="nav-link fw-bold py-1 px-0" href="#">Профиль</a>
+          {% else %}
+            <a class="nav-link fw-bold py-1 px-0" href="{% url 'kino:login' %}">Войти</a>
+          {% endif %}
+        </nav>
+      </div>
+    </header>
+
+    <main class="h-100 my-3">
+      <h4>Ближайшие сеансы</h4>
+      {% for film in object_list %}
+        <div class="accordion my-4 mx-1" id="films-accordion">
+          <div class="accordion-item rounded-4 overflow-hidden border-0">
+            <div class="accordion-header">
+              <div class="row m-0" style="background: linear-gradient(to bottom right, rgba(0,0,0,1), rgba(0,0,0,.8), rgba(0,0,0,.1))">
+                <div class="px-0" style="width: 18%">
+                  <img src="{{ film.film.thumbnail.url }}" class="mw-100" alt="">
+                </div>
+                <div class="col px-4 py-3">
+                  <table class="w-100">
+                    <tr>
+                      <td colspan="2">{{ film.film.genres_lower|join:" ∙ " }}</td>
+                    </tr>
+                    <tr>
+                      <td><h1>{{ film.film.title }}</h1></td>
+                      <td class="text-end"><h2 class="fw-bold mt-3">{{ film.ticket_price }} ₽</h2></td>
+                    </tr>
+                    <tr>
+                      <td><h4 class="text-info fw-light pt-2">{{ film.datetime.date|date_format }} в {{ film.datetime.time }}</h4></td>
+                      <td class="text-center col-4">
+                        <button class="btn btn-light fw-bold border-white bg-white w-100" type="button" data-bs-toggle="collapse" data-bs-target="#film-{{ film.id }}" aria-expanded="false" aria-controls="film-{{ film.id }}">Выбрать место</button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td class="text-end"><span class="small text-secondary fw-bold">Свободных мест: {{ film.free_places.count }}</span></td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div id="film-{{ film.id }}" class="accordion-collapse border-top border-black collapse" style="background: linear-gradient(to top right, rgba(0,0,0,1), rgba(0,0,0,.8), rgba(0,0,0,.1))">
+              <div class="accordion-body">
+                {% if user.is_authenticated %}
+                  <h3 class="mb-0">Комната показа: {{ film.hall.title }}</h3>
+                  <span class="small text-secondary">Нажмите на место, чтобы выбрать...</span>
+                  <div class="text-center">
+                    {% for place in film.hall.places %}
+                      <input type="submit" class="btn btn-sm p-1 {% if place not in film.owned_places %}btn-dark {% endif %}m-1"{% if place in film.owned_places %} disabled{% endif %} style="width: 40px; height: 40px" name="number" value="{{ place.number }}">
+                    {% endfor %}
+                  </div>
+                {% else %}
+                  <div class="w-100 text-center">
+                    <a class="link-light" href="{% url 'kino:login' %}">Войдите</a>, чтобы продолжить.
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      {% empty %}
+        <h5 class="text-center text-secondary" style="margin-top: 45%">На ближайшее время сеансы отсутствуют...</h5>
+      {% endfor %}
+    </main>
+  </div>
+{% endblock %}
