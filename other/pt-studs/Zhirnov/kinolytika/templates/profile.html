@@ -83,8 +83,8 @@
         {% endfor %}
       </main>
     {% else %}
-      <main class="text-center px-3">
-        <h1>Чтобы воспользоваться профилем, необходимо <a class="link-light text-decoration-none" href="{% url 'kino:profile' %}">войти</a></h1>
+      <main class="h-100">
+        <h5 class="text-center text-secondary" style="margin-top: 45%">Чтобы воспользоваться профилем, необходимо <a class="link-light text-decoration-none" href="{% url 'kino:profile' %}">войти</a></h5>
       </main>
     {% endif %}
   </div>
