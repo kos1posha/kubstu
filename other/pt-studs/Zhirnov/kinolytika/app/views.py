@@ -66,5 +66,7 @@ class ProfileView(generic_views.ListView):
     template_name = 'profile.html'
 
     def get_queryset(self):
-        owned_films = sorted(FilmShow.objects.filter(datetime__gt=timezone.now(), ticket__owner=self.request.user), key=lambda f: f.datetime)
-        return {*owned_films}
+        if self.request.user.is_authenticated:
+            return sorted(FilmShow.objects.filter(datetime__gt=timezone.now(), ticket__owner=self.request.user), key=lambda f: f.datetime)
+        else:
+            return []
