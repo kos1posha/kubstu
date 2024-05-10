@@ -23,6 +23,10 @@
 
     {% if user.is_authenticated %}
       <main class="h-100">
+        <form class="float-end" method="post" action="{% url 'kino:logout' %}">
+          {% csrf_token %}
+          <input type="submit" class="btn btn-link link-danger float-end px-0 text-decoration-none" value="Выйти из профиля">
+        </form>
         <h4>Ваши билеты</h4>
         {% for film in object_list %}
           {% with user_places=film|places_owned_by:user.id %}
