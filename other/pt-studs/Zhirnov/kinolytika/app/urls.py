@@ -12,4 +12,5 @@ urlpatterns = [
     path('add_film/', views.AddFilmView.as_view(), name='add_film'),
     path('profile/', views.ProfileView.as_view(), name='profile'),
     path('logout/', LogoutView.as_view(), name='logout'),
+    path('stat/', views.StatisticsView.as_view(), name='stat'),
 ]
