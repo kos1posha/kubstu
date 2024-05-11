@@ -1,3 +1,5 @@
+from datetime import timedelta
+
 from django.contrib.auth import authenticate, login
 import django.contrib.auth.forms as auth_forms
 import django.contrib.auth.views as auth_views
@@ -6,7 +8,7 @@ from django.urls import reverse_lazy
 from django.utils import timezone
 import django.views.generic as generic_views
 
-from app.models import FilmShow, HallPlace, Ticket
+from app.models import Film, FilmShow, Genre, Hall, HallPlace, Ticket
 
 
 class LoginView(auth_views.LoginView):
@@ -67,6 +69,37 @@ class ProfileView(generic_views.ListView):
 
     def get_queryset(self):
         if self.request.user.is_authenticated:
-            return sorted(FilmShow.objects.filter(datetime__gt=timezone.now(), ticket__owner=self.request.user), key=lambda f: f.datetime)
+            return {*sorted(FilmShow.objects.filter(datetime__gt=timezone.now(), ticket__owner=self.request.user), key=lambda f: f.datetime)}
         else:
             return []
+
+
+class StatisticsView(generic_views.TemplateView):
+    template_name = 'statistics.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        l2w = timezone.now() - timedelta(days=14)
+        for_data = lambda c: c[1]
+
+        shows = FilmShow.objects.filter(datetime__gt=l2w)
+        tickets = Ticket.objects.filter(datetime__gt=l2w)
+        films = Film.objects.all()
+        halls = Hall.objects.all()
+        genres = Genre.objects.all()
+
+        context['shows_l2w_films'] = sorted([[film.title, shows.filter(film=film).count()] for film in films if shows.filter(film=film).count() != 0], key=for_data, reverse=True)
+        context['shows_l2w_films_size'] = max(map(for_data, context['shows_l2w_films']))
+        context['shows_l2w_halls'] = sorted([[hall.title, shows.filter(hall=hall).count()] for hall in halls if shows.filter(hall=hall).count() != 0], key=for_data, reverse=True)
+        context['shows_l2w_halls_size'] = max(map(for_data, context['shows_l2w_halls']))
+        context['shows_l2w_genres'] = sorted([[genre.title, shows.filter(film__genres=genre).count()] for genre in genres if shows.filter(film__genres=genre).count() != 0], key=for_data, reverse=True)
+        context['shows_l2w_genres_size'] = max(map(for_data, context['shows_l2w_genres']))
+
+        context['tickets_l2w_films'] = sorted([[film.title, tickets.filter(filmshow__film=film).count()] for film in films if tickets.filter(filmshow__film=film).count() != 0], key=for_data, reverse=True)
+        context['tickets_l2w_films_size'] = max(map(for_data, context['tickets_l2w_films']))
+        context['tickets_l2w_halls'] = sorted([[hall.title, tickets.filter(filmshow__hall=hall).count()] for hall in halls if tickets.filter(filmshow__hall=hall).count() != 0], key=for_data, reverse=True)
+        context['tickets_l2w_halls_size'] = max(map(for_data, context['tickets_l2w_halls']))
+        context['tickets_l2w_genres'] = sorted([[genre.title, tickets.filter(filmshow__film__genres=genre).count()] for genre in genres if tickets.filter(filmshow__film__genres=genre).count() != 0], key=for_data, reverse=True)
+        context['tickets_l2w_genres_size'] = max(map(for_data, context['tickets_l2w_genres']))
+
+        return context

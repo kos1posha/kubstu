@@ -1,0 +1,203 @@
+{% extends 'base.html' %}
+{% load tags %}
+{% load static %}
+{% block extra_styles %}
+  <link rel="stylesheet" href="{% static 'cover.css' %}">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/charts.css/dist/charts.min.css">
+{% endblock %}
+{% block content %}
+  <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <header class="mb-auto sticky-top">
+      <div>
+        <h3 class="float-md-start mb-0">Киношка</h3>
+        <nav class="nav nav-masthead justify-content-center float-md-end">
+          <a class="nav-link fw-bold py-1 px-0" href="{% url 'index' %}">Главная</a>
+          <a class="nav-link fw-bold py-1 px-0" href="{% url 'kino:films' %}">Сеансы</a>
+          {% if user.is_authenticated %}
+            <a class="nav-link fw-bold py-1 px-0" href="{% url 'kino:profile' %}">Профиль</a>
+          {% else %}
+            <a class="nav-link fw-bold py-1 px-0" href="{% url 'kino:login' %}">Войти</a>
+          {% endif %}
+        </nav>
+      </div>
+    </header>
+
+    {% if user.is_authenticated and user.is_superuser %}
+      <main class="h-100 mb-auto">
+        <h4>Аналитика сайта</h4>
+        <h4 class="text-secondary">Кинопоказы за последние 2 недели</h4>
+        <div class="accordion" id="shows-l2w">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#shows-l2w-films" aria-expanded="false" aria-controls="shows-l2w-films">
+                Какой фильм?
+              </button>
+            </h2>
+            <div id="shows-l2w-films" class="accordion-collapse collapse" data-bs-parent="#shows-l2w">
+              <div class="accordion-body">
+                <table class="charts-css bar data-start show-labels data-spacing-6">
+                  <thead>
+                  <tr>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  {% for label, data in shows_l2w_films %}
+                    <tr class="pe-5">
+                      <th class="text-secondary" scope="row" nowrap>{{ label }}</th>
+                      <td class="ms-5 ps-1 rounded-end-2 text-white" style="--size: calc({{ data }}/{{ shows_l2w_films_size }});background:rgba(102,16,242,calc(1 - 0.5 / {{ forloop.revcounter }}))">{{ data }}</td>
+                    </tr>
+                  {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#shows-l2w-halls" aria-expanded="false" aria-controls="shows-l2w-halls">
+                В каком зале?
+              </button>
+            </h2>
+            <div id="shows-l2w-halls" class="accordion-collapse collapse" data-bs-parent="#shows-l2w">
+              <div class="accordion-body">
+                <table class="charts-css column data-start show-labels data-spacing-4">
+                  <thead>
+                  <tr>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  {% for label, data in shows_l2w_halls %}
+                    <tr class="pt-3">
+                      <th scope="row"><span class="text-secondary small text-center">{{ label }}</span></th>
+                      <td class="mb-3 rounded-top-2 text-white" style="--size: calc({{ data }}/{{ shows_l2w_halls_size }});background:rgba(32,201,151,calc(1 - 0.8 / {{ forloop.revcounter }}))">{{ data }}</td>
+                    </tr>
+                  {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#shows-l2w-genres" aria-expanded="false" aria-controls="shows-l2w-genres">
+                Какого жанра?
+              </button>
+            </h2>
+            <div id="shows-l2w-genres" class="accordion-collapse collapse" data-bs-parent="#shows-l2w">
+              <div class="accordion-body">
+                <table class="charts-css bar data-start show-labels data-spacing-6">
+                  <thead>
+                  <tr>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  {% for label, data in shows_l2w_genres %}
+                    <tr class="pe-5">
+                      <th class="text-secondary" scope="row" nowrap>{{ label }}</th>
+                      <td class="ms-5 ps-1 rounded-end-2 text-white" style="--size: calc({{ data }}/{{ shows_l2w_genres_size }});background:rgba(220,53,69,calc(1 - 0.5 / {{ forloop.counter }}))">{{ data }}</td>
+                    </tr>
+                  {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <h4 class="text-secondary mt-4">Билеты за последние 2 недели</h4>
+        <div class="accordion" id="tickets-l2w">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#tickets-l2w-films" aria-expanded="false" aria-controls="tickets-l2w-films">
+                Какой фильм?
+              </button>
+            </h2>
+            <div id="tickets-l2w-films" class="accordion-collapse collapse" data-bs-parent="#tickets-l2w">
+              <div class="accordion-body">
+                <table class="charts-css bar data-start show-labels data-spacing-6">
+                  <thead>
+                  <tr>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  {% for label, data in tickets_l2w_films %}
+                    <tr class="pe-5">
+                      <th class="text-secondary" scope="row" nowrap>{{ label }}</th>
+                      <td class="ms-5 ps-1 rounded-end-2 text-white" style="--size: calc({{ data }}/{{ tickets_l2w_films_size }});background:rgba(102,16,242,calc(1 - 0.5 / {{ forloop.revcounter }}))">{{ data }}</td>
+                    </tr>
+                  {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#tickets-l2w-halls" aria-expanded="false" aria-controls="tickets-l2w-halls">
+                В каком зале?
+              </button>
+            </h2>
+            <div id="tickets-l2w-halls" class="accordion-collapse collapse" data-bs-parent="#tickets-l2w">
+              <div class="accordion-body">
+                <table class="charts-css column data-start show-labels data-spacing-4">
+                  <thead>
+                  <tr>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  {% for label, data in tickets_l2w_halls %}
+                    <tr class="pt-3">
+                      <th scope="row"><span class="text-secondary small text-center">{{ label }}</span></th>
+                      <td class="mb-3 rounded-top-2 text-white" style="--size: calc({{ data }}/{{ tickets_l2w_halls_size }});background:rgba(32,201,151,calc(1 - 0.8 / {{ forloop.revcounter }}))">{{ data }}</td>
+                    </tr>
+                  {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#tickets-l2w-genres" aria-expanded="false" aria-controls="tickets-l2w-genres">
+                Какого жанра?
+              </button>
+            </h2>
+            <div id="tickets-l2w-genres" class="accordion-collapse collapse" data-bs-parent="#tickets-l2w">
+              <div class="accordion-body">
+                <table class="charts-css bar data-start show-labels data-spacing-6">
+                  <thead>
+                  <tr>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  {% for label, data in tickets_l2w_genres %}
+                    <tr class="pe-5">
+                      <th class="text-secondary" scope="row" nowrap>{{ label }}</th>
+                      <td class="ms-5 ps-1 rounded-end-2 text-white" style="--size: calc({{ data }}/{{ tickets_l2w_genres_size }});background:rgba(220,53,69,calc(1 - 0.5 / {{ forloop.counter }}))">{{ data }}</td>
+                    </tr>
+                  {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    {% else %}
+      <main class="h-100">
+        <h5 class="text-center text-danger-emphasis" style="margin-top:45%">Просматривать статистку сервиса могут только администраторы сайта</h5>
+      </main>
+    {% endif %}
+  </div>
+{% endblock %}
