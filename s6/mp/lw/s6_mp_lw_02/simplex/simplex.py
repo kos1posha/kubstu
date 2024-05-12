@@ -105,6 +105,7 @@ class Simplex:
             self.constraints.remove(ineq)
 
         for i, c in enumerate(self.constraints):
+            c = canonicalize_eq(c)
             if c.rhs < 0:
                 self.constraints[i] = Eq(-c.lhs, -c.rhs)
 
