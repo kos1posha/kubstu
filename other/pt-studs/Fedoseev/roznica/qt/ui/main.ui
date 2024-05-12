@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Учет техники</string>
+   <string>Розничный учет</string>
   </property>
   <widget class="QWidget" name="w_main">
    <layout class="QGridLayout" name="gl_main">
