@@ -1,5 +1,5 @@
+from db import defaults
 from db.connection import DBConnection
-from db.defaults import defaults
 import db.models as dbm
 from db.tables import tables
 
@@ -18,9 +18,9 @@ class DBInitializer:
         self.put_defaults()
 
     def put_defaults(self):
-        for category in defaults['categories']:
+        for category in defaults.categories:
             dbm.categories.insert(**category)
-        for product in defaults['products']:
+        for product in defaults.products:
             dbm.products.insert(**product)
 
     def create_tables(self):
