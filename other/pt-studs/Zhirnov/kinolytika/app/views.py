@@ -89,17 +89,17 @@ class StatisticsView(generic_views.TemplateView):
         genres = Genre.objects.all()
 
         context['shows_l2w_films'] = sorted([[film.title, shows.filter(film=film).count()] for film in films if shows.filter(film=film).count() != 0], key=for_data, reverse=True)
-        context['shows_l2w_films_size'] = max(map(for_data, context['shows_l2w_films']))
+        context['shows_l2w_films_size'] = max(map(for_data, context['shows_l2w_films'])) if shows.count() > 0 else 0
         context['shows_l2w_halls'] = sorted([[hall.title, shows.filter(hall=hall).count()] for hall in halls if shows.filter(hall=hall).count() != 0], key=for_data, reverse=True)
-        context['shows_l2w_halls_size'] = max(map(for_data, context['shows_l2w_halls']))
+        context['shows_l2w_halls_size'] = max(map(for_data, context['shows_l2w_halls'])) if shows.count() > 0 else 0
         context['shows_l2w_genres'] = sorted([[genre.title, shows.filter(film__genres=genre).count()] for genre in genres if shows.filter(film__genres=genre).count() != 0], key=for_data, reverse=True)
-        context['shows_l2w_genres_size'] = max(map(for_data, context['shows_l2w_genres']))
+        context['shows_l2w_genres_size'] = max(map(for_data, context['shows_l2w_genres'])) if shows.count() > 0 else 0
 
         context['tickets_l2w_films'] = sorted([[film.title, tickets.filter(filmshow__film=film).count()] for film in films if tickets.filter(filmshow__film=film).count() != 0], key=for_data, reverse=True)
-        context['tickets_l2w_films_size'] = max(map(for_data, context['tickets_l2w_films']))
+        context['tickets_l2w_films_size'] = max(map(for_data, context['tickets_l2w_films'])) if tickets.count() > 0 else 0
         context['tickets_l2w_halls'] = sorted([[hall.title, tickets.filter(filmshow__hall=hall).count()] for hall in halls if tickets.filter(filmshow__hall=hall).count() != 0], key=for_data, reverse=True)
-        context['tickets_l2w_halls_size'] = max(map(for_data, context['tickets_l2w_halls']))
+        context['tickets_l2w_halls_size'] = max(map(for_data, context['tickets_l2w_halls'])) if tickets.count() > 0 else 0
         context['tickets_l2w_genres'] = sorted([[genre.title, tickets.filter(filmshow__film__genres=genre).count()] for genre in genres if tickets.filter(filmshow__film__genres=genre).count() != 0], key=for_data, reverse=True)
-        context['tickets_l2w_genres_size'] = max(map(for_data, context['tickets_l2w_genres']))
+        context['tickets_l2w_genres_size'] = max(map(for_data, context['tickets_l2w_genres'])) if tickets.count() > 0 else 0
 
         return context
