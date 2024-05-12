@@ -66,7 +66,7 @@ class MainControl(Ui_MainWindow, qtw.QMainWindow):
                 item = qtw.QTableWidgetItem(str(data))
                 item.setTextAlignment(qtc.Qt.AlignmentFlag.AlignCenter)
                 self.tw_products.setItem(row, column, item)
-        specials = [(7, description_widget)]
+        specials = [(3, lambda c: dbm.categories.get_by_id(c)[1]), (7, description_widget)]
         for column, spec in specials:
             for row in range(self.tw_products.rowCount()):
                 item = self.tw_products.item(row, column)
