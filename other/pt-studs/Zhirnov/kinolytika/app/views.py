@@ -3,7 +3,7 @@ from datetime import timedelta
 from django.contrib.auth import authenticate, login
 import django.contrib.auth.forms as auth_forms
 import django.contrib.auth.views as auth_views
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from django.utils import timezone
 import django.views.generic as generic_views
@@ -37,6 +37,9 @@ class RegisterView(generic_views.FormView):
         user = authenticate(username=username, password=password)
         login(self.request, user)
         return super().form_valid(form)
+
+    def form_invalid(self, form):
+        return redirect('kino:login')
 
 
 class FilmsView(generic_views.ListView):
