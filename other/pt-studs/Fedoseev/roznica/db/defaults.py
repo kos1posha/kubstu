@@ -1,16 +1,42 @@
-defaults = {
-    'categories': [
-        {'title': 'Телефоны', 'description': '-'},
-        {'title': 'Ноутбуки', 'description': '-'},
-        {'title': 'Планшеты', 'description': '-'},
-        {'title': 'Аксессуары', 'description': '-'}
-    ],
-    'products': [
-        {'code': '11', 'title': 'Телефон 1', 'category': 'Телефоны', 'on_storage_count': 3, 'weight': 900, 'price': 8900, 'description': '-'},
-        {'code': '12', 'title': 'Телефон 2', 'category': 'Телефоны', 'on_storage_count': 2, 'weight': 1340, 'price': 17800, 'description': '-'},
-        {'code': '13', 'title': 'Телефон 3', 'category': 'Телефоны', 'on_storage_count': 0, 'weight': 1430, 'price': 44500, 'description': '-'},
-        {'code': '21', 'title': 'Ноутбук 1', 'category': 'Ноутбуки', 'on_storage_count': 1, 'weight': 5300, 'price': 33220, 'description': '-'},
-        {'code': '22', 'title': 'Ноутбук 2', 'category': 'Ноутбуки', 'on_storage_count': 1, 'weight': 8900, 'price': 89000, 'description': '-'},
-        {'code': '31', 'title': 'Планшет 1', 'category': 'Планшеты', 'on_storage_count': 2, 'weight': 2120, 'price': 12000, 'description': '-'},
-    ]
-}
+categories = [
+    {'title': 'Фрукты', 'description': 'Свежие фрукты и ягоды'},
+    {'title': 'Овощи', 'description': 'Свежие овощи и зелень'},
+    {'title': 'Молочка', 'description': 'Молоко, йогурты, творог и сыры'},
+    {'title': 'Мясо', 'description': 'Свежее мясо и птица'},
+    {'title': 'Замороженное', 'description': 'Замороженные овощи, фрукты и полуфабрикаты'},
+    {'title': 'Выпечка', 'description': 'Свежая выпечка и сладости'},
+    {'title': 'Напитки', 'description': 'Газировки, соки, чай и кофе'},
+    {'title': 'Консервы', 'description': 'Консервированные овощи и фрукты'},
+]
+
+products = [
+    {'code': '1_001', 'title': 'Яблоки', 'category': 'Фрукты', 'on_storage_count': 0, 'weight': 250, 'price': 140, 'description': 'Сорт Голден'},
+    {'code': '1_002', 'title': 'Бананы', 'category': 'Фрукты', 'on_storage_count': 0, 'weight': 250, 'price': 100, 'description': 'Эквадорские'},
+    {'code': '1_003', 'title': 'Морковь', 'category': 'Овощи', 'on_storage_count': 0, 'weight': 500, 'price': 75, 'description': 'Свежая морковь'},
+    {'code': '1_004', 'title': 'Картофель', 'category': 'Овощи', 'on_storage_count': 0, 'weight': 1000, 'price': 45, 'description': 'Сорт Руссет'},
+    {'code': '1_005', 'title': 'Апельсины', 'category': 'Фрукты', 'on_storage_count': 0, 'weight': 250, 'price': 120, 'description': 'Сорт Навель'},
+    {'code': '1_006', 'title': 'Груши', 'category': 'Фрукты', 'on_storage_count': 0, 'weight': 250, 'price': 160, 'description': 'Сорт Конференц'},
+    {'code': '2_001', 'title': 'Помидорки Черри', 'category': 'Овощи', 'on_storage_count': 0, 'weight': 250, 'price': 200, 'description': 'Маленькие'},
+    {'code': '2_002', 'title': 'Хлеб белый', 'category': 'Выпечка', 'on_storage_count': 0, 'weight': 400, 'price': 45, 'description': 'Сдобный хлеб'},
+    {'code': '2_003', 'title': 'Малина замороженная', 'category': 'Замороженное', 'on_storage_count': 0, 'weight': 250, 'price': 160, 'description': 'Свежая замороженная малина'},
+    {'code': '2_004', 'title': 'Пирожное Эклер', 'category': 'Выпечка', 'on_storage_count': 0, 'weight': 140, 'price': 120, 'description': 'Нежное пирожное с заварным кремом'},
+    {'code': '2_005', 'title': 'Малиновый пирог', 'category': 'Выпечка', 'on_storage_count': 0, 'weight': 450, 'price': 220, 'description': 'Сладкий пирог с малиной'},
+    {'code': '2_006', 'title': 'Круассан с начинкой', 'category': 'Выпечка', 'on_storage_count': 0, 'weight': 90, 'price': 80, 'description': 'Пышный круассан с начинкой'},
+    {'code': '3_001', 'title': 'Молоко', 'category': 'Молочка', 'on_storage_count': 0, 'weight': 450, 'price': 110, 'description': 'Пастеризованное'},
+    {'code': '3_002', 'title': 'Апельсиновый сок', 'category': 'Напитки', 'on_storage_count': 0, 'weight': 950, 'price': 130, 'description': '100% натуральный сок'},
+    {'code': '3_003', 'title': 'Черный чай', 'category': 'Напитки', 'on_storage_count': 0, 'weight': 210, 'price': 110, 'description': 'Листовой черный чай'},
+    {'code': '3_004', 'title': 'Лимонад', 'category': 'Напитки', 'on_storage_count': 0, 'weight': 450, 'price': 80, 'description': 'Свежий лимонад с лимоном'},
+    {'code': '3_005', 'title': 'Кофе молотый', 'category': 'Напитки', 'on_storage_count': 0, 'weight': 420, 'price': 240, 'description': 'Ароматный молотый кофе'},
+    {'code': '3_006', 'title': 'Лимонный чай', 'category': 'Напитки', 'on_storage_count': 0, 'weight': 210, 'price': 110, 'description': 'Ароматный чай с лимоном'},
+    {'code': '4_001', 'title': 'Курица', 'category': 'Мясо', 'on_storage_count': 0, 'weight': 900, 'price': 330, 'description': 'Филе бедра'},
+    {'code': '4_002', 'title': 'Горбуша консервированная', 'category': 'Консервы', 'on_storage_count': 0, 'weight': 200, 'price': 100, 'description': 'Консервы из рыбы'},
+    {'code': '4_003', 'title': 'Куриные крылышки', 'category': 'Мясо', 'on_storage_count': 0, 'weight': 300, 'price': 240, 'description': 'Специальный соус BBQ'},
+    {'code': '4_004', 'title': 'Куриное филе', 'category': 'Мясо', 'on_storage_count': 0, 'weight': 450, 'price': 220, 'description': 'Свежее куриное филе'},
+    {'code': '5_001', 'title': 'Мороженое ванильное', 'category': 'Замороженное', 'on_storage_count': 0, 'weight': 95, 'price': 80, 'description': 'Натуральное ванильное мороженое'},
+    {'code': '5_002', 'title': 'Шпинат замороженный', 'category': 'Замороженное', 'on_storage_count': 0, 'weight': 250, 'price': 140, 'description': 'Свежий замороженный шпинат'},
+    {'code': '6_001', 'title': 'Пирог с мясом', 'category': 'Выпечка', 'on_storage_count': 0, 'weight': 350, 'price': 240, 'description': 'Сочный пирог с мясом'},
+    {'code': '6_002', 'title': 'Пончики с шоколадом', 'category': 'Выпечка', 'on_storage_count': 0, 'weight': 190, 'price': 280, 'description': 'Пончики с шоколадным начинкой'},
+    {'code': '7_001', 'title': 'Кола', 'category': 'Напитки', 'on_storage_count': 0, 'weight': 450, 'price': 89, 'description': 'Газированный напиток Кока-Кола'},
+    {'code': '8_001', 'title': 'Горошек консервированный', 'category': 'Консервы', 'on_storage_count': 0, 'weight': 400, 'price': 120, 'description': 'Консервированный зеленый горошек'},
+    {'code': '8_002', 'title': 'Горчица', 'category': 'Консервы', 'on_storage_count': 0, 'weight': 150, 'price': 130, 'description': 'Острая горчица в банке'}
+]
