@@ -14,12 +14,14 @@ register = template.Library()
 def date_format(value):
     now = timezone.now()
     if isinstance(value, date):
+        if value == now.date():
+            return 'сегодня'
         if value == now.date() + timedelta(days=1):
-            return f'завтра'
+            return 'завтра'
         elif value == now.date() + timedelta(days=2):
-            return f'послезавтра'
+            return 'послезавтра'
         elif value == now.date() + timedelta(days=2):
-            return f'через 2 дня'
+            return 'через 2 дня'
     if value.year == now.year:
         return _(value, 'j E')
     return value
