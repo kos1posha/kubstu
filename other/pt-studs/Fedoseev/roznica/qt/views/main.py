@@ -373,7 +373,7 @@ class Ui_MainWindow(object):
     # setupUi
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"\u0423\u0447\u0435\u0442 \u0442\u0435\u0445\u043d\u0438\u043a\u0438", None))
+        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"\u0420\u043e\u0437\u043d\u0438\u0447\u043d\u044b\u0439 \u0443\u0447\u0435\u0442", None))
         self.l_categories.setText(QCoreApplication.translate("MainWindow", u"\u041a\u0430\u0442\u0435\u0433\u043e\u0440\u0438\u0438", None))
         ___qtreewidgetitem = self.treew_storage.headerItem()
         ___qtreewidgetitem.setText(0, QCoreApplication.translate("MainWindow", u"\u0421\u043a\u043b\u0430\u0434", None));
