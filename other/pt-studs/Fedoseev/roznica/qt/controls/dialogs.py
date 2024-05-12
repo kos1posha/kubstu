@@ -256,7 +256,7 @@ class IncomeOutcomeHistoryDialog(qtw.QDialog):
 
         incomes, outcomes = dbm.income_history.all(), dbm.outcome_history.all()
         incomes, outcomes = list(map(lambda i: dt(i[1]) + ('Ввоз',) + i[3:] + (int(i[5]) * int(i[6]),), incomes)), list(map(lambda o: dt(o[1]) + ('Вывоз',) + o[3:] + (int(o[5]) * int(o[6]),), outcomes)),
-        comes = sorted(incomes + outcomes, key=lambda c: c[-1])
+        comes = sorted(incomes + outcomes, key=lambda c: c[0], reverse=True)
         for row, come in enumerate(comes):
             self.tw_comes.insertRow(row)
             self.tw_comes.setVerticalHeaderItem(row, qtw.QTableWidgetItem(come[0]))

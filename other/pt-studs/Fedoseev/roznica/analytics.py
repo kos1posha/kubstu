@@ -9,8 +9,8 @@ mpl.rcParams['toolbar'] = 'None'
 
 def count_numbers_by_range(numbers):
     result = {}
-    for i in range(0, max(numbers), 10000):
-        result[str(i + 10000)] = sum(1 for num in numbers if i <= num < i + 10000)
+    for i in range(0, max(numbers), 50):
+        result[f'{i} - {i + 50}'] = sum(1 for num in numbers if i <= num < i + 50)
     return result
 
 
@@ -19,7 +19,7 @@ def product_count_by_category():
     categories = list(category_counts.keys())
     quantities = list(category_counts.values())
 
-    plt.style.use('dark_background')
+    plt.grid(True)
     plt.bar(range(len(categories)), quantities, color='y')
     plt.xlabel('Категории')
     plt.ylabel('Количество продуктов')
@@ -34,7 +34,7 @@ def product_price_distribution():
     price_products_count = count_numbers_by_range([product[6] for product in dbm.products.all()])
     keys, values = list(price_products_count.keys()), list(price_products_count.values())
 
-    plt.style.use('dark_background')
+    plt.grid(True)
     plt.bar(keys, values, color='g', alpha=0.5)
     plt.title('Распределение цен на продукты')
     plt.xlabel('Цена (₽)')
@@ -48,25 +48,25 @@ def total_weight_by_category():
     weights_by_category = {k[1]: sum(p[4] * p[5] for p in v) for k, v in dbm.products.by_categories().items()}
     keys, values = list(weights_by_category.keys()), list(weights_by_category.values())
 
-    plt.style.use('dark_background')
+    plt.grid(True)
     plt.bar(keys, values, color='b', alpha=0.5)
     plt.title('Суммарный вес продуктов по категориям')
     plt.xlabel('Категории')
-    plt.yticks(range(0, max(values) + 1, 1000))
+    plt.yticks(range(0, max(values) + 1, 10000))
     plt.ylabel('Вес (гр.)')
     plt.gcf().canvas.manager.set_window_title('Суммарный вес продуктов по категориям')
     plt.show()
 
 
 def average_price_by_category():
-    price_by_category = {k[1]: sum(p[4] * p[6] for p in v) for k, v in dbm.products.by_categories().items()}
+    price_by_category = {k[1]: sum(p[6] for p in v) / len(v) for k, v in dbm.products.by_categories().items()}
     keys, values = list(price_by_category.keys()), list(price_by_category.values())
 
-    plt.style.use('dark_background')
+    plt.grid(True)
     plt.fill_between(keys, values, color='r', alpha=0.5)
     plt.title('Средняя цена продуктов по категориям')
     plt.xlabel('Категории')
-    plt.yticks(range(0, max(values) + 1, 10000))
+    plt.yticks(range(0, int(max(values)) + 1, 50))
     plt.ylabel('Цена')
     plt.gcf().canvas.manager.set_window_title('Средняя цена продуктов по категориям')
     plt.show()
