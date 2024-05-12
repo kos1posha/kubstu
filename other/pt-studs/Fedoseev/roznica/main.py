@@ -23,5 +23,4 @@ def main():
 
 
 if __name__ == '__main__':
-    db_reinit()
     main()

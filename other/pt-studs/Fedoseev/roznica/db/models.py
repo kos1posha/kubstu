@@ -62,11 +62,11 @@ class Products(DatabaseModel):
         return super().remove(code)
 
     def update_count(self, code, count):
-        return self._connection.execute(f'UPDATE products SET on_storage_count = {count} WHERE code = {code}')
+        return self._connection.execute(f'UPDATE products SET on_storage_count = {count} WHERE code = "{code}"')
 
     def of_category(self, category_title):
         category_id = Categories().get(category_title)[0]
-        return self._connection.execute(f'SELECT * FROM products WHERE category_id = {category_id}')
+        return self._connection.execute(f'SELECT * FROM products WHERE category_id = "{category_id}"')
 
     def by_categories(self):
         category_list = Categories().all()
