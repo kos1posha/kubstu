@@ -100,14 +100,15 @@ class Simplex:
         ineq_constraints: list[Ge] = [ineq for ineq in self.constraints if isinstance(ineq, (Ge, Le))]
         self.ineq_additional_vars = symbols(f'δ1:{len(ineq_constraints) + 1}')
         for ineq, sym in zip(ineq_constraints, self.ineq_additional_vars):
-            eq = canonicalize_eq(ineq_to_eq(ineq.simplify(), sym))
+            eq = ineq_to_eq(ineq.simplify(), sym)
             self.constraints.append(eq)
             self.constraints.remove(ineq)
 
         for i, c in enumerate(self.constraints):
             c = canonicalize_eq(c)
             if c.rhs < 0:
-                self.constraints[i] = Eq(-c.lhs, -c.rhs)
+                c = Eq(-c.lhs, -c.rhs)
+            self.constraints[i] = c
 
     def _find_basis_vars(self) -> None:
         all_vars = sort_symbols(self._get_all_vars())
