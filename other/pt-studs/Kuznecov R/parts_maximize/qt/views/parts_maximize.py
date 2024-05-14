@@ -683,10 +683,10 @@ class Ui_PartsMaximizeWindow(object):
 
         self.verticalLayout.addWidget(self.l_lpa_constraints_default_2)
 
-        self.pb_lp_solve_2 = QPushButton(self.tab_lp_additional)
-        self.pb_lp_solve_2.setObjectName(u"pb_lp_solve_2")
+        self.pb_lpa_solve = QPushButton(self.tab_lp_additional)
+        self.pb_lpa_solve.setObjectName(u"pb_lpa_solve")
 
-        self.verticalLayout.addWidget(self.pb_lp_solve_2)
+        self.verticalLayout.addWidget(self.pb_lpa_solve)
 
         self.tabw_steps.addTab(self.tab_lp_additional, "")
 
@@ -804,7 +804,7 @@ class Ui_PartsMaximizeWindow(object):
         self.l_lpa_text_4.setText(QCoreApplication.translate("PartsMaximizeWindow", u"\u041e\u0433\u0440\u0430\u043d\u0438\u0447\u0435\u043d\u0438\u044f:", None))
         self.l_lpa_constraints_default_1.setText(QCoreApplication.translate("PartsMaximizeWindow", u"<html><head/><body><p>\u00a0 x<span style=\" vertical-align:sub;\">1</span> + x<span style=\" vertical-align:sub;\">2</span> + x<span style=\" vertical-align:sub;\">3</span> \u2264 500</p></body></html>", None))
         self.l_lpa_constraints_default_2.setText(QCoreApplication.translate("PartsMaximizeWindow", u"<html><head/><body><p>\u00a0 x<span style=\" vertical-align:sub;\">4</span> + x<span style=\" vertical-align:sub;\">5</span> \u2264 300</p></body></html>", None))
-        self.pb_lp_solve_2.setText(QCoreApplication.translate("PartsMaximizeWindow", u"\u041d\u0430\u0439\u0442\u0438 \u0440\u0435\u0448\u0435\u043d\u0438\u0435", None))
+        self.pb_lpa_solve.setText(QCoreApplication.translate("PartsMaximizeWindow", u"\u041d\u0430\u0439\u0442\u0438 \u0440\u0435\u0448\u0435\u043d\u0438\u0435", None))
         self.tabw_steps.setTabText(self.tabw_steps.indexOf(self.tab_lp_additional), QCoreApplication.translate("PartsMaximizeWindow", u"\u0414\u043e\u043f\u043e\u043b\u043d\u0438\u0442\u0435\u043b\u044c\u043d\u043e", None))
     # retranslateUi
 
