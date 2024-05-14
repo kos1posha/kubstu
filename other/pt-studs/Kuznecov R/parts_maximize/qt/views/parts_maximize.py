@@ -37,8 +37,42 @@ class Ui_PartsMaximizeWindow(object):
         self.tabw_steps.setDocumentMode(True)
         self.tab_task = QWidget()
         self.tab_task.setObjectName(u"tab_task")
-        self.gl_task = QGridLayout(self.tab_task)
-        self.gl_task.setObjectName(u"gl_task")
+        self.vl_task = QVBoxLayout(self.tab_task)
+        self.vl_task.setObjectName(u"vl_task")
+        self.l_task_title = QLabel(self.tab_task)
+        self.l_task_title.setObjectName(u"l_task_title")
+        sizePolicy = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.l_task_title.sizePolicy().hasHeightForWidth())
+        self.l_task_title.setSizePolicy(sizePolicy)
+        font = QFont()
+        font.setPointSize(12)
+        font.setBold(True)
+        font.setItalic(True)
+        self.l_task_title.setFont(font)
+        self.l_task_title.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
+
+        self.vl_task.addWidget(self.l_task_title)
+
+        self.l_task_text_1 = QLabel(self.tab_task)
+        self.l_task_text_1.setObjectName(u"l_task_text_1")
+        sizePolicy1 = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Minimum)
+        sizePolicy1.setHorizontalStretch(0)
+        sizePolicy1.setVerticalStretch(0)
+        sizePolicy1.setHeightForWidth(self.l_task_text_1.sizePolicy().hasHeightForWidth())
+        self.l_task_text_1.setSizePolicy(sizePolicy1)
+        font1 = QFont()
+        font1.setFamilies([u"Times New Roman"])
+        font1.setPointSize(11)
+        self.l_task_text_1.setFont(font1)
+        self.l_task_text_1.setStyleSheet(u"border:1px solid rgb(60,60,60);border-radius:5px;background:rgb(40,40,40)")
+        self.l_task_text_1.setAlignment(Qt.AlignmentFlag.AlignJustify|Qt.AlignmentFlag.AlignVCenter)
+        self.l_task_text_1.setWordWrap(True)
+        self.l_task_text_1.setMargin(6)
+
+        self.vl_task.addWidget(self.l_task_text_1)
+
         self.tw_task_args = QTableWidget(self.tab_task)
         if (self.tw_task_args.columnCount() < 6):
             self.tw_task_args.setColumnCount(6)
@@ -70,63 +104,63 @@ class Ui_PartsMaximizeWindow(object):
         self.tw_task_args.setVerticalHeaderItem(5, __qtablewidgetitem11)
         __qtablewidgetitem12 = QTableWidgetItem()
         self.tw_task_args.setVerticalHeaderItem(6, __qtablewidgetitem12)
-        font = QFont()
-        font.setBold(True)
+        font2 = QFont()
+        font2.setBold(True)
         __qtablewidgetitem13 = QTableWidgetItem()
         __qtablewidgetitem13.setTextAlignment(Qt.AlignCenter);
-        __qtablewidgetitem13.setFont(font);
+        __qtablewidgetitem13.setFont(font2);
         __qtablewidgetitem13.setFlags(Qt.ItemIsEnabled);
         self.tw_task_args.setItem(0, 0, __qtablewidgetitem13)
         __qtablewidgetitem14 = QTableWidgetItem()
         __qtablewidgetitem14.setTextAlignment(Qt.AlignCenter);
-        __qtablewidgetitem14.setFont(font);
+        __qtablewidgetitem14.setFont(font2);
         __qtablewidgetitem14.setFlags(Qt.ItemIsEnabled);
         self.tw_task_args.setItem(0, 1, __qtablewidgetitem14)
         __qtablewidgetitem15 = QTableWidgetItem()
         self.tw_task_args.setItem(0, 3, __qtablewidgetitem15)
         __qtablewidgetitem16 = QTableWidgetItem()
         __qtablewidgetitem16.setTextAlignment(Qt.AlignCenter);
-        __qtablewidgetitem16.setFont(font);
+        __qtablewidgetitem16.setFont(font2);
         __qtablewidgetitem16.setFlags(Qt.ItemIsEnabled);
         self.tw_task_args.setItem(0, 4, __qtablewidgetitem16)
         __qtablewidgetitem17 = QTableWidgetItem()
         __qtablewidgetitem17.setTextAlignment(Qt.AlignCenter);
-        __qtablewidgetitem17.setFont(font);
+        __qtablewidgetitem17.setFont(font2);
         __qtablewidgetitem17.setFlags(Qt.ItemIsEnabled);
         self.tw_task_args.setItem(1, 1, __qtablewidgetitem17)
         __qtablewidgetitem18 = QTableWidgetItem()
         __qtablewidgetitem18.setTextAlignment(Qt.AlignCenter);
-        __qtablewidgetitem18.setFont(font);
+        __qtablewidgetitem18.setFont(font2);
         __qtablewidgetitem18.setFlags(Qt.ItemIsEnabled);
         self.tw_task_args.setItem(2, 1, __qtablewidgetitem18)
         __qtablewidgetitem19 = QTableWidgetItem()
         __qtablewidgetitem19.setTextAlignment(Qt.AlignCenter);
-        __qtablewidgetitem19.setFont(font);
+        __qtablewidgetitem19.setFont(font2);
         __qtablewidgetitem19.setFlags(Qt.ItemIsEnabled);
         self.tw_task_args.setItem(2, 2, __qtablewidgetitem19)
         __qtablewidgetitem20 = QTableWidgetItem()
         __qtablewidgetitem20.setTextAlignment(Qt.AlignCenter);
-        __qtablewidgetitem20.setFont(font);
+        __qtablewidgetitem20.setFont(font2);
         __qtablewidgetitem20.setFlags(Qt.ItemIsEnabled);
         self.tw_task_args.setItem(2, 3, __qtablewidgetitem20)
         __qtablewidgetitem21 = QTableWidgetItem()
         __qtablewidgetitem21.setTextAlignment(Qt.AlignCenter);
-        __qtablewidgetitem21.setFont(font);
+        __qtablewidgetitem21.setFont(font2);
         __qtablewidgetitem21.setFlags(Qt.ItemIsEnabled);
         self.tw_task_args.setItem(2, 4, __qtablewidgetitem21)
         __qtablewidgetitem22 = QTableWidgetItem()
         __qtablewidgetitem22.setTextAlignment(Qt.AlignCenter);
-        __qtablewidgetitem22.setFont(font);
+        __qtablewidgetitem22.setFont(font2);
         __qtablewidgetitem22.setFlags(Qt.ItemIsEnabled);
         self.tw_task_args.setItem(2, 5, __qtablewidgetitem22)
         __qtablewidgetitem23 = QTableWidgetItem()
         __qtablewidgetitem23.setTextAlignment(Qt.AlignCenter);
-        __qtablewidgetitem23.setFont(font);
+        __qtablewidgetitem23.setFont(font2);
         __qtablewidgetitem23.setFlags(Qt.ItemIsEnabled);
         self.tw_task_args.setItem(3, 1, __qtablewidgetitem23)
         __qtablewidgetitem24 = QTableWidgetItem()
         __qtablewidgetitem24.setTextAlignment(Qt.AlignCenter);
-        __qtablewidgetitem24.setFont(font);
+        __qtablewidgetitem24.setFont(font2);
         __qtablewidgetitem24.setFlags(Qt.ItemIsEnabled);
         self.tw_task_args.setItem(4, 0, __qtablewidgetitem24)
         __qtablewidgetitem25 = QTableWidgetItem()
@@ -146,7 +180,7 @@ class Ui_PartsMaximizeWindow(object):
         self.tw_task_args.setItem(4, 5, __qtablewidgetitem29)
         __qtablewidgetitem30 = QTableWidgetItem()
         __qtablewidgetitem30.setTextAlignment(Qt.AlignCenter);
-        __qtablewidgetitem30.setFont(font);
+        __qtablewidgetitem30.setFont(font2);
         __qtablewidgetitem30.setFlags(Qt.ItemIsEnabled);
         self.tw_task_args.setItem(5, 0, __qtablewidgetitem30)
         __qtablewidgetitem31 = QTableWidgetItem()
@@ -166,7 +200,7 @@ class Ui_PartsMaximizeWindow(object):
         self.tw_task_args.setItem(5, 5, __qtablewidgetitem35)
         __qtablewidgetitem36 = QTableWidgetItem()
         __qtablewidgetitem36.setTextAlignment(Qt.AlignCenter);
-        __qtablewidgetitem36.setFont(font);
+        __qtablewidgetitem36.setFont(font2);
         __qtablewidgetitem36.setFlags(Qt.ItemIsEnabled);
         self.tw_task_args.setItem(6, 0, __qtablewidgetitem36)
         __qtablewidgetitem37 = QTableWidgetItem()
@@ -185,33 +219,15 @@ class Ui_PartsMaximizeWindow(object):
         __qtablewidgetitem41.setTextAlignment(Qt.AlignCenter);
         self.tw_task_args.setItem(6, 5, __qtablewidgetitem41)
         self.tw_task_args.setObjectName(u"tw_task_args")
-        sizePolicy = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.tw_task_args.sizePolicy().hasHeightForWidth())
-        self.tw_task_args.setSizePolicy(sizePolicy)
+        sizePolicy2 = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
+        sizePolicy2.setHorizontalStretch(0)
+        sizePolicy2.setVerticalStretch(0)
+        sizePolicy2.setHeightForWidth(self.tw_task_args.sizePolicy().hasHeightForWidth())
+        self.tw_task_args.setSizePolicy(sizePolicy2)
         self.tw_task_args.horizontalHeader().setVisible(False)
         self.tw_task_args.verticalHeader().setVisible(False)
 
-        self.gl_task.addWidget(self.tw_task_args, 2, 0, 1, 1)
-
-        self.l_task_text_1 = QLabel(self.tab_task)
-        self.l_task_text_1.setObjectName(u"l_task_text_1")
-        sizePolicy1 = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Minimum)
-        sizePolicy1.setHorizontalStretch(0)
-        sizePolicy1.setVerticalStretch(0)
-        sizePolicy1.setHeightForWidth(self.l_task_text_1.sizePolicy().hasHeightForWidth())
-        self.l_task_text_1.setSizePolicy(sizePolicy1)
-        font1 = QFont()
-        font1.setFamilies([u"Times New Roman"])
-        font1.setPointSize(11)
-        self.l_task_text_1.setFont(font1)
-        self.l_task_text_1.setStyleSheet(u"border:1px solid rgb(60,60,60);border-radius:5px;background:rgb(40,40,40)")
-        self.l_task_text_1.setAlignment(Qt.AlignmentFlag.AlignJustify|Qt.AlignmentFlag.AlignVCenter)
-        self.l_task_text_1.setWordWrap(True)
-        self.l_task_text_1.setMargin(6)
-
-        self.gl_task.addWidget(self.l_task_text_1, 1, 0, 1, 1)
+        self.vl_task.addWidget(self.tw_task_args)
 
         self.l_task_text_2 = QLabel(self.tab_task)
         self.l_task_text_2.setObjectName(u"l_task_text_2")
@@ -223,55 +239,21 @@ class Ui_PartsMaximizeWindow(object):
         self.l_task_text_2.setWordWrap(True)
         self.l_task_text_2.setMargin(6)
 
-        self.gl_task.addWidget(self.l_task_text_2, 3, 0, 1, 1)
-
-        self.l_task_title = QLabel(self.tab_task)
-        self.l_task_title.setObjectName(u"l_task_title")
-        sizePolicy2 = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Fixed)
-        sizePolicy2.setHorizontalStretch(0)
-        sizePolicy2.setVerticalStretch(0)
-        sizePolicy2.setHeightForWidth(self.l_task_title.sizePolicy().hasHeightForWidth())
-        self.l_task_title.setSizePolicy(sizePolicy2)
-        font2 = QFont()
-        font2.setPointSize(12)
-        font2.setBold(True)
-        font2.setItalic(True)
-        self.l_task_title.setFont(font2)
-        self.l_task_title.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
-
-        self.gl_task.addWidget(self.l_task_title, 0, 0, 1, 1)
+        self.vl_task.addWidget(self.l_task_text_2)
 
         self.tabw_steps.addTab(self.tab_task, "")
         self.tab_obj_func = QWidget()
         self.tab_obj_func.setObjectName(u"tab_obj_func")
-        self.gl_obj_func = QGridLayout(self.tab_obj_func)
-        self.gl_obj_func.setObjectName(u"gl_obj_func")
-        self.l_obj_func_def_2 = QLabel(self.tab_obj_func)
-        self.l_obj_func_def_2.setObjectName(u"l_obj_func_def_2")
-        sizePolicy3 = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Expanding)
-        sizePolicy3.setHorizontalStretch(0)
-        sizePolicy3.setVerticalStretch(0)
-        sizePolicy3.setHeightForWidth(self.l_obj_func_def_2.sizePolicy().hasHeightForWidth())
-        self.l_obj_func_def_2.setSizePolicy(sizePolicy3)
-        font3 = QFont()
-        font3.setFamilies([u"Segoe UI"])
-        font3.setPointSize(12)
-        font3.setBold(False)
-        self.l_obj_func_def_2.setFont(font3)
-        self.l_obj_func_def_2.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
-        self.l_obj_func_def_2.setMargin(4)
+        self.vl_obj_func = QVBoxLayout(self.tab_obj_func)
+        self.vl_obj_func.setObjectName(u"vl_obj_func")
+        self.l_obj_func_title = QLabel(self.tab_obj_func)
+        self.l_obj_func_title.setObjectName(u"l_obj_func_title")
+        sizePolicy.setHeightForWidth(self.l_obj_func_title.sizePolicy().hasHeightForWidth())
+        self.l_obj_func_title.setSizePolicy(sizePolicy)
+        self.l_obj_func_title.setFont(font)
+        self.l_obj_func_title.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
 
-        self.gl_obj_func.addWidget(self.l_obj_func_def_2, 4, 0, 1, 2)
-
-        self.l_obj_func_def_1 = QLabel(self.tab_obj_func)
-        self.l_obj_func_def_1.setObjectName(u"l_obj_func_def_1")
-        sizePolicy3.setHeightForWidth(self.l_obj_func_def_1.sizePolicy().hasHeightForWidth())
-        self.l_obj_func_def_1.setSizePolicy(sizePolicy3)
-        self.l_obj_func_def_1.setFont(font3)
-        self.l_obj_func_def_1.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
-        self.l_obj_func_def_1.setMargin(4)
-
-        self.gl_obj_func.addWidget(self.l_obj_func_def_1, 3, 0, 1, 2)
+        self.vl_obj_func.addWidget(self.l_obj_func_title)
 
         self.l_obj_func_text_1 = QLabel(self.tab_obj_func)
         self.l_obj_func_text_1.setObjectName(u"l_obj_func_text_1")
@@ -283,7 +265,44 @@ class Ui_PartsMaximizeWindow(object):
         self.l_obj_func_text_1.setWordWrap(True)
         self.l_obj_func_text_1.setMargin(6)
 
-        self.gl_obj_func.addWidget(self.l_obj_func_text_1, 2, 0, 1, 2)
+        self.vl_obj_func.addWidget(self.l_obj_func_text_1)
+
+        self.l_obj_func_def_1 = QLabel(self.tab_obj_func)
+        self.l_obj_func_def_1.setObjectName(u"l_obj_func_def_1")
+        sizePolicy3 = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Expanding)
+        sizePolicy3.setHorizontalStretch(0)
+        sizePolicy3.setVerticalStretch(0)
+        sizePolicy3.setHeightForWidth(self.l_obj_func_def_1.sizePolicy().hasHeightForWidth())
+        self.l_obj_func_def_1.setSizePolicy(sizePolicy3)
+        font3 = QFont()
+        font3.setFamilies([u"Segoe UI"])
+        font3.setPointSize(12)
+        font3.setBold(False)
+        self.l_obj_func_def_1.setFont(font3)
+        self.l_obj_func_def_1.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
+        self.l_obj_func_def_1.setMargin(4)
+
+        self.vl_obj_func.addWidget(self.l_obj_func_def_1)
+
+        self.l_obj_func_def_2 = QLabel(self.tab_obj_func)
+        self.l_obj_func_def_2.setObjectName(u"l_obj_func_def_2")
+        sizePolicy3.setHeightForWidth(self.l_obj_func_def_2.sizePolicy().hasHeightForWidth())
+        self.l_obj_func_def_2.setSizePolicy(sizePolicy3)
+        self.l_obj_func_def_2.setFont(font3)
+        self.l_obj_func_def_2.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
+        self.l_obj_func_def_2.setMargin(4)
+
+        self.vl_obj_func.addWidget(self.l_obj_func_def_2)
+
+        self.l_obj_func_def_3 = QLabel(self.tab_obj_func)
+        self.l_obj_func_def_3.setObjectName(u"l_obj_func_def_3")
+        sizePolicy3.setHeightForWidth(self.l_obj_func_def_3.sizePolicy().hasHeightForWidth())
+        self.l_obj_func_def_3.setSizePolicy(sizePolicy3)
+        self.l_obj_func_def_3.setFont(font3)
+        self.l_obj_func_def_3.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
+        self.l_obj_func_def_3.setMargin(4)
+
+        self.vl_obj_func.addWidget(self.l_obj_func_def_3)
 
         self.l_obj_func_text_2 = QLabel(self.tab_obj_func)
         self.l_obj_func_text_2.setObjectName(u"l_obj_func_text_2")
@@ -295,72 +314,21 @@ class Ui_PartsMaximizeWindow(object):
         self.l_obj_func_text_2.setWordWrap(True)
         self.l_obj_func_text_2.setMargin(6)
 
-        self.gl_obj_func.addWidget(self.l_obj_func_text_2, 7, 0, 1, 2)
-
-        self.l_obj_func_title = QLabel(self.tab_obj_func)
-        self.l_obj_func_title.setObjectName(u"l_obj_func_title")
-        sizePolicy2.setHeightForWidth(self.l_obj_func_title.sizePolicy().hasHeightForWidth())
-        self.l_obj_func_title.setSizePolicy(sizePolicy2)
-        self.l_obj_func_title.setFont(font2)
-        self.l_obj_func_title.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
-
-        self.gl_obj_func.addWidget(self.l_obj_func_title, 1, 0, 1, 2)
-
-        self.l_obj_func_def_3 = QLabel(self.tab_obj_func)
-        self.l_obj_func_def_3.setObjectName(u"l_obj_func_def_3")
-        sizePolicy3.setHeightForWidth(self.l_obj_func_def_3.sizePolicy().hasHeightForWidth())
-        self.l_obj_func_def_3.setSizePolicy(sizePolicy3)
-        self.l_obj_func_def_3.setFont(font3)
-        self.l_obj_func_def_3.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
-        self.l_obj_func_def_3.setMargin(4)
-
-        self.gl_obj_func.addWidget(self.l_obj_func_def_3, 6, 0, 1, 2)
+        self.vl_obj_func.addWidget(self.l_obj_func_text_2)
 
         self.tabw_steps.addTab(self.tab_obj_func, "")
         self.tab_constraints = QWidget()
         self.tab_constraints.setObjectName(u"tab_constraints")
-        self.gl_constraints = QGridLayout(self.tab_constraints)
-        self.gl_constraints.setObjectName(u"gl_constraints")
+        self.vl_constraints = QVBoxLayout(self.tab_constraints)
+        self.vl_constraints.setObjectName(u"vl_constraints")
         self.l_constraints_title = QLabel(self.tab_constraints)
         self.l_constraints_title.setObjectName(u"l_constraints_title")
-        sizePolicy2.setHeightForWidth(self.l_constraints_title.sizePolicy().hasHeightForWidth())
-        self.l_constraints_title.setSizePolicy(sizePolicy2)
-        self.l_constraints_title.setFont(font2)
+        sizePolicy.setHeightForWidth(self.l_constraints_title.sizePolicy().hasHeightForWidth())
+        self.l_constraints_title.setSizePolicy(sizePolicy)
+        self.l_constraints_title.setFont(font)
         self.l_constraints_title.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
 
-        self.gl_constraints.addWidget(self.l_constraints_title, 0, 0, 1, 1)
-
-        self.l_constraints_text_2 = QLabel(self.tab_constraints)
-        self.l_constraints_text_2.setObjectName(u"l_constraints_text_2")
-        sizePolicy1.setHeightForWidth(self.l_constraints_text_2.sizePolicy().hasHeightForWidth())
-        self.l_constraints_text_2.setSizePolicy(sizePolicy1)
-        self.l_constraints_text_2.setFont(font1)
-        self.l_constraints_text_2.setStyleSheet(u"border:1px solid rgb(60,60,60);border-radius:5px;background:rgb(40,40,40)")
-        self.l_constraints_text_2.setAlignment(Qt.AlignmentFlag.AlignJustify|Qt.AlignmentFlag.AlignVCenter)
-        self.l_constraints_text_2.setWordWrap(True)
-        self.l_constraints_text_2.setMargin(6)
-
-        self.gl_constraints.addWidget(self.l_constraints_text_2, 3, 0, 1, 1)
-
-        self.l_constraints_details_3 = QLabel(self.tab_constraints)
-        self.l_constraints_details_3.setObjectName(u"l_constraints_details_3")
-        sizePolicy3.setHeightForWidth(self.l_constraints_details_3.sizePolicy().hasHeightForWidth())
-        self.l_constraints_details_3.setSizePolicy(sizePolicy3)
-        self.l_constraints_details_3.setFont(font3)
-        self.l_constraints_details_3.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
-        self.l_constraints_details_3.setMargin(4)
-
-        self.gl_constraints.addWidget(self.l_constraints_details_3, 7, 0, 1, 1)
-
-        self.l_constraints_details_2 = QLabel(self.tab_constraints)
-        self.l_constraints_details_2.setObjectName(u"l_constraints_details_2")
-        sizePolicy3.setHeightForWidth(self.l_constraints_details_2.sizePolicy().hasHeightForWidth())
-        self.l_constraints_details_2.setSizePolicy(sizePolicy3)
-        self.l_constraints_details_2.setFont(font3)
-        self.l_constraints_details_2.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
-        self.l_constraints_details_2.setMargin(4)
-
-        self.gl_constraints.addWidget(self.l_constraints_details_2, 6, 0, 1, 1)
+        self.vl_constraints.addWidget(self.l_constraints_title)
 
         self.l_constraints_text_1 = QLabel(self.tab_constraints)
         self.l_constraints_text_1.setObjectName(u"l_constraints_text_1")
@@ -372,7 +340,7 @@ class Ui_PartsMaximizeWindow(object):
         self.l_constraints_text_1.setWordWrap(True)
         self.l_constraints_text_1.setMargin(6)
 
-        self.gl_constraints.addWidget(self.l_constraints_text_1, 1, 0, 1, 1)
+        self.vl_constraints.addWidget(self.l_constraints_text_1)
 
         self.l_constraints_default = QLabel(self.tab_constraints)
         self.l_constraints_default.setObjectName(u"l_constraints_default")
@@ -382,7 +350,19 @@ class Ui_PartsMaximizeWindow(object):
         self.l_constraints_default.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
         self.l_constraints_default.setMargin(4)
 
-        self.gl_constraints.addWidget(self.l_constraints_default, 2, 0, 1, 1)
+        self.vl_constraints.addWidget(self.l_constraints_default)
+
+        self.l_constraints_text_2 = QLabel(self.tab_constraints)
+        self.l_constraints_text_2.setObjectName(u"l_constraints_text_2")
+        sizePolicy1.setHeightForWidth(self.l_constraints_text_2.sizePolicy().hasHeightForWidth())
+        self.l_constraints_text_2.setSizePolicy(sizePolicy1)
+        self.l_constraints_text_2.setFont(font1)
+        self.l_constraints_text_2.setStyleSheet(u"border:1px solid rgb(60,60,60);border-radius:5px;background:rgb(40,40,40)")
+        self.l_constraints_text_2.setAlignment(Qt.AlignmentFlag.AlignJustify|Qt.AlignmentFlag.AlignVCenter)
+        self.l_constraints_text_2.setWordWrap(True)
+        self.l_constraints_text_2.setMargin(6)
+
+        self.vl_constraints.addWidget(self.l_constraints_text_2)
 
         self.l_constraints_details_1 = QLabel(self.tab_constraints)
         self.l_constraints_details_1.setObjectName(u"l_constraints_details_1")
@@ -392,44 +372,41 @@ class Ui_PartsMaximizeWindow(object):
         self.l_constraints_details_1.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
         self.l_constraints_details_1.setMargin(4)
 
-        self.gl_constraints.addWidget(self.l_constraints_details_1, 4, 0, 1, 1)
+        self.vl_constraints.addWidget(self.l_constraints_details_1)
+
+        self.l_constraints_details_2 = QLabel(self.tab_constraints)
+        self.l_constraints_details_2.setObjectName(u"l_constraints_details_2")
+        sizePolicy3.setHeightForWidth(self.l_constraints_details_2.sizePolicy().hasHeightForWidth())
+        self.l_constraints_details_2.setSizePolicy(sizePolicy3)
+        self.l_constraints_details_2.setFont(font3)
+        self.l_constraints_details_2.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
+        self.l_constraints_details_2.setMargin(4)
+
+        self.vl_constraints.addWidget(self.l_constraints_details_2)
+
+        self.l_constraints_details_3 = QLabel(self.tab_constraints)
+        self.l_constraints_details_3.setObjectName(u"l_constraints_details_3")
+        sizePolicy3.setHeightForWidth(self.l_constraints_details_3.sizePolicy().hasHeightForWidth())
+        self.l_constraints_details_3.setSizePolicy(sizePolicy3)
+        self.l_constraints_details_3.setFont(font3)
+        self.l_constraints_details_3.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
+        self.l_constraints_details_3.setMargin(4)
+
+        self.vl_constraints.addWidget(self.l_constraints_details_3)
 
         self.tabw_steps.addTab(self.tab_constraints, "")
         self.tab_lp = QWidget()
         self.tab_lp.setObjectName(u"tab_lp")
-        self.gl_solution = QGridLayout(self.tab_lp)
-        self.gl_solution.setObjectName(u"gl_solution")
-        self.l_lp_constraints_details_3 = QLabel(self.tab_lp)
-        self.l_lp_constraints_details_3.setObjectName(u"l_lp_constraints_details_3")
-        sizePolicy3.setHeightForWidth(self.l_lp_constraints_details_3.sizePolicy().hasHeightForWidth())
-        self.l_lp_constraints_details_3.setSizePolicy(sizePolicy3)
-        self.l_lp_constraints_details_3.setFont(font3)
-        self.l_lp_constraints_details_3.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
-        self.l_lp_constraints_details_3.setMargin(4)
+        self.vl_lp = QVBoxLayout(self.tab_lp)
+        self.vl_lp.setObjectName(u"vl_lp")
+        self.l_lp_title = QLabel(self.tab_lp)
+        self.l_lp_title.setObjectName(u"l_lp_title")
+        sizePolicy.setHeightForWidth(self.l_lp_title.sizePolicy().hasHeightForWidth())
+        self.l_lp_title.setSizePolicy(sizePolicy)
+        self.l_lp_title.setFont(font)
+        self.l_lp_title.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
 
-        self.gl_solution.addWidget(self.l_lp_constraints_details_3, 11, 0, 1, 1)
-
-        self.l_lp_constraints_default_1 = QLabel(self.tab_lp)
-        self.l_lp_constraints_default_1.setObjectName(u"l_lp_constraints_default_1")
-        sizePolicy3.setHeightForWidth(self.l_lp_constraints_default_1.sizePolicy().hasHeightForWidth())
-        self.l_lp_constraints_default_1.setSizePolicy(sizePolicy3)
-        self.l_lp_constraints_default_1.setFont(font3)
-        self.l_lp_constraints_default_1.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
-        self.l_lp_constraints_default_1.setMargin(4)
-
-        self.gl_solution.addWidget(self.l_lp_constraints_default_1, 12, 0, 1, 1)
-
-        self.l_lp_text_2 = QLabel(self.tab_lp)
-        self.l_lp_text_2.setObjectName(u"l_lp_text_2")
-        sizePolicy1.setHeightForWidth(self.l_lp_text_2.sizePolicy().hasHeightForWidth())
-        self.l_lp_text_2.setSizePolicy(sizePolicy1)
-        self.l_lp_text_2.setFont(font1)
-        self.l_lp_text_2.setStyleSheet(u"border:1px solid rgb(60,60,60);border-radius:5px;background:rgb(40,40,40)")
-        self.l_lp_text_2.setAlignment(Qt.AlignmentFlag.AlignJustify|Qt.AlignmentFlag.AlignVCenter)
-        self.l_lp_text_2.setWordWrap(True)
-        self.l_lp_text_2.setMargin(6)
-
-        self.gl_solution.addWidget(self.l_lp_text_2, 5, 0, 1, 1)
+        self.vl_lp.addWidget(self.l_lp_title)
 
         self.l_lp_text_1 = QLabel(self.tab_lp)
         self.l_lp_text_1.setObjectName(u"l_lp_text_1")
@@ -441,88 +418,17 @@ class Ui_PartsMaximizeWindow(object):
         self.l_lp_text_1.setWordWrap(True)
         self.l_lp_text_1.setMargin(6)
 
-        self.gl_solution.addWidget(self.l_lp_text_1, 1, 0, 1, 1)
-
-        self.l_lp_details_set = QLabel(self.tab_lp)
-        self.l_lp_details_set.setObjectName(u"l_lp_details_set")
-        sizePolicy3.setHeightForWidth(self.l_lp_details_set.sizePolicy().hasHeightForWidth())
-        self.l_lp_details_set.setSizePolicy(sizePolicy3)
-        self.l_lp_details_set.setFont(font3)
-        self.l_lp_details_set.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
-        self.l_lp_details_set.setMargin(4)
-
-        self.gl_solution.addWidget(self.l_lp_details_set, 4, 0, 1, 1)
-
-        self.l_lp_constraints_details_1 = QLabel(self.tab_lp)
-        self.l_lp_constraints_details_1.setObjectName(u"l_lp_constraints_details_1")
-        sizePolicy3.setHeightForWidth(self.l_lp_constraints_details_1.sizePolicy().hasHeightForWidth())
-        self.l_lp_constraints_details_1.setSizePolicy(sizePolicy3)
-        self.l_lp_constraints_details_1.setFont(font3)
-        self.l_lp_constraints_details_1.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
-        self.l_lp_constraints_details_1.setMargin(4)
-
-        self.gl_solution.addWidget(self.l_lp_constraints_details_1, 9, 0, 1, 1)
+        self.vl_lp.addWidget(self.l_lp_text_1)
 
         self.l_lp_sense = QLabel(self.tab_lp)
         self.l_lp_sense.setObjectName(u"l_lp_sense")
-        sizePolicy2.setHeightForWidth(self.l_lp_sense.sizePolicy().hasHeightForWidth())
-        self.l_lp_sense.setSizePolicy(sizePolicy2)
+        sizePolicy.setHeightForWidth(self.l_lp_sense.sizePolicy().hasHeightForWidth())
+        self.l_lp_sense.setSizePolicy(sizePolicy)
         self.l_lp_sense.setFont(font3)
         self.l_lp_sense.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
         self.l_lp_sense.setMargin(4)
 
-        self.gl_solution.addWidget(self.l_lp_sense, 2, 0, 1, 1)
-
-        self.l_lp_constraints_details_2 = QLabel(self.tab_lp)
-        self.l_lp_constraints_details_2.setObjectName(u"l_lp_constraints_details_2")
-        sizePolicy3.setHeightForWidth(self.l_lp_constraints_details_2.sizePolicy().hasHeightForWidth())
-        self.l_lp_constraints_details_2.setSizePolicy(sizePolicy3)
-        self.l_lp_constraints_details_2.setFont(font3)
-        self.l_lp_constraints_details_2.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
-        self.l_lp_constraints_details_2.setMargin(4)
-
-        self.gl_solution.addWidget(self.l_lp_constraints_details_2, 10, 0, 1, 1)
-
-        self.l_lp_text_3 = QLabel(self.tab_lp)
-        self.l_lp_text_3.setObjectName(u"l_lp_text_3")
-        sizePolicy1.setHeightForWidth(self.l_lp_text_3.sizePolicy().hasHeightForWidth())
-        self.l_lp_text_3.setSizePolicy(sizePolicy1)
-        self.l_lp_text_3.setFont(font1)
-        self.l_lp_text_3.setStyleSheet(u"border:1px solid rgb(60,60,60);border-radius:5px;background:rgb(40,40,40)")
-        self.l_lp_text_3.setAlignment(Qt.AlignmentFlag.AlignJustify|Qt.AlignmentFlag.AlignVCenter)
-        self.l_lp_text_3.setWordWrap(True)
-        self.l_lp_text_3.setMargin(6)
-
-        self.gl_solution.addWidget(self.l_lp_text_3, 7, 0, 1, 1)
-
-        self.l_lp_obj_func = QLabel(self.tab_lp)
-        self.l_lp_obj_func.setObjectName(u"l_lp_obj_func")
-        sizePolicy3.setHeightForWidth(self.l_lp_obj_func.sizePolicy().hasHeightForWidth())
-        self.l_lp_obj_func.setSizePolicy(sizePolicy3)
-        self.l_lp_obj_func.setFont(font3)
-        self.l_lp_obj_func.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
-        self.l_lp_obj_func.setMargin(4)
-
-        self.gl_solution.addWidget(self.l_lp_obj_func, 6, 0, 1, 1)
-
-        self.l_lp_constraints_default_2 = QLabel(self.tab_lp)
-        self.l_lp_constraints_default_2.setObjectName(u"l_lp_constraints_default_2")
-        sizePolicy3.setHeightForWidth(self.l_lp_constraints_default_2.sizePolicy().hasHeightForWidth())
-        self.l_lp_constraints_default_2.setSizePolicy(sizePolicy3)
-        self.l_lp_constraints_default_2.setFont(font3)
-        self.l_lp_constraints_default_2.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
-        self.l_lp_constraints_default_2.setMargin(4)
-
-        self.gl_solution.addWidget(self.l_lp_constraints_default_2, 13, 0, 1, 1)
-
-        self.l_lp_title = QLabel(self.tab_lp)
-        self.l_lp_title.setObjectName(u"l_lp_title")
-        sizePolicy2.setHeightForWidth(self.l_lp_title.sizePolicy().hasHeightForWidth())
-        self.l_lp_title.setSizePolicy(sizePolicy2)
-        self.l_lp_title.setFont(font2)
-        self.l_lp_title.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
-
-        self.gl_solution.addWidget(self.l_lp_title, 0, 0, 1, 1)
+        self.vl_lp.addWidget(self.l_lp_sense)
 
         self.l_lp_text_4 = QLabel(self.tab_lp)
         self.l_lp_text_4.setObjectName(u"l_lp_text_4")
@@ -534,26 +440,120 @@ class Ui_PartsMaximizeWindow(object):
         self.l_lp_text_4.setWordWrap(True)
         self.l_lp_text_4.setMargin(6)
 
-        self.gl_solution.addWidget(self.l_lp_text_4, 3, 0, 1, 1)
+        self.vl_lp.addWidget(self.l_lp_text_4)
+
+        self.l_lp_details_set = QLabel(self.tab_lp)
+        self.l_lp_details_set.setObjectName(u"l_lp_details_set")
+        sizePolicy3.setHeightForWidth(self.l_lp_details_set.sizePolicy().hasHeightForWidth())
+        self.l_lp_details_set.setSizePolicy(sizePolicy3)
+        self.l_lp_details_set.setFont(font3)
+        self.l_lp_details_set.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
+        self.l_lp_details_set.setMargin(4)
+
+        self.vl_lp.addWidget(self.l_lp_details_set)
+
+        self.l_lp_text_2 = QLabel(self.tab_lp)
+        self.l_lp_text_2.setObjectName(u"l_lp_text_2")
+        sizePolicy1.setHeightForWidth(self.l_lp_text_2.sizePolicy().hasHeightForWidth())
+        self.l_lp_text_2.setSizePolicy(sizePolicy1)
+        self.l_lp_text_2.setFont(font1)
+        self.l_lp_text_2.setStyleSheet(u"border:1px solid rgb(60,60,60);border-radius:5px;background:rgb(40,40,40)")
+        self.l_lp_text_2.setAlignment(Qt.AlignmentFlag.AlignJustify|Qt.AlignmentFlag.AlignVCenter)
+        self.l_lp_text_2.setWordWrap(True)
+        self.l_lp_text_2.setMargin(6)
+
+        self.vl_lp.addWidget(self.l_lp_text_2)
+
+        self.l_lp_obj_func = QLabel(self.tab_lp)
+        self.l_lp_obj_func.setObjectName(u"l_lp_obj_func")
+        sizePolicy3.setHeightForWidth(self.l_lp_obj_func.sizePolicy().hasHeightForWidth())
+        self.l_lp_obj_func.setSizePolicy(sizePolicy3)
+        self.l_lp_obj_func.setFont(font3)
+        self.l_lp_obj_func.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
+        self.l_lp_obj_func.setMargin(4)
+
+        self.vl_lp.addWidget(self.l_lp_obj_func)
+
+        self.l_lp_text_3 = QLabel(self.tab_lp)
+        self.l_lp_text_3.setObjectName(u"l_lp_text_3")
+        sizePolicy1.setHeightForWidth(self.l_lp_text_3.sizePolicy().hasHeightForWidth())
+        self.l_lp_text_3.setSizePolicy(sizePolicy1)
+        self.l_lp_text_3.setFont(font1)
+        self.l_lp_text_3.setStyleSheet(u"border:1px solid rgb(60,60,60);border-radius:5px;background:rgb(40,40,40)")
+        self.l_lp_text_3.setAlignment(Qt.AlignmentFlag.AlignJustify|Qt.AlignmentFlag.AlignVCenter)
+        self.l_lp_text_3.setWordWrap(True)
+        self.l_lp_text_3.setMargin(6)
+
+        self.vl_lp.addWidget(self.l_lp_text_3)
+
+        self.l_lp_constraints_details_1 = QLabel(self.tab_lp)
+        self.l_lp_constraints_details_1.setObjectName(u"l_lp_constraints_details_1")
+        sizePolicy3.setHeightForWidth(self.l_lp_constraints_details_1.sizePolicy().hasHeightForWidth())
+        self.l_lp_constraints_details_1.setSizePolicy(sizePolicy3)
+        self.l_lp_constraints_details_1.setFont(font3)
+        self.l_lp_constraints_details_1.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
+        self.l_lp_constraints_details_1.setMargin(4)
+
+        self.vl_lp.addWidget(self.l_lp_constraints_details_1)
+
+        self.l_lp_constraints_details_2 = QLabel(self.tab_lp)
+        self.l_lp_constraints_details_2.setObjectName(u"l_lp_constraints_details_2")
+        sizePolicy3.setHeightForWidth(self.l_lp_constraints_details_2.sizePolicy().hasHeightForWidth())
+        self.l_lp_constraints_details_2.setSizePolicy(sizePolicy3)
+        self.l_lp_constraints_details_2.setFont(font3)
+        self.l_lp_constraints_details_2.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
+        self.l_lp_constraints_details_2.setMargin(4)
+
+        self.vl_lp.addWidget(self.l_lp_constraints_details_2)
+
+        self.l_lp_constraints_details_3 = QLabel(self.tab_lp)
+        self.l_lp_constraints_details_3.setObjectName(u"l_lp_constraints_details_3")
+        sizePolicy3.setHeightForWidth(self.l_lp_constraints_details_3.sizePolicy().hasHeightForWidth())
+        self.l_lp_constraints_details_3.setSizePolicy(sizePolicy3)
+        self.l_lp_constraints_details_3.setFont(font3)
+        self.l_lp_constraints_details_3.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
+        self.l_lp_constraints_details_3.setMargin(4)
+
+        self.vl_lp.addWidget(self.l_lp_constraints_details_3)
+
+        self.l_lp_constraints_default_1 = QLabel(self.tab_lp)
+        self.l_lp_constraints_default_1.setObjectName(u"l_lp_constraints_default_1")
+        sizePolicy3.setHeightForWidth(self.l_lp_constraints_default_1.sizePolicy().hasHeightForWidth())
+        self.l_lp_constraints_default_1.setSizePolicy(sizePolicy3)
+        self.l_lp_constraints_default_1.setFont(font3)
+        self.l_lp_constraints_default_1.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
+        self.l_lp_constraints_default_1.setMargin(4)
+
+        self.vl_lp.addWidget(self.l_lp_constraints_default_1)
+
+        self.l_lp_constraints_default_2 = QLabel(self.tab_lp)
+        self.l_lp_constraints_default_2.setObjectName(u"l_lp_constraints_default_2")
+        sizePolicy3.setHeightForWidth(self.l_lp_constraints_default_2.sizePolicy().hasHeightForWidth())
+        self.l_lp_constraints_default_2.setSizePolicy(sizePolicy3)
+        self.l_lp_constraints_default_2.setFont(font3)
+        self.l_lp_constraints_default_2.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
+        self.l_lp_constraints_default_2.setMargin(4)
+
+        self.vl_lp.addWidget(self.l_lp_constraints_default_2)
 
         self.pb_lp_solve = QPushButton(self.tab_lp)
         self.pb_lp_solve.setObjectName(u"pb_lp_solve")
 
-        self.gl_solution.addWidget(self.pb_lp_solve, 14, 0, 1, 1)
+        self.vl_lp.addWidget(self.pb_lp_solve)
 
         self.tabw_steps.addTab(self.tab_lp, "")
         self.tab_lp_additional = QWidget()
         self.tab_lp_additional.setObjectName(u"tab_lp_additional")
-        self.verticalLayout = QVBoxLayout(self.tab_lp_additional)
-        self.verticalLayout.setObjectName(u"verticalLayout")
+        self.vl_lpa = QVBoxLayout(self.tab_lp_additional)
+        self.vl_lpa.setObjectName(u"vl_lpa")
         self.l_lpa_title = QLabel(self.tab_lp_additional)
         self.l_lpa_title.setObjectName(u"l_lpa_title")
-        sizePolicy2.setHeightForWidth(self.l_lpa_title.sizePolicy().hasHeightForWidth())
-        self.l_lpa_title.setSizePolicy(sizePolicy2)
-        self.l_lpa_title.setFont(font2)
+        sizePolicy.setHeightForWidth(self.l_lpa_title.sizePolicy().hasHeightForWidth())
+        self.l_lpa_title.setSizePolicy(sizePolicy)
+        self.l_lpa_title.setFont(font)
         self.l_lpa_title.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
 
-        self.verticalLayout.addWidget(self.l_lpa_title)
+        self.vl_lpa.addWidget(self.l_lpa_title)
 
         self.l_lpa_text_1 = QLabel(self.tab_lp_additional)
         self.l_lpa_text_1.setObjectName(u"l_lpa_text_1")
@@ -565,17 +565,17 @@ class Ui_PartsMaximizeWindow(object):
         self.l_lpa_text_1.setWordWrap(True)
         self.l_lpa_text_1.setMargin(6)
 
-        self.verticalLayout.addWidget(self.l_lpa_text_1)
+        self.vl_lpa.addWidget(self.l_lpa_text_1)
 
         self.l_lpa_sense = QLabel(self.tab_lp_additional)
         self.l_lpa_sense.setObjectName(u"l_lpa_sense")
-        sizePolicy2.setHeightForWidth(self.l_lpa_sense.sizePolicy().hasHeightForWidth())
-        self.l_lpa_sense.setSizePolicy(sizePolicy2)
+        sizePolicy.setHeightForWidth(self.l_lpa_sense.sizePolicy().hasHeightForWidth())
+        self.l_lpa_sense.setSizePolicy(sizePolicy)
         self.l_lpa_sense.setFont(font3)
         self.l_lpa_sense.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
         self.l_lpa_sense.setMargin(4)
 
-        self.verticalLayout.addWidget(self.l_lpa_sense)
+        self.vl_lpa.addWidget(self.l_lpa_sense)
 
         self.l_lpa_text_2 = QLabel(self.tab_lp_additional)
         self.l_lpa_text_2.setObjectName(u"l_lpa_text_2")
@@ -587,7 +587,7 @@ class Ui_PartsMaximizeWindow(object):
         self.l_lpa_text_2.setWordWrap(True)
         self.l_lpa_text_2.setMargin(6)
 
-        self.verticalLayout.addWidget(self.l_lpa_text_2)
+        self.vl_lpa.addWidget(self.l_lpa_text_2)
 
         self.l_lpa_details_set = QLabel(self.tab_lp_additional)
         self.l_lpa_details_set.setObjectName(u"l_lpa_details_set")
@@ -597,7 +597,7 @@ class Ui_PartsMaximizeWindow(object):
         self.l_lpa_details_set.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
         self.l_lpa_details_set.setMargin(4)
 
-        self.verticalLayout.addWidget(self.l_lpa_details_set)
+        self.vl_lpa.addWidget(self.l_lpa_details_set)
 
         self.l_lpa_text_3 = QLabel(self.tab_lp_additional)
         self.l_lpa_text_3.setObjectName(u"l_lpa_text_3")
@@ -609,7 +609,7 @@ class Ui_PartsMaximizeWindow(object):
         self.l_lpa_text_3.setWordWrap(True)
         self.l_lpa_text_3.setMargin(6)
 
-        self.verticalLayout.addWidget(self.l_lpa_text_3)
+        self.vl_lpa.addWidget(self.l_lpa_text_3)
 
         self.l_lpa_obj_func = QLabel(self.tab_lp_additional)
         self.l_lpa_obj_func.setObjectName(u"l_lpa_obj_func")
@@ -619,7 +619,7 @@ class Ui_PartsMaximizeWindow(object):
         self.l_lpa_obj_func.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
         self.l_lpa_obj_func.setMargin(4)
 
-        self.verticalLayout.addWidget(self.l_lpa_obj_func)
+        self.vl_lpa.addWidget(self.l_lpa_obj_func)
 
         self.l_lpa_text_4 = QLabel(self.tab_lp_additional)
         self.l_lpa_text_4.setObjectName(u"l_lpa_text_4")
@@ -631,7 +631,7 @@ class Ui_PartsMaximizeWindow(object):
         self.l_lpa_text_4.setWordWrap(True)
         self.l_lpa_text_4.setMargin(6)
 
-        self.verticalLayout.addWidget(self.l_lpa_text_4)
+        self.vl_lpa.addWidget(self.l_lpa_text_4)
 
         self.l_lpa_constraints_details_1 = QLabel(self.tab_lp_additional)
         self.l_lpa_constraints_details_1.setObjectName(u"l_lpa_constraints_details_1")
@@ -641,7 +641,7 @@ class Ui_PartsMaximizeWindow(object):
         self.l_lpa_constraints_details_1.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
         self.l_lpa_constraints_details_1.setMargin(4)
 
-        self.verticalLayout.addWidget(self.l_lpa_constraints_details_1)
+        self.vl_lpa.addWidget(self.l_lpa_constraints_details_1)
 
         self.l_lpa_constraints_details_2 = QLabel(self.tab_lp_additional)
         self.l_lpa_constraints_details_2.setObjectName(u"l_lpa_constraints_details_2")
@@ -651,7 +651,7 @@ class Ui_PartsMaximizeWindow(object):
         self.l_lpa_constraints_details_2.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
         self.l_lpa_constraints_details_2.setMargin(4)
 
-        self.verticalLayout.addWidget(self.l_lpa_constraints_details_2)
+        self.vl_lpa.addWidget(self.l_lpa_constraints_details_2)
 
         self.l_lpa_constraints_details_3 = QLabel(self.tab_lp_additional)
         self.l_lpa_constraints_details_3.setObjectName(u"l_lpa_constraints_details_3")
@@ -661,32 +661,32 @@ class Ui_PartsMaximizeWindow(object):
         self.l_lpa_constraints_details_3.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
         self.l_lpa_constraints_details_3.setMargin(4)
 
-        self.verticalLayout.addWidget(self.l_lpa_constraints_details_3)
+        self.vl_lpa.addWidget(self.l_lpa_constraints_details_3)
 
-        self.l_lpa_constraints_default_1 = QLabel(self.tab_lp_additional)
-        self.l_lpa_constraints_default_1.setObjectName(u"l_lpa_constraints_default_1")
-        sizePolicy3.setHeightForWidth(self.l_lpa_constraints_default_1.sizePolicy().hasHeightForWidth())
-        self.l_lpa_constraints_default_1.setSizePolicy(sizePolicy3)
-        self.l_lpa_constraints_default_1.setFont(font3)
-        self.l_lpa_constraints_default_1.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
-        self.l_lpa_constraints_default_1.setMargin(4)
+        self.l_lp_constraints_default_4 = QLabel(self.tab_lp_additional)
+        self.l_lp_constraints_default_4.setObjectName(u"l_lp_constraints_default_4")
+        sizePolicy3.setHeightForWidth(self.l_lp_constraints_default_4.sizePolicy().hasHeightForWidth())
+        self.l_lp_constraints_default_4.setSizePolicy(sizePolicy3)
+        self.l_lp_constraints_default_4.setFont(font3)
+        self.l_lp_constraints_default_4.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
+        self.l_lp_constraints_default_4.setMargin(4)
 
-        self.verticalLayout.addWidget(self.l_lpa_constraints_default_1)
+        self.vl_lpa.addWidget(self.l_lp_constraints_default_4)
 
-        self.l_lpa_constraints_default_2 = QLabel(self.tab_lp_additional)
-        self.l_lpa_constraints_default_2.setObjectName(u"l_lpa_constraints_default_2")
-        sizePolicy3.setHeightForWidth(self.l_lpa_constraints_default_2.sizePolicy().hasHeightForWidth())
-        self.l_lpa_constraints_default_2.setSizePolicy(sizePolicy3)
-        self.l_lpa_constraints_default_2.setFont(font3)
-        self.l_lpa_constraints_default_2.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
-        self.l_lpa_constraints_default_2.setMargin(4)
+        self.l_lp_constraints_default_3 = QLabel(self.tab_lp_additional)
+        self.l_lp_constraints_default_3.setObjectName(u"l_lp_constraints_default_3")
+        sizePolicy3.setHeightForWidth(self.l_lp_constraints_default_3.sizePolicy().hasHeightForWidth())
+        self.l_lp_constraints_default_3.setSizePolicy(sizePolicy3)
+        self.l_lp_constraints_default_3.setFont(font3)
+        self.l_lp_constraints_default_3.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
+        self.l_lp_constraints_default_3.setMargin(4)
 
-        self.verticalLayout.addWidget(self.l_lpa_constraints_default_2)
+        self.vl_lpa.addWidget(self.l_lp_constraints_default_3)
 
-        self.pb_lpa_solve = QPushButton(self.tab_lp_additional)
-        self.pb_lpa_solve.setObjectName(u"pb_lpa_solve")
+        self.pb_lp_solve_2 = QPushButton(self.tab_lp_additional)
+        self.pb_lp_solve_2.setObjectName(u"pb_lp_solve_2")
 
-        self.verticalLayout.addWidget(self.pb_lpa_solve)
+        self.vl_lpa.addWidget(self.pb_lp_solve_2)
 
         self.tabw_steps.addTab(self.tab_lp_additional, "")
 
@@ -703,6 +703,8 @@ class Ui_PartsMaximizeWindow(object):
 
     def retranslateUi(self, PartsMaximizeWindow):
         PartsMaximizeWindow.setWindowTitle(QCoreApplication.translate("PartsMaximizeWindow", u"\u041c\u0430\u043a\u0441\u0438\u043c\u0438\u0437\u0430\u0446\u0438\u044f \u0447\u0438\u0441\u043b\u0430 \u043a\u043e\u043c\u043f\u043b\u0435\u043a\u0442\u043e\u0432 \u0434\u0435\u0442\u0430\u043b\u0435\u0439", None))
+        self.l_task_title.setText(QCoreApplication.translate("PartsMaximizeWindow", u"\u0417\u0430\u0434\u0430\u043d\u0438\u0435 - \u0412\u0430\u0440\u0438\u0430\u043d\u0442 6", None))
+        self.l_task_text_1.setText(QCoreApplication.translate("PartsMaximizeWindow", u"\u0418\u0437 500 \u043b\u0438\u0441\u0442\u043e\u0432 \u0436\u0435\u043b\u0435\u0437\u0430 \u043f\u0435\u0440\u0432\u043e\u0433\u043e \u0440\u0430\u0437\u043c\u0435\u0440\u0430 \u0438 300 \u043b\u0438\u0441\u0442\u043e\u0432 \u0436\u0435\u043b\u0435\u0437\u0430 \u0432\u0442\u043e\u0440\u043e\u0433\u043e \u0440\u0430\u0437\u043c\u0435\u0440\u0430 \u043d\u0435\u0441\u043a\u043e\u043b\u044c\u043a\u0438\u043c\u0438 \u0441\u043f\u043e\u0441\u043e\u0431\u0430\u043c\u0438 \u0432\u044b\u043a\u0440\u0430\u0438\u0432\u0430\u044e\u0442\u0441\u044f \u0442\u0440\u0438 \u0432\u0438\u0434\u0430 \u0434\u0435\u0442\u0430\u043b\u0435\u0439. \u0414\u0430\u043d\u044b \u043d\u043e\u0440\u043c\u044b \u043e\u0434\u043d\u043e\u0432\u0440\u0435\u043c\u0435\u043d\u043d\u043e\u0433\u043e \u0432\u044b\u0445\u043e\u0434\u0430 \u0434\u0435\u0442\u0430\u043b\u0435\u0439 \u043f\u043e \u0440\u0430\u0437\u043b\u0438\u0447\u043d\u044b\u043c \u0441\u043f\u043e\u0441\u043e\u0431\u0430\u043c.", None))
 
         __sortingEnabled = self.tw_task_args.isSortingEnabled()
         self.tw_task_args.setSortingEnabled(False)
@@ -764,34 +766,32 @@ class Ui_PartsMaximizeWindow(object):
         ___qtablewidgetitem27.setText(QCoreApplication.translate("PartsMaximizeWindow", u"0", None));
         self.tw_task_args.setSortingEnabled(__sortingEnabled)
 
-        self.l_task_text_1.setText(QCoreApplication.translate("PartsMaximizeWindow", u"\u0418\u0437 500 \u043b\u0438\u0441\u0442\u043e\u0432 \u0436\u0435\u043b\u0435\u0437\u0430 \u043f\u0435\u0440\u0432\u043e\u0433\u043e \u0440\u0430\u0437\u043c\u0435\u0440\u0430 \u0438 300 \u043b\u0438\u0441\u0442\u043e\u0432 \u0436\u0435\u043b\u0435\u0437\u0430 \u0432\u0442\u043e\u0440\u043e\u0433\u043e \u0440\u0430\u0437\u043c\u0435\u0440\u0430 \u043d\u0435\u0441\u043a\u043e\u043b\u044c\u043a\u0438\u043c\u0438 \u0441\u043f\u043e\u0441\u043e\u0431\u0430\u043c\u0438 \u0432\u044b\u043a\u0440\u0430\u0438\u0432\u0430\u044e\u0442\u0441\u044f \u0442\u0440\u0438 \u0432\u0438\u0434\u0430 \u0434\u0435\u0442\u0430\u043b\u0435\u0439. \u0414\u0430\u043d\u044b \u043d\u043e\u0440\u043c\u044b \u043e\u0434\u043d\u043e\u0432\u0440\u0435\u043c\u0435\u043d\u043d\u043e\u0433\u043e \u0432\u044b\u0445\u043e\u0434\u0430 \u0434\u0435\u0442\u0430\u043b\u0435\u0439 \u043f\u043e \u0440\u0430\u0437\u043b\u0438\u0447\u043d\u044b\u043c \u0441\u043f\u043e\u0441\u043e\u0431\u0430\u043c.", None))
         self.l_task_text_2.setText(QCoreApplication.translate("PartsMaximizeWindow", u"\u041e\u043f\u0440\u0435\u0434\u0435\u043b\u0438\u0442\u044c \u043c\u0430\u043a\u0441\u0438\u043c\u0430\u043b\u044c\u043d\u043e\u0435 \u0447\u0438\u0441\u043b\u043e \u043a\u043e\u043c\u043f\u043b\u0435\u043a\u0442\u043e\u0432 \u0434\u0435\u0442\u0430\u043b\u0435\u0439, \u0435\u0441\u043b\u0438 \u043a\u043e\u043c\u043f\u043b\u0435\u043a\u0442 \u0441\u043e\u0441\u0442\u043e\u0438\u0442 \u0438\u0437 \u0447\u0435\u0442\u044b\u0440\u0435\u0445 \u0434\u0435\u0442\u0430\u043b\u0435\u0439 \u0432\u0438\u0434\u0430 1, \u0442\u0440\u0435\u0445 \u0434\u0435\u0442\u0430\u043b\u0435\u0439 \u0432\u0438\u0434\u0430 2 \u0438 \u0434\u0432\u0443\u0445 \u0434\u0435\u0442\u0430\u043b\u0435\u0439 \u0432\u0438\u0434\u0430 3. \u041e\u043f\u0440\u0435\u0434\u0435\u043b\u0438\u0442\u044c, \u0441\u043a\u043e\u043b\u044c\u043a\u043e \u043b\u0438\u0441\u0442\u043e\u0432 \u0436\u0435\u043b\u0435\u0437\u0430 \u0440\u0430\u0437\u043c\u0435\u0440\u0430 2 \u0440\u0430\u0441\u043a\u0440\u0430\u0438\u0432\u0430\u0435\u0442\u0441\u044f \u043f\u043e"
                         " \u043f\u0435\u0440\u0432\u043e\u043c\u0443 \u0441\u043f\u043e\u0441\u043e\u0431\u0443, \u043a\u0430\u043a\u043e\u0432\u043e \u043c\u0430\u043a\u0441\u0438\u043c\u0430\u043b\u044c\u043d\u043e\u0435 \u043a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u043a\u043e\u043c\u043f\u043b\u0435\u043a\u0442\u043e\u0432, \u043d\u0430 \u0441\u043a\u043e\u043b\u044c\u043a\u043e \u0438\u0437\u043c\u0435\u043d\u0438\u0442\u0441\u044f \u043c\u0430\u043a\u0441\u0438\u043c\u0430\u043b\u044c\u043d\u043e\u0435 \u043a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u043a\u043e\u043c\u043f\u043b\u0435\u043a\u0442\u043e\u0432, \u0435\u0441\u043b\u0438 \u0432 \u043a\u043e\u043c\u043f\u043b\u0435\u043a\u0442 \u0440\u0435\u0448\u0435\u043d\u043e \u0434\u043e\u0431\u0430\u0432\u0438\u0442\u044c \u0442\u0440\u0435\u0442\u044c\u044e \u0434\u0435\u0442\u0430\u043b\u044c \u0432\u0438\u0434\u0430 3?", None))
-        self.l_task_title.setText(QCoreApplication.translate("PartsMaximizeWindow", u"\u0417\u0430\u0434\u0430\u043d\u0438\u0435 - \u0412\u0430\u0440\u0438\u0430\u043d\u0442 6", None))
         self.tabw_steps.setTabText(self.tabw_steps.indexOf(self.tab_task), QCoreApplication.translate("PartsMaximizeWindow", u"\u0417\u0430\u0434\u0430\u043d\u0438\u0435", None))
+        self.l_obj_func_title.setText(QCoreApplication.translate("PartsMaximizeWindow", u"\u0426\u0435\u043b\u0435\u0432\u0430\u044f \u0444\u0443\u043d\u043a\u0446\u0438\u044f", None))
         self.l_obj_func_text_1.setText(QCoreApplication.translate("PartsMaximizeWindow", u"<html><head/><body><p>\u0414\u043b\u044f \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u0438\u044f \u0446\u0435\u043b\u0435\u0432\u043e\u0439 \u0444\u0443\u043d\u043a\u0446\u0438\u0438 \u0441\u043b\u0435\u0434\u0443\u0435\u0442 \u0441\u043d\u0430\u0447\u0430\u043b\u0430 \u043e\u0442\u0432\u0435\u0442\u0438\u0442\u044c \u043d\u0430 \u0432\u043e\u043f\u0440\u043e\u0441\u044b:</p><p>* \u0427\u0442\u043e \u043c\u044b \u043e\u043f\u0442\u0438\u043c\u0438\u0437\u0438\u0440\u0443\u0435\u043c? <br/>** \u041c\u0430\u043a\u0441\u0438\u043c\u0438\u0437\u0438\u0440\u0443\u0435\u043c \u043a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u043a\u043e\u043c\u043f\u043b\u0435\u043a\u0442\u043e\u0432 \u0434\u0435\u0442\u0430\u043b\u0435\u0439<br/>* \u0427\u0442\u043e \u043c\u044b \u0438\u0449\u0435\u043c? <br/>** \u0421\u043a\u043e\u043b\u044c\u043a\u043e \u0440\u0430\u0437 \u0438 \u043a\u0430\u043a\u0438\u043c\u0438 \u0441\u043f\u043e\u0441\u043e\u0431\u043e\u043c \u043d\u0430\u043c \u043d\u0430\u0434\u043e \u0440"
                         "\u0430\u0441\u043a\u0440\u043e\u0438\u0442\u044c \u043b\u0438\u0441\u0442\u044b \u043c\u0435\u0442\u0430\u043b\u043b\u0430</p><p>\u0412\u0441\u0435\u0433\u043e \u0438\u043c\u0435\u0435\u0442\u0441\u044f 5 \u0441\u043f\u043e\u0441\u043e\u0431\u043e\u0432 \u0440\u0430\u0441\u043a\u0440\u043e\u0438\u0442\u044c \u043b\u0438\u0441\u0442 \u043c\u0435\u0442\u0430\u043b\u043b\u0430. \u041a\u043e\u043c\u043f\u043b\u0435\u043a\u0442 \u0441\u043e\u0441\u0442\u043e\u0438\u0442 \u0438\u0437 4 \u0434\u0435\u0442\u0430\u043b\u0435\u0439 1-\u0433\u043e \u0432\u0438\u0434\u0430, 3 \u0434\u0435\u0442\u0430\u043b\u0435\u0439 2-\u0433\u043e \u0432\u0438\u0434\u0430 \u0438 2 \u0434\u0435\u0442\u0430\u043b\u0435\u0439 3-\u0433\u043e \u0432\u0438\u0434\u0430. \u0421\u043b\u0435\u0434\u043e\u0432\u0430\u0442\u0435\u043b\u044c\u043d\u043e, \u043a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u043a\u043e\u043c\u043f\u043b\u0435\u043a\u0442\u043e\u0432 \u0431\u0443\u0434\u0435\u0442 \u0432\u043e \u0441\u0442\u043e\u043b\u044c\u043a"
                         "\u043e \u0440\u0430\u0437 \u043c\u0435\u043d\u044c\u0448\u0435 \u043e\u0442\u043d\u043e\u0441\u0438\u0442\u0435\u043b\u044c\u043d\u043e \u043d\u0435\u043a\u043e\u0442\u043e\u0440\u043e\u0433\u043e \u0432\u0438\u0434\u0430 \u0434\u0435\u0442\u0430\u043b\u0435\u0439, \u0441\u043a\u043e\u043b\u044c\u043a\u043e \u0434\u0435\u0442\u0430\u043b\u0435\u0439 \u044d\u0442\u043e \u0432\u0438\u0434\u0430 \u043d\u0435\u043e\u0431\u0445\u043e\u0434\u0438\u043c\u043e \u0434\u043b\u044f \u0441\u0431\u043e\u0440\u0430 1 \u043a\u043e\u043c\u043f\u043b\u0435\u043a\u0442\u0430. \u0422\u0430\u043a\u0438\u043c \u043e\u0431\u0440\u0430\u0437\u043e\u043c, \u043c\u044b \u0438\u043c\u0435\u0435\u043c 3 \u0442\u043e\u0436\u0434\u0435\u0441\u0442\u0432\u0435\u043d\u043d\u044b\u0445 \u0441\u043f\u043e\u0441\u043e\u0431\u0430 \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0438\u0442\u044c \u0446\u0435\u043b\u0435\u0432\u0443\u044e \u0444\u0443\u043d\u043a\u0446\u0438\u044e:</p></body></html>", None))
         self.l_obj_func_text_2.setText(QCoreApplication.translate("PartsMaximizeWindow", u"<html><head/><body><p>\u0413\u0434\u0435 x<span style=\" vertical-align:sub;\">1</span>, x<span style=\" vertical-align:sub;\">2</span>, x<span style=\" vertical-align:sub;\">3</span>, x<span style=\" vertical-align:sub;\">4</span> \u0438 x<span style=\" vertical-align:sub;\">5</span> - \u043f\u0435\u0440\u0435\u043c\u0435\u043d\u043d\u044b\u0435, \u043e\u0442\u0440\u0430\u0436\u0430\u044e\u0449\u0438\u0435 \u0441\u043a\u043e\u043b\u044c\u043a\u043e \u043b\u0438\u0441\u0442\u043e\u0432 \u043c\u0435\u0442\u0430\u043b\u043b\u0430 \u043c\u044b \u0440\u0430\u0441\u043a\u0440\u043e\u0438\u043b\u0438 1-\u044b\u043c, 2-\u044b\u043c, 3-\u0438\u043c, 4-\u044b\u043c \u0438 5-\u044b\u043c \u0441\u043f\u043e\u0441\u043e\u0431\u0430\u043c\u0438 \u0441\u043e\u043e\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0435\u043d\u043d\u043e.</p></body></html>", None))
-        self.l_obj_func_title.setText(QCoreApplication.translate("PartsMaximizeWindow", u"\u0426\u0435\u043b\u0435\u0432\u0430\u044f \u0444\u0443\u043d\u043a\u0446\u0438\u044f", None))
         self.tabw_steps.setTabText(self.tabw_steps.indexOf(self.tab_obj_func), QCoreApplication.translate("PartsMaximizeWindow", u"\u0426\u0435\u043b\u0435\u0432\u0430\u044f \u0444\u0443\u043d\u043a\u0446\u0438\u044f", None))
         self.l_constraints_title.setText(QCoreApplication.translate("PartsMaximizeWindow", u"\u041e\u0433\u0440\u0430\u043d\u0438\u0447\u0435\u043d\u0438\u044f", None))
-        self.l_constraints_text_2.setText(QCoreApplication.translate("PartsMaximizeWindow", u"<html><head/><body><p>\u0422\u0430\u043a\u0436\u0435 \u043d\u0430\u043c \u043d\u0435\u043e\u0431\u0445\u043e\u0434\u0438\u043c\u043e \u0432\u0432\u0435\u0441\u0442\u0438 \u0435\u0449\u0435 \u043d\u0435\u0441\u043a\u043e\u043b\u044c\u043a\u043e \u043e\u0433\u0440\u0430\u043d\u0438\u0447\u0435\u043d\u0438\u0439, \u0443\u043a\u0430\u0437\u044b\u0432\u0430\u044e\u0449\u0438\u0445 \u043a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u0434\u0435\u0442\u0430\u043b\u0435\u0439 \u0432 \u043a\u043e\u043c\u043f\u043b\u0435\u043a\u0442\u0435. \u0414\u0435\u043b\u043e \u0432 \u0442\u043e\u043c, \u0447\u0442\u043e \u043d\u0430\u0448\u0430 \u0446\u0435\u043b\u0435\u0432\u0430\u044f \u0444\u0443\u043d\u043a\u0446\u0438\u044f \u043d\u0435 \u0443\u0447\u0438\u0442\u044b\u0432\u0430\u0435\u0442 \u0442\u043e\u0433\u043e, \u0447\u0442\u043e \u0434\u043b\u044f \u0441\u0431\u043e\u0440\u0430 \u043a\u043e\u043c\u043f\u043b\u0435\u043a\u0442\u0430 \u043d\u0443\u0436\u043d\u043e 3 \u0432\u0438\u0434\u0430 \u0434\u0435\u0442\u0430"
-                        "\u043b\u0435\u0439, \u0430 \u043d\u0435 \u0442\u043e\u043b\u044c\u043a\u043e 1. \u041c\u044b \u043c\u043e\u0436\u0435\u043c \u0438\u0441\u043f\u0440\u0430\u0432\u0438\u0442\u044c \u044d\u0442\u043e, \u0432\u0432\u0435\u0434\u044f \u043e\u0433\u0440\u0430\u043d\u0438\u0447\u0435\u043d\u0438\u044f, \u0443\u043a\u0430\u0437\u044b\u0432\u0430\u044e\u0449\u0438\u0435 \u043d\u0430 \u043a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u0434\u0435\u0442\u0430\u043b\u0435\u0439 \u043e\u0442\u043d\u043e\u0441\u0438\u0442\u0435\u043b\u044c\u043d\u043e \u0434\u0440\u0443\u0433 \u0434\u0440\u0443\u0433\u0430.</p><p>\u0423\u043a\u0430\u0436\u0435\u043c \u044d\u0442\u043e \u043e\u0442\u043d\u043e\u0448\u0435\u043d\u0438\u0435 \u043f\u043e\u043f\u0430\u0440\u043d\u043e \u0434\u043b\u044f \u0432\u0441\u0435\u0445 \u0432\u0438\u0434\u043e\u0432 \u0434\u0435\u0442\u0430\u043b\u0435\u0439:</p></body></html>", None))
         self.l_constraints_text_1.setText(QCoreApplication.translate("PartsMaximizeWindow", u"<html><head/><body><p>\u041b\u0438\u0441\u0442\u044b \u0440\u0430\u0437\u043c\u0435\u0440\u0430 1 \u043f\u0440\u0438\u0433\u043e\u0434\u043d\u044b \u0442\u043e\u043b\u044c\u043a\u043e \u0434\u043b\u044f 1-\u0433\u043e, 2-\u0433\u043e \u0438 3-\u0433\u043e \u0441\u043f\u043e\u0441\u043e\u0431\u043e\u0432 \u0440\u0430\u0441\u043a\u0440\u043e\u0439\u043a\u0438. \u0410\u043d\u0430\u043b\u043e\u0433\u0438\u0447\u043d\u043e \u043b\u0438\u0441\u0442\u044b \u0440\u0430\u0437\u043c\u0435\u0440\u0430 2 - \u0442\u043e\u043b\u044c\u043a\u043e \u0434\u043b\u044f 4-\u0433\u043e \u0438 5-\u0433\u043e \u0441\u043f\u043e\u0441\u043e\u0431\u043e\u0432. \u0423 \u043d\u0430\u0441 \u043b\u0438\u0448\u044c 500 \u043b\u0438\u0441\u0442\u043e\u0432 \u0440\u0430\u0437\u043c\u0435\u0440\u0430 1 \u0438 300 \u043b\u0438\u0441\u0442\u043e\u0432 \u0440\u0430\u0437\u043c\u0435\u0440\u0430 2, \u0441\u043b\u0435\u0434\u043e\u0432\u0430\u0442\u0435\u043b\u044c\u043d\u043e, \u043e\u0433\u0440\u0430\u043d\u0438\u0447\u0435\u043d\u0438\u044f \u043a"
                         "\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u0430 \u043b\u0438\u0441\u0442\u043e\u0432 \u043c\u043e\u0436\u043d\u043e \u0437\u0430\u043f\u0438\u0441\u0430\u0442\u044c \u0441\u043b\u0435\u0434\u0443\u044e\u0449\u0438\u043c \u043e\u0431\u0440\u0430\u0437\u043e\u043c:</p></body></html>", None))
         self.l_constraints_default.setText(QCoreApplication.translate("PartsMaximizeWindow", u"<html><head/><body><p>&nbsp;  x<span style=\" vertical-align:sub;\">1</span> + x<span style=\" vertical-align:sub;\">2</span> + x<span style=\" vertical-align:sub;\">3</span> \u2264 500</p><p>&nbsp;  x<span style=\" vertical-align:sub;\">4</span> + x<span style=\" vertical-align:sub;\">5</span> \u2264 300</p></body></html>", None))
+        self.l_constraints_text_2.setText(QCoreApplication.translate("PartsMaximizeWindow", u"<html><head/><body><p>\u0422\u0430\u043a\u0436\u0435 \u043d\u0430\u043c \u043d\u0435\u043e\u0431\u0445\u043e\u0434\u0438\u043c\u043e \u0432\u0432\u0435\u0441\u0442\u0438 \u0435\u0449\u0435 \u043d\u0435\u0441\u043a\u043e\u043b\u044c\u043a\u043e \u043e\u0433\u0440\u0430\u043d\u0438\u0447\u0435\u043d\u0438\u0439, \u0443\u043a\u0430\u0437\u044b\u0432\u0430\u044e\u0449\u0438\u0445 \u043a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u0434\u0435\u0442\u0430\u043b\u0435\u0439 \u0432 \u043a\u043e\u043c\u043f\u043b\u0435\u043a\u0442\u0435. \u0414\u0435\u043b\u043e \u0432 \u0442\u043e\u043c, \u0447\u0442\u043e \u043d\u0430\u0448\u0430 \u0446\u0435\u043b\u0435\u0432\u0430\u044f \u0444\u0443\u043d\u043a\u0446\u0438\u044f \u043d\u0435 \u0443\u0447\u0438\u0442\u044b\u0432\u0430\u0435\u0442 \u0442\u043e\u0433\u043e, \u0447\u0442\u043e \u0434\u043b\u044f \u0441\u0431\u043e\u0440\u0430 \u043a\u043e\u043c\u043f\u043b\u0435\u043a\u0442\u0430 \u043d\u0443\u0436\u043d\u043e 3 \u0432\u0438\u0434\u0430 \u0434\u0435\u0442\u0430"
+                        "\u043b\u0435\u0439, \u0430 \u043d\u0435 \u0442\u043e\u043b\u044c\u043a\u043e 1. \u041c\u044b \u043c\u043e\u0436\u0435\u043c \u0438\u0441\u043f\u0440\u0430\u0432\u0438\u0442\u044c \u044d\u0442\u043e, \u0432\u0432\u0435\u0434\u044f \u043e\u0433\u0440\u0430\u043d\u0438\u0447\u0435\u043d\u0438\u044f, \u0443\u043a\u0430\u0437\u044b\u0432\u0430\u044e\u0449\u0438\u0435 \u043d\u0430 \u043a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u0434\u0435\u0442\u0430\u043b\u0435\u0439 \u043e\u0442\u043d\u043e\u0441\u0438\u0442\u0435\u043b\u044c\u043d\u043e \u0434\u0440\u0443\u0433 \u0434\u0440\u0443\u0433\u0430.</p><p>\u0423\u043a\u0430\u0436\u0435\u043c \u044d\u0442\u043e \u043e\u0442\u043d\u043e\u0448\u0435\u043d\u0438\u0435 \u043f\u043e\u043f\u0430\u0440\u043d\u043e \u0434\u043b\u044f \u0432\u0441\u0435\u0445 \u0432\u0438\u0434\u043e\u0432 \u0434\u0435\u0442\u0430\u043b\u0435\u0439:</p></body></html>", None))
         self.tabw_steps.setTabText(self.tabw_steps.indexOf(self.tab_constraints), QCoreApplication.translate("PartsMaximizeWindow", u"\u041e\u0433\u0440\u0430\u043d\u0438\u0447\u0435\u043d\u0438\u044f", None))
-        self.l_lp_constraints_default_1.setText(QCoreApplication.translate("PartsMaximizeWindow", u"<html><head/><body><p>\u00a0 x<span style=\" vertical-align:sub;\">1</span> + x<span style=\" vertical-align:sub;\">2</span> + x<span style=\" vertical-align:sub;\">3</span> \u2264 500</p></body></html>", None))
-        self.l_lp_text_2.setText(QCoreApplication.translate("PartsMaximizeWindow", u"\u0426\u0435\u043b\u0435\u0432\u0430\u044f \u0444\u0443\u043d\u043a\u0446\u0438\u044f (\u0438\u0437 3 \u0442\u043e\u0436\u0434\u0435\u0441\u0442\u0432\u0435\u043d\u043d\u044b\u0445 \u0432\u044b\u0431\u0440\u0430\u043d\u0430 \u043f\u0435\u0440\u0432\u0430\u044f):", None))
-        self.l_lp_text_1.setText(QCoreApplication.translate("PartsMaximizeWindow", u"\u041d\u0430\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u0435 \u043e\u043f\u0442\u0438\u043c\u0438\u0437\u0430\u0446\u0438\u0438:", None))
-        self.l_lp_details_set.setText(QCoreApplication.translate("PartsMaximizeWindow", u"<html><head/><body><p>&nbsp; 4 \u0434\u0435\u0442\u0430\u043b\u0438 1-\u0433\u043e \u0432\u0438\u0434\u0430, 3 \u0434\u0435\u0442\u0430\u043b\u0438 2-\u0433\u043e \u0432\u0438\u0434\u0430, 2 \u0434\u0435\u0442\u0430\u043b\u0438 3-\u0433\u043e \u0432\u0438\u0434\u0430</p></body></html>", None))
-        self.l_lp_sense.setText(QCoreApplication.translate("PartsMaximizeWindow", u"<html><head/><body><p>&nbsp; \u041c\u0430\u043a\u0441\u0438\u043c\u0438\u0437\u0438\u0440\u043e\u0432\u0430\u0442\u044c</p></body></html>", None))
-        self.l_lp_text_3.setText(QCoreApplication.translate("PartsMaximizeWindow", u"\u041e\u0433\u0440\u0430\u043d\u0438\u0447\u0435\u043d\u0438\u044f:", None))
-        self.l_lp_obj_func.setText("")
-        self.l_lp_constraints_default_2.setText(QCoreApplication.translate("PartsMaximizeWindow", u"<html><head/><body><p>\u00a0 x<span style=\" vertical-align:sub;\">4</span> + x<span style=\" vertical-align:sub;\">5</span> \u2264 300</p></body></html>", None))
         self.l_lp_title.setText(QCoreApplication.translate("PartsMaximizeWindow", u"\u0420\u0435\u0448\u0438\u043c \u0437\u0430\u0434\u0430\u0447\u0443 \u043b\u0438\u043d\u0435\u0439\u043d\u043e\u0433\u043e \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u044f", None))
+        self.l_lp_text_1.setText(QCoreApplication.translate("PartsMaximizeWindow", u"\u041d\u0430\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u0435 \u043e\u043f\u0442\u0438\u043c\u0438\u0437\u0430\u0446\u0438\u0438:", None))
+        self.l_lp_sense.setText(QCoreApplication.translate("PartsMaximizeWindow", u"<html><head/><body><p>&nbsp; \u041c\u0430\u043a\u0441\u0438\u043c\u0438\u0437\u0438\u0440\u043e\u0432\u0430\u0442\u044c</p></body></html>", None))
         self.l_lp_text_4.setText(QCoreApplication.translate("PartsMaximizeWindow", u"\u0421\u043e\u0441\u0442\u0430\u0432 \u043d\u0430\u0431\u043e\u0440\u0430 (\u0441\u043e\u0433\u043b\u0430\u0441\u043d\u043e \u0443\u0441\u043b\u043e\u0432\u0438\u044f\u043c \u043e\u0441\u043d\u043e\u0432\u043d\u043e\u0439 \u0437\u0430\u0434\u0430\u0447\u0438):", None))
+        self.l_lp_details_set.setText(QCoreApplication.translate("PartsMaximizeWindow", u"<html><head/><body><p>&nbsp; 4 \u0434\u0435\u0442\u0430\u043b\u0438 1-\u0433\u043e \u0432\u0438\u0434\u0430, 3 \u0434\u0435\u0442\u0430\u043b\u0438 2-\u0433\u043e \u0432\u0438\u0434\u0430, 2 \u0434\u0435\u0442\u0430\u043b\u0438 3-\u0433\u043e \u0432\u0438\u0434\u0430</p></body></html>", None))
+        self.l_lp_text_2.setText(QCoreApplication.translate("PartsMaximizeWindow", u"\u0426\u0435\u043b\u0435\u0432\u0430\u044f \u0444\u0443\u043d\u043a\u0446\u0438\u044f (\u0438\u0437 3 \u0442\u043e\u0436\u0434\u0435\u0441\u0442\u0432\u0435\u043d\u043d\u044b\u0445 \u0432\u044b\u0431\u0440\u0430\u043d\u0430 \u043f\u0435\u0440\u0432\u0430\u044f):", None))
+        self.l_lp_obj_func.setText("")
+        self.l_lp_text_3.setText(QCoreApplication.translate("PartsMaximizeWindow", u"\u041e\u0433\u0440\u0430\u043d\u0438\u0447\u0435\u043d\u0438\u044f:", None))
+        self.l_lp_constraints_default_1.setText(QCoreApplication.translate("PartsMaximizeWindow", u"<html><head/><body><p>\u00a0 x<span style=\" vertical-align:sub;\">1</span> + x<span style=\" vertical-align:sub;\">2</span> + x<span style=\" vertical-align:sub;\">3</span> \u2264 500</p></body></html>", None))
+        self.l_lp_constraints_default_2.setText(QCoreApplication.translate("PartsMaximizeWindow", u"<html><head/><body><p>\u00a0 x<span style=\" vertical-align:sub;\">4</span> + x<span style=\" vertical-align:sub;\">5</span> \u2264 300</p></body></html>", None))
         self.pb_lp_solve.setText(QCoreApplication.translate("PartsMaximizeWindow", u"\u041d\u0430\u0439\u0442\u0438 \u0440\u0435\u0448\u0435\u043d\u0438\u0435", None))
         self.tabw_steps.setTabText(self.tabw_steps.indexOf(self.tab_lp), QCoreApplication.translate("PartsMaximizeWindow", u"\u0420\u0435\u0448\u0435\u043d\u0438\u0435", None))
         self.l_lpa_title.setText(QCoreApplication.translate("PartsMaximizeWindow", u"\u0420\u0435\u0448\u0438\u043c \u0437\u0430\u0434\u0430\u0447\u0443 \u043b\u0438\u043d\u0435\u0439\u043d\u043e\u0433\u043e \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u044f", None))
@@ -802,9 +802,9 @@ class Ui_PartsMaximizeWindow(object):
         self.l_lpa_text_3.setText(QCoreApplication.translate("PartsMaximizeWindow", u"\u0426\u0435\u043b\u0435\u0432\u0430\u044f \u0444\u0443\u043d\u043a\u0446\u0438\u044f (\u0438\u0437 3 \u0442\u043e\u0436\u0434\u0435\u0441\u0442\u0432\u0435\u043d\u043d\u044b\u0445 \u0432\u044b\u0431\u0440\u0430\u043d\u0430 \u043f\u0435\u0440\u0432\u0430\u044f):", None))
         self.l_lpa_obj_func.setText("")
         self.l_lpa_text_4.setText(QCoreApplication.translate("PartsMaximizeWindow", u"\u041e\u0433\u0440\u0430\u043d\u0438\u0447\u0435\u043d\u0438\u044f:", None))
-        self.l_lpa_constraints_default_1.setText(QCoreApplication.translate("PartsMaximizeWindow", u"<html><head/><body><p>\u00a0 x<span style=\" vertical-align:sub;\">1</span> + x<span style=\" vertical-align:sub;\">2</span> + x<span style=\" vertical-align:sub;\">3</span> \u2264 500</p></body></html>", None))
-        self.l_lpa_constraints_default_2.setText(QCoreApplication.translate("PartsMaximizeWindow", u"<html><head/><body><p>\u00a0 x<span style=\" vertical-align:sub;\">4</span> + x<span style=\" vertical-align:sub;\">5</span> \u2264 300</p></body></html>", None))
-        self.pb_lpa_solve.setText(QCoreApplication.translate("PartsMaximizeWindow", u"\u041d\u0430\u0439\u0442\u0438 \u0440\u0435\u0448\u0435\u043d\u0438\u0435", None))
+        self.l_lp_constraints_default_4.setText(QCoreApplication.translate("PartsMaximizeWindow", u"<html><head/><body><p>\u00a0 x<span style=\" vertical-align:sub;\">1</span> + x<span style=\" vertical-align:sub;\">2</span> + x<span style=\" vertical-align:sub;\">3</span> \u2264 500</p></body></html>", None))
+        self.l_lp_constraints_default_3.setText(QCoreApplication.translate("PartsMaximizeWindow", u"<html><head/><body><p>\u00a0 x<span style=\" vertical-align:sub;\">4</span> + x<span style=\" vertical-align:sub;\">5</span> \u2264 300</p></body></html>", None))
+        self.pb_lp_solve_2.setText(QCoreApplication.translate("PartsMaximizeWindow", u"\u041d\u0430\u0439\u0442\u0438 \u0440\u0435\u0448\u0435\u043d\u0438\u0435", None))
         self.tabw_steps.setTabText(self.tabw_steps.indexOf(self.tab_lp_additional), QCoreApplication.translate("PartsMaximizeWindow", u"\u0414\u043e\u043f\u043e\u043b\u043d\u0438\u0442\u0435\u043b\u044c\u043d\u043e", None))
     # retranslateUi
 
