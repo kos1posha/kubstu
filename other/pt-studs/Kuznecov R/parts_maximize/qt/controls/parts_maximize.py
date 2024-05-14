@@ -35,7 +35,8 @@ class PartsMaximizeControl(Ui_PartsMaximizeWindow, qtw.QWidget):
         self.tw_task_args_changed()
 
     def connect_ui(self):
-        pass
+        self.pb_lp_solve.clicked.connect(self.solve_main_lp)
+        self.pb_lpa_solve.clicked.connect(self.solve_additional_lp)
 
     def setup_task_table(self):
         self.tw_task_args.horizontalHeader().setSectionResizeMode(qtw.QHeaderView.ResizeMode.Stretch)
@@ -72,3 +73,24 @@ class PartsMaximizeControl(Ui_PartsMaximizeWindow, qtw.QWidget):
         c1_args, c2_args, c3_args = self.get_tw_task_args()
         c1, c2, c3 = pps.get_expr(*c1_args), pps.get_expr(*c2_args), pps.get_expr(*c3_args)
         return c1, c2, c3
+
+    def solve_lp(self, details_set):
+        c1_args, c2_args, c3_args = self.get_tw_task_args()
+        problem = pps.details_lp_task(
+            details_set=details_set,
+            c1_args=c1_args, c2_args=c2_args, c3_args=c3_args,
+        )
+        problem.solve()
+        return problem
+
+    def solve_main_lp(self):
+        problem = self.solve_lp(pps.details_set)
+        pformat_problem = pps.pformat_problem(problem)
+        message = qtw.QMessageBox(qtw.QMessageBox.Icon.NoIcon, 'Решение основной задачи', pformat_problem, qtw.QMessageBox.StandardButton.NoButton)
+        message.exec()
+
+    def solve_additional_lp(self):
+        problem = self.solve_lp((4, 3, 3))
+        pformat_problem = pps.pformat_problem(problem)
+        message = qtw.QMessageBox(qtw.QMessageBox.Icon.NoIcon, 'Решение дополнительной задачи', pformat_problem, qtw.QMessageBox.StandardButton.NoButton)
+        message.exec()
