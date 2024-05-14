@@ -53,17 +53,16 @@ class PartsMaximizeControl(Ui_PartsMaximizeWindow, qtw.QWidget):
         l_constrs = [self.l_constraints_details_1, self.l_constraints_details_2, self.l_constraints_details_3]
         l_lp_constrs = [self.l_lp_constraints_details_1, self.l_lp_constraints_details_2, self.l_lp_constraints_details_3]
         l_lpa_constrs = [self.l_lpa_constraints_details_1, self.l_lpa_constraints_details_2, self.l_lpa_constraints_details_3]
-        self.l_lp_obj_func.setText(ts.xi_to_subscripts(f'&nbsp; F(x1, x2, x3, x4, x5) = {c_exprs[0]}').replace('*', ''))
-        self.l_lpa_obj_func.setText(ts.xi_to_subscripts(f'&nbsp; F(x1, x2, x3, x4, x5) = {c_exprs[0]}').replace('*', ''))
-        for l_def, c_expr in zip(l_defs, c_exprs):
-            l_def.setText(ts.xi_to_subscripts(f'&nbsp; F(x1, x2, x3, x4, x5) = {c_expr}').replace('*', ''))
+        self.l_lp_obj_func.setText(ts.xi_to_subscripts(f'&nbsp; F(x1, x2, x3, x4, x5) = ({c_exprs[0]}) : {pps.details_set[0]}').replace('*', ''))
+        self.l_lpa_obj_func.setText(ts.xi_to_subscripts(f'&nbsp; F(x1, x2, x3, x4, x5) = ({c_exprs[0]}) : {pps.details_set[0]}').replace('*', ''))
+        for l_def, c_expr, ds in zip(l_defs, c_exprs, pps.details_set):
+            l_def.setText(ts.xi_to_subscripts(f'&nbsp; F(x1, x2, x3, x4, x5) = ({c_expr}) : {ds}').replace('*', ''))
         for l_constr, l_lp_constr, c_expr, c_expr_next, ds, ds_next in zip(l_constrs, l_lp_constrs, c_exprs, ts.shift_prev(c_exprs), pps.details_set, ts.shift_prev(pps.details_set)):
             text = ts.xi_to_subscripts(f'&nbsp; {ds_next}({c_expr}) = {ds}({c_expr_next})').replace('*', '')
             l_constr.setText(text)
             l_lp_constr.setText(text)
         for l_lpa_constr, c_expr, c_expr_next, ds, ds_next in zip(l_lpa_constrs, c_exprs, ts.shift_prev(c_exprs), (4, 3, 3), ts.shift_prev((4, 3, 3))):
-            text = ts.xi_to_subscripts(f'&nbsp; {ds_next}({c_expr}) = {ds}({c_expr_next})').replace('*', '')
-            l_lpa_constr.setText(text)
+            l_lpa_constr.setText(ts.xi_to_subscripts(f'&nbsp; {ds_next}({c_expr}) = {ds}({c_expr_next})').replace('*', ''))
 
     def get_tw_task_args(self):
         c1_args, c2_args, c3_args = [[ts.num(self.tw_task_args.item(row, column).text()) for column in range(1, 6)] for row in range(4, 7)]
