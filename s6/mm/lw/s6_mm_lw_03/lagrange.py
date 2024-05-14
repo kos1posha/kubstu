@@ -24,15 +24,10 @@ def lagrange(func: Function, constraints: List[Union[Eq, Ge, Le]]) -> (float, Di
         kt_equalities.append(Eq(part_diff.simplify(), 0))
     for i, ce in enumerate(constraint_exprs):
         kt_equalities.append(Eq(ce, 0))
-        if i == 0:
-            kt_equalities.append(Eq(lambdas[i], 0))
-        else:
-            kt_inequalities.append(Ge(lambdas[i], 0))
+        kt_inequalities.append(Ge(lambdas[i], 0))
 
     # Шаг 3: Решение системы условий Куна-Таккера
     points = solve(kt_equalities, composed_func.free_symbols)
-    for p in points:
-        res = func.subs(p)
     if not isinstance(points, list):
         points = [points]
     for p in reversed(points):
