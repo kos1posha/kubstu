@@ -1575,7 +1575,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="l_lp_constraints_default_4">
+        <widget class="QLabel" name="l_lpa_constraints_default_1">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
            <horstretch>0</horstretch>
@@ -1601,7 +1601,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="l_lp_constraints_default_3">
+        <widget class="QLabel" name="l_lpa_constraints_default_2">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
            <horstretch>0</horstretch>
@@ -1627,7 +1627,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pb_lp_solve_2">
+        <widget class="QPushButton" name="pb_lpa_solve">
          <property name="text">
           <string>Найти решение</string>
          </property>
