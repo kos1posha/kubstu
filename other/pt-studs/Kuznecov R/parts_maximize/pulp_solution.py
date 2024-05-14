@@ -15,7 +15,7 @@ def get_expr(a, b, c, d, e):
 def details_lp_task(details_set, c1_args, c2_args, c3_args):
     ds = details_set
     c1, c2, c3 = get_expr(*c1_args), get_expr(*c2_args), get_expr(*c3_args)
-    obj_func = c1
+    obj_func = c1 / details_set[0]
     constraints = [
         pp.LpConstraint(ds[1] * c1 - ds[0] * c2, rhs=0, sense=pp.LpConstraintEQ, name='Отношение деталей 1 к деталям 2'),
         pp.LpConstraint(ds[2] * c2 - ds[1] * c3, rhs=0, sense=pp.LpConstraintEQ, name='Отношение деталей 2 к деталям 3'),
