@@ -12,7 +12,7 @@ def get_expr(a, b, c, d, e):
     return a * x1 + b * x2 + c * x3 + d * x4 + e * x5
 
 
-def details_lp_task(details_set, c1_args, c2_args, c3_args, p=False):
+def details_lp_task(details_set, c1_args, c2_args, c3_args):
     ds = details_set
     c1, c2, c3 = get_expr(*c1_args), get_expr(*c2_args), get_expr(*c3_args)
     obj_func = c1
@@ -25,23 +25,23 @@ def details_lp_task(details_set, c1_args, c2_args, c3_args, p=False):
     ]
     problem = pp.LpProblem(name='Поиск максимального количества комплектов деталей', sense=pp.LpMaximize)
     for c in [obj_func] + constraints: problem += c
-    problem.solve()
-    if p:
-        print(
-            f'Статус: {pp.LpStatus[problem.status]} ({problem.status})',
-            f'Результат: {problem.objective.value()}',
-            *[f'{var.name:<2} = {int(var.value())}' for var in problem.variables()],
-            *[f'{name:<2} = {int(constraint.value() - constraint.constant)} ({int(constraint.value())})' for name, constraint in problem.constraints.items()],
-            sep='\n', end=''
-        )
+    return problem
+
+
+def pformat_problem(problem):
+    return '\n'.join([
+        f'Статус: {pp.LpStatus[problem.status]} ({problem.status})',
+        f'Результат: {problem.objective.value()}',
+        *[f'{var.name:<2} = {int(var.value())}' for var in problem.variables()],
+        *[f'{constraint}: {int(constraint.value() - constraint.constant)} ({int(constraint.value())})' for name, constraint in problem.constraints.items()],
+    ])
 
 
 details_set = (4, 3, 2)
 if __name__ == '__main__':
-    details_lp_task(
+    problem = details_lp_task(
         details_set=details_set,
-        c1_args=(0, 2, 9, 6, 5),
-        c2_args=(4, 3, 4, 5, 4),
-        c3_args=(10, 16, 0, 8, 0),
-        p=True,
+        c1_args=(0, 2, 9, 6, 5), c2_args=(4, 3, 4, 5, 4), c3_args=(10, 16, 0, 8, 0),
     )
+    problem.solve()
+    print(pformat_problem(problem))
