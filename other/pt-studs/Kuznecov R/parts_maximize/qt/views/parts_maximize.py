@@ -663,30 +663,30 @@ class Ui_PartsMaximizeWindow(object):
 
         self.vl_lpa.addWidget(self.l_lpa_constraints_details_3)
 
-        self.l_lp_constraints_default_4 = QLabel(self.tab_lp_additional)
-        self.l_lp_constraints_default_4.setObjectName(u"l_lp_constraints_default_4")
-        sizePolicy3.setHeightForWidth(self.l_lp_constraints_default_4.sizePolicy().hasHeightForWidth())
-        self.l_lp_constraints_default_4.setSizePolicy(sizePolicy3)
-        self.l_lp_constraints_default_4.setFont(font3)
-        self.l_lp_constraints_default_4.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
-        self.l_lp_constraints_default_4.setMargin(4)
+        self.l_lpa_constraints_default_1 = QLabel(self.tab_lp_additional)
+        self.l_lpa_constraints_default_1.setObjectName(u"l_lpa_constraints_default_1")
+        sizePolicy3.setHeightForWidth(self.l_lpa_constraints_default_1.sizePolicy().hasHeightForWidth())
+        self.l_lpa_constraints_default_1.setSizePolicy(sizePolicy3)
+        self.l_lpa_constraints_default_1.setFont(font3)
+        self.l_lpa_constraints_default_1.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
+        self.l_lpa_constraints_default_1.setMargin(4)
 
-        self.vl_lpa.addWidget(self.l_lp_constraints_default_4)
+        self.vl_lpa.addWidget(self.l_lpa_constraints_default_1)
 
-        self.l_lp_constraints_default_3 = QLabel(self.tab_lp_additional)
-        self.l_lp_constraints_default_3.setObjectName(u"l_lp_constraints_default_3")
-        sizePolicy3.setHeightForWidth(self.l_lp_constraints_default_3.sizePolicy().hasHeightForWidth())
-        self.l_lp_constraints_default_3.setSizePolicy(sizePolicy3)
-        self.l_lp_constraints_default_3.setFont(font3)
-        self.l_lp_constraints_default_3.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
-        self.l_lp_constraints_default_3.setMargin(4)
+        self.l_lpa_constraints_default_2 = QLabel(self.tab_lp_additional)
+        self.l_lpa_constraints_default_2.setObjectName(u"l_lpa_constraints_default_2")
+        sizePolicy3.setHeightForWidth(self.l_lpa_constraints_default_2.sizePolicy().hasHeightForWidth())
+        self.l_lpa_constraints_default_2.setSizePolicy(sizePolicy3)
+        self.l_lpa_constraints_default_2.setFont(font3)
+        self.l_lpa_constraints_default_2.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
+        self.l_lpa_constraints_default_2.setMargin(4)
 
-        self.vl_lpa.addWidget(self.l_lp_constraints_default_3)
+        self.vl_lpa.addWidget(self.l_lpa_constraints_default_2)
 
-        self.pb_lp_solve_2 = QPushButton(self.tab_lp_additional)
-        self.pb_lp_solve_2.setObjectName(u"pb_lp_solve_2")
+        self.pb_lpa_solve = QPushButton(self.tab_lp_additional)
+        self.pb_lpa_solve.setObjectName(u"pb_lpa_solve")
 
-        self.vl_lpa.addWidget(self.pb_lp_solve_2)
+        self.vl_lpa.addWidget(self.pb_lpa_solve)
 
         self.tabw_steps.addTab(self.tab_lp_additional, "")
 
@@ -802,9 +802,9 @@ class Ui_PartsMaximizeWindow(object):
         self.l_lpa_text_3.setText(QCoreApplication.translate("PartsMaximizeWindow", u"\u0426\u0435\u043b\u0435\u0432\u0430\u044f \u0444\u0443\u043d\u043a\u0446\u0438\u044f (\u0438\u0437 3 \u0442\u043e\u0436\u0434\u0435\u0441\u0442\u0432\u0435\u043d\u043d\u044b\u0445 \u0432\u044b\u0431\u0440\u0430\u043d\u0430 \u043f\u0435\u0440\u0432\u0430\u044f):", None))
         self.l_lpa_obj_func.setText("")
         self.l_lpa_text_4.setText(QCoreApplication.translate("PartsMaximizeWindow", u"\u041e\u0433\u0440\u0430\u043d\u0438\u0447\u0435\u043d\u0438\u044f:", None))
-        self.l_lp_constraints_default_4.setText(QCoreApplication.translate("PartsMaximizeWindow", u"<html><head/><body><p>\u00a0 x<span style=\" vertical-align:sub;\">1</span> + x<span style=\" vertical-align:sub;\">2</span> + x<span style=\" vertical-align:sub;\">3</span> \u2264 500</p></body></html>", None))
-        self.l_lp_constraints_default_3.setText(QCoreApplication.translate("PartsMaximizeWindow", u"<html><head/><body><p>\u00a0 x<span style=\" vertical-align:sub;\">4</span> + x<span style=\" vertical-align:sub;\">5</span> \u2264 300</p></body></html>", None))
-        self.pb_lp_solve_2.setText(QCoreApplication.translate("PartsMaximizeWindow", u"\u041d\u0430\u0439\u0442\u0438 \u0440\u0435\u0448\u0435\u043d\u0438\u0435", None))
+        self.l_lpa_constraints_default_1.setText(QCoreApplication.translate("PartsMaximizeWindow", u"<html><head/><body><p>\u00a0 x<span style=\" vertical-align:sub;\">1</span> + x<span style=\" vertical-align:sub;\">2</span> + x<span style=\" vertical-align:sub;\">3</span> \u2264 500</p></body></html>", None))
+        self.l_lpa_constraints_default_2.setText(QCoreApplication.translate("PartsMaximizeWindow", u"<html><head/><body><p>\u00a0 x<span style=\" vertical-align:sub;\">4</span> + x<span style=\" vertical-align:sub;\">5</span> \u2264 300</p></body></html>", None))
+        self.pb_lpa_solve.setText(QCoreApplication.translate("PartsMaximizeWindow", u"\u041d\u0430\u0439\u0442\u0438 \u0440\u0435\u0448\u0435\u043d\u0438\u0435", None))
         self.tabw_steps.setTabText(self.tabw_steps.indexOf(self.tab_lp_additional), QCoreApplication.translate("PartsMaximizeWindow", u"\u0414\u043e\u043f\u043e\u043b\u043d\u0438\u0442\u0435\u043b\u044c\u043d\u043e", None))
     # retranslateUi
 
