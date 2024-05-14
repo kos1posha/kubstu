@@ -2,6 +2,7 @@ from PySide6 import QtGui as qtg, QtWidgets as qtw
 import pulp as pp
 
 import pulp_solution as pps
+from qt.controls.lp_result_dialog import LpResultDialog
 from qt.views.parts_maximize import Ui_PartsMaximizeWindow
 import tools as ts
 
@@ -85,12 +86,10 @@ class PartsMaximizeControl(Ui_PartsMaximizeWindow, qtw.QWidget):
 
     def solve_main_lp(self):
         problem = self.solve_lp(pps.details_set)
-        pformat_problem = pps.pformat_problem(problem)
-        message = qtw.QMessageBox(qtw.QMessageBox.Icon.NoIcon, 'Решение основной задачи', pformat_problem, qtw.QMessageBox.StandardButton.NoButton)
-        message.exec()
+        result_dialog = LpResultDialog(problem, True)
+        result_dialog.exec()
 
     def solve_additional_lp(self):
         problem = self.solve_lp(pps.additional_details_set)
-        pformat_problem = pps.pformat_problem(problem)
-        message = qtw.QMessageBox(qtw.QMessageBox.Icon.NoIcon, 'Решение дополнительной задачи', pformat_problem, qtw.QMessageBox.StandardButton.NoButton)
-        message.exec()
+        result_dialog = LpResultDialog(problem, False)
+        result_dialog.exec()

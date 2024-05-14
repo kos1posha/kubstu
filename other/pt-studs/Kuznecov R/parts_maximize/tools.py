@@ -24,11 +24,12 @@ def num(x):
 
 
 subs = {f'x{i}': f'x<sub>{i}</sub>' for i in range(1, 6)}
+subs.update({'<=': '≤', '>=': '≥'})
 replace = lambda match: subs[match.group(0)]
 
 
 def xi_to_subscripts(string):
-    return re.sub(r'x[1-5]', replace, string)
+    return re.sub(r'x[1-5]|<=|>=', replace, string)
 
 
 def shift_next(lst):
