@@ -38,6 +38,7 @@ def pformat_problem(problem):
 
 
 details_set = (4, 3, 2)
+additional_details_set = (4, 3, 3)
 if __name__ == '__main__':
     problem = details_lp_task(
         details_set=details_set,
