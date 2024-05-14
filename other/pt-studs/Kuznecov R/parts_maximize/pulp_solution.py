@@ -8,21 +8,23 @@ x4 = pp.LpVariable(name='x4', lowBound=0, cat=pp.LpInteger)
 x5 = pp.LpVariable(name='x5', lowBound=0, cat=pp.LpInteger)
 
 
-def task():
-    q = lambda a, b, c, d, e: a * x1 + b * x2 + c * x3 + d * x4 + e * x5
-    d1 = q(0, 2, 9, 6, 5)
-    d2 = q(4, 3, 4, 5, 4)
-    d3 = q(10, 16, 0, 8, 0)
-    obj_f = (d1 / 4 + d2 / 3 + d3 / 2) / 3
+def get_expr(a, b, c, d, e):
+    return a * x1 + b * x2 + c * x3 + d * x4 + e * x5
+
+
+def details_lp_task(details_set, c1_args, c2_args, c3_args):
+    ds = details_set
+    c1, c2, c3 = get_expr(*c1_args), get_expr(*c2_args), get_expr(*c3_args)
+    obj_func = c1
     constraints = [
-        pp.LpConstraint(3 * d1 - 4 * d2, sense=0, name='1', rhs=0),
-        pp.LpConstraint(2 * d2 - 3 * d3, sense=0, name='2', rhs=0),
-        pp.LpConstraint(4 * d3 - 2 * d1, sense=0, name='3', rhs=0),
-        (x1 + x2 + x3 <= 500, '4'),
-        (x4 + x5 <= 300, '5'),
+        pp.LpConstraint(ds[1] * c1 - ds[0] * c2, rhs=0, sense=pp.LpConstraintEQ, name='Отношение деталей 1 к деталям 2'),
+        pp.LpConstraint(ds[2] * c2 - ds[1] * c3, rhs=0, sense=pp.LpConstraintEQ, name='Отношение деталей 2 к деталям 3'),
+        pp.LpConstraint(ds[0] * c3 - ds[2] * c1, rhs=0, sense=pp.LpConstraintEQ, name='Отношение деталей 3 к деталям 1'),
+        pp.LpConstraint(x1 + x2 + x3, rhs=500, sense=pp.LpConstraintLE, name='Количество листов металла 1 размера не больше 500'),
+        pp.LpConstraint(x4 + x5, rhs=300, sense=pp.LpConstraintLE, name='Количество листов металла 2 размера не больше 300'),
     ]
-    problem = pp.LpProblem(name='aaaa', sense=pp.LpMaximize)
-    for c in [obj_f] + constraints: problem += c
+    problem = pp.LpProblem(name='Поиск максимального количества комплектов деталей', sense=pp.LpMaximize)
+    for c in [obj_func] + constraints: problem += c
     problem.solve()
     print(
         f'Статус: {pp.LpStatus[problem.status]} ({problem.status})',
@@ -34,4 +36,9 @@ def task():
 
 
 if __name__ == '__main__':
-    task()
+    details_lp_task(
+        details_set=(4, 3, 2),
+        c1_args=(0, 2, 9, 6, 5),
+        c2_args=(4, 3, 4, 5, 4),
+        c3_args=(10, 16, 0, 8, 0)
+    )
