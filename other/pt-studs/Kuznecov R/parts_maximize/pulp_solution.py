@@ -36,9 +36,10 @@ def details_lp_task(details_set, c1_args, c2_args, c3_args, p=False):
         )
 
 
+details_set = (4, 3, 2)
 if __name__ == '__main__':
     details_lp_task(
-        details_set=(4, 3, 2),
+        details_set=details_set,
         c1_args=(0, 2, 9, 6, 5),
         c2_args=(4, 3, 4, 5, 4),
         c3_args=(10, 16, 0, 8, 0),
