@@ -62,7 +62,7 @@ class PartsMaximizeControl(Ui_PartsMaximizeWindow, qtw.QWidget):
             text = ts.xi_to_subscripts(f'&nbsp; {ds_next}({c_expr}) = {ds}({c_expr_next})').replace('*', '')
             l_constr.setText(text)
             l_lp_constr.setText(text)
-        for l_lpa_constr, c_expr, c_expr_next, ds, ds_next in zip(l_lpa_constrs, c_exprs, ts.shift_prev(c_exprs), (4, 3, 3), ts.shift_prev((4, 3, 3))):
+        for l_lpa_constr, c_expr, c_expr_next, ds, ds_next in zip(l_lpa_constrs, c_exprs, ts.shift_prev(c_exprs), pps.additional_details_set, ts.shift_prev(pps.additional_details_set)):
             l_lpa_constr.setText(ts.xi_to_subscripts(f'&nbsp; {ds_next}({c_expr}) = {ds}({c_expr_next})').replace('*', ''))
 
     def get_tw_task_args(self):
@@ -90,7 +90,7 @@ class PartsMaximizeControl(Ui_PartsMaximizeWindow, qtw.QWidget):
         message.exec()
 
     def solve_additional_lp(self):
-        problem = self.solve_lp((4, 3, 3))
+        problem = self.solve_lp(pps.additional_details_set)
         pformat_problem = pps.pformat_problem(problem)
         message = qtw.QMessageBox(qtw.QMessageBox.Icon.NoIcon, 'Решение дополнительной задачи', pformat_problem, qtw.QMessageBox.StandardButton.NoButton)
         message.exec()
