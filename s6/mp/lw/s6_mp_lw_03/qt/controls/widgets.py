@@ -12,7 +12,7 @@ class NumericDelegate(qtw.QStyledItemDelegate):
     def createEditor(self, parent: qtw.QWidget, option: qtw.QStyleOptionViewItem, index: Union[qtc.QModelIndex, qtc.QPersistentModelIndex]) -> qtw.QWidget:
         editor = super().createEditor(parent, option, index)
         if isinstance(editor, qtw.QLineEdit):
-            validator = qtg.QIntValidator(bottom=1)
+            validator = qtg.QIntValidator(bottom=0)
             editor.setValidator(validator)
         return editor
 
