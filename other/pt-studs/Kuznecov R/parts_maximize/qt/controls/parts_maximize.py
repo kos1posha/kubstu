@@ -3,7 +3,7 @@ import pulp as pp
 
 import pulp_solution as pps
 from qt.controls.lp_result_dialog import LpResultDialog
-from qt.views.parts_maximize import Ui_PartsMaximizeWindow
+from qt.py.parts_maximize import Ui_PartsMaximizeWindow
 import tools as ts
 
 
