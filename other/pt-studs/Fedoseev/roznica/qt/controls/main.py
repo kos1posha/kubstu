@@ -4,7 +4,7 @@ from PySide6.QtWidgets import QTreeWidgetItem
 import analytics as plots
 from db import models as dbm
 from qt.controls.dialogs import AddCategoryDialog, AddIncomeDialog, AddOutcomeDialog, AddProductDialog, IncomeOutcomeHistoryDialog
-from qt.views.main import Ui_MainWindow
+from qt.py.main import Ui_MainWindow
 
 
 class MainControl(Ui_MainWindow, qtw.QMainWindow):
