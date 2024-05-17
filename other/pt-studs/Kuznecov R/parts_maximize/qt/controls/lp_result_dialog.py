@@ -1,7 +1,7 @@
 from PySide6 import QtWidgets as qtw
 import pulp as pp
 
-from qt.views.lp_result_dialog import Ui_LpResultDialog
+from qt.py.lp_result_dialog import Ui_LpResultDialog
 import tools as ts
 
 
