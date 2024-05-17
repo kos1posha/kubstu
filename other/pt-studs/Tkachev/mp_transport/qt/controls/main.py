@@ -1,5 +1,3 @@
-import sys
-
 from PySide6 import QtCore as qtc, QtGui as qtg, QtWidgets as qtw
 
 from qt.controls.result import ResultControl
