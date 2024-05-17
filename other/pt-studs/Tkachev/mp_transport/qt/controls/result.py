@@ -4,7 +4,7 @@ from typing import Dict, List, Tuple
 from PySide6 import QtGui as qtg, QtWidgets as qtw
 
 from qt.controls.widgets import TransportTableWidget
-from qt.views.result import Ui_ResultWindow
+from qt.py.result import Ui_ResultWindow
 from transport import BaseTransportProblemSolver
 
 
