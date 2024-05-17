@@ -1,7 +1,7 @@
 from PySide6 import QtCore as qtc, QtGui as qtg, QtWidgets as qtw
 
 from qt.controls.result import ResultControl
-from qt.views.main import Ui_MainWindow
+from qt.py.main import Ui_MainWindow
 from transport import VogelsApproximationTransportProblemSolver
 
 
