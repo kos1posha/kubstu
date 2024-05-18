@@ -35,10 +35,12 @@ def pformat_problem(problem):
     ])
 
 
+default_d1_args = (8, 0, 4, 12, 0, 6)
+default_d2_args = (0, 3, 1, 0, 4, 2)
 if __name__ == '__main__':
     problem = fabric_lp_task(
         t1=300, t2=150,
-        d1_args=(8, 0, 4, 12, 0, 6), d2_args=(0, 3, 1, 0, 4, 2)
+        d1_args=default_d1_args, d2_args=default_d2_args
     )
     problem.solve()
     print(pformat_problem(problem))
