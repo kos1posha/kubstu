@@ -6,7 +6,7 @@ from qt.controls.given import GivenControl
 
 
 if __name__ == '__main__':
-    app = qtw.QApplication(sys.argv + ['--platform', 'windows:darkmode = 2'])
+    app = qtw.QApplication(sys.argv + ['-platform', 'windows:darkmode=1'])
     control = GivenControl()
     control.show()
     status = app.exec()
