@@ -3,24 +3,28 @@
 {% block title %}{{ article.title }}{% endblock %}
 
 {% block content %}
-  <h1 class="text-primary-emphasis">{{ article.title }}</h1>
-  {% if article.main_photo %}
-  <div class="row mb-3">
-    <div class="col-auto mx-auto">
-      <img src="{{ article.main_photo.url }}" alt="" style="height: 350px; max-width: 100%">
-    </div>
-  </div>
-  {% endif %}
-  <h6 class="fw-normal text-secondary">{{ article.preview }}</h6>
-  <div class="py-3">
-    {{ article.content }}
-    <br>
-    <span class="float-end mb-1 text-secondary small">Опубликовано: {{ article.createf }}</span>
-    {% if user.is_superuser %}
-      <form method="post" action="{% url 'delete' pk=article.pk %}">
-        {% csrf_token %}
-        <input class="btn btn-link link-danger text-decoration-none px-0 pb-2 mb-1" type="submit" value="Удалить статью">
-      </form>
+    <h1 class="text-primary-emphasis">{{ article.title }}</h1>
+    {% if article.main_photo %}
+        <div class="row mb-3">
+            <div class="col-auto mx-auto">
+                <img src="{{ article.main_photo.url }}" alt="" style="height: 350px; max-width: 100%">
+            </div>
+        </div>
     {% endif %}
-  </div>
+    <h6 class="fw-normal text-secondary">{{ article.preview }}</h6>
+    <div class="py-3">
+        {{ article.content }}
+        <br>
+        <div class="float-end mb-1">
+            <span class="text-secondary small">Опубликовано: {{ article.createf }}</span> |
+            <span class="text-secondary small">Просмотров: {{ article.views }}</span>
+        </div>
+        {% if user.is_superuser %}
+            <form method="post" action="{% url 'delete' pk=article.pk %}">
+                {% csrf_token %}
+                <input class="btn btn-link link-danger text-decoration-none px-0 pb-2 mb-1" type="submit"
+                       value="Удалить статью">
+            </form>
+        {% endif %}
+    </div>
 {% endblock %}

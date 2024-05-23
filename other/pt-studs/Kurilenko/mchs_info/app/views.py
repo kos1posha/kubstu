@@ -26,6 +26,11 @@ class ArticleView(DetailView):
     slug_url_kwarg = 'slug'
     context_object_name = 'article'
 
+    def get(self, request, *args, **kwargs):
+        response = super().get(request, *args, **kwargs)
+        self.object.increment_date_views()
+        return response
+
 
 class WriterView(CreateView):
     model = Article
