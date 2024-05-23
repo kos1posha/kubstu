@@ -7,10 +7,11 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>{% block title %}Портал МЧС{% endblock %}</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  {% block extra_styles %}{% endblock %}
   <style>
-    .soc-img {
-      filter: brightness(0) invert(1);
-    }
+      .soc-img {
+          filter: brightness(0) invert(1);
+      }
   </style>
 </head>
 <body class="mh-100">
@@ -106,7 +107,8 @@
         </div>
       </li>
       <li class="list-inline-item ms-3">
-        <a class="link-primary text-black text-decoration-none fw-semibold" href="https://mchs.gov.ru/">ОФИЦИАЛЬНЫЙ САЙТ</a>
+        <a class="link-primary text-black text-decoration-none fw-semibold" href="https://mchs.gov.ru/">ОФИЦИАЛЬНЫЙ
+          САЙТ</a>
       </li>
     </ul>
   </div>

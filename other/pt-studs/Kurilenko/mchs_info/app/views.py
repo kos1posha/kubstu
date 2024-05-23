@@ -1,10 +1,12 @@
+import datetime as dt
+
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.views import LoginView
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DeleteView, DetailView, ListView, TemplateView
 
-from app.models import Article
+from app.models import Article, ArticleDateViews
 
 
 class MainPageView(ListView):
@@ -30,6 +32,21 @@ class ArticleView(DetailView):
         response = super().get(request, *args, **kwargs)
         self.object.increment_date_views()
         return response
+
+
+class ArticleViewsAnalyticView(DetailView):
+    model = Article
+    template_name = 'article_views.html'
+    slug_url_kwarg = 'slug'
+    context_object_name = 'article'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        article_views = ArticleDateViews.objects.filter(article=self.object, date__gt=dt.date.today() - dt.timedelta(days=14))
+        max_views = max(article_views.values_list('views', flat=True))
+        context['views_last_two_weeks'] = {article.date.strftime('%d.%m'): (article.views, max_views)
+                                           for article in ArticleDateViews.objects.filter(article=self.object)}
+        return context
 
 
 class WriterView(CreateView):

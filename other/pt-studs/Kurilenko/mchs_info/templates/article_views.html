@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ article.title }}{% endblock %}
+{% block extra_styles %}
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/charts.css/dist/charts.min.css">{% endblock %}
+
+{% block content %}
+  <h1 class="text-primary-emphasis">Просмотры статьи "{{ article.title }}"</h1>
+  <h5 class="fw-normal text-secondary">Дата публикации: {{ article.create }}</h5>
+  <a class="text-decoration-none fs-4" href="{% url 'article' article.slug %}">Вернуться к статье</a>
+  <hr>
+  <div class="py-3">
+    <h4>Всего просмотров: {{ article.views }}</h4>
+    <h4>Просмотров за сегодня: {{ article.date_views.views }}</h4>
+    <table class="charts-css column data-spacing-8 show-heading show-labels">
+      <caption>Просмотры по дням (последние 14 дней)</caption>
+      <thead>
+      <tr>
+        <th scope="col">1</th>
+        <th scope="col">2</th>
+      </tr>
+      </thead>
+      <tbody>
+      {% for day, views in views_last_two_weeks.items %}
+        <tr>
+          <th scope="row">{{ day }}</th>
+          <td style="--color: lightblue; --size: calc({{ views.0 }}/{{ views.1 }})">{{ views.0 }}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

@@ -17,7 +17,11 @@
         <br>
         <div class="float-end mb-1">
             <span class="text-secondary small">Опубликовано: {{ article.createf }}</span> |
-            <span class="text-secondary small">Просмотров: {{ article.views }}</span>
+            {% if user.is_superuser %}
+                <a class="text-decoration-none text-secondary small" href="{% url 'article_views' article.slug %}">Просмотров: {{ article.views }}</a>
+            {% else %}
+                <span class="text-secondary small">Просмотров: {{ article.views }}</span>
+            {% endif %}
         </div>
         {% if user.is_superuser %}
             <form method="post" action="{% url 'delete' pk=article.pk %}">
