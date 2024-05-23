@@ -21,7 +21,7 @@ class Article(models.Model):
 
     @property
     def createf(self):
-        delta = (timezone.now().date() - self.create.date()).days
+        delta = (datetime.date.today() - self.create.date()).days
         match delta:
             case 0:
                 return f'сегодня в {timezone.localtime(self.create).strftime("%H:%M")}'
