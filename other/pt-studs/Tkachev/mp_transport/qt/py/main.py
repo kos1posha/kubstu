@@ -29,34 +29,40 @@ class Ui_MainWindow(object):
         self.centralwidget.setObjectName(u"centralwidget")
         self.gridLayout = QGridLayout(self.centralwidget)
         self.gridLayout.setObjectName(u"gridLayout")
-        self.label = QLabel(self.centralwidget)
-        self.label.setObjectName(u"label")
-        self.label.setStyleSheet(u"color:rgb(45, 45, 45)")
-        self.label.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
-
-        self.gridLayout.addWidget(self.label, 4, 0, 1, 2)
-
-        self.l_ocost = QLabel(self.centralwidget)
-        self.l_ocost.setObjectName(u"l_ocost")
-        sizePolicy = QSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Preferred)
+        self.le_ncost_value = QLineEdit(self.centralwidget)
+        self.le_ncost_value.setObjectName(u"le_ncost_value")
+        sizePolicy = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.l_ocost.sizePolicy().hasHeightForWidth())
-        self.l_ocost.setSizePolicy(sizePolicy)
+        sizePolicy.setHeightForWidth(self.le_ncost_value.sizePolicy().hasHeightForWidth())
+        self.le_ncost_value.setSizePolicy(sizePolicy)
 
-        self.gridLayout.addWidget(self.l_ocost, 0, 0, 1, 1)
-
-        self.pb_ncost_apply = QPushButton(self.centralwidget)
-        self.pb_ncost_apply.setObjectName(u"pb_ncost_apply")
-
-        self.gridLayout.addWidget(self.pb_ncost_apply, 1, 2, 1, 1)
+        self.gridLayout.addWidget(self.le_ncost_value, 1, 1, 1, 1)
 
         self.l_ncost = QLabel(self.centralwidget)
         self.l_ncost.setObjectName(u"l_ncost")
-        sizePolicy.setHeightForWidth(self.l_ncost.sizePolicy().hasHeightForWidth())
-        self.l_ncost.setSizePolicy(sizePolicy)
+        sizePolicy1 = QSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Preferred)
+        sizePolicy1.setHorizontalStretch(0)
+        sizePolicy1.setVerticalStretch(0)
+        sizePolicy1.setHeightForWidth(self.l_ncost.sizePolicy().hasHeightForWidth())
+        self.l_ncost.setSizePolicy(sizePolicy1)
 
         self.gridLayout.addWidget(self.l_ncost, 1, 0, 1, 1)
+
+        self.l_costs_table = QLabel(self.centralwidget)
+        self.l_costs_table.setObjectName(u"l_costs_table")
+        font = QFont()
+        font.setPointSize(18)
+        font.setItalic(False)
+        self.l_costs_table.setFont(font)
+        self.l_costs_table.setStyleSheet(u"color:rgb(0, 170, 255)")
+
+        self.gridLayout.addWidget(self.l_costs_table, 2, 0, 1, 4)
+
+        self.pb_ncost_cancel = QPushButton(self.centralwidget)
+        self.pb_ncost_cancel.setObjectName(u"pb_ncost_cancel")
+
+        self.gridLayout.addWidget(self.pb_ncost_cancel, 1, 3, 1, 1)
 
         self.tw_costs = QTableWidget(self.centralwidget)
         if (self.tw_costs.columnCount() < 8):
@@ -106,54 +112,34 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.tw_costs, 3, 0, 1, 4)
 
-        self.l_costs_table = QLabel(self.centralwidget)
-        self.l_costs_table.setObjectName(u"l_costs_table")
-        font = QFont()
-        font.setPointSize(18)
-        font.setItalic(False)
-        self.l_costs_table.setFont(font)
-        self.l_costs_table.setStyleSheet(u"color:rgb(0, 170, 255)")
+        self.pb_ocost_cancel = QPushButton(self.centralwidget)
+        self.pb_ocost_cancel.setObjectName(u"pb_ocost_cancel")
 
-        self.gridLayout.addWidget(self.l_costs_table, 2, 0, 1, 4)
+        self.gridLayout.addWidget(self.pb_ocost_cancel, 0, 3, 1, 1)
 
         self.pb_ocost_apply = QPushButton(self.centralwidget)
         self.pb_ocost_apply.setObjectName(u"pb_ocost_apply")
 
         self.gridLayout.addWidget(self.pb_ocost_apply, 0, 2, 1, 1)
 
-        self.le_ncost_value = QLineEdit(self.centralwidget)
-        self.le_ncost_value.setObjectName(u"le_ncost_value")
-        sizePolicy1 = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Fixed)
-        sizePolicy1.setHorizontalStretch(0)
-        sizePolicy1.setVerticalStretch(0)
-        sizePolicy1.setHeightForWidth(self.le_ncost_value.sizePolicy().hasHeightForWidth())
-        self.le_ncost_value.setSizePolicy(sizePolicy1)
+        self.pb_ncost_apply = QPushButton(self.centralwidget)
+        self.pb_ncost_apply.setObjectName(u"pb_ncost_apply")
 
-        self.gridLayout.addWidget(self.le_ncost_value, 1, 1, 1, 1)
-
-        self.pb_ncost_cancel = QPushButton(self.centralwidget)
-        self.pb_ncost_cancel.setObjectName(u"pb_ncost_cancel")
-
-        self.gridLayout.addWidget(self.pb_ncost_cancel, 1, 3, 1, 1)
-
-        self.pb_ocost_cancel = QPushButton(self.centralwidget)
-        self.pb_ocost_cancel.setObjectName(u"pb_ocost_cancel")
-
-        self.gridLayout.addWidget(self.pb_ocost_cancel, 0, 3, 1, 1)
+        self.gridLayout.addWidget(self.pb_ncost_apply, 1, 2, 1, 1)
 
         self.le_ocost_value = QLineEdit(self.centralwidget)
         self.le_ocost_value.setObjectName(u"le_ocost_value")
-        sizePolicy1.setHeightForWidth(self.le_ocost_value.sizePolicy().hasHeightForWidth())
-        self.le_ocost_value.setSizePolicy(sizePolicy1)
+        sizePolicy.setHeightForWidth(self.le_ocost_value.sizePolicy().hasHeightForWidth())
+        self.le_ocost_value.setSizePolicy(sizePolicy)
 
         self.gridLayout.addWidget(self.le_ocost_value, 0, 1, 1, 1)
 
-        self.label_2 = QLabel(self.centralwidget)
-        self.label_2.setObjectName(u"label_2")
-        self.label_2.setStyleSheet(u"color:rgb(45, 45, 45)")
-        self.label_2.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
+        self.l_ocost = QLabel(self.centralwidget)
+        self.l_ocost.setObjectName(u"l_ocost")
+        sizePolicy1.setHeightForWidth(self.l_ocost.sizePolicy().hasHeightForWidth())
+        self.l_ocost.setSizePolicy(sizePolicy1)
 
-        self.gridLayout.addWidget(self.label_2, 5, 0, 1, 2)
+        self.gridLayout.addWidget(self.l_ocost, 0, 0, 1, 1)
 
         self.pb_solve = QPushButton(self.centralwidget)
         self.pb_solve.setObjectName(u"pb_solve")
@@ -163,7 +149,7 @@ class Ui_MainWindow(object):
         sizePolicy2.setHeightForWidth(self.pb_solve.sizePolicy().hasHeightForWidth())
         self.pb_solve.setSizePolicy(sizePolicy2)
 
-        self.gridLayout.addWidget(self.pb_solve, 4, 2, 3, 2)
+        self.gridLayout.addWidget(self.pb_solve, 4, 2, 2, 2)
 
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QStatusBar(MainWindow)
@@ -177,17 +163,15 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"\u0422\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u043d\u0430\u044f \u0437\u0430\u0434\u0430\u0447\u0430", None))
-        self.label.setText(QCoreApplication.translate("MainWindow", u"W - \u0438\u044e\u043d\u044c, X - \u0438\u044e\u043b\u044c, Y - \u0430\u0432\u0433\u0443\u0441\u0442, Z - \u0441\u0435\u043d\u0442\u044f\u0431\u0440\u044c, F - \u0444\u0438\u043a\u0442\u0438\u0432\u043d\u044b\u0439 \u043c\u0435\u0441\u044f\u0446", None))
-        self.l_ocost.setText(QCoreApplication.translate("MainWindow", u"\u0421\u0442\u043e\u0438\u043c\u043e\u0441\u0442\u044c \u043f\u0435\u0440\u0435\u0440\u0430\u0431\u043e\u043a\u0438 (\u0437\u0430 \u044f\u0449\u0438\u043a)", None))
-        self.pb_ncost_apply.setText(QCoreApplication.translate("MainWindow", u"\u041f\u0440\u0438\u043d\u044f\u0442\u044c", None))
+        self.le_ncost_value.setText("")
         self.l_ncost.setText(QCoreApplication.translate("MainWindow", u"\u0421\u0442\u043e\u0438\u043c\u043e\u0441\u0442\u044c \u0445\u0440\u0430\u043d\u0435\u043d\u0438\u044f (\u0437\u0430 \u044f\u0449\u0438\u043a \u0432 \u043c\u0435\u0441\u044f\u0446)", None))
         self.l_costs_table.setText(QCoreApplication.translate("MainWindow", u"\u0422\u0430\u0431\u043b\u0438\u0446\u0430 \u0441\u0442\u043e\u0438\u043c\u043e\u0441\u0442\u0435\u0439", None))
-        self.pb_ocost_apply.setText(QCoreApplication.translate("MainWindow", u"\u041f\u0440\u0438\u043d\u044f\u0442\u044c", None))
-        self.le_ncost_value.setText("")
         self.pb_ncost_cancel.setText(QCoreApplication.translate("MainWindow", u"\u041e\u0442\u043c\u0435\u043d\u0430", None))
         self.pb_ocost_cancel.setText(QCoreApplication.translate("MainWindow", u"\u041e\u0442\u043c\u0435\u043d\u0430", None))
+        self.pb_ocost_apply.setText(QCoreApplication.translate("MainWindow", u"\u041f\u0440\u0438\u043d\u044f\u0442\u044c", None))
+        self.pb_ncost_apply.setText(QCoreApplication.translate("MainWindow", u"\u041f\u0440\u0438\u043d\u044f\u0442\u044c", None))
         self.le_ocost_value.setText("")
-        self.label_2.setText(QCoreApplication.translate("MainWindow", u"r - \u0440\u0435\u0433\u0443\u043b\u044f\u0440\u043d\u043e\u0435 \u043f\u0440\u043e\u0438\u0437\u0432\u043e\u0434\u0441\u0442\u0432\u043e, o - \u0441\u0432\u0435\u0440\u0445\u0443\u0440\u043e\u0447\u043d\u043e\u0435", None))
+        self.l_ocost.setText(QCoreApplication.translate("MainWindow", u"\u0421\u0442\u043e\u0438\u043c\u043e\u0441\u0442\u044c \u043f\u0435\u0440\u0435\u0440\u0430\u0431\u043e\u043a\u0438 (\u0437\u0430 \u044f\u0449\u0438\u043a)", None))
         self.pb_solve.setText(QCoreApplication.translate("MainWindow", u"\u041d\u0430\u0439\u0442\u0438\n"
 "\u0440\u0435\u0448\u0435\u043d\u0438\u0435", None))
     # retranslateUi
