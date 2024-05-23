@@ -15,36 +15,16 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="4" column="0" colspan="2">
-     <widget class="QLabel" name="label">
-      <property name="styleSheet">
-       <string notr="true">color:rgb(45, 45, 45)</string>
-      </property>
-      <property name="text">
-       <string>W - июнь, X - июль, Y - август, Z - сентябрь, F - фиктивный месяц</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="0">
-     <widget class="QLabel" name="l_ocost">
+    <item row="1" column="1">
+     <widget class="QLineEdit" name="le_ncost_value">
       <property name="sizePolicy">
-       <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
       </property>
       <property name="text">
-       <string>Стоимость перерабоки (за ящик)</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="2">
-     <widget class="QPushButton" name="pb_ncost_apply">
-      <property name="text">
-       <string>Принять</string>
+       <string/>
       </property>
      </widget>
     </item>
@@ -58,6 +38,29 @@
       </property>
       <property name="text">
        <string>Стоимость хранения (за ящик в месяц)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0" colspan="4">
+     <widget class="QLabel" name="l_costs_table">
+      <property name="font">
+       <font>
+        <pointsize>18</pointsize>
+        <italic>false</italic>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color:rgb(0, 170, 255)</string>
+      </property>
+      <property name="text">
+       <string>Таблица стоимостей</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="3">
+     <widget class="QPushButton" name="pb_ncost_cancel">
+      <property name="text">
+       <string>Отмена</string>
       </property>
      </widget>
     </item>
@@ -164,19 +167,10 @@
       </column>
      </widget>
     </item>
-    <item row="2" column="0" colspan="4">
-     <widget class="QLabel" name="l_costs_table">
-      <property name="font">
-       <font>
-        <pointsize>18</pointsize>
-        <italic>false</italic>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">color:rgb(0, 170, 255)</string>
-      </property>
+    <item row="0" column="3">
+     <widget class="QPushButton" name="pb_ocost_cancel">
       <property name="text">
-       <string>Таблица стоимостей</string>
+       <string>Отмена</string>
       </property>
      </widget>
     </item>
@@ -187,30 +181,10 @@
       </property>
      </widget>
     </item>
-    <item row="1" column="1">
-     <widget class="QLineEdit" name="le_ncost_value">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
+    <item row="1" column="2">
+     <widget class="QPushButton" name="pb_ncost_apply">
       <property name="text">
-       <string/>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="3">
-     <widget class="QPushButton" name="pb_ncost_cancel">
-      <property name="text">
-       <string>Отмена</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="3">
-     <widget class="QPushButton" name="pb_ocost_cancel">
-      <property name="text">
-       <string>Отмена</string>
+       <string>Принять</string>
       </property>
      </widget>
     </item>
@@ -227,20 +201,20 @@
       </property>
      </widget>
     </item>
-    <item row="5" column="0" colspan="2">
-     <widget class="QLabel" name="label_2">
-      <property name="styleSheet">
-       <string notr="true">color:rgb(45, 45, 45)</string>
+    <item row="0" column="0">
+     <widget class="QLabel" name="l_ocost">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
       </property>
       <property name="text">
-       <string>r - регулярное производство, o - сверхурочное</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+       <string>Стоимость перерабоки (за ящик)</string>
       </property>
      </widget>
     </item>
-    <item row="4" column="2" rowspan="3" colspan="2">
+    <item row="4" column="2" rowspan="2" colspan="2">
      <widget class="QPushButton" name="pb_solve">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
