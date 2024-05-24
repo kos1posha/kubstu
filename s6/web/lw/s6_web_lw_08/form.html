@@ -51,7 +51,7 @@
     <h2>Фото</h2>
     <label for="photo">Ваше фото</label><br>
     <img id="preview" class="preview" src="#" alt="Выбранное изображение" style="max-width: 100%; max-height: 200px"><br>
-    <input id="photo" type="file" accept="image/*" onchange="previewImage(event)">
+    <input id="photo" type="file" accept="image/*" onchange="previewImage()">
     <h2>Увлечения</h2>
     <label for="hobbies"></label>
     <select id="hobbies" size="7" style="overflow:hidden" multiple>
@@ -67,7 +67,7 @@
   </div>
 </form>
 <script>
-  function previewImage(event) {
+  function previewImage() {
     let input = document.getElementById('photo');
     let reader = new FileReader();
     reader.onload = function () {
