@@ -1,9 +1,11 @@
+import datetime
 import datetime as dt
 
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.views import LoginView
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
+from django.utils import timezone
 from django.views.generic import CreateView, DeleteView, DetailView, ListView, TemplateView
 
 from app.models import Article, ArticleDateViews
@@ -76,3 +78,20 @@ class AuthView(LoginView):
 
     def form_invalid(self, form):
         return redirect('writer')
+
+
+class GlobalAnalyticView(TemplateView):
+    template_name = 'analytics.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        today = timezone.now().date()
+        context['articles_count'] = Article.objects.all().count()
+        context['today_articles_count'] = Article.objects.filter(create__day=today.day, create__month=today.month, create__year=today.year).count()
+        date_views = [sum(ArticleDateViews.objects.filter(date=dt.date.today() - dt.timedelta(days=i)).values_list('views', flat=True)) for i in range(14)]
+        max_views = max(date_views)
+        context['views_last_two_weeks'] = {(dt.date.today() - dt.timedelta(days=i)).strftime('%d.%m'): (dw, max_views) for i, dw in enumerate(date_views)}
+        most_viewed_articles = sorted(Article.objects.all()[:7], key=lambda a: a.views(), reverse=True)
+        max_viewed = most_viewed_articles[0].views()
+        context['most_viewed_articles'] = {a.slug: (a.views(), max_viewed) for a in most_viewed_articles}
+        return context

@@ -18,6 +18,9 @@
 <nav class="navbar navbar-expand-lg bg-primary" style="min-height: 7vh; max-height: 7vh;">
   <div class="container-fluid px-4">
     <a class="navbar-brand text-white fw-semibold" href="{% url 'main' %}">Местный портал</a>
+    {% if user.is_superuser %}
+      <a class="navbar-brand text-white fw-semibold small" href="{% url 'analytics' %}">Просмотры</a>
+    {% endif %}
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>

@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ article.title }}{% endblock %}
+{% block extra_styles %}
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/charts.css/dist/charts.min.css">{% endblock %}
+
+{% block content %}
+  <h1 class="text-primary-emphasis">Анализ просмотров сайта МЧС</h1>
+  <h5 class="fw-normal text-secondary">Всего статей: {{ articles_count }}</h5>
+  <h5 class="fw-normal text-secondary">Создано сегодня: {{ today_articles_count }}</h5>
+  <div class="py-3">
+    <h3>Просмотры по дням (последние 14 дней)</h3>
+    <table class="charts-css bar data-center data-spacing-8 show-labels border rounded p-4 pb-2">
+      <thead>
+      <tr>
+        <th scope="col">1</th>
+        <th scope="col">2</th>
+      </tr>
+      </thead>
+      <tbody>
+      {% for day, views in views_last_two_weeks.items %}
+        <tr>
+          <th scope="row">{{ day }}</th>
+          <td style="--color: lightblue; --size: calc({{ views.0 }}/{{ views.1 }})">{{ views.0 }}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+    <h3 class="mt-4">Самые просматриваемые статьи</h3>
+    <table class="charts-css column data-center data-spacing-8 show-labels border rounded p-4 pb-2">
+      <thead>
+      <tr>
+        <th scope="col">1</th>
+        <th scope="col">2</th>
+      </tr>
+      </thead>
+      <tbody>
+      {% for slug, views in most_viewed_articles.items %}
+        <tr>
+          <th scope="row"><a href="{% url 'article' slug %}">{{ slug }}</a></th>
+          <td style="--color: cornflowerblue; --size: calc({{ views.0 }}/{{ views.1 }})">{{ views.0 }}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}
