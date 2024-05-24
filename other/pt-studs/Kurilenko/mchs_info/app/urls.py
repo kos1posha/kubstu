@@ -10,4 +10,5 @@ urlpatterns = [
     path('article/<slug:slug>/views/', views.ArticleViewsAnalyticView.as_view(), name='article_views'),
     path('article/<int:pk>/delete/', views.DeleteArticleView.as_view(), name='delete'),
     path('auth/', views.AuthView.as_view(), name='auth'),
+    path('analytics/', views.GlobalAnalyticView.as_view(), name='analytics'),
 ]
