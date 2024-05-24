@@ -1,12 +1,45 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
   <title>Лабораторная работа 9. Фреймы</title>
+  <style>
+      iframe {
+          height: 100%;
+          width: 100%;
+      }
+
+      table {
+          position: absolute;
+          height: 98vh;
+          width: 98vw;
+          padding: 1vh 1vw;
+      }
+  </style>
 </head>
-<body>
-
-
-
+<body style="overflow:hidden">
+<table>
+  <tr>
+    <td colspan="4">
+      <iframe src="frames/welcome.html"></iframe>
+    </td>
+  </tr>
+  <tr>
+    <td rowspan="2">
+      <iframe src="frames/list.html"></iframe>
+    </td>
+    <td rowspan="2">
+      <iframe src="frames/runstr1.html"></iframe>
+    </td>
+    <td colspan="2">
+      <iframe src="frames/runstr2.html"></iframe>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <iframe src="frames/runstr3.html"></iframe>
+    </td>
+  </tr>
+</table>
 </body>
 </html>
