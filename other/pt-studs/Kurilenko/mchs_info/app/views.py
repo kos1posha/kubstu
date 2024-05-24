@@ -1,4 +1,3 @@
-import datetime
 import datetime as dt
 
 from django.contrib.auth.forms import AuthenticationForm
