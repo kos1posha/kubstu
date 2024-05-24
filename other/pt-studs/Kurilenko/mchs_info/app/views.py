@@ -11,11 +11,10 @@ from app.models import Article, ArticleDateViews
 
 class MainPageView(ListView):
     template_name = 'main.html'
-    queryset = Article.objects.all()
     context_object_name = 'articles'
 
     def get_queryset(self):
-        return reversed(self.queryset)
+        return reversed(Article.objects.all())
 
 
 class AboutView(TemplateView):
