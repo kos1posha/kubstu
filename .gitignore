@@ -15,6 +15,7 @@ s6/pis/
 
 ## IDE settings
 .idea/
+*.iml
 
 ## Rider
 *.sln.DotSettings.user
@@ -105,3 +106,23 @@ android/
 ios/
 
 ### Flutter ###
+
+
+### Android ###
+
+## Gradle Files
+.gradle
+/build
+
+## Local configuration file (sdk path, etc)
+local.properties
+/local.properties
+
+## Android Studio generated files and folders
+captures/
+.externalNativeBuild/
+.cxx/
+*.apk
+output.json
+
+### Android ###
