@@ -54,6 +54,7 @@ class MrGumbsControl(Ui_MainWindow, qtw.QMainWindow):
 
     def show_result_dialog(self, problem):
         dialog = qtw.QDialog()
+        dialog.setWindowTitle('План производства')
         layout = qtw.QVBoxLayout()
         status_label = qtw.QLabel(f'Найдено оптимальное решение при X = {self.demand}')
         result_label = qtw.QLabel(f'Прибыль составит: {int(problem.objective.value()) * 1000:,} руб.')
