@@ -55,11 +55,18 @@ class TransportProblemGivenControl(Ui_TransportProblemGivenWindow, qtw.QMainWind
         self.l_supply_count.setText(str(len(supply)))
         self.l_demand_count.setText(str(len(demand)))
 
+    def update_data(self):
+        data = self.fetch_data()
+        self.costs = data['costs']
+        self.supply = data['supply']
+        self.demand = data['demand']
+
     def supply_add(self) -> None:
         row = self.tw_given.rowCount()
         if row == 10:
             return self.sb_main.showMessage('Количество поставщиков не может быть больше девяти.', 2500)
 
+        self.update_data()
         self.costs.append([1 for _ in range(len(self.demand))])
         self.supply.append(1)
         self.put_data(self.costs, self.supply, self.demand)
@@ -69,6 +76,7 @@ class TransportProblemGivenControl(Ui_TransportProblemGivenWindow, qtw.QMainWind
         if row == 3:
             return self.sb_main.showMessage('Количество поставщиков не может быть меньше двух.', 2500)
 
+        self.update_data()
         self.costs.pop()
         self.supply.pop()
         self.put_data(self.costs, self.supply, self.demand)
@@ -78,6 +86,7 @@ class TransportProblemGivenControl(Ui_TransportProblemGivenWindow, qtw.QMainWind
         if column == 10:
             return self.sb_main.showMessage('Количество магазинов не может быть больше девяти.', 2500)
 
+        self.update_data()
         [row.append(1) for row in self.costs]
         self.demand.append(1)
         self.put_data(self.costs, self.supply, self.demand)
@@ -87,6 +96,7 @@ class TransportProblemGivenControl(Ui_TransportProblemGivenWindow, qtw.QMainWind
         if column == 3:
             return self.sb_main.showMessage('Количество магазинов не может быть меньше двух.', 2500)
 
+        self.update_data()
         [row.pop() for row in self.costs]
         self.demand.pop()
         self.put_data(self.costs, self.supply, self.demand)
