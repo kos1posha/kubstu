@@ -9,4 +9,3 @@
     android:gravity="center_vertical"
     android:text="@string/enter_value_first"
     android:textSize="20sp" />
-
