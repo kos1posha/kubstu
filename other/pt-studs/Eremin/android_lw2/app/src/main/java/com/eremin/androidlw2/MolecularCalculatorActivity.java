@@ -3,15 +3,18 @@ package com.eremin.androidlw2;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NavUtils;
 
 import com.eremin.androidlw2.databinding.ActivityMolecularCalculatorBinding;
 import com.eremin.androidlw2.databinding.EmptyInputToastBinding;
 
 import java.util.Locale;
+import java.util.Objects;
 
 public class MolecularCalculatorActivity extends AppCompatActivity {
     private View view;
@@ -26,12 +29,23 @@ public class MolecularCalculatorActivity extends AppCompatActivity {
         view = binding.getRoot();
         setContentView(view);
         setupListeners();
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         binding = null;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(this);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     protected void setupListeners() {

@@ -1,5 +1,5 @@
 <resources>
-  <string name="app_name">AndroidLW2</string>
+  <string name="app_name">Вариант 2</string>
   <string name="water_molecular_mass">
     Масса m одной молекулы воды равна 3E-23 гр.
   </string>
@@ -8,4 +8,5 @@
   <string name="calculate">Рассчитать</string>
   <string name="result">Результат</string>
   <string name="enter_value_first">Сначала введите значение</string>
+  <string name="about_app">О приложении</string>
 </resources>
