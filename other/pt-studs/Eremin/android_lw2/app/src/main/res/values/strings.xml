@@ -7,4 +7,5 @@
   <string name="water_quarts_count">Количество воды в квартах</string>
   <string name="calculate">Рассчитать</string>
   <string name="result">Результат</string>
+  <string name="enter_value_first">Сначала введите значение</string>
 </resources>
