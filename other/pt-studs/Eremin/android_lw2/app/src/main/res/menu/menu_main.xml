@@ -8,9 +8,14 @@
       android:orderInCategory="1"
       app:showAsAction="never" />
   <item
+      android:id="@+id/action_fifteen_puzzle"
+      android:title="@string/fifteen_puzzle"
+      android:orderInCategory="2"
+      app:showAsAction="never" />
+  <item
       android:id="@+id/action_about"
       android:title="@string/about_app"
-      android:orderInCategory="2"
+      android:orderInCategory="3"
       app:showAsAction="never" />
 
 </menu>

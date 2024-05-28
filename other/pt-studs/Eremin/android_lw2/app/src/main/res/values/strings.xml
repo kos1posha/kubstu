@@ -9,4 +9,5 @@
   <string name="result">Результат</string>
   <string name="enter_value_first">Сначала введите значение</string>
   <string name="about_app">О приложении</string>
+  <string name="fifteen_puzzle">Пятнашки</string>
 </resources>
