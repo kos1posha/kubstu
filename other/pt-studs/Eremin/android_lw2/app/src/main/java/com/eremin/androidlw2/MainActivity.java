@@ -12,8 +12,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.eremin.androidlw2.databinding.ActivityMainBinding;
 
-import java.util.Objects;
-
 public class MainActivity extends AppCompatActivity {
     private View view;
     private ActivityMainBinding binding;
@@ -40,10 +38,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.action_molecular_calculator) {
             goToMolecularCountActivity(view);
+        } else if (id == R.id.action_fifteen_puzzle) {
+            goToFifteenPuzzleActivity(view);
         } else if (id == R.id.action_about) {
             Toast toast = Toast.makeText(this, "Да нечего рассказывать...", Toast.LENGTH_SHORT);
             toast.show();
@@ -53,10 +53,16 @@ public class MainActivity extends AppCompatActivity {
 
     protected void setupListeners() {
         binding.btnMolecularCalculator.setOnClickListener(this::goToMolecularCountActivity);
+        binding.btnFifteenPuzzle.setOnClickListener(this::goToFifteenPuzzleActivity);
     }
 
     protected void goToMolecularCountActivity(View view) {
         Intent intent = new Intent(MainActivity.this, MolecularCalculatorActivity.class);
+        startActivity(intent);
+    }
+
+    protected void goToFifteenPuzzleActivity(View view) {
+        Intent intent = new Intent(MainActivity.this, FifteenPuzzleActivity.class);
         startActivity(intent);
     }
 }

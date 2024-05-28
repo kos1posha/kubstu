@@ -10,6 +10,12 @@
       android:id="@+id/btn_molecular_calculator"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:text="@string/molecular_calculator"/>
+      android:text="@string/molecular_calculator" />
+
+  <Button
+      android:id="@+id/btn_fifteen_puzzle"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/fifteen_puzzle" />
 
 </LinearLayout>
