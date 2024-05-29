@@ -25,4 +25,5 @@
   <string name="a">A</string>
   <string name="b">B</string>
   <string name="define">Определить</string>
+  <string name="notification">Уведомление</string>
 </resources>
