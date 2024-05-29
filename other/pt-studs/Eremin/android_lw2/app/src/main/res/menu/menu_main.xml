@@ -3,24 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
   <item
-      android:id="@+id/action_molecular_calculator"
-      android:title="@string/molecular_calculator"
-      android:orderInCategory="1"
-      app:showAsAction="never" />
-  <item
-      android:id="@+id/action_fifteen_puzzle"
-      android:title="@string/fifteen_puzzle"
-      android:orderInCategory="2"
-      app:showAsAction="never" />
-  <item
       android:id="@+id/action_settings"
       android:title="@string/settings"
-      android:orderInCategory="3"
+      android:orderInCategory="1"
       app:showAsAction="never" />
   <item
       android:id="@+id/action_about"
       android:title="@string/about_app"
-      android:orderInCategory="4"
+      android:orderInCategory="2"
       app:showAsAction="never" />
 
 </menu>
