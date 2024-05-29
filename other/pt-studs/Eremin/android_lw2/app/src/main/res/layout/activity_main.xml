@@ -18,10 +18,16 @@
       android:layout_height="wrap_content"
       android:text="@string/fifteen_puzzle" />
 
-    <Button
+  <Button
       android:id="@+id/btn_matrix"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:text="@string/matrix" />
+
+  <Button
+      android:id="@+id/btn_notification"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/notification" />
 
 </LinearLayout>
