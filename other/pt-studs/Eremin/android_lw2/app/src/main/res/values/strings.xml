@@ -18,4 +18,11 @@
   <string name="secondary_color">Дополнительный цвет</string>
   <string name="text_color">Цвет текста</string>
   <string name="apply">Принять</string>
+  <string name="matrix">Матрица</string>
+  <string name="matrix_task">Определить, есть ли в данной матрице строка, состоящая только из элементов, принадлежащих промежутку</string>
+  <string name="from">от</string>
+  <string name="to">до</string>
+  <string name="a">A</string>
+  <string name="b">B</string>
+  <string name="define">Определить</string>
 </resources>
