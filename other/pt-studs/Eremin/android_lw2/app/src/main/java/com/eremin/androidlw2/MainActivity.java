@@ -50,11 +50,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if (id == R.id.action_molecular_calculator) {
-            goToMolecularCountActivity(view);
-        } else if (id == R.id.action_fifteen_puzzle) {
-            goToFifteenPuzzleActivity(view);
-        } else if (id == R.id.action_settings) {
+        if (id == R.id.action_settings) {
             goToSettingsActivity();
         } else if (id == R.id.action_about) {
             Toast toast = Toast.makeText(this, "Да нечего рассказывать...", Toast.LENGTH_SHORT);
