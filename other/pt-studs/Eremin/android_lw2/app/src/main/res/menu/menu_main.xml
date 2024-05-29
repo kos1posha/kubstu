@@ -13,9 +13,14 @@
       android:orderInCategory="2"
       app:showAsAction="never" />
   <item
+      android:id="@+id/action_settings"
+      android:title="@string/settings"
+      android:orderInCategory="3"
+      app:showAsAction="never" />
+  <item
       android:id="@+id/action_about"
       android:title="@string/about_app"
-      android:orderInCategory="3"
+      android:orderInCategory="4"
       app:showAsAction="never" />
 
 </menu>

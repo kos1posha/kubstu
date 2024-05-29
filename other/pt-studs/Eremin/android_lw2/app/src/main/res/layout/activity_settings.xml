@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="fill_vertical"
+    android:orientation="vertical"
+    tools:context=".SettingsActivity">
+
+  <RadioGroup
+      android:id="@+id/rbg_primary_color"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="24dp"
+      android:layout_marginTop="24dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/primary_color"
+        android:textSize="24sp" />
+
+    <RadioButton
+        android:id="@+id/rb_pc_light"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/color_light"
+        android:textSize="20sp"
+        android:checked="true" />
+
+    <RadioButton
+        android:id="@+id/rb_pc_dark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/color_dark"
+        android:textSize="20sp" />
+
+    <RadioButton
+        android:id="@+id/rb_pc_green"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/color_green"
+        android:textSize="20sp" />
+
+  </RadioGroup>
+
+  <RadioGroup
+      android:id="@+id/rbg_secondary_color"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="24dp"
+      android:layout_marginTop="12dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/secondary_color"
+        android:textSize="24sp" />
+
+    <RadioButton
+        android:id="@+id/rb_sc_light"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/color_light"
+        android:textSize="20sp" />
+
+    <RadioButton
+        android:id="@+id/rb_sc_dark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/color_dark"
+        android:textSize="20sp" />
+
+    <RadioButton
+        android:id="@+id/rb_sc_green"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/color_green"
+        android:textSize="20sp"
+        android:checked="true" />
+
+  </RadioGroup>
+
+  <RadioGroup
+      android:id="@+id/rbg_text_color"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="24dp"
+      android:layout_marginTop="12dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/text_color"
+        android:textSize="24sp" />
+
+    <RadioButton
+        android:id="@+id/rb_tc_light"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/color_light"
+        android:textSize="20sp" />
+
+    <RadioButton
+        android:id="@+id/rb_tc_dark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:text="@string/color_dark"
+        android:textSize="20sp" />
+
+    <RadioButton
+        android:id="@+id/rb_tc_green"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/color_green"
+        android:textSize="20sp" />
+
+  </RadioGroup>
+
+  <Button
+      android:id="@+id/btn_apply"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="12dp"
+      android:layout_marginHorizontal="24dp"
+      android:text="@string/apply"
+      android:textSize="18sp" />
+
+</LinearLayout>
