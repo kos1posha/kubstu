@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    tools:context=".MatrixActivity">
+
+
+  <LinearLayout
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:orientation="vertical">
+
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="20dp"
+        android:text="@string/matrix_task"
+        android:textSize="24sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:orientation="horizontal">
+
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="@string/from"
+          android:textSize="20sp" />
+
+      <EditText
+          android:id="@+id/et_a"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:importantForAutofill="no"
+          android:inputType="number"
+          android:hint="@string/a"
+          android:textAlignment="center" />
+
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="@string/to"
+          android:textSize="20sp" />
+
+      <EditText
+          android:id="@+id/et_b"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:importantForAutofill="no"
+          android:inputType="number"
+          android:hint="@string/b"
+          android:textAlignment="center" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_define"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:text="@string/define"
+        android:textSize="18sp" />
+
+  </LinearLayout>
+
+  <TableLayout
+      android:id="@+id/tl_matrix_table"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginVertical="10dp"
+      android:layout_marginHorizontal="20dp" />
+
+</LinearLayout>

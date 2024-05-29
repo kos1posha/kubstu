@@ -62,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
     protected void setupListeners() {
         binding.btnMolecularCalculator.setOnClickListener(this::goToMolecularCountActivity);
         binding.btnFifteenPuzzle.setOnClickListener(this::goToFifteenPuzzleActivity);
+        binding.btnMatrix.setOnClickListener(this::goToMatrixActivity);
     }
 
     protected void setupTheme() {
@@ -71,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
         int sSupColor = sp.getInt("secondarySupColor", getColor(android.R.color.background_light));
         view.setBackgroundColor(pColor);
         actionBar.setBackgroundDrawable(new ColorDrawable(sColor));
-        for (Button button : Arrays.asList(binding.btnMolecularCalculator, binding.btnFifteenPuzzle)) {
+        for (Button button : Arrays.asList(binding.btnMolecularCalculator, binding.btnFifteenPuzzle, binding.btnMatrix)) {
             button.setBackgroundColor(sColor);
             button.setTextColor(sSupColor);
         }
@@ -84,6 +85,11 @@ public class MainActivity extends AppCompatActivity {
 
     protected void goToFifteenPuzzleActivity(View view) {
         Intent intent = new Intent(MainActivity.this, FifteenPuzzleActivity.class);
+        startActivity(intent);
+    }
+
+    protected void goToMatrixActivity(View view) {
+        Intent intent = new Intent(MainActivity.this, MatrixActivity.class);
         startActivity(intent);
     }
 
