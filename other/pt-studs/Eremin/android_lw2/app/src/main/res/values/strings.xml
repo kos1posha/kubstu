@@ -10,4 +10,12 @@
   <string name="enter_value_first">Сначала введите значение</string>
   <string name="about_app">О приложении</string>
   <string name="fifteen_puzzle">Пятнашки</string>
+  <string name="settings">Настройки</string>
+  <string name="primary_color">Основной цвет</string>
+  <string name="color_light">Светлый</string>
+  <string name="color_dark">Темный</string>
+  <string name="color_green">Зеленый</string>
+  <string name="secondary_color">Дополнительный цвет</string>
+  <string name="text_color">Цвет текста</string>
+  <string name="apply">Принять</string>
 </resources>

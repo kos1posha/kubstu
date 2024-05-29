@@ -1,28 +1,38 @@
 package com.eremin.androidlw2;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.eremin.androidlw2.databinding.ActivityMainBinding;
 
+import java.util.Arrays;
+import java.util.Objects;
+
 public class MainActivity extends AppCompatActivity {
-    private View view;
     private ActivityMainBinding binding;
+    private View view;
+    private ActionBar actionBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         view = binding.getRoot();
+        actionBar = Objects.requireNonNull(getSupportActionBar());
         setContentView(view);
         setupListeners();
+        setupTheme();
     }
 
     @Override
@@ -44,6 +54,8 @@ public class MainActivity extends AppCompatActivity {
             goToMolecularCountActivity(view);
         } else if (id == R.id.action_fifteen_puzzle) {
             goToFifteenPuzzleActivity(view);
+        } else if (id == R.id.action_settings) {
+            goToSettingsActivity();
         } else if (id == R.id.action_about) {
             Toast toast = Toast.makeText(this, "Да нечего рассказывать...", Toast.LENGTH_SHORT);
             toast.show();
@@ -56,6 +68,19 @@ public class MainActivity extends AppCompatActivity {
         binding.btnFifteenPuzzle.setOnClickListener(this::goToFifteenPuzzleActivity);
     }
 
+    protected void setupTheme() {
+        SharedPreferences sp = getSharedPreferences(getPackageName(), Context.MODE_PRIVATE);
+        int pColor = sp.getInt("primaryColor", getColor(android.R.color.background_light));
+        int sColor = sp.getInt("secondaryColor", getColor(android.R.color.holo_green_dark));
+        int sSupColor = sp.getInt("secondarySupColor", getColor(android.R.color.background_light));
+        view.setBackgroundColor(pColor);
+        actionBar.setBackgroundDrawable(new ColorDrawable(sColor));
+        for (Button button : Arrays.asList(binding.btnMolecularCalculator, binding.btnFifteenPuzzle)) {
+            button.setBackgroundColor(sColor);
+            button.setTextColor(sSupColor);
+        }
+    }
+
     protected void goToMolecularCountActivity(View view) {
         Intent intent = new Intent(MainActivity.this, MolecularCalculatorActivity.class);
         startActivity(intent);
@@ -63,6 +88,11 @@ public class MainActivity extends AppCompatActivity {
 
     protected void goToFifteenPuzzleActivity(View view) {
         Intent intent = new Intent(MainActivity.this, FifteenPuzzleActivity.class);
+        startActivity(intent);
+    }
+
+    protected void goToSettingsActivity() {
+        Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
         startActivity(intent);
     }
 }
