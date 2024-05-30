@@ -37,4 +37,10 @@
       android:layout_height="wrap_content"
       android:text="@string/draw" />
 
+    <Button
+      android:id="@+id/btn_map"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="@string/map" />
+
 </LinearLayout>
