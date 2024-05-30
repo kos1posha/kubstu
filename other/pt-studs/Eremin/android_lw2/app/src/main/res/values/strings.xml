@@ -27,4 +27,10 @@
   <string name="define">Определить</string>
   <string name="notification">Уведомление</string>
   <string name="draw">Рисование</string>
+  <string name="map_search">Поиск места на карте</string>
+  <string name="enter_address">Введите адрес</string>
+  <string name="search">Найти</string>
+  <string name="address_format_hint">Части адреса разделяйте запятой</string>
+  <string name="map">Карта</string>
+  <string name="streetview">Прогуляться</string>
 </resources>
