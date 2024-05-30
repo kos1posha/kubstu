@@ -4,30 +4,37 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:padding="80dp"
     android:gravity="center">
 
   <Button
       android:id="@+id/btn_molecular_calculator"
-      android:layout_width="wrap_content"
+      android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:text="@string/molecular_calculator" />
 
   <Button
       android:id="@+id/btn_fifteen_puzzle"
-      android:layout_width="wrap_content"
+      android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:text="@string/fifteen_puzzle" />
 
   <Button
       android:id="@+id/btn_matrix"
-      android:layout_width="wrap_content"
+      android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:text="@string/matrix" />
 
   <Button
       android:id="@+id/btn_notification"
-      android:layout_width="wrap_content"
+      android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:text="@string/notification" />
+
+  <Button
+      android:id="@+id/btn_draw"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="@string/draw" />
 
 </LinearLayout>
