@@ -26,4 +26,5 @@
   <string name="b">B</string>
   <string name="define">Определить</string>
   <string name="notification">Уведомление</string>
+  <string name="draw">Рисование</string>
 </resources>
