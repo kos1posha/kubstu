@@ -91,7 +91,7 @@ public class MolecularCalculatorActivity extends AppCompatActivity {
 
     protected void showEmptyInputToast() {
         Toast toast = new Toast(getApplicationContext());
-        toast.setGravity(Gravity.TOP, 0, 40);
+        toast.setGravity(Gravity.TOP, 0, 200);
         toast.setDuration(Toast.LENGTH_LONG);
         toast.setView(EmptyInputToastBinding.inflate(layoutInflater).getRoot());
         toast.show();
