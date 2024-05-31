@@ -13,7 +13,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NavUtils;
-import androidx.lifecycle.LifecycleOwner;
 
 import com.eremin.androidlw2.databinding.ActivityFifteenPuzzleBinding;
 
@@ -24,7 +23,7 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class FifteenPuzzleActivity extends AppCompatActivity implements LifecycleOwner {
+public class FifteenPuzzleActivity extends AppCompatActivity {
     private ActivityFifteenPuzzleBinding binding;
     private View view;
     private ActionBar actionBar;
@@ -125,7 +124,7 @@ public class FifteenPuzzleActivity extends AppCompatActivity implements Lifecycl
         for (int row : IntStream.range(0, matrixSize).toArray()) {
             for (int column : IntStream.range(0, matrixSize).toArray()) {
                 Button button = binding.main.findViewById(index);
-                if (button.getX() != column * buttonSize + tableOffsetX || button.getY() != row * buttonSize + tableOffsetY) {
+                if ((int) button.getX() != (int) (column * buttonSize + tableOffsetX  + 10 * scale * column) || (int) button.getY() != (int) (row * buttonSize + tableOffsetY)) {
                     return false;
                 }
                 index++;
