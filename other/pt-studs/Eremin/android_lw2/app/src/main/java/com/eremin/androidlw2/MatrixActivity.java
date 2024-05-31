@@ -118,8 +118,8 @@ public class MatrixActivity extends AppCompatActivity {
             Toast.makeText(this, "A должно быть меньше B", Toast.LENGTH_SHORT).show();
             return;
         }
-        for (int i = 0; i < edits.size(); i += 4) {
-            List<EditText> row = edits.subList(i, i + 4);
+        for (int i = 0; i < edits.size(); i += tableWidth) {
+            List<EditText> row = edits.subList(i, i + tableWidth);
             boolean rowPassed = true;
             for (EditText editText : row) {
                 String text = editText.getText().toString();
