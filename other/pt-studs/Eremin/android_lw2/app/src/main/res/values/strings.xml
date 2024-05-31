@@ -33,4 +33,6 @@
   <string name="address_format_hint">Части адреса разделяйте запятой</string>
   <string name="map">Карта</string>
   <string name="streetview">Прогуляться</string>
+  <string name="clear">Очистить</string>
+  <string name="im_so_cool">Я красавчик</string>
 </resources>

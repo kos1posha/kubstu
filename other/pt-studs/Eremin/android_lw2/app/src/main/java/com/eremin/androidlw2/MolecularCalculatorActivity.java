@@ -6,6 +6,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -48,11 +49,25 @@ public class MolecularCalculatorActivity extends AppCompatActivity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_molecular_count, menu);
+        return true;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                NavUtils.navigateUpFromSameTask(this);
-                return true;
+        int id = item.getItemId();
+        if (id == R.id.action_clear) {
+            binding.etWaterQuartsCount.setText("");
+            binding.twMolecularCount.setText("");
+        } else if (id == R.id.action_im_so_cool) {
+            item.setChecked(!item.isChecked());
+        } else if (id == R.id.action_about) {
+            Toast toast = Toast.makeText(this, "Да нечего рассказывать...", Toast.LENGTH_SHORT);
+            toast.show();
+        } else if (id == android.R.id.home) {
+            NavUtils.navigateUpFromSameTask(this);
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }
