@@ -15,6 +15,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.eremin.androidlw2.databinding.ActivityMainBinding;
+import com.eremin.androidlw2.v6.TimeActivity;
 
 import java.util.Arrays;
 import java.util.Objects;
@@ -61,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
 
     protected void setupListeners() {
         binding.btnMolecularCalculator.setOnClickListener(this::goToMolecularCountActivity);
+        binding.btnTimeConverter.setOnClickListener(this::goToTimeActivity);
         binding.btnFifteenPuzzle.setOnClickListener(this::goToFifteenPuzzleActivity);
         binding.btnMatrix.setOnClickListener(this::goToMatrixActivity);
         binding.btnNotification.setOnClickListener(this::goToNotifyActivity);
@@ -76,7 +78,8 @@ public class MainActivity extends AppCompatActivity {
         view.setBackgroundColor(pColor);
         actionBar.setBackgroundDrawable(new ColorDrawable(sColor));
         for (Button button : Arrays.asList(binding.btnMolecularCalculator, binding.btnFifteenPuzzle,
-            binding.btnMatrix, binding.btnNotification, binding.btnDraw, binding.btnMap)) {
+            binding.btnMatrix, binding.btnNotification, binding.btnDraw, binding.btnMap,
+            binding.btnTimeConverter)) {
             button.setBackgroundColor(sColor);
             button.setTextColor(sSupColor);
         }
@@ -84,6 +87,11 @@ public class MainActivity extends AppCompatActivity {
 
     protected void goToMolecularCountActivity(View view) {
         Intent intent = new Intent(MainActivity.this, MolecularCalculatorActivity.class);
+        startActivity(intent);
+    }
+
+    protected void goToTimeActivity(View view) {
+        Intent intent = new Intent(MainActivity.this, TimeActivity.class);
         startActivity(intent);
     }
 

@@ -14,6 +14,12 @@
       android:text="@string/molecular_calculator" />
 
   <Button
+      android:id="@+id/btn_time_converter"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="@string/time_converter" />
+
+  <Button
       android:id="@+id/btn_fifteen_puzzle"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
@@ -37,7 +43,7 @@
       android:layout_height="wrap_content"
       android:text="@string/draw" />
 
-    <Button
+  <Button
       android:id="@+id/btn_map"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"

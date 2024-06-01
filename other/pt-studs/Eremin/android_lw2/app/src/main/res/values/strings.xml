@@ -75,4 +75,11 @@
     Под ним сидел, и кот учёный
     Свои мне сказки говорил.
   </string>
+  <string name="time_converter">Конвертер времени</string>
+  <string name="time_converter_hint">Введите время, и оно автоматически переведется в минуты и секунды</string>
+  <string name="time_format">чч:мм:cc</string>
+  <string name="invalid_time_format">Неверный формат времени. Должно быть чч:мм:сс.</string>
+  <string name="clear_output">Очистить вывод</string>
+  <string name="output_seconds">Выводит секунды</string>
+  <string name="output_minutes">Выводит минуты</string>
 </resources>
