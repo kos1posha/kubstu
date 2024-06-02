@@ -77,9 +77,24 @@
   </string>
   <string name="time_converter">Конвертер времени</string>
   <string name="time_converter_hint">Введите время, и оно автоматически переведется в минуты и секунды</string>
-  <string name="time_format">чч:мм:cc</string>
+  <string name="time_format">чч:мм:сс</string>
   <string name="invalid_time_format">Неверный формат времени. Должно быть чч:мм:сс.</string>
   <string name="clear_output">Очистить вывод</string>
   <string name="output_seconds">Выводит секунды</string>
   <string name="output_minutes">Выводит минуты</string>
+  <string name="theme">Тема</string>
+  <string name="light">Светлая</string>
+  <string name="dark">Темная</string>
+  <string name="system">Система</string>
+  <string name="font_size">Размер шрифта</string>
+  <string name="big">Большой</string>
+  <string name="medium">Средний</string>
+  <string name="small">Маленький</string>
+  <string name="font_family">Шрифт</string>
+  <string name="arial">Arial</string>
+  <string name="intel">Intel</string>
+  <string name="times_new_roman">Times New Roman</string>
+  <string name="sans_serif">Sans Serif</string>
+  <string name="monospace">Monospace</string>
+  <string name="roboto">Roboto</string>
 </resources>

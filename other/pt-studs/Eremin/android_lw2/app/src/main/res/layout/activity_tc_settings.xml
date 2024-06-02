@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".v6.TcSettingsActivity"
+    android:orientation="vertical">
+
+  <TextView
+      android:id="@+id/theme_title"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="@string/theme"
+      android:textAlignment="center"
+      android:textSize="30sp"
+      android:layout_marginTop="30dp" />
+
+  <RadioGroup
+      android:paddingHorizontal="20dp"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content">
+
+    <RadioButton
+        android:id="@+id/theme_light"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/light"
+        android:textSize="22sp" />
+
+    <RadioButton
+        android:id="@+id/theme_dark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dark"
+        android:textSize="22sp" />
+
+    <RadioButton
+        android:id="@+id/theme_system"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/system"
+        android:textSize="22sp" />
+
+  </RadioGroup>
+
+  <com.google.android.material.divider.MaterialDivider
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content" />
+
+  <TextView
+      android:id="@+id/ff_title"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="@string/font_family"
+      android:textAlignment="center"
+      android:textSize="30sp" />
+
+  <RadioGroup
+      android:paddingHorizontal="20dp"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content">
+
+    <RadioButton
+        android:id="@+id/ff_sans_serif"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sans_serif"
+        android:textSize="22sp" />
+
+    <RadioButton
+        android:id="@+id/ff_monospace"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/monospace"
+        android:textSize="22sp" />
+
+    <RadioButton
+        android:id="@+id/ff_roboto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/roboto"
+        android:textSize="22sp" />
+
+  </RadioGroup>
+
+  <com.google.android.material.divider.MaterialDivider
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content" />
+
+  <TextView
+      android:id="@+id/fs_title"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="@string/font_size"
+      android:textAlignment="center"
+      android:textSize="30sp" />
+
+  <RadioGroup
+      android:paddingHorizontal="20dp"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content">
+
+    <RadioButton
+        android:id="@+id/fs_big"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/big"
+        android:textSize="22sp" />
+
+    <RadioButton
+        android:id="@+id/fs_medium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/medium"
+        android:textSize="22sp" />
+
+    <RadioButton
+        android:id="@+id/fs_small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/small"
+        android:textSize="22sp" />
+
+  </RadioGroup>
+
+  <com.google.android.material.divider.MaterialDivider
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content" />
+
+</LinearLayout>

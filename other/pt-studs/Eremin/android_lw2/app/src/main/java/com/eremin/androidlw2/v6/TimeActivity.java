@@ -1,5 +1,9 @@
 package com.eremin.androidlw2.v6;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -20,8 +24,12 @@ import androidx.core.view.WindowInsetsCompat;
 import com.eremin.androidlw2.R;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 
@@ -32,10 +40,21 @@ public class TimeActivity extends AppCompatActivity {
     TextView timeResultSec;
     EditText timeInput;
 
+    SharedPreferences sp;
+
+    List<View> bv;
+    List<View> mv;
+    List<View> sv;
+
+    @SuppressLint("CutPasteId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        sp = getSharedPreferences(getPackageName(), Context.MODE_PRIVATE);
+        TcSettingsActivity.ApplySPTheme(sp, this, false);
+
         super.onCreate(savedInstanceState);
         Objects.requireNonNull(getSupportActionBar()).setTitle(R.string.time_converter);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(false);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_time);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
@@ -43,6 +62,17 @@ public class TimeActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        bv = Arrays.asList(findViewById(R.id.time_result_min), findViewById(R.id.time_result_sec));
+        mv = Collections.singletonList(findViewById(R.id.time_input));
+        sv = Collections.singletonList(findViewById(R.id.time_hint));
+        TcSettingsActivity.ApplySPFontSize(sp, sv, mv, bv);
+        List<View> vs = new ArrayList<>();
+        if (sv != null) vs.addAll(sv);
+        if (mv != null) vs.addAll(mv);
+        if (bv != null) vs.addAll(bv);
+        TcSettingsActivity.ApplySPFontFamily(sp, vs);
+
         outputMinutes = true;
         outputSeconds = true;
         timeResultMin = findViewById(R.id.time_result_min);
@@ -125,7 +155,10 @@ public class TimeActivity extends AppCompatActivity {
             timeResultSec.setText("");
             timeResultMin.setText("");
         } else if (id == R.id.settings) {
-            Toast.makeText(this, "Настройки", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(
+                TimeActivity.this,
+                TcSettingsActivity.class
+            ));
         }
         return super.onOptionsItemSelected(item);
     }
