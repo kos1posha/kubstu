@@ -17,10 +17,9 @@ import androidx.core.app.NavUtils;
 import com.eremin.androidlw2.databinding.ActivityFifteenPuzzleBinding;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
+import java.util.Random;
 import java.util.stream.IntStream;
 
 public class FifteenPuzzleActivity extends AppCompatActivity {
@@ -83,13 +82,12 @@ public class FifteenPuzzleActivity extends AppCompatActivity {
 
     protected void initGame() {
         binding.main.removeAllViews();
-        List<Integer> rows = IntStream.range(0, matrixSize).boxed().collect(Collectors.toList());
-        List<Integer> columns = IntStream.range(0, matrixSize).boxed().collect(Collectors.toList());
-        Collections.shuffle(rows);
-        Collections.shuffle(columns);
-        for (Integer row : rows) {
-            for (Integer column : columns) {
-                Button button = createButton((float) column, (float) row);
+        int n = 4;
+        int[][] matrix = IntStream.range(0, n).mapToObj(i -> IntStream.range(1, n + 1).map(j -> i * n + j).toArray()).toArray(int[][]::new);
+        shuffleMatrix(matrix);
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                Button button = createButton(j, i, matrix[i][j]);
                 buttons.add(button);
                 binding.main.addView(button);
             }
@@ -124,7 +122,9 @@ public class FifteenPuzzleActivity extends AppCompatActivity {
         for (int row : IntStream.range(0, matrixSize).toArray()) {
             for (int column : IntStream.range(0, matrixSize).toArray()) {
                 Button button = binding.main.findViewById(index);
-                if ((int) button.getX() != (int) (column * buttonSize + tableOffsetX  + 10 * scale * column) || (int) button.getY() != (int) (row * buttonSize + tableOffsetY)) {
+                int correctX = (int) (column * buttonSize + tableOffsetX + 10 * scale * column);
+                int correctY = row * buttonSize + tableOffsetY;
+                if ((int) button.getX() != correctX || (int) button.getY() != correctY) {
                     return false;
                 }
                 index++;
@@ -133,9 +133,8 @@ public class FifteenPuzzleActivity extends AppCompatActivity {
         return true;
     }
 
-    protected Button createButton(Float x, Float y) {
+    protected Button createButton(int x, int y, int buttonId) {
         Button button = new Button(this);
-        int buttonId = View.generateViewId();
         button.setX(x * buttonSize + tableOffsetX + 10 * scale * x);
         button.setY(y * buttonSize + tableOffsetY);
         button.setWidth(buttonSize);
@@ -145,11 +144,24 @@ public class FifteenPuzzleActivity extends AppCompatActivity {
         button.setText(String.valueOf(buttonId));
         button.getBackground().setTint(buttonsColor);
         button.setTextColor(buttonsTextColor);
-        if (buttonId == matrixSize * matrixSize) {
-            button.setText(" ");
+        if (buttonId == 16) {
             button.setTag("target");
             button.getBackground().setTint(Color.WHITE);
         }
         return button;
+    }
+
+    public static void shuffleMatrix(int[][] matrix) {
+        Random random = new Random();
+        for (int i = matrix.length - 1; i > 0; i--) {
+            for (int j = matrix[i].length - 1; j > 0; j--) {
+                int m = random.nextInt(i + 1);
+                int n = random.nextInt(j + 1);
+
+                int temp = matrix[i][j];
+                matrix[i][j] = matrix[m][n];
+                matrix[m][n] = temp;
+            }
+        }
     }
 }
