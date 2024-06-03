@@ -154,6 +154,11 @@ public class TimeActivity extends AppCompatActivity {
         } else if (id == R.id.action_clear_output) {
             timeResultSec.setText("");
             timeResultMin.setText("");
+        } else if (id == R.id.to_nmmatrix) {
+            startActivity(new Intent(
+                TimeActivity.this,
+                NMMatrixActivity.class
+            ));
         } else if (id == R.id.settings) {
             startActivity(new Intent(
                 TimeActivity.this,

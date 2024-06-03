@@ -23,6 +23,10 @@
       android:theme="@style/Theme.AndroidLW2"
       tools:targetApi="31">
     <activity
+        android:name=".v6.NMMatrixActivity"
+        android:exported="false"
+        android:parentActivityName=".v6.TimeActivity" />
+    <activity
         android:name=".v6.TcSettingsActivity"
         android:exported="false"
         android:parentActivityName=".v6.TimeActivity" />

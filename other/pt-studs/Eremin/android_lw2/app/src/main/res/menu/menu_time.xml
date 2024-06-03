@@ -8,23 +8,28 @@
       android:orderInCategory="1"
       app:showAsAction="never" />
   <item
+      android:id="@+id/to_nmmatrix"
+      android:title="@string/matrix"
+      android:orderInCategory="2"
+      app:showAsAction="never" />
+  <item
       android:id="@+id/output_minutes"
       android:title="@string/output_minutes"
       android:checkable="true"
       android:checked="true"
-      android:orderInCategory="2"
+      android:orderInCategory="3"
       app:showAsAction="never" />
   <item
       android:id="@+id/output_seconds"
       android:title="@string/output_seconds"
       android:checkable="true"
       android:checked="true"
-      android:orderInCategory="3"
+      android:orderInCategory="4"
       app:showAsAction="never" />
   <item
       android:id="@+id/settings"
       android:title="@string/settings"
-      android:orderInCategory="4"
+      android:orderInCategory="5"
       app:showAsAction="never" />
 
 </menu>

@@ -163,7 +163,7 @@ public class TcSettingsActivity extends AppCompatActivity {
         editor.apply();
     }
 
-    protected static void ApplySPTheme(SharedPreferences sp, Activity activity, boolean reload) {
+    public static void ApplySPTheme(SharedPreferences sp, Activity activity, boolean reload) {
         int theme = sp.getInt("theme", com.google.android.material.R.style.Theme_Material3_DayNight);
         activity.setTheme(theme);
         if (reload) {
@@ -172,7 +172,7 @@ public class TcSettingsActivity extends AppCompatActivity {
         }
     }
 
-    protected static void ApplySPFontSize(SharedPreferences sp, List<View> sv, List<View> mv, List<View> bv) {
+    public static void ApplySPFontSize(SharedPreferences sp, List<View> sv, List<View> mv, List<View> bv) {
         int fontSizeS = sp.getInt("fontSizeS", 14);
         int fontSizeM = sp.getInt("fontSizeM", 18);
         int fontSizeB = sp.getInt("fontSizeB", 24);
@@ -191,7 +191,7 @@ public class TcSettingsActivity extends AppCompatActivity {
         }
     }
 
-    protected static void ApplySPFontFamily(SharedPreferences sp, List<View> vs) {
+    public static void ApplySPFontFamily(SharedPreferences sp, List<View> vs) {
         String fontFamily = sp.getString("fontFamily", "sans-serif");
         Typeface tf = Typeface.create(fontFamily, Typeface.NORMAL);
         for (View view : vs) {
