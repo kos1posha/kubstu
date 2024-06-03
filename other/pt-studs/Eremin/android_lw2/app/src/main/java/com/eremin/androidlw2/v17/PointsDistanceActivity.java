@@ -71,7 +71,10 @@ public class PointsDistanceActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_matrix) {
+            Intent matrixIntent = new Intent(PointsDistanceActivity.this, MatrixActivity.class);
+            startActivity(matrixIntent);
+        } else if (id == R.id.action_settings) {
             Intent settingsIntent = new Intent(PointsDistanceActivity.this, PdSettingsActivity.class);
             startActivity(settingsIntent);
         } else if (id == R.id.action_about) {
