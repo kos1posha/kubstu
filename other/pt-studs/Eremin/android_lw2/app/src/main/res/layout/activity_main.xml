@@ -20,6 +20,12 @@
       android:text="@string/time_converter" />
 
   <Button
+      android:id="@+id/btn_points_distance"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="@string/points_distance" />
+
+  <Button
       android:id="@+id/btn_fifteen_puzzle"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
