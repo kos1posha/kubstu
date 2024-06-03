@@ -15,6 +15,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.eremin.androidlw2.databinding.ActivityMainBinding;
+import com.eremin.androidlw2.v17.PointsDistanceActivity;
 import com.eremin.androidlw2.v6.TimeActivity;
 
 import java.util.Arrays;
@@ -63,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
     protected void setupListeners() {
         binding.btnMolecularCalculator.setOnClickListener(this::goToMolecularCountActivity);
         binding.btnTimeConverter.setOnClickListener(this::goToTimeActivity);
+        binding.btnPointsDistance.setOnClickListener(this::goToPointsDistanceActivity);
         binding.btnFifteenPuzzle.setOnClickListener(this::goToFifteenPuzzleActivity);
         binding.btnMatrix.setOnClickListener(this::goToMatrixActivity);
         binding.btnNotification.setOnClickListener(this::goToNotifyActivity);
@@ -79,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
         actionBar.setBackgroundDrawable(new ColorDrawable(sColor));
         for (Button button : Arrays.asList(binding.btnMolecularCalculator, binding.btnFifteenPuzzle,
             binding.btnMatrix, binding.btnNotification, binding.btnDraw, binding.btnMap,
-            binding.btnTimeConverter)) {
+            binding.btnTimeConverter, binding.btnPointsDistance)) {
             button.setBackgroundColor(sColor);
             button.setTextColor(sSupColor);
         }
@@ -92,6 +94,11 @@ public class MainActivity extends AppCompatActivity {
 
     protected void goToTimeActivity(View view) {
         Intent intent = new Intent(MainActivity.this, TimeActivity.class);
+        startActivity(intent);
+    }
+
+    protected void goToPointsDistanceActivity(View view) {
+        Intent intent = new Intent(MainActivity.this, PointsDistanceActivity.class);
         startActivity(intent);
     }
 

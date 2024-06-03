@@ -100,4 +100,16 @@
   <string name="nmmatrix_descr">Поиск столбцов с одинаковым количество положительных и отрицательных элементов</string>
   <string name="find_columns">Найти столбцы</string>
   <string name="nmmatrix_help_text">Элементы матрицы разделяются пробелом, строки переносом строки.</string>
+  <string name="x1">x1</string>
+  <string name="y1">y1</string>
+  <string name="points_distance_title">Определить расстояние между двумя точками</string>
+  <string name="point1">Точка 1:</string>
+  <string name="point2">Точка 2:</string>
+  <string name="x2">x2</string>
+  <string name="y2">y2</string>
+  <string name="empty_points">Заполнены не все поля\nПожалуйста, введите значения</string>
+  <string name="decimals_count">Знаков после запятой</string>
+  <string name="only_int">Только целые числа</string>
+  <string name="save">Сохранить</string>
+  <string name="points_distance">Расстояние между точек</string>
 </resources>
