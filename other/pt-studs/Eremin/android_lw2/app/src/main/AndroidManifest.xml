@@ -31,7 +31,7 @@
         android:exported="false"
         android:parentActivityName=".MainActivity" />
     <activity
-        android:name=".v6.NMMatrixActivity"
+        android:name=".v6.MatrixActivity"
         android:exported="false"
         android:parentActivityName=".v6.TimeActivity" />
     <activity
