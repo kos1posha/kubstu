@@ -112,4 +112,6 @@
   <string name="only_int">Только целые числа</string>
   <string name="save">Сохранить</string>
   <string name="points_distance">Расстояние между точек</string>
+  <string name="matrix17_task">Дана матрица A(m,n). Сформировать одномерный массив B(m), элементами которого являются суммы элементов і-ой строки, начиная с первого отрицательного элемента и до конца строки матрицы (0 - если отрицательный элемент отсутствует).</string>
+  <string name="formulate">Сформировать</string>
 </resources>
