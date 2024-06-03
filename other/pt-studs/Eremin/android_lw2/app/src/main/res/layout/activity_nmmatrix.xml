@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".v6.NMMatrixActivity"
+    android:orientation="vertical">
+
+  <TextView
+      android:id="@+id/nmmatrix_descr"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="@string/nmmatrix_descr"
+      android:layout_marginHorizontal="20dp"/>
+
+  <EditText
+      android:layout_width="match_parent"
+      android:layout_height="200dp"
+      android:importantForAutofill="no"
+      android:inputType="textMultiLine"
+      android:id="@+id/et_nmmatrix"
+      android:textAlignment="center"
+      tools:ignore="LabelFor"
+      android:layout_marginHorizontal="20dp"/>
+
+  <TextView
+      android:id="@+id/nmmatrix_help_text"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="@string/nmmatrix_help_text"
+      android:layout_marginHorizontal="20dp"/>
+
+  <Button
+      android:id="@+id/btn_find"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:focusable="true"
+      android:text="@string/find_columns"
+      android:layout_marginHorizontal="20dp"
+      android:clickable="true"/>
+
+</LinearLayout>
