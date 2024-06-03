@@ -18,7 +18,7 @@ task = {
 
 
 def main() -> None:
-    app = qtw.QApplication(sys.argv)
+    app = qtw.QApplication(sys.argv + ['-platform', 'windows:darkmode=2'])
     app.setStyle('Fusion')
     control = TransportProblemGivenControl(**task)
     control.show()

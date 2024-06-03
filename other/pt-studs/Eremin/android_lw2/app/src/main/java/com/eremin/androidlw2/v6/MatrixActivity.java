@@ -19,7 +19,7 @@ import java.util.Locale;
 import java.util.Objects;
 import java.util.stream.IntStream;
 
-public class NMMatrixActivity extends AppCompatActivity {
+public class MatrixActivity extends AppCompatActivity {
     SharedPreferences sp;
 
     List<View> bv;
@@ -33,7 +33,7 @@ public class NMMatrixActivity extends AppCompatActivity {
         TcSettingsActivity.ApplySPTheme(sp, this, false);
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_nmmatrix);
+        setContentView(R.layout.activity_matrix6);
 
         Objects.requireNonNull(getSupportActionBar()).setTitle(R.string.matrix);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
