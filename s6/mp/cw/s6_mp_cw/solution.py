@@ -19,3 +19,11 @@ def master_gumbs_problem(obj_func: tuple[int], constraints: tuple[tuple[int]], s
         problem.addConstraint(*c)
     problem.solve()
     return problem
+
+
+def big_master_gumbs_problem(obj_func: tuple[int], constraints: tuple[tuple[int]], supply: int, step: int, period: int):
+    problems = []
+    for _ in range(period):
+        problems.append(master_gumbs_problem(obj_func, constraints, supply))
+        supply += step
+    return problems
