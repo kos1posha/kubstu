@@ -2,6 +2,7 @@ from typing import Union, Optional
 
 from PySide6 import QtWidgets as qtw, QtGui as qtg, QtCore as qtc
 
+from qt.controls.one_off_result import OneOffResultDialog
 from qt.py.main import Ui_MainWindow
 from solution import master_gumbs_problem
 
@@ -48,12 +49,12 @@ class MrGumbsControl(Ui_MainWindow, qtw.QMainWindow):
         self.pb_lt_solve.clicked.connect(self.find_long_term_plan)
 
     def fetch_obj_func(self) -> list[int]:
-        rows = self.tw_model.rowCount() - 1
+        rows = self.tw_model.rowCount()
         return [int(self.tw_model.item(row, 3).text()) for row in range(rows)]
 
     def fetch_constraints(self) -> list[list[int]]:
-        rows = self.tw_model.rowCount() - 1
-        columns = self.tw_model.columnCount() - 1
+        rows = self.tw_model.rowCount()
+        columns = self.tw_model.columnCount()
         return [
             [int(self.tw_model.item(row, column).text() or 0) for row in range(rows)]
             for column in range(columns)
