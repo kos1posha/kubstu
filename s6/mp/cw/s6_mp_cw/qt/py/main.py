@@ -24,7 +24,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(700, 369)
+        MainWindow.resize(700, 303)
         MainWindow.setMinimumSize(QSize(700, 0))
         self.w_main = QWidget(MainWindow)
         self.w_main.setObjectName(u"w_main")
@@ -128,6 +128,11 @@ class Ui_MainWindow(object):
 
         self.gl_main.addWidget(self.tw_model, 2, 0, 1, 2)
 
+        self.l_model = QLabel(self.w_main)
+        self.l_model.setObjectName(u"l_model")
+
+        self.gl_main.addWidget(self.l_model, 0, 0, 2, 3)
+
         self.tabw_solve = QTabWidget(self.w_main)
         self.tabw_solve.setObjectName(u"tabw_solve")
         sizePolicy = QSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Expanding)
@@ -142,6 +147,10 @@ class Ui_MainWindow(object):
         self.vl_one_off.setObjectName(u"vl_one_off")
         self.l_oo_supply = QLabel(self.t_one_off)
         self.l_oo_supply.setObjectName(u"l_oo_supply")
+        font = QFont()
+        font.setPointSize(10)
+        font.setBold(True)
+        self.l_oo_supply.setFont(font)
 
         self.vl_one_off.addWidget(self.l_oo_supply)
 
@@ -149,6 +158,12 @@ class Ui_MainWindow(object):
         self.le_oo_supply.setObjectName(u"le_oo_supply")
 
         self.vl_one_off.addWidget(self.le_oo_supply)
+
+        self.l_oo_supply_hint = QLabel(self.t_one_off)
+        self.l_oo_supply_hint.setObjectName(u"l_oo_supply_hint")
+        self.l_oo_supply_hint.setStyleSheet(u"color:grey")
+
+        self.vl_one_off.addWidget(self.l_oo_supply_hint)
 
         self.vs_oo = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
@@ -166,6 +181,7 @@ class Ui_MainWindow(object):
         self.vl_long_term.setObjectName(u"vl_long_term")
         self.l_lt_supply = QLabel(self.t_long_term)
         self.l_lt_supply.setObjectName(u"l_lt_supply")
+        self.l_lt_supply.setFont(font)
 
         self.vl_long_term.addWidget(self.l_lt_supply)
 
@@ -174,8 +190,15 @@ class Ui_MainWindow(object):
 
         self.vl_long_term.addWidget(self.le_lt_supply)
 
+        self.l_lt_supply_hint = QLabel(self.t_long_term)
+        self.l_lt_supply_hint.setObjectName(u"l_lt_supply_hint")
+        self.l_lt_supply_hint.setStyleSheet(u"color:grey")
+
+        self.vl_long_term.addWidget(self.l_lt_supply_hint)
+
         self.l_lt_step = QLabel(self.t_long_term)
         self.l_lt_step.setObjectName(u"l_lt_step")
+        self.l_lt_step.setFont(font)
 
         self.vl_long_term.addWidget(self.l_lt_step)
 
@@ -184,8 +207,15 @@ class Ui_MainWindow(object):
 
         self.vl_long_term.addWidget(self.le_lt_step)
 
+        self.l_lt_supply_hint_2 = QLabel(self.t_long_term)
+        self.l_lt_supply_hint_2.setObjectName(u"l_lt_supply_hint_2")
+        self.l_lt_supply_hint_2.setStyleSheet(u"color:grey")
+
+        self.vl_long_term.addWidget(self.l_lt_supply_hint_2)
+
         self.l_lt_long = QLabel(self.t_long_term)
         self.l_lt_long.setObjectName(u"l_lt_long")
+        self.l_lt_long.setFont(font)
 
         self.vl_long_term.addWidget(self.l_lt_long)
 
@@ -207,11 +237,6 @@ class Ui_MainWindow(object):
 
         self.gl_main.addWidget(self.tabw_solve, 2, 2, 1, 1)
 
-        self.l_model = QLabel(self.w_main)
-        self.l_model.setObjectName(u"l_model")
-
-        self.gl_main.addWidget(self.l_model, 1, 0, 1, 3)
-
         MainWindow.setCentralWidget(self.w_main)
         self.statusbar = QStatusBar(MainWindow)
         self.statusbar.setObjectName(u"statusbar")
@@ -219,7 +244,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.tabw_solve.setCurrentIndex(1)
+        self.tabw_solve.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -284,20 +309,23 @@ class Ui_MainWindow(object):
         ___qtablewidgetitem23.setText(QCoreApplication.translate("MainWindow", u"30", None));
         self.tw_model.setSortingEnabled(__sortingEnabled)
 
+        self.l_model.setText(QCoreApplication.translate("MainWindow", u"\u0422\u0440\u0430\u0442\u044b \u0440\u0435\u0441\u0443\u0440\u0441\u043e\u0432 \u043d\u0430 \u043f\u0440\u043e\u0438\u0437\u0432\u043e\u0434\u0441\u0442\u0432\u043e \u0441\u0442\u043e\u043b\u043e\u0432", None))
         self.l_oo_supply.setText(QCoreApplication.translate("MainWindow", u"\u0417\u0430\u043f\u0430\u0441\u044b", None))
-        self.le_oo_supply.setPlaceholderText(QCoreApplication.translate("MainWindow", u"\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u0437\u0430\u043f\u0430\u0441\u044b", None))
+        self.le_oo_supply.setPlaceholderText(QCoreApplication.translate("MainWindow", u"\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u0437\u0430\u043f\u0430\u0441\u044b (\u0447\u0435\u043b/\u0434\u043d\u0435\u0439)", None))
+        self.l_oo_supply_hint.setText(QCoreApplication.translate("MainWindow", u"\u0412\u0441\u0435 \u0432\u0438\u0434\u044b \u0437\u0430\u0442\u0440\u0430\u0442 \u0438\u043c\u0435\u044e\u0442 \u0440\u0430\u0432\u043d\u043e\u0435 \u043a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u0437\u0430\u043f\u0430\u0441\u043e\u0432", None))
         self.pb_oo_solve.setText(QCoreApplication.translate("MainWindow", u"\u041d\u0430\u0439\u0442\u0438 \u043f\u043b\u0430\u043d \u043f\u0440\u043e\u0438\u0437\u0432\u043e\u0434\u0441\u0442\u0432\u0430", None))
         self.tabw_solve.setTabText(self.tabw_solve.indexOf(self.t_one_off), QCoreApplication.translate("MainWindow", u"\u041e\u0434\u043d\u043e\u0440\u0430\u0437\u043e\u0432\u044b\u0439 \u043f\u043b\u0430\u043d", None))
         self.l_lt_supply.setText(QCoreApplication.translate("MainWindow", u"\u0421\u0442\u0430\u0440\u0442\u043e\u0432\u044b\u0435 \u0437\u0430\u043f\u0430\u0441\u044b", None))
-        self.le_lt_supply.setPlaceholderText(QCoreApplication.translate("MainWindow", u"\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u0437\u0430\u043f\u0430\u0441\u044b \u043d\u0430 \u0441\u0442\u0430\u0440\u0442\u0435 \u043f\u043b\u0430\u043d\u0430", None))
+        self.le_lt_supply.setPlaceholderText(QCoreApplication.translate("MainWindow", u"\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u0437\u0430\u043f\u0430\u0441\u044b (\u0447\u0435\u043b/\u0434\u043d\u0435\u0439) \u043d\u0430 \u0441\u0442\u0430\u0440\u0442\u0435 \u043f\u043b\u0430\u043d\u0430", None))
+        self.l_lt_supply_hint.setText(QCoreApplication.translate("MainWindow", u"\u0412\u0441\u0435 \u0432\u0438\u0434\u044b \u0437\u0430\u0442\u0440\u0430\u0442 \u0438\u043c\u0435\u044e\u0442 \u0440\u0430\u0432\u043d\u043e\u0435 \u043a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u0437\u0430\u043f\u0430\u0441\u043e\u0432", None))
         self.l_lt_step.setText(QCoreApplication.translate("MainWindow", u"\u041f\u0440\u0438\u0440\u043e\u0441\u0442/\u0443\u0431\u044b\u0442\u043e\u043a \u0437\u0430\u043f\u0430\u0441\u043e\u0432", None))
         self.le_lt_step.setText("")
         self.le_lt_step.setPlaceholderText(QCoreApplication.translate("MainWindow", u"\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u0432\u0435\u043b\u0438\u0447\u0438\u043d\u0443 \u0438\u0437\u043c\u0435\u043d\u0435\u043d\u0438\u044f \u0437\u0430\u043f\u0430\u0441\u043e\u0432", None))
+        self.l_lt_supply_hint_2.setText(QCoreApplication.translate("MainWindow", u"\u0417\u0430\u043f\u0430\u0441\u044b \u0431\u0443\u0434\u0443\u0442 \u0438\u0437\u043c\u0435\u043d\u044f\u0442\u044c\u0441\u044f \u0435\u0436\u0435\u043c\u0435\u0441\u044f\u0447\u043d\u043e", None))
         self.l_lt_long.setText(QCoreApplication.translate("MainWindow", u"\u0421\u0440\u043e\u043a", None))
         self.le_lt_period.setText("")
-        self.le_lt_period.setPlaceholderText(QCoreApplication.translate("MainWindow", u"\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u0441\u0440\u043e\u043a \u0440\u0430\u0441\u0447\u0435\u0442\u0430 \u043f\u043b\u0430\u043d\u0430 \u0432 \u043c\u0435\u0441\u044f\u0446\u0430\u0445", None))
+        self.le_lt_period.setPlaceholderText(QCoreApplication.translate("MainWindow", u"\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u0441\u0440\u043e\u043a \u043f\u043b\u0430\u043d\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u044f \u0432 \u043c\u0435\u0441\u044f\u0446\u0430\u0445", None))
         self.pb_lt_solve.setText(QCoreApplication.translate("MainWindow", u"\u041d\u0430\u0439\u0442\u0438 \u043f\u043b\u0430\u043d \u043f\u0440\u043e\u0438\u0437\u0432\u043e\u0434\u0441\u0442\u0432\u0430", None))
         self.tabw_solve.setTabText(self.tabw_solve.indexOf(self.t_long_term), QCoreApplication.translate("MainWindow", u"\u0414\u043e\u043b\u0433\u043e\u0441\u0440\u043e\u0447\u043d\u044b\u0439 \u043f\u043b\u0430\u043d", None))
-        self.l_model.setText(QCoreApplication.translate("MainWindow", u"\u0422\u0440\u0430\u0442\u044b \u0440\u0435\u0441\u0443\u0440\u0441\u043e\u0432 \u043d\u0430 \u043f\u0440\u043e\u0438\u0437\u0432\u043e\u0434\u0441\u0442\u0432\u043e \u0441\u0442\u043e\u043b\u043e\u0432", None))
     # retranslateUi
 
