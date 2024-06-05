@@ -3,6 +3,7 @@ from typing import Union, Optional
 from PySide6 import QtWidgets as qtw, QtGui as qtg, QtCore as qtc
 
 from qt.py.main import Ui_MainWindow
+from solution import master_gumbs_problem
 
 
 class NumericDelegate(qtw.QStyledItemDelegate):
@@ -28,10 +29,15 @@ class MrGumbsControl(Ui_MainWindow, qtw.QMainWindow):
     def setup_ui(self) -> None:
         super().setupUi(self)
         self.tw_model.setItemDelegate(NumericDelegate(self.tw_model))
-        validator = qtg.QIntValidator(bottom=0)
-        self.le_oo_supply.setValidator(validator)
         for header in [self.tw_model.horizontalHeader(), self.tw_model.verticalHeader()]:
             header.setSectionResizeMode(qtw.QHeaderView.ResizeMode.Stretch)
+
+        pos_validator = qtg.QIntValidator(bottom=0)
+        validator = qtg.QIntValidator()
+        self.le_oo_supply.setValidator(pos_validator)
+        self.le_lt_supply.setValidator(pos_validator)
+        self.le_lt_step.setValidator(validator)
+        self.le_lt_period.setValidator(pos_validator)
 
     def connect_ui(self) -> None:
         self.le_oo_supply.textChanged.connect(lambda: self.le_oo_supply.setStyleSheet(''))
