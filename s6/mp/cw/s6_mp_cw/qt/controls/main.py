@@ -80,11 +80,20 @@ class MrGumbsControl(Ui_MainWindow, qtw.QMainWindow):
             return self.statusbar.showMessage('Для поиска плана заполните все поля', 6500)
         return self.fetch_obj_func(), self.fetch_constraints(), *supply_step_period
 
-    def find_one_off_plan(self):
+    def find_one_off_plan(self) -> None:
         data = self.fetch_oo_data()
         if not data: return
-        message = qtw.QMessageBox(qtw.QMessageBox.Icon.NoIcon, '', '\n'.join(map(str, data)))
-        message.exec()
+        problem = master_gumbs_problem(*data)
+        if problem.status != 1:
+            return self.statusbar.showMessage('Оптимальное решение не найдено...', 6000)
+
+        result_dialog = OneOffResultDialog(
+            stonks=int(problem.objective.value()),
+            supply=data[2],
+            plan=[int(var.value()) for var in problem.variables()],
+            remains=[-int(constraint.value()) for constraint in problem.constraints.values()]
+        )
+        result_dialog.exec()
 
     def find_long_term_plan(self):
         data = self.fetch_lt_data()
