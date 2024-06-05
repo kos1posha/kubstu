@@ -2,9 +2,10 @@ from typing import Union, Optional
 
 from PySide6 import QtWidgets as qtw, QtGui as qtg, QtCore as qtc
 
+from qt.controls.long_term_result import LongTermResultDialog
 from qt.controls.one_off_result import OneOffResultDialog
 from qt.py.main import Ui_MainWindow
-from solution import master_gumbs_problem
+from solution import master_gumbs_problem, big_master_gumbs_problem
 
 
 class NumericDelegate(qtw.QStyledItemDelegate):
@@ -95,8 +96,20 @@ class MrGumbsControl(Ui_MainWindow, qtw.QMainWindow):
         )
         result_dialog.exec()
 
-    def find_long_term_plan(self):
+    def find_long_term_plan(self) -> None:
         data = self.fetch_lt_data()
         if not data: return
-        message = qtw.QMessageBox(qtw.QMessageBox.Icon.NoIcon, '', '\n'.join(map(str, data)))
-        message.exec()
+        problems = big_master_gumbs_problem(*data)
+
+        plans = [
+            {
+                'stonks': int(problem.objective.value()),
+                'supply': data[2] + data[3] * i,
+                'plan': [int(var.value()) for var in problem.variables()],
+                'remains': [-int(constraint.value()) for constraint in problem.constraints.values()]
+            }
+            for i, problem in enumerate(problems)
+        ]
+
+        result_dialog = LongTermResultDialog(plans)
+        result_dialog.exec()
