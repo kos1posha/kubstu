@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>700</width>
-    <height>369</height>
+    <height>303</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -272,6 +272,13 @@
       </item>
      </widget>
     </item>
+    <item row="0" column="0" rowspan="2" colspan="3">
+     <widget class="QLabel" name="l_model">
+      <property name="text">
+       <string>Траты ресурсов на производство столов</string>
+      </property>
+     </widget>
+    </item>
     <item row="2" column="2">
      <widget class="QTabWidget" name="tabw_solve">
       <property name="sizePolicy">
@@ -287,7 +294,7 @@
        </size>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="t_one_off">
        <attribute name="title">
@@ -296,6 +303,13 @@
        <layout class="QVBoxLayout" name="vl_one_off">
         <item>
          <widget class="QLabel" name="l_oo_supply">
+          <property name="font">
+           <font>
+            <pointsize>10</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
           <property name="text">
            <string>Запасы</string>
           </property>
@@ -304,7 +318,17 @@
         <item>
          <widget class="QLineEdit" name="le_oo_supply">
           <property name="placeholderText">
-           <string>Введите запасы</string>
+           <string>Введите запасы (чел/дней)</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="l_oo_supply_hint">
+          <property name="styleSheet">
+           <string notr="true">color:grey</string>
+          </property>
+          <property name="text">
+           <string>Все виды затрат имеют равное количество запасов</string>
           </property>
          </widget>
         </item>
@@ -337,6 +361,13 @@
        <layout class="QVBoxLayout" name="vl_long_term">
         <item>
          <widget class="QLabel" name="l_lt_supply">
+          <property name="font">
+           <font>
+            <pointsize>10</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
           <property name="text">
            <string>Стартовые запасы</string>
           </property>
@@ -345,12 +376,29 @@
         <item>
          <widget class="QLineEdit" name="le_lt_supply">
           <property name="placeholderText">
-           <string>Введите запасы на старте плана</string>
+           <string>Введите запасы (чел/дней) на старте плана</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="l_lt_supply_hint">
+          <property name="styleSheet">
+           <string notr="true">color:grey</string>
+          </property>
+          <property name="text">
+           <string>Все виды затрат имеют равное количество запасов</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QLabel" name="l_lt_step">
+          <property name="font">
+           <font>
+            <pointsize>10</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
           <property name="text">
            <string>Прирост/убыток запасов</string>
           </property>
@@ -367,7 +415,24 @@
          </widget>
         </item>
         <item>
+         <widget class="QLabel" name="l_lt_supply_hint_2">
+          <property name="styleSheet">
+           <string notr="true">color:grey</string>
+          </property>
+          <property name="text">
+           <string>Запасы будут изменяться ежемесячно</string>
+          </property>
+         </widget>
+        </item>
+        <item>
          <widget class="QLabel" name="l_lt_long">
+          <property name="font">
+           <font>
+            <pointsize>10</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
           <property name="text">
            <string>Срок</string>
           </property>
@@ -379,7 +444,7 @@
            <string/>
           </property>
           <property name="placeholderText">
-           <string>Введите срок расчета плана в месяцах</string>
+           <string>Введите срок планирования в месяцах</string>
           </property>
          </widget>
         </item>
@@ -405,13 +470,6 @@
         </item>
        </layout>
       </widget>
-     </widget>
-    </item>
-    <item row="1" column="0" colspan="3">
-     <widget class="QLabel" name="l_model">
-      <property name="text">
-       <string>Траты ресурсов на производство столов</string>
-      </property>
      </widget>
     </item>
    </layout>
