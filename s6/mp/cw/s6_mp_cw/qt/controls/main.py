@@ -48,6 +48,13 @@ class MrGumbsControl(Ui_MainWindow, qtw.QMainWindow):
         self.le_lt_period.textChanged.connect(lambda: self.le_lt_period.setStyleSheet(''))
         self.pb_oo_solve.clicked.connect(self.find_one_off_plan)
         self.pb_lt_solve.clicked.connect(self.find_long_term_plan)
+        self.tw_model.itemChanged.connect(self.tw_model_item_changed)
+
+    def tw_model_item_changed(self, item: qtw.QTableWidgetItem) -> None:
+        if item is self.tw_model.item(2, 0):
+            self.tw_model.item(3, 0).setText(item.text())
+        elif item is self.tw_model.item(2, 1):
+            self.tw_model.item(3, 1).setText(item.text())
 
     def fetch_obj_func(self) -> list[int]:
         rows = self.tw_model.rowCount()
