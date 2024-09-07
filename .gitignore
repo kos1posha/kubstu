@@ -28,6 +28,7 @@ s6/pis/
 
 ## IDE settings
 .vs
+.vscode/
 
 ## Log files
 UpgradeLog*.XML
