@@ -1,7 +1,6 @@
 import numpy as np
 
 
-import random
 from types import NoneType
 
 
@@ -28,4 +27,3 @@ class Neuron:
     def prognose(self, signals: np.ndarray) -> int:
         weights_sum = np.dot(signals, self.weights) / 900
         return int(weights_sum > self.threshold)
-# оптимизировал вычисления с numpy, также провел небольшой рефакторинг
