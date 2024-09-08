@@ -5,7 +5,7 @@ from bmp_helper import BmpHelper
 
 def main() -> NoneType:
     alphabet = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюя'
-    letter = 'a'
+    letter = 'а'
     neuron = Neuron(letter)
     neuron.randomize()
 
