@@ -1,4 +1,5 @@
 import json
+import os
 
 
 def get_languages(from_file):
@@ -6,10 +7,6 @@ def get_languages(from_file):
     json_dict = json.load(json_raw)
     languages = {_['name']: _['characteristics'] for _ in json_dict}
     return languages
-
-
-def clear():
-    print('\n' * 100)
 
 
 def print_user_requirements(paradigms=None, run_type=None, typing_strength=None, typing_static=None, use_cases=None):
@@ -55,7 +52,7 @@ def get_user_requirements():
     ]
     required_paradigms = input_user_requirements('Выберите поддерживаемые парадигмы программирования:', paradigms, True)
     user_requirements.extend(required_paradigms)
-    clear()
+    os.system('cls')
     print_user_requirements(required_paradigms)
 
     run_types = [
@@ -65,7 +62,7 @@ def get_user_requirements():
     required_run_type = input_user_requirements('Выберите механизм выполнения кода:', run_types, False)
     if required_run_type:
         user_requirements.append(required_run_type)
-    clear()
+    os.system('cls')
     print_user_requirements(required_paradigms, required_run_type)
 
     typing_strengths = [
@@ -75,7 +72,7 @@ def get_user_requirements():
     required_typing_strength = input_user_requirements('Выберите строгую/слабую типизацию:', typing_strengths, False)
     if required_typing_strength:
         user_requirements.append(required_typing_strength)
-    clear()
+    os.system('cls')
     print_user_requirements(required_paradigms, required_run_type, required_typing_strength)
 
     typing_statics = [
@@ -85,7 +82,7 @@ def get_user_requirements():
     required_typing_static = input_user_requirements('Выберите статическую/динамическую типизацию:', typing_statics, False)
     if required_typing_static:
         user_requirements.append(required_typing_static)
-    clear()
+    os.system('cls')
     print_user_requirements(required_paradigms, required_run_type, required_typing_strength, required_typing_static)
 
     use_cases = [
@@ -104,7 +101,7 @@ def get_user_requirements():
     ]
     required_use_cases = input_user_requirements('Выберите области применения языка:', use_cases, True)
     user_requirements.extend(required_use_cases)
-    clear()
+    os.system('cls')
     print_user_requirements(required_paradigms, required_run_type, required_typing_strength, required_typing_static, required_use_cases)
     return user_requirements
 
