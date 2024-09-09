@@ -10,7 +10,7 @@ class Neuron:
         self.threshold = threshold
 
     def randomize(self) -> NoneType:
-        self.weights = np.random.rand(900)
+        self.weights = -1 + np.random.rand(900) * 2
 
     def append_weight(self, i: int, value: float) -> NoneType:
         self.weights[i] = max(-1, min(self.weights[i] + value, 1))
