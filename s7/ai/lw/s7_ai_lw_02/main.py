@@ -9,7 +9,7 @@ from neural_network.perceptron import Perceptron
 def main_neuron() -> NoneType:
     alphabet = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюя'
     letter = 'а'
-    neuron = Neuron(letter)
+    neuron = Neuron(letter, 0.17)
     neuron.randomize()
 
     BmpHelper.array_to_bmp(neuron.weights).save(f'output\\start_neuron.bmp')
@@ -48,7 +48,7 @@ def main_perceptron() -> NoneType:
             continue
 
         signals = BmpHelper.bmp_to_array(f'letters\\{letter}.bmp')
-        activated_neurons = perceptron.prognose(signals, 0.16)
+        activated_neurons = perceptron.predict(signals, 0.16)
         print(*[f'  {neuron} -> 1\n' for neuron, response in zip(perceptron.neurons, activated_neurons) if response == 1], sep='', end='')
 
 

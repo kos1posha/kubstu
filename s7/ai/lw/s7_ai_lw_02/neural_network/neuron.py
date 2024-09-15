@@ -12,18 +12,13 @@ class Neuron:
     def randomize(self) -> NoneType:
         self.weights = -1 + np.random.rand(900) * 2
 
-    def append_weight(self, i: int, value: float) -> NoneType:
-        self.weights[i] = max(-1, min(self.weights[i] + value, 1))
-
     def train(self, signals: np.ndarray, letter: str, alpha: float) -> NoneType:
         expected = int(letter == self.letter)
-        actual = self.prognose(signals)
+        actual = self.predict(signals)
         error = expected - actual
+        self.weights = np.clip(self.weights + signals * alpha * error, -1, 1)
 
-        for i in range(900):
-            self.append_weight(i, alpha * error * signals[i])
-
-    def prognose(self, signals: np.ndarray, threshold: float = None) -> int:
+    def predict(self, signals: np.ndarray, threshold: float = None) -> int:
         threshold = threshold or self.threshold
         weights_sum = np.dot(signals, self.weights) / 900
         return int(weights_sum > threshold)
