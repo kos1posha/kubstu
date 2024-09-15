@@ -2,7 +2,6 @@ import os
 from types import NoneType
 from neural_network.neuron import Neuron
 from bmp_helper import BmpHelper
-from PIL import Image
 from neural_network.perceptron import Perceptron
 
 
