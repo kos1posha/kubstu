@@ -1,0 +1,8 @@
+<RCC>
+  <qresource prefix="ico">
+    <file>icons/filter.ico</file>
+    <file>icons/minus.ico</file>
+    <file>icons/pencil.ico</file>
+    <file>icons/plus.ico</file>
+  </qresource>
+</RCC>
