@@ -19,9 +19,9 @@ def populate_database():
     scientific = Genre.create('Научная литература')
     fantasy = Genre.create('Фэнтези')
 
-    book1 = Book.create('Война и мир', 'Лев Толстой', '1-е', 'A1', [fiction])
-    book2 = Book.create('1984', 'Джордж Оруэлл', '1-е', 'A2', [fiction, scientific])
-    book3 = Book.create('Гарри Поттер и философский камень', 'Дж.К. Роулинг', '1-е', 'A3', [fantasy])
+    book1 = Book.create('Война и мир', 'Лев Толстой', '1-е', [fiction], 'A1')
+    book2 = Book.create('1984', 'Джордж Оруэлл', '1-е', [fiction, scientific], 'A2')
+    book3 = Book.create('Гарри Поттер и философский камень', 'Дж.К. Роулинг', '1-е', [fantasy], 'A3')
 
     subscriber1 = Subscriber.create('Иван', 'Иванов', 'Иванович', 'ivanov@example.com', 'Улица 1, дом 1', '1234567890')
     subscriber2 = Subscriber.create('Мария', 'Петрова', 'Сергеевна', 'petrova@example.com', 'Улица 2, дом 2', '0987654321')
