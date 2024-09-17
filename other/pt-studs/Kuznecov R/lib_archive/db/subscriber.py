@@ -1,3 +1,5 @@
+from datetime import datetime
+
 import peewee as pw
 
 from db.base import BaseModel
@@ -11,6 +13,7 @@ class Subscriber(BaseModel):
     home_address = pw.CharField(verbose_name='Домашний адрес', max_length=512)
     phone_number = pw.FixedCharField(verbose_name='Телефонный номер', max_length=10, unique=True)
     rating = pw.IntegerField(verbose_name='Рейтинг', default=50)
+    registration_datetime = pw.DateTimeField(verbose_name='Дата регистрации', default=datetime.now())
 
     @classmethod
     def create(cls, first_name: str, last_name: str, sur_name: str, email: str, home_address: str, phone_number: str, **query):
