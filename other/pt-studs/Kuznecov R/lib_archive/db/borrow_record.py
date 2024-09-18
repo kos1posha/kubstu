@@ -1,4 +1,4 @@
-from datetime import date
+from datetime import date, timedelta
 
 import peewee as pw
 
@@ -22,6 +22,10 @@ class BorrowRecord(BaseModel):
             borrowing_days=borrowing_days,
             **query
         )
+
+    @property
+    def expected_date(self) -> date:
+        return self.borrowing_date + timedelta(days=self.borrowing_days)
 
     def save(self, *args, **kwargs):
         if BorrowRecord.select().where(

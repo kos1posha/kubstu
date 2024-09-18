@@ -27,6 +27,19 @@ class Subscriber(BaseModel):
             **query
         )
 
+    @property
+    def full_name(self) -> str:
+        return f'{self.last_name} {self.first_name}' + f' {self.sur_name}' if self.sur_name else ''
+
+    @property
+    def short_name(self) -> str:
+        return f'{self.last_name} {self.first_name[0]}.' + f' {self.sur_name[0]}.' if self.sur_name else ''
+
+    @property
+    def phone_number_f(self):
+        p = self.phone_number
+        return f'8 ({p[:3]}) {p[3:6]} {p[6:8]}-{p[8:10]}'
+
     def increase_rating(self, value: int = 1) -> None:
         self.rating += value
         if self.rating > 100:

@@ -26,6 +26,10 @@ class Book(BaseModel):
         return inst
 
     @property
+    def full_name(self) -> str:
+        return f'{self.name}: {self.author}'
+
+    @property
     def genres(self) -> List['Genre']:
         return [bg.genre for bg in BookGenre.select().where(BookGenre.book == self)]
 
