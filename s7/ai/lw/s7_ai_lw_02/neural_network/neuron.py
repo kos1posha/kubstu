@@ -1,18 +1,16 @@
 import numpy as np
 
-from types import NoneType
-
 
 class Neuron:
-    def __init__(self, letter: str, threshold: float = 0.15) -> NoneType:
+    def __init__(self, letter: str, threshold: float = 0.15) -> None:
         self.weights = np.zeros(900, dtype=np.float32)
         self.letter = letter
         self.threshold = threshold
 
-    def randomize(self) -> NoneType:
+    def randomize(self) -> None:
         self.weights = -1 + np.random.rand(900) * 2
 
-    def train(self, signals: np.ndarray, letter: str, alpha: float) -> NoneType:
+    def train(self, signals: np.ndarray, letter: str, alpha: float) -> None:
         expected = int(letter == self.letter)
         actual = self.predict(signals)
         error = expected - actual

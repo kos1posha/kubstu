@@ -3,9 +3,6 @@ import numpy as np
 from PIL import Image
 
 
-from types import NoneType
-
-
 class BmpHelper:
     @staticmethod
     def bmp_to_array(bmp_path: str) -> np.ndarray:
@@ -27,7 +24,7 @@ class BmpHelper:
         return bmp
 
     @staticmethod
-    def print_bmp_to_console(bmp_path: str, w=1) -> NoneType:
+    def print_bmp_to_console(bmp_path: str, w=1) -> None:
         bmp_array = BmpHelper.bmp_to_array(bmp_path)
         bmp_stream = iter(bmp_array)
         for _ in range(30):

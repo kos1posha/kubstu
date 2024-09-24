@@ -1,11 +1,10 @@
 import os
-from types import NoneType
 from neural_network.neuron import Neuron
 from bmp_helper import BmpHelper
 from neural_network.perceptron import Perceptron
 
 
-def main_neuron() -> NoneType:
+def main_neuron() -> None:
     alphabet = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюя'
     letter = 'а'
     neuron = Neuron(letter, 0.17)
@@ -26,7 +25,7 @@ def main_neuron() -> NoneType:
             break
 
 
-def main_perceptron() -> NoneType:
+def main_perceptron() -> None:
     base_alphabet = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюя'
     perceptron = Perceptron([Neuron(letter, 0.17) for letter in base_alphabet])
     perceptron.randomize()
