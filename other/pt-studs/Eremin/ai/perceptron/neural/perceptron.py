@@ -26,7 +26,7 @@ class Neuron:
         weights_sum = np.dot(signals, self.weights) / 900
         return int(weights_sum > threshold)
 
-    def visualize(self):
+    def visualize(self) -> None:
         im = self.weights.reshape(30, 30)
         fig, ax = plt.subplots()
         cax = ax.imshow(im, cmap='viridis', interpolation='nearest', vmin=-1, vmax=1)
@@ -52,7 +52,7 @@ class Perceptron:
         self._neurons = neurons
         self._activated_neurons = None
 
-    def set_activated_neurons(self, indexes) -> None:
+    def set_activated_neurons(self, indexes: list[int]) -> None:
         self._activated_neurons = indexes
 
     @property
