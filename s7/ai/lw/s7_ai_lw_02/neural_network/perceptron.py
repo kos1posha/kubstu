@@ -27,7 +27,7 @@ class Perceptron:
         with futures.ThreadPoolExecutor(max_workers=8) as executor:
             list(executor.map(neuron_train, self.neurons))
 
-    def predict(self, signals: np.ndarray, threshold: float = None) -> int:
+    def predict(self, signals: np.ndarray, threshold: float = None) -> list[int]:
         neuron_predict = lambda neuron: neuron.predict(signals, threshold)
         with futures.ThreadPoolExecutor(max_workers=8) as executor:
             return list(executor.map(neuron_predict, self.neurons))
