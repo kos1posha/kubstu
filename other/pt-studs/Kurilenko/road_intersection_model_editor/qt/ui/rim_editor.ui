@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>RIMEditor</class>
+ <widget class="QMainWindow" name="RIMEditor">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>500</width>
+    <height>400</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>500</width>
+    <height>400</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Редактор МДП</string>
+  </property>
+  <widget class="QWidget" name="w_main">
+   <layout class="QGridLayout" name="gl_main">
+    <item row="0" column="0">
+     <layout class="QHBoxLayout" name="hl_toolbar">
+      <property name="spacing">
+       <number>6</number>
+      </property>
+      <item>
+       <widget class="QWidget" name="w_road" native="true">
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>90</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QRadioButton {
+  padding: 4px;
+  border: 1px solid #1e62d0;
+  font-weight:bold;
+  border-radius: 6px;
+  background: #ffffff;
+  color:#3d94f6;
+}
+
+QRadioButton:hover {
+  background: #3d94f6;
+  color:#ffffff;
+}
+
+QRadioButton:checked {
+  background: #337fed;
+  color:#ffffff;
+}
+
+QRadioButton::indicator {
+  width: 0px;
+}</string>
+        </property>
+        <layout class="QGridLayout" name="gl_road">
+         <item row="1" column="0">
+          <widget class="QLabel" name="l_road">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>Дорога</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignBottom|Qt::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="QWidget" name="w_road_actions" native="true">
+           <layout class="QVBoxLayout" name="vl_road_actions">
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QRadioButton" name="rb_road_add">
+              <property name="toolTip">
+               <string>Добавить дорогу</string>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">padding-left:3px;</string>
+              </property>
+              <property name="text">
+               <string>Добавить</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="rb_road_do_nothing">
+              <property name="toolTip">
+               <string>Удалить дорогу</string>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">padding-left: 5px;</string>
+              </property>
+              <property name="text">
+               <string>Просмотр</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="vs_1">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>40</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="Line" name="line_toolbar_1">
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>80</height>
+         </size>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QWidget" name="w_road_color" native="true">
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>90</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QRadioButton {
+  padding: 4px;
+  border: 1px solid #1e62d0;
+  font-weight:bold;
+  border-radius: 6px;
+  background: #ffffff;
+  color:#3d94f6;
+}
+
+QRadioButton:hover {
+  background: #3d94f6;
+  color:#ffffff;
+}
+
+QRadioButton:checked {
+  background: #337fed;
+  color:#ffffff;
+}
+
+QRadioButton::indicator {
+  width: 0px;
+}</string>
+        </property>
+        <layout class="QGridLayout" name="gl_road_color">
+         <item row="0" column="1">
+          <widget class="QWidget" name="w_road_color_inter" native="true">
+           <layout class="QHBoxLayout" name="hl_road_color_inter">
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>8</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QWidget" name="w_road_primary_color" native="true">
+              <property name="minimumSize">
+               <size>
+                <width>40</width>
+                <height>40</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>40</width>
+                <height>40</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: #0000ff;
+border: 1px solid lightgrey;
+border-radius: 20px;</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QWidget" name="w_road_secondary_color" native="true">
+              <property name="minimumSize">
+               <size>
+                <width>40</width>
+                <height>40</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>40</width>
+                <height>40</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: #00ff00;
+border: 1px solid lightgrey;
+border-radius: 20px;</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QLabel" name="l_road_color">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>Цвет</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignBottom|Qt::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <spacer name="vs_">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="Line" name="line_toolbar_2">
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>80</height>
+         </size>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="hs_toolbar">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>1</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </item>
+    <item row="1" column="0">
+     <widget class="Line" name="line_main">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="l_rim">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Panel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Sunken</enum>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menu_bar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>500</width>
+     <height>18</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="m_file">
+    <property name="title">
+     <string>Файл</string>
+    </property>
+    <addaction name="a_load_image"/>
+    <addaction name="a_clear_image"/>
+    <addaction name="a_clear_model"/>
+   </widget>
+   <widget class="QMenu" name="m_about">
+    <property name="title">
+     <string>О программе</string>
+    </property>
+   </widget>
+   <addaction name="m_file"/>
+   <addaction name="m_about"/>
+  </widget>
+  <widget class="QStatusBar" name="status_bar"/>
+  <action name="a_load_image">
+   <property name="text">
+    <string>Загрузить изображение</string>
+   </property>
+  </action>
+  <action name="a_clear_image">
+   <property name="text">
+    <string>Очистить изображение</string>
+   </property>
+  </action>
+  <action name="a_clear_model">
+   <property name="text">
+    <string>Очистить модель</string>
+   </property>
+  </action>
+ </widget>
+ <resources>
+  <include location="../../resources/resources.qrc"/>
+ </resources>
+ <connections/>
+</ui>

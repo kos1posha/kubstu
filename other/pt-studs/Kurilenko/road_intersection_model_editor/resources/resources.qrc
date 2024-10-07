@@ -1,0 +1,8 @@
+<RCC>
+  <qresource prefix="markers">
+    <file>markers/general_road.ico</file>
+    <file>markers/road_crossing.ico</file>
+    <file>markers/ryg_lights.ico</file>
+    <file>markers/stop.ico</file>
+  </qresource>
+</RCC>
