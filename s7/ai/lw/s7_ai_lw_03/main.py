@@ -1,4 +1,4 @@
-from k_means import k_means
+from k_means import KMeansIterator
 from point import generate_points
 
 
@@ -8,7 +8,8 @@ def main():
     c_cluster = generate_points(10, -10, -15, -10, -15)
 
     points = a_cluster + b_cluster + c_cluster
-    k_means(points, 3, 1000)
+    k_means = KMeansIterator(points, 3, 1000)
+    k_means(True)
 
 
 if __name__ == '__main__':

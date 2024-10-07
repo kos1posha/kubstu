@@ -10,25 +10,39 @@ def random_centroids(count: int, bounds: dict[str, Point]) -> list[Point]:
     return generate_points(count, **bounds)
 
 
-def k_means(points: list[Point], clusters_count: int, iterations: int, centroids_initializer: callable = random_centroids):
-    bounds = find_bounds(points)
-    centroids = centroids_initializer(clusters_count, bounds)
-    clusters = [[] for _ in range(clusters_count)]
+class KMeansIterator:
+    def __init__(self, points: list[Point], clusters_count: int, max_iterations: int = 100, centroids_initializer: callable = random_centroids):
+        self.points = points
+        self.max_iterations = max_iterations
+        self.bounds = find_bounds(points)
+        self.centroids = centroids_initializer(clusters_count, self.bounds)
+        self.clusters = [[] for _ in range(clusters_count)]
+        self.current_iteration = 0
 
-    for e in range(iterations):
-        for i, cluster in enumerate(clusters):
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        if self.current_iteration == self.max_iterations:
+            raise StopIteration
+        for i, cluster in enumerate(self.clusters):
             if cluster:
-                centroids[i] = Point.mean(cluster)
+                self.centroids[i] = Point.mean(cluster)
                 cluster.clear()
-        for point in points:
+        for point in self.points:
             min_dist, min_dist_i = sys.maxsize, -1
-            for i, centroid in enumerate(centroids):
+            for i, centroid in enumerate(self.centroids):
                 temp_dist = point.square_distance(centroid)
                 if temp_dist < min_dist:
                     min_dist, min_dist_i = temp_dist, i
-            clusters[min_dist_i].append(point)
+            self.clusters[min_dist_i].append(point)
+        self.current_iteration += 1
+        return self.centroids, self.clusters
 
-        visualize_plane(centroids, clusters, bounds, f'k-means, итерация {e}')
+    def __call__(self, visualize: bool = False):
+        for e, _ in enumerate(self):
+            if visualize:
+                visualize_plane(self.centroids, self.clusters, self.bounds, f'k-means, итерация {e + 1}')
 
 
 def visualize_plane(centroids: list[Point], clusters: list[list[Point]], bounds: dict[str, float] = None, title: str = None):
