@@ -1,4 +1,5 @@
 import sys
+from typing import Self
 
 import numpy as np
 from matplotlib import pyplot as plt
@@ -11,7 +12,7 @@ def random_centroids(count: int, bounds: dict[str, Point]) -> list[Point]:
 
 
 class KMeansIterator:
-    def __init__(self, points: list[Point], clusters_count: int, max_iterations: int = 100, centroids_initializer: callable = random_centroids):
+    def __init__(self, points: list[Point], clusters_count: int, max_iterations: int = 100, centroids_initializer: callable = random_centroids) -> None:
         self.points = points
         self.max_iterations = max_iterations
         self.bounds = find_bounds(points)
@@ -19,10 +20,10 @@ class KMeansIterator:
         self.clusters = [[] for _ in range(clusters_count)]
         self.current_iteration = 0
 
-    def __iter__(self):
+    def __iter__(self) -> Self:
         return self
 
-    def __next__(self):
+    def __next__(self) -> tuple[list[Point], list[list[Point]]]:
         if self.current_iteration == self.max_iterations:
             raise StopIteration
         for i, cluster in enumerate(self.clusters):
@@ -39,13 +40,13 @@ class KMeansIterator:
         self.current_iteration += 1
         return self.centroids, self.clusters
 
-    def __call__(self, visualize: bool = False):
+    def __call__(self, visualize: bool = False) -> None:
         for e, _ in enumerate(self):
             if visualize:
                 visualize_plane(self.centroids, self.clusters, self.bounds, f'k-means, итерация {e + 1}')
 
 
-def visualize_plane(centroids: list[Point], clusters: list[list[Point]], bounds: dict[str, float] = None, title: str = None):
+def visualize_plane(centroids: list[Point], clusters: list[list[Point]], bounds: dict[str, float] = None, title: str = None) -> None:
     plt.figure()
 
     colors = plt.cm.rainbow(np.linspace(0, 1, len(clusters)))
