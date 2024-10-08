@@ -1,5 +1,4 @@
 import sys
-from typing import Self
 
 import numpy as np
 from matplotlib import pyplot as plt
@@ -20,7 +19,7 @@ class KMeansIterator:
         self.clusters = [[] for _ in range(clusters_count)]
         self.current_iteration = 0
 
-    def __iter__(self) -> Self:
+    def __iter__(self) -> 'KMeansIterator':
         return self
 
     def __next__(self) -> tuple[list[Point], list[list[Point]]]:
