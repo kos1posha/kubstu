@@ -5,6 +5,8 @@ from point import generate_points
 from PySide6 import QtWidgets as qtw
 from qt import KMeansControl
 
+import matplotlib.pyplot as plt
+
 
 def main_plot() -> None:
     a_cluster = generate_points(10, 10, 15, 10, 15)
@@ -17,6 +19,7 @@ def main_plot() -> None:
 
 
 def main() -> None:
+    plt.style.use('dark_background')
     app = qtw.QApplication(sys.argv)
     app.setStyle('fusion')
     control = KMeansControl()
