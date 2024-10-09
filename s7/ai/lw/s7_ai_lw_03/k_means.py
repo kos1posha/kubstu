@@ -42,24 +42,23 @@ class KMeansIterator:
     def __call__(self, visualize: bool = False) -> None:
         for e, _ in enumerate(self):
             if visualize:
-                visualize_plane(self.centroids, self.clusters, self.bounds, f'k-means, итерация {e + 1}')
+                self.visualize(f'k-means, итерация {e + 1}')
 
+    def visualize(self, title: str = None) -> None:
+        plt.figure()
 
-def visualize_plane(centroids: list[Point], clusters: list[list[Point]], bounds: dict[str, float] = None, title: str = None) -> None:
-    plt.figure()
+        colors = plt.cm.rainbow(np.linspace(0, 1, len(self.clusters)))
+        for i, cluster in enumerate(self.clusters):
+            xs, ys = zip(*[point.as_tuple() for point in cluster]) if cluster else ([], [])
+            plt.scatter(xs, ys, color=colors[i])
+            plt.scatter(*self.centroids[i].as_tuple(), color=colors[i], marker='X', s=100)
 
-    colors = plt.cm.rainbow(np.linspace(0, 1, len(clusters)))
-    for i, cluster in enumerate(clusters):
-        xs, ys = zip(*[point.as_tuple() for point in cluster]) if cluster else ([], [])
-        plt.scatter(xs, ys, color=colors[i])
-        plt.scatter(*centroids[i].as_tuple(), color=colors[i], marker='X', s=100)
-
-    plt.xlabel('X')
-    plt.ylabel('Y')
-    mng = plt.get_current_fig_manager()
-    if bounds:
-        plt.xlim(bounds['x_min'], bounds['x_max'])
-        plt.ylim(bounds['y_min'], bounds['y_max'])
-    if title:
-        mng.set_window_title(title)
-    plt.show()
+        plt.xlabel('X')
+        plt.ylabel('Y')
+        mng = plt.get_current_fig_manager()
+        if self.bounds:
+            plt.xlim(self.bounds['x_min'], self.bounds['x_max'])
+            plt.ylim(self.bounds['y_min'], self.bounds['y_max'])
+        if title:
+            mng.set_window_title(title)
+        plt.show()
