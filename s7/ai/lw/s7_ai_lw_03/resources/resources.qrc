@@ -1,0 +1,7 @@
+<RCC>
+  <qresource prefix="plot_scale">
+    <file>icons/adjust.ico</file>
+    <file>icons/zoom-in.ico</file>
+    <file>icons/zoom-out.ico</file>
+  </qresource>
+</RCC>

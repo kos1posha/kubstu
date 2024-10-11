@@ -17,40 +17,30 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QAbstractItemView, QAbstractSpinBox, QApplication, QGridLayout,
     QHeaderView, QLabel, QPushButton, QSizePolicy,
-    QSpinBox, QTableWidget, QTableWidgetItem, QVBoxLayout,
-    QWidget)
+    QSpinBox, QTableWidget, QTableWidgetItem, QToolButton,
+    QVBoxLayout, QWidget)
+import resources_rc
 
 class Ui_KMeansWindow(object):
     def setupUi(self, KMeansWindow):
         if not KMeansWindow.objectName():
             KMeansWindow.setObjectName(u"KMeansWindow")
-        KMeansWindow.resize(551, 429)
-        self.gridLayout = QGridLayout(KMeansWindow)
-        self.gridLayout.setObjectName(u"gridLayout")
-        self.l_plot = QLabel(KMeansWindow)
-        self.l_plot.setObjectName(u"l_plot")
-        sizePolicy = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.l_plot.sizePolicy().hasHeightForWidth())
-        self.l_plot.setSizePolicy(sizePolicy)
+        KMeansWindow.resize(666, 431)
+        self.gl_main = QGridLayout(KMeansWindow)
+        self.gl_main.setObjectName(u"gl_main")
+        self.l_edit_points = QLabel(KMeansWindow)
+        self.l_edit_points.setObjectName(u"l_edit_points")
         font = QFont()
         font.setPointSize(10)
         font.setBold(True)
-        self.l_plot.setFont(font)
-
-        self.gridLayout.addWidget(self.l_plot, 0, 0, 1, 1)
-
-        self.l_edit_points = QLabel(KMeansWindow)
-        self.l_edit_points.setObjectName(u"l_edit_points")
         self.l_edit_points.setFont(font)
 
-        self.gridLayout.addWidget(self.l_edit_points, 0, 1, 1, 1)
+        self.gl_main.addWidget(self.l_edit_points, 0, 3, 1, 1)
 
         self.w_sidebar = QWidget(KMeansWindow)
         self.w_sidebar.setObjectName(u"w_sidebar")
-        self.w_sidebar.setMinimumSize(QSize(0, 400))
-        self.w_sidebar.setMaximumSize(QSize(200, 400))
+        self.w_sidebar.setMinimumSize(QSize(200, 400))
+        self.w_sidebar.setMaximumSize(QSize(0, 400))
         self.vl_sidebar = QVBoxLayout(self.w_sidebar)
         self.vl_sidebar.setObjectName(u"vl_sidebar")
         self.vl_sidebar.setContentsMargins(0, 0, 0, 0)
@@ -65,6 +55,9 @@ class Ui_KMeansWindow(object):
 
         self.l_random_points_lims = QLabel(self.w_sidebar)
         self.l_random_points_lims.setObjectName(u"l_random_points_lims")
+        sizePolicy = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.l_random_points_lims.sizePolicy().hasHeightForWidth())
         self.l_random_points_lims.setSizePolicy(sizePolicy)
 
@@ -165,26 +158,43 @@ class Ui_KMeansWindow(object):
 
         self.vl_clustering.addWidget(self.sb_max_iterations)
 
-        self.pb_start_clustering = QPushButton(self.w_sidebar)
-        self.pb_start_clustering.setObjectName(u"pb_start_clustering")
+        self.pb_clustering = QPushButton(self.w_sidebar)
+        self.pb_clustering.setObjectName(u"pb_clustering")
 
-        self.vl_clustering.addWidget(self.pb_start_clustering)
+        self.vl_clustering.addWidget(self.pb_clustering)
 
 
         self.vl_sidebar.addLayout(self.vl_clustering)
 
 
-        self.gridLayout.addWidget(self.w_sidebar, 1, 1, 1, 1)
+        self.gl_main.addWidget(self.w_sidebar, 1, 3, 1, 1)
 
         self.w_plot = QWidget(KMeansWindow)
         self.w_plot.setObjectName(u"w_plot")
-        self.w_plot.setMinimumSize(QSize(400, 400))
-        self.w_plot.setMaximumSize(QSize(400, 400))
+        self.w_plot.setMinimumSize(QSize(450, 400))
+        self.w_plot.setMaximumSize(QSize(450, 400))
         self.vl_plot = QVBoxLayout(self.w_plot)
         self.vl_plot.setObjectName(u"vl_plot")
         self.vl_plot.setContentsMargins(0, 0, 0, 0)
 
-        self.gridLayout.addWidget(self.w_plot, 1, 0, 1, 1)
+        self.gl_main.addWidget(self.w_plot, 1, 0, 1, 3)
+
+        self.l_plot = QLabel(KMeansWindow)
+        self.l_plot.setObjectName(u"l_plot")
+        sizePolicy.setHeightForWidth(self.l_plot.sizePolicy().hasHeightForWidth())
+        self.l_plot.setSizePolicy(sizePolicy)
+        self.l_plot.setFont(font)
+
+        self.gl_main.addWidget(self.l_plot, 0, 0, 1, 2)
+
+        self.tb_adjust_plot = QToolButton(KMeansWindow)
+        self.tb_adjust_plot.setObjectName(u"tb_adjust_plot")
+        self.tb_adjust_plot.setStyleSheet(u"background:transparent;border:none")
+        icon = QIcon()
+        icon.addFile(u":/plot_scale/icons/adjust.ico", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.tb_adjust_plot.setIcon(icon)
+
+        self.gl_main.addWidget(self.tb_adjust_plot, 0, 2, 1, 1)
 
 
         self.retranslateUi(KMeansWindow)
@@ -194,7 +204,6 @@ class Ui_KMeansWindow(object):
 
     def retranslateUi(self, KMeansWindow):
         KMeansWindow.setWindowTitle(QCoreApplication.translate("KMeansWindow", u"\u041a\u043b\u0430\u0441\u0442\u0435\u0440\u0438\u0437\u0430\u0446\u0438\u044f", None))
-        self.l_plot.setText(QCoreApplication.translate("KMeansWindow", u"\u0413\u0440\u0430\u0444\u0438\u043a", None))
         self.l_edit_points.setText(QCoreApplication.translate("KMeansWindow", u"\u0414\u043e\u0431\u0430\u0432\u0438\u0442\u044c \u0442\u043e\u0447\u043a\u0438", None))
         self.l_mouse_press_description.setText(QCoreApplication.translate("KMeansWindow", u"\u0412\u044b \u043c\u043e\u0436\u0435\u0442\u0435 \u0434\u043e\u0431\u0430\u0432\u043b\u044f\u0442\u044c \u0438 \u0443\u0434\u0430\u043b\u044f\u0442\u044c \u0442\u043e\u0447\u043a\u0438 \u043f\u0440\u044f\u043c\u043e \u043d\u0430 \u0433\u0440\u0430\u0444\u0438\u043a\u0435, \u0438\u0441\u043f\u043e\u043b\u044c\u0437\u0443\u044f \u043b\u0435\u0432\u0443\u044e \u0438 \u043f\u0440\u0430\u0432\u0443\u044e \u043a\u043d\u043e\u043f\u043a\u0438 \u043c\u044b\u0448\u0438 \u0441\u043e\u043e\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0435\u043d\u043d\u043e", None))
         self.l_random_points_lims.setText(QCoreApplication.translate("KMeansWindow", u"\u0421\u043b\u0443\u0447\u0430\u0439\u043d\u044b\u0435 \u0442\u043e\u0447\u043a\u0438 \u0432 \u0434\u0438\u0430\u043f\u0430\u0437\u043e\u043d\u0435", None))
@@ -216,6 +225,7 @@ class Ui_KMeansWindow(object):
         self.l_clustering.setText(QCoreApplication.translate("KMeansWindow", u"\u041a\u043b\u0430\u0441\u0442\u0435\u0440\u0438\u0437\u0430\u0446\u0438\u044f (k-means)", None))
         self.l_clusters_count.setText(QCoreApplication.translate("KMeansWindow", u"\u041a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u043a\u043b\u0430\u0441\u0442\u0435\u0440\u043e\u0432", None))
         self.l_max_iterations.setText(QCoreApplication.translate("KMeansWindow", u"\u041c\u0430\u043a\u0441\u0438\u043c\u0443\u043c \u0438\u0442\u0435\u0440\u0430\u0446\u0438\u0439", None))
-        self.pb_start_clustering.setText(QCoreApplication.translate("KMeansWindow", u"\u041d\u0430\u0447\u0430\u0442\u044c", None))
+        self.pb_clustering.setText(QCoreApplication.translate("KMeansWindow", u"\u041d\u0430\u0447\u0430\u0442\u044c", None))
+        self.l_plot.setText(QCoreApplication.translate("KMeansWindow", u"\u0413\u0440\u0430\u0444\u0438\u043a", None))
     # retranslateUi
 

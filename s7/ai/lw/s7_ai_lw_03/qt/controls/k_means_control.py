@@ -20,6 +20,7 @@ class KMeansControl(Ui_KMeansWindow, qtw.QWidget):
 
     def connect_ui(self) -> None:
         self.pb_add_random_points.clicked.connect(self.add_random_points)
+        self.tb_adjust_plot.clicked.connect(self.plot_widget.adjust_bounds)
 
     def setup_tw_random_points_lims(self) -> None:
         self.tw_random_points_lims.horizontalHeader().setSectionResizeMode(qtw.QHeaderView.ResizeMode.Stretch)

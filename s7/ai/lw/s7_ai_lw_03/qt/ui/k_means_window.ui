@@ -6,35 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>551</width>
-    <height>429</height>
+    <width>666</width>
+    <height>431</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Кластеризация</string>
   </property>
-  <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="0">
-    <widget class="QLabel" name="l_plot">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>10</pointsize>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="text">
-      <string>График</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="1">
+  <layout class="QGridLayout" name="gl_main">
+   <item row="0" column="3">
     <widget class="QLabel" name="l_edit_points">
      <property name="font">
       <font>
@@ -48,17 +28,17 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="1">
+   <item row="1" column="3">
     <widget class="QWidget" name="w_sidebar" native="true">
      <property name="minimumSize">
       <size>
-       <width>0</width>
+       <width>200</width>
        <height>400</height>
       </size>
      </property>
      <property name="maximumSize">
       <size>
-       <width>200</width>
+       <width>0</width>
        <height>400</height>
       </size>
      </property>
@@ -278,7 +258,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pb_start_clustering">
+         <widget class="QPushButton" name="pb_clustering">
           <property name="text">
            <string>Начать</string>
           </property>
@@ -289,17 +269,17 @@
      </layout>
     </widget>
    </item>
-   <item row="1" column="0">
+   <item row="1" column="0" colspan="3">
     <widget class="QWidget" name="w_plot" native="true">
      <property name="minimumSize">
       <size>
-       <width>400</width>
+       <width>450</width>
        <height>400</height>
       </size>
      </property>
      <property name="maximumSize">
       <size>
-       <width>400</width>
+       <width>450</width>
        <height>400</height>
       </size>
      </property>
@@ -319,8 +299,41 @@
      </layout>
     </widget>
    </item>
+   <item row="0" column="0" colspan="2">
+    <widget class="QLabel" name="l_plot">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>График</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="2">
+    <widget class="QToolButton" name="tb_adjust_plot">
+     <property name="styleSheet">
+      <string notr="true">background:transparent;border:none</string>
+     </property>
+     <property name="icon">
+      <iconset resource="../../resources/resources.qrc">
+       <normaloff>:/plot_scale/icons/adjust.ico</normaloff>:/plot_scale/icons/adjust.ico</iconset>
+     </property>
+    </widget>
+   </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="../../resources/resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

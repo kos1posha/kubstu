@@ -1,7 +1,7 @@
 from PySide6 import QtWidgets as qtw, QtGui as qtg, QtCore as qtc
 
 import matplotlib.pyplot as plt
-from point import Point, generate_points
+from point import Point, find_bounds
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.backend_bases import MouseEvent
 from matplotlib.figure import Figure
@@ -108,4 +108,13 @@ class PlotWidget(qtw.QWidget):
             if near:
                 nearest = sorted(near, key=lambda p: ep.distance(p))[0]
                 self.points.remove(nearest)
+        self.update_plot()
+
+    def adjust_bounds(self) -> None:
+        if not self.points:
+            self.xlim, self.ylim = (-100, 100), (-100, 100)
+            return
+        points = self.points if self.interactive_mode == PlotWidget.InteractiveMode.EDIT_POINTS else sum(self.points, start=[])
+        bounds = tuple(find_bounds(points).values())
+        self.xlim, self.ylim = bounds[:2], bounds[2:]
         self.update_plot()
