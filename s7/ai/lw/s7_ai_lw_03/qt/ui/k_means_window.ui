@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Кластеризация</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
@@ -78,7 +78,7 @@
       <item>
        <layout class="QVBoxLayout" name="vl_edit_points">
         <item>
-         <widget class="QLabel" name="l_on_click_description">
+         <widget class="QLabel" name="l_mouse_press_description">
           <property name="styleSheet">
            <string notr="true">color:grey</string>
           </property>
@@ -104,7 +104,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QTableWidget" name="tw_random_points">
+         <widget class="QTableWidget" name="tw_random_points_lims">
           <property name="selectionMode">
            <enum>QAbstractItemView::NoSelection</enum>
           </property>
@@ -176,7 +176,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QSpinBox" name="sb_clusters_count_2">
+         <widget class="QSpinBox" name="sb_random_points_count">
           <property name="buttonSymbols">
            <enum>QAbstractSpinBox::PlusMinus</enum>
           </property>
@@ -192,7 +192,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pb_random_points">
+         <widget class="QPushButton" name="pb_add_random_points">
           <property name="text">
            <string>Добавить</string>
           </property>

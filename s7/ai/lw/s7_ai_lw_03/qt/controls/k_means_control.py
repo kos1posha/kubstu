@@ -1,3 +1,4 @@
+from point import generate_points
 from qt.controls.widgets import PlotWidget, LimSpinBox
 from qt.py.k_means_window import Ui_KMeansWindow
 
@@ -14,15 +15,15 @@ class KMeansControl(Ui_KMeansWindow, qtw.QWidget):
         super().setupUi(self)
         self.setFixedSize(self.sizeHint().width(), self.sizeHint().height())
         self.vl_plot.addWidget(self.plot_widget)
-        self.setup_tw_random_points()
+        self.setup_tw_random_points_lims()
 
-    def setup_tw_random_points(self) -> None:
-        self.tw_random_points.horizontalHeader().setSectionResizeMode(qtw.QHeaderView.ResizeMode.Stretch)
-        self.tw_random_points.verticalHeader().setSectionResizeMode(qtw.QHeaderView.ResizeMode.Stretch)
+    def setup_tw_random_points_lims(self) -> None:
+        self.tw_random_points_lims.horizontalHeader().setSectionResizeMode(qtw.QHeaderView.ResizeMode.Stretch)
+        self.tw_random_points_lims.verticalHeader().setSectionResizeMode(qtw.QHeaderView.ResizeMode.Stretch)
         default_values = iter([-100, 100, -100, 100])
         for r in range(2):
             for c in range(2):
                 sb_lim = LimSpinBox(value=next(default_values))
                 sb_lim.setStyleSheet('border:none;background:transparent')
-                self.tw_random_points.setCellWidget(r, c, sb_lim)
-                self.tw_random_points.item(r, c).setText('')
+                self.tw_random_points_lims.setCellWidget(r, c, sb_lim)
+                self.tw_random_points_lims.item(r, c).setText('')
