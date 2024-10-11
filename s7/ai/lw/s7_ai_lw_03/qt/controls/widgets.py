@@ -7,6 +7,7 @@ from matplotlib.backend_bases import MouseEvent
 from matplotlib.figure import Figure
 
 import numpy as np
+import math as m
 
 plot_range = 10000
 
@@ -44,8 +45,16 @@ class PlotWidget(qtw.QWidget):
     def colors(self) -> np.ndarray:
         return plt.cm.rainbow(np.linspace(0, 1, len(self.points)))
 
+    @property
+    def labelsize(self) -> int:
+        max_lim = max(abs(lim) for lim in self.xlim + self.ylim)
+        if max_lim < 100:
+            return 10
+        return 10 - m.floor(m.log10(max_lim / 100))
+
     def setup_ui(self) -> None:
         self.figure = Figure(facecolor=(0, 0, 0, 0))
+        self.figure.subplots_adjust(left=0.14, right=0.93, top=0.98, bottom=0.06)
         self.canvas = FigureCanvas(self.figure)
         self.canvas.setStyleSheet('background:transparent')
         self.ax = self.figure.add_subplot(111, facecolor=(0, 0, 0, 0))
@@ -64,6 +73,7 @@ class PlotWidget(qtw.QWidget):
                 self.plot_clusters()
             case _:
                 pass
+        self.ax.tick_params('both', labelsize=self.labelsize)
         self.ax.set_xlim(*self.xlim)
         self.ax.set_ylim(*self.ylim)
         self.canvas.draw()
@@ -81,6 +91,11 @@ class PlotWidget(qtw.QWidget):
             xs, ys = zip(*[p.as_tuple() for p in cluster])
             self.ax.scatter(xs, ys, s=8, color=self.colors[i])
             self.ax.scatter(cx, cy, s=100, color='white', edgecolor=self.colors[i], linewidth=1, marker=f'${marker}$')
+
+    def fit_bounds(self, x_min: int, x_max: int, y_min: int, y_max: int, force: bool = False) -> None:
+        self.xlim = (min(self.xlim[0], x_min), max(self.xlim[1], x_max)) if not force else (x_min, x_max)
+        self.ylim = (min(self.ylim[0], y_min), max(self.ylim[1], y_max)) if not force else (y_min, y_max)
+        self.update_plot()
 
     def mouse_press_event(self, event: MouseEvent) -> None:
         if self.interactive_mode == PlotWidget.InteractiveMode.SHOW_CLUSTERS or event.inaxes is None:
