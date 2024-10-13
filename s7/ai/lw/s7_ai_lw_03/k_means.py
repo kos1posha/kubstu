@@ -25,6 +25,7 @@ class KMeansIterator:
     def __next__(self) -> tuple[list[Point], list[list[Point]]]:
         if self.current_iteration == self.max_iterations:
             raise StopIteration
+        old_wcss = self.wcss
         for i, cluster in enumerate(self.clusters):
             if cluster:
                 self.centroids[i] = Point.mean(cluster)
@@ -36,6 +37,8 @@ class KMeansIterator:
                 if temp_dist < min_dist:
                     min_dist, min_dist_i = temp_dist, i
             self.clusters[min_dist_i].append(point)
+        if self.wcss == old_wcss:
+            raise StopIteration
         self.current_iteration += 1
         return self.centroids, self.clusters
 
@@ -43,6 +46,13 @@ class KMeansIterator:
         for e, _ in enumerate(self):
             if visualize:
                 self.visualize(f'k-means, итерация {e + 1}')
+
+    @property
+    def wcss(self) -> float:
+        wcss = 0
+        for centroid, cluster in zip(self.centroids, self.clusters):
+            wcss += sum(p.square_distance(centroid) for p in cluster)
+        return wcss
 
     def visualize(self, title: str = None) -> None:
         plt.figure()
