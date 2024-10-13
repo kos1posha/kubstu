@@ -23,10 +23,18 @@ class KMeansControl(Ui_KMeansWindow, qtw.QWidget):
         self.setup_tw_random_points_lims()
 
     def connect_ui(self) -> None:
+        self.pb_delete_all_points.clicked.connect(self.delete_all_points)
         self.pb_add_random_points.clicked.connect(self.add_random_points)
         self.tb_adjust_plot.clicked.connect(self.plot_widget.adjust_bounds)
         self.pb_start_iter_clustering.clicked.connect(self.start_clustering)
         self.pb_stop_restart_clustering.clicked.connect(self.stop_clustering)
+
+    def delete_all_points(self) -> None:
+        if not ask('Подтвердите действие', 'Удалить все точки на графике?', 'Подтвердить', 'Отмена'):
+            return
+
+        self.plot_widget.points = []
+        self.plot_widget.update_plot()
 
     def setup_tw_random_points_lims(self) -> None:
         self.tw_random_points_lims.horizontalHeader().setSectionResizeMode(qtw.QHeaderView.ResizeMode.Stretch)
