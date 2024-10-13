@@ -212,9 +212,37 @@ class Ui_KMeansWindow(object):
 
         self.vl_clustering.addWidget(self.pb_stop_restart_clustering)
 
-        self.vs_clustering = QSpacerItem(20, 269, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+        self.w_iterations = QWidget(self.tab_clustering)
+        self.w_iterations.setObjectName(u"w_iterations")
+        self.w_iterations.setEnabled(False)
+        self.vl_wcss = QVBoxLayout(self.w_iterations)
+        self.vl_wcss.setObjectName(u"vl_wcss")
+        self.vl_wcss.setContentsMargins(0, 0, 0, 0)
+        self.l_iterations = QLabel(self.w_iterations)
+        self.l_iterations.setObjectName(u"l_iterations")
+        self.l_iterations.setFont(font1)
 
-        self.vl_clustering.addItem(self.vs_clustering)
+        self.vl_wcss.addWidget(self.l_iterations)
+
+        self.tw_iterations = QTableWidget(self.w_iterations)
+        if (self.tw_iterations.columnCount() < 2):
+            self.tw_iterations.setColumnCount(2)
+        __qtablewidgetitem8 = QTableWidgetItem()
+        self.tw_iterations.setHorizontalHeaderItem(0, __qtablewidgetitem8)
+        __qtablewidgetitem9 = QTableWidgetItem()
+        __qtablewidgetitem9.setTextAlignment(Qt.AlignLeading|Qt.AlignVCenter);
+        self.tw_iterations.setHorizontalHeaderItem(1, __qtablewidgetitem9)
+        self.tw_iterations.setObjectName(u"tw_iterations")
+        self.tw_iterations.setSelectionMode(QAbstractItemView.SingleSelection)
+        self.tw_iterations.setSelectionBehavior(QAbstractItemView.SelectRows)
+        self.tw_iterations.horizontalHeader().setStretchLastSection(True)
+        self.tw_iterations.verticalHeader().setVisible(False)
+        self.tw_iterations.verticalHeader().setDefaultSectionSize(18)
+
+        self.vl_wcss.addWidget(self.tw_iterations)
+
+
+        self.vl_clustering.addWidget(self.w_iterations)
 
         self.tabw_sidebar.addTab(self.tab_clustering, "")
 
@@ -223,7 +251,7 @@ class Ui_KMeansWindow(object):
 
         self.retranslateUi(KMeansWindow)
 
-        self.tabw_sidebar.setCurrentIndex(0)
+        self.tabw_sidebar.setCurrentIndex(1)
 
 
         QMetaObject.connectSlotsByName(KMeansWindow)
@@ -255,6 +283,11 @@ class Ui_KMeansWindow(object):
         self.l_max_iterations.setText(QCoreApplication.translate("KMeansWindow", u"\u041c\u0430\u043a\u0441\u0438\u043c\u0443\u043c \u0438\u0442\u0435\u0440\u0430\u0446\u0438\u0439", None))
         self.pb_start_iter_clustering.setText(QCoreApplication.translate("KMeansWindow", u"\u041d\u0430\u0447\u0430\u0442\u044c", None))
         self.pb_stop_restart_clustering.setText(QCoreApplication.translate("KMeansWindow", u"\u041e\u0441\u0442\u0430\u043d\u043e\u0432\u0438\u0442\u044c", None))
+        self.l_iterations.setText(QCoreApplication.translate("KMeansWindow", u"\u0418\u0442\u0435\u0440\u0430\u0446\u0438\u0438", None))
+        ___qtablewidgetitem4 = self.tw_iterations.horizontalHeaderItem(0)
+        ___qtablewidgetitem4.setText(QCoreApplication.translate("KMeansWindow", u"#", None));
+        ___qtablewidgetitem5 = self.tw_iterations.horizontalHeaderItem(1)
+        ___qtablewidgetitem5.setText(QCoreApplication.translate("KMeansWindow", u"WCSS", None));
         self.tabw_sidebar.setTabText(self.tabw_sidebar.indexOf(self.tab_clustering), QCoreApplication.translate("KMeansWindow", u"\u041a\u043b\u0430\u0441\u0442\u0435\u0440\u0438\u0437\u0430\u0446\u0438\u044f", None))
     # retranslateUi
 

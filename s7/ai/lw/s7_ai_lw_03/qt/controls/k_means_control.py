@@ -3,7 +3,8 @@ from point import generate_points
 from qt.controls.widgets import PlotWidget, LimSpinBox, ask
 from qt.py.k_means_window import Ui_KMeansWindow
 
-from PySide6 import QtWidgets as qtw
+from PySide6 import QtWidgets as qtw, QtCore as qtc
+from copy import deepcopy
 
 
 class KMeansControl(Ui_KMeansWindow, qtw.QWidget):
@@ -13,6 +14,7 @@ class KMeansControl(Ui_KMeansWindow, qtw.QWidget):
         self.start_iter_state = True
         self.stop_restart_state = True
         self.iterator = None
+        self.iterations = []
         self.setup_ui()
         self.connect_ui()
 
@@ -21,6 +23,8 @@ class KMeansControl(Ui_KMeansWindow, qtw.QWidget):
         self.setFixedSize(self.sizeHint().width(), self.sizeHint().height())
         self.vl_plot.addWidget(self.plot_widget)
         self.setup_tw_random_points_lims()
+        self.tw_iterations.horizontalHeader().setSectionResizeMode(0, qtw.QHeaderView.ResizeMode.ResizeToContents)
+        self.tw_iterations.horizontalHeader().setDefaultAlignment(qtc.Qt.AlignmentFlag.AlignCenter)
 
     def connect_ui(self) -> None:
         self.pb_delete_all_points.clicked.connect(self.delete_all_points)
@@ -28,13 +32,7 @@ class KMeansControl(Ui_KMeansWindow, qtw.QWidget):
         self.tb_adjust_plot.clicked.connect(self.plot_widget.adjust_bounds)
         self.pb_start_iter_clustering.clicked.connect(self.start_clustering)
         self.pb_stop_restart_clustering.clicked.connect(self.stop_clustering)
-
-    def delete_all_points(self) -> None:
-        if not ask('Подтвердите действие', 'Удалить все точки на графике?', 'Подтвердить', 'Отмена'):
-            return
-
-        self.plot_widget.points = []
-        self.plot_widget.update_plot()
+        self.tw_iterations.itemSelectionChanged.connect(self.show_iteration)
 
     def setup_tw_random_points_lims(self) -> None:
         self.tw_random_points_lims.horizontalHeader().setSectionResizeMode(qtw.QHeaderView.ResizeMode.Stretch)
@@ -46,6 +44,14 @@ class KMeansControl(Ui_KMeansWindow, qtw.QWidget):
                 sb_lim.setStyleSheet('border:none;background:transparent')
                 self.tw_random_points_lims.setCellWidget(r, c, sb_lim)
                 self.tw_random_points_lims.item(r, c).setText('')
+
+    def show_iteration(self) -> None:
+        index = self.tw_iterations.currentRow()
+        if index == -1:
+            return
+        iteration = self.iterations[index]
+        self.plot_widget.old_centroids, self.plot_widget.centroids, self.plot_widget.points = iteration
+        self.plot_widget.update_plot()
 
     def fetch_random_points_data(self) -> tuple[int, int, int, int]:
         cells = [(0, 0), (0, 1), (1, 0), (1, 1)]
@@ -59,6 +65,13 @@ class KMeansControl(Ui_KMeansWindow, qtw.QWidget):
             return None
         count = self.sb_random_points_count.value()
         return count, x_min, x_max, y_min, y_max
+
+    def delete_all_points(self) -> None:
+        if not ask('Подтвердите действие', 'Удалить все точки на графике?', 'Подтвердить', 'Отмена'):
+            return
+
+        self.plot_widget.points = []
+        self.plot_widget.update_plot()
 
     def add_random_points(self) -> None:
         data = self.fetch_random_points_data()
@@ -87,16 +100,26 @@ class KMeansControl(Ui_KMeansWindow, qtw.QWidget):
         self.pb_stop_restart_clustering.setEnabled(True)
         self.w_clustering_attrs.setEnabled(False)
         self.tab_edit_points.setEnabled(False)
+        self.w_iterations.setEnabled(True)
         self.plot_widget.set_interactive_mode(PlotWidget.InteractiveMode.SHOW_CLUSTERS)
         self.iter_clustering()
 
     def iter_clustering(self) -> None:
         try:
+            old_centroids = deepcopy(self.iterator.centroids)
             centroids, clusters = next(self.iterator)
+            self.iterations.insert(0, (old_centroids, deepcopy(centroids), deepcopy(clusters)))
+            self.tw_iterations.insertRow(0)
+            self.tw_iterations.setItem(0, 0, qtw.QTableWidgetItem(str(self.tw_iterations.rowCount())))
+            self.tw_iterations.setItem(0, 1, qtw.QTableWidgetItem(f'{self.iterator.wcss:.2f}'))
+            self.tw_iterations.item(0, 0).setTextAlignment(qtc.Qt.AlignmentFlag.AlignCenter)
+            self.tw_iterations.selectRow(0)
+            self.tw_iterations.setFocus()
         except StopIteration:
             self.stop_clustering(True)
             qtw.QMessageBox.information(self, 'Конец', 'Метод кластеризации завершил свою работу')
         else:
+            self.plot_widget.old_centroids = old_centroids
             self.plot_widget.centroids = centroids
             self.plot_widget.points = clusters
             self.plot_widget.update_plot()
@@ -120,12 +143,14 @@ class KMeansControl(Ui_KMeansWindow, qtw.QWidget):
         if not ask('Перезапустить кластеризацию?', 'Текущие центроиды будут удалены', 'Перезапустить', 'Отмена'):
             return
 
+        self.iterations = []
         self.set_start_iter_state(True)
         self.set_stop_restart_state(True)
         self.pb_start_iter_clustering.setEnabled(True)
         self.pb_stop_restart_clustering.setEnabled(False)
         self.w_clustering_attrs.setEnabled(True)
         self.tab_edit_points.setEnabled(True)
+        self.tw_iterations.setRowCount(0)
         self.plot_widget.set_interactive_mode(PlotWidget.InteractiveMode.EDIT_POINTS)
 
     def set_stop_restart_state(self, state: bool) -> None:

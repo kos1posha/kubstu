@@ -31,6 +31,7 @@ class PlotWidget(qtw.QWidget):
 
     def __init__(self, *args, **kwargs) -> None:
         super(PlotWidget, self).__init__(*args, **kwargs)
+        self.old_centroids = []
         self.centroids = []
         self.points = []
 
@@ -86,12 +87,15 @@ class PlotWidget(qtw.QWidget):
         self.ax.scatter(xs, ys, s=8, color='white')
 
     def plot_clusters(self) -> None:
-        for i, (centroid, cluster) in enumerate(zip(self.centroids, self.points)):
+        for i, (old_centroid, centroid, cluster) in enumerate(zip(self.old_centroids, self.centroids, self.points)):
             marker = chr(ord('A') + i)
+            ox, oy = old_centroid.as_tuple()
             cx, cy = centroid.as_tuple()
             xs, ys = zip(*[p.as_tuple() for p in cluster]) if cluster else ([], [])
+            self.ax.plot([ox, cx], [oy, cy], color=self.colors[i], linestyle='--')
+            self.ax.scatter(ox, oy, s=40, color=self.colors[i])
             self.ax.scatter(xs, ys, s=8, color=self.colors[i])
-            self.ax.scatter(cx, cy, s=100, color='white', edgecolor=self.colors[i], linewidth=1, marker=f'${marker}$')
+            self.ax.scatter(cx, cy, s=100, color='white', edgecolor=self.colors[i], linewidth=0.6, marker=f'${marker}$')
 
     def set_interactive_mode(self, value: bool) -> None:
         self.interactive_mode = value
