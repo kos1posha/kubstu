@@ -72,8 +72,7 @@ class KMeansControl(Ui_KMeansWindow, qtw.QWidget):
         if not data:
             return
         self.iterator = KMeansIterator(*data)
-        self.l_edit_points.setEnabled(False)
-        self.w_sidebar.setEnabled(False)
+        self.tab_edit_points.setEnabled(False)
         self.plot_widget.interactive_mode = PlotWidget.InteractiveMode.SHOW_CLUSTERS
         self.pb_clustering.setText('Дальше')
         self.pb_clustering.clicked.disconnect(self.start_clustering)
