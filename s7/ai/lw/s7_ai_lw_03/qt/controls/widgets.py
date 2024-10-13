@@ -88,7 +88,7 @@ class PlotWidget(qtw.QWidget):
         for i, (centroid, cluster) in enumerate(zip(self.centroids, self.points)):
             marker = chr(ord('A') + i)
             cx, cy = centroid.as_tuple()
-            xs, ys = zip(*[p.as_tuple() for p in cluster])
+            xs, ys = zip(*[p.as_tuple() for p in cluster]) if cluster else ([], [])
             self.ax.scatter(xs, ys, s=8, color=self.colors[i])
             self.ax.scatter(cx, cy, s=100, color='white', edgecolor=self.colors[i], linewidth=1, marker=f'${marker}$')
 
