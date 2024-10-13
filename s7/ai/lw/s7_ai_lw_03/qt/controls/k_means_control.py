@@ -1,6 +1,6 @@
 from k_means import KMeansIterator
 from point import generate_points
-from qt.controls.widgets import PlotWidget, LimSpinBox
+from qt.controls.widgets import PlotWidget, LimSpinBox, ask
 from qt.py.k_means_window import Ui_KMeansWindow
 
 from PySide6 import QtWidgets as qtw
@@ -10,6 +10,8 @@ class KMeansControl(Ui_KMeansWindow, qtw.QWidget):
     def __init__(self) -> None:
         super().__init__()
         self.plot_widget = PlotWidget()
+        self.start_iter_state = True
+        self.stop_restart_state = True
         self.iterator = None
         self.setup_ui()
         self.connect_ui()
@@ -23,7 +25,8 @@ class KMeansControl(Ui_KMeansWindow, qtw.QWidget):
     def connect_ui(self) -> None:
         self.pb_add_random_points.clicked.connect(self.add_random_points)
         self.tb_adjust_plot.clicked.connect(self.plot_widget.adjust_bounds)
-        self.pb_clustering.clicked.connect(self.start_clustering)
+        self.pb_start_iter_clustering.clicked.connect(self.start_clustering)
+        self.pb_stop_restart_clustering.clicked.connect(self.stop_clustering)
 
     def setup_tw_random_points_lims(self) -> None:
         self.tw_random_points_lims.horizontalHeader().setSectionResizeMode(qtw.QHeaderView.ResizeMode.Stretch)
@@ -72,19 +75,55 @@ class KMeansControl(Ui_KMeansWindow, qtw.QWidget):
         if not data:
             return
         self.iterator = KMeansIterator(*data)
+        self.set_start_iter_state(False)
+        self.pb_stop_restart_clustering.setEnabled(True)
+        self.w_clustering_attrs.setEnabled(False)
         self.tab_edit_points.setEnabled(False)
-        self.plot_widget.interactive_mode = PlotWidget.InteractiveMode.SHOW_CLUSTERS
-        self.pb_clustering.setText('Дальше')
-        self.pb_clustering.clicked.disconnect(self.start_clustering)
-        self.pb_clustering.clicked.connect(self.iter_clustering)
+        self.plot_widget.set_interactive_mode(PlotWidget.InteractiveMode.SHOW_CLUSTERS)
         self.iter_clustering()
 
     def iter_clustering(self) -> None:
         try:
             centroids, clusters = next(self.iterator)
         except StopIteration:
+            self.stop_clustering(True)
             qtw.QMessageBox.information(self, 'Конец', 'Метод кластеризации завершил свою работу')
         else:
             self.plot_widget.centroids = centroids
             self.plot_widget.points = clusters
             self.plot_widget.update_plot()
+
+    def set_start_iter_state(self, state: bool) -> None:
+        self.start_iter_state = state
+        attrs = ['Начать', self.iter_clustering, self.start_clustering] if self.start_iter_state else \
+                ['Дальше', self.start_clustering, self.iter_clustering]
+        self.pb_start_iter_clustering.setText(attrs[0])
+        self.pb_start_iter_clustering.clicked.disconnect(attrs[1])
+        self.pb_start_iter_clustering.clicked.connect(attrs[2])
+
+    def stop_clustering(self, force: bool = False) -> None:
+        if not force and not ask('Остановить кластеризацию?', 'Вы больше не сможете итерировать метод', 'Остановить', 'Отмена'):
+            return
+
+        self.pb_start_iter_clustering.setEnabled(False)
+        self.set_stop_restart_state(False)
+
+    def restart_clustering(self) -> None:
+        if not ask('Перезапустить кластеризацию?', 'Текущие центроиды будут удалены', 'Перезапустить', 'Отмена'):
+            return
+
+        self.set_start_iter_state(True)
+        self.set_stop_restart_state(True)
+        self.pb_start_iter_clustering.setEnabled(True)
+        self.pb_stop_restart_clustering.setEnabled(False)
+        self.w_clustering_attrs.setEnabled(True)
+        self.tab_edit_points.setEnabled(True)
+        self.plot_widget.set_interactive_mode(PlotWidget.InteractiveMode.EDIT_POINTS)
+
+    def set_stop_restart_state(self, state: bool) -> None:
+        self.stop_restart_state = state
+        attrs = ['Остановить', self.restart_clustering, self.stop_clustering] if self.stop_restart_state else \
+                ['Перезапустить', self.stop_clustering, self.restart_clustering]
+        self.pb_stop_restart_clustering.setText(attrs[0])
+        self.pb_stop_restart_clustering.clicked.disconnect(attrs[1])
+        self.pb_stop_restart_clustering.clicked.connect(attrs[2])

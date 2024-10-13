@@ -1,3 +1,4 @@
+import itertools
 from PySide6 import QtWidgets as qtw, QtGui as qtg, QtCore as qtc
 
 import matplotlib.pyplot as plt
@@ -92,6 +93,12 @@ class PlotWidget(qtw.QWidget):
             self.ax.scatter(xs, ys, s=8, color=self.colors[i])
             self.ax.scatter(cx, cy, s=100, color='white', edgecolor=self.colors[i], linewidth=1, marker=f'${marker}$')
 
+    def set_interactive_mode(self, value: bool) -> None:
+        self.interactive_mode = value
+        if value == PlotWidget.InteractiveMode.EDIT_POINTS:
+            self.points = list(itertools.chain.from_iterable(self.points))
+            self.update_plot()
+
     def fit_bounds(self, x_min: int, x_max: int, y_min: int, y_max: int, force: bool = False) -> None:
         self.xlim = (min(self.xlim[0], x_min), max(self.xlim[1], x_max)) if not force else (x_min, x_max)
         self.ylim = (min(self.ylim[0], y_min), max(self.ylim[1], y_max)) if not force else (y_min, y_max)
@@ -118,3 +125,12 @@ class PlotWidget(qtw.QWidget):
         bounds = tuple(find_bounds(points).values())
         self.xlim, self.ylim = bounds[:2], bounds[2:]
         self.update_plot()
+
+
+def ask(title: str, text: str, yes_text: str, no_text: str) -> bool:
+    yes, no = qtw.QPushButton(yes_text), qtw.QPushButton(no_text)
+    msgbox = qtw.QMessageBox(qtw.QMessageBox.Icon.Question, title, text)
+    msgbox.addButton(yes, qtw.QMessageBox.ButtonRole.YesRole)
+    msgbox.addButton(no, qtw.QMessageBox.ButtonRole.NoRole)
+    msgbox.exec()
+    return msgbox.clickedButton() == yes

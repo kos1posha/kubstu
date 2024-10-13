@@ -153,32 +153,37 @@ class Ui_KMeansWindow(object):
         self.tab_clustering.setObjectName(u"tab_clustering")
         self.vl_clustering = QVBoxLayout(self.tab_clustering)
         self.vl_clustering.setObjectName(u"vl_clustering")
-        self.l_clusters_count = QLabel(self.tab_clustering)
+        self.w_clustering_attrs = QWidget(self.tab_clustering)
+        self.w_clustering_attrs.setObjectName(u"w_clustering_attrs")
+        self.vl_clustering_attrs = QVBoxLayout(self.w_clustering_attrs)
+        self.vl_clustering_attrs.setObjectName(u"vl_clustering_attrs")
+        self.vl_clustering_attrs.setContentsMargins(0, 0, 0, 0)
+        self.l_clusters_count = QLabel(self.w_clustering_attrs)
         self.l_clusters_count.setObjectName(u"l_clusters_count")
         sizePolicy.setHeightForWidth(self.l_clusters_count.sizePolicy().hasHeightForWidth())
         self.l_clusters_count.setSizePolicy(sizePolicy)
         self.l_clusters_count.setFont(font1)
 
-        self.vl_clustering.addWidget(self.l_clusters_count)
+        self.vl_clustering_attrs.addWidget(self.l_clusters_count)
 
-        self.sb_clusters_count = QSpinBox(self.tab_clustering)
+        self.sb_clusters_count = QSpinBox(self.w_clustering_attrs)
         self.sb_clusters_count.setObjectName(u"sb_clusters_count")
         self.sb_clusters_count.setButtonSymbols(QAbstractSpinBox.PlusMinus)
         self.sb_clusters_count.setMinimum(2)
         self.sb_clusters_count.setMaximum(100)
         self.sb_clusters_count.setValue(3)
 
-        self.vl_clustering.addWidget(self.sb_clusters_count)
+        self.vl_clustering_attrs.addWidget(self.sb_clusters_count)
 
-        self.l_max_iterations = QLabel(self.tab_clustering)
+        self.l_max_iterations = QLabel(self.w_clustering_attrs)
         self.l_max_iterations.setObjectName(u"l_max_iterations")
         sizePolicy.setHeightForWidth(self.l_max_iterations.sizePolicy().hasHeightForWidth())
         self.l_max_iterations.setSizePolicy(sizePolicy)
         self.l_max_iterations.setFont(font1)
 
-        self.vl_clustering.addWidget(self.l_max_iterations)
+        self.vl_clustering_attrs.addWidget(self.l_max_iterations)
 
-        self.sb_max_iterations = QSpinBox(self.tab_clustering)
+        self.sb_max_iterations = QSpinBox(self.w_clustering_attrs)
         self.sb_max_iterations.setObjectName(u"sb_max_iterations")
         self.sb_max_iterations.setButtonSymbols(QAbstractSpinBox.PlusMinus)
         self.sb_max_iterations.setMinimum(2)
@@ -186,14 +191,23 @@ class Ui_KMeansWindow(object):
         self.sb_max_iterations.setSingleStep(5)
         self.sb_max_iterations.setValue(100)
 
-        self.vl_clustering.addWidget(self.sb_max_iterations)
+        self.vl_clustering_attrs.addWidget(self.sb_max_iterations)
 
-        self.pb_clustering = QPushButton(self.tab_clustering)
-        self.pb_clustering.setObjectName(u"pb_clustering")
 
-        self.vl_clustering.addWidget(self.pb_clustering)
+        self.vl_clustering.addWidget(self.w_clustering_attrs)
 
-        self.vs_clustering = QSpacerItem(20, 290, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+        self.pb_start_iter_clustering = QPushButton(self.tab_clustering)
+        self.pb_start_iter_clustering.setObjectName(u"pb_start_iter_clustering")
+
+        self.vl_clustering.addWidget(self.pb_start_iter_clustering)
+
+        self.pb_stop_restart_clustering = QPushButton(self.tab_clustering)
+        self.pb_stop_restart_clustering.setObjectName(u"pb_stop_restart_clustering")
+        self.pb_stop_restart_clustering.setEnabled(False)
+
+        self.vl_clustering.addWidget(self.pb_stop_restart_clustering)
+
+        self.vs_clustering = QSpacerItem(20, 269, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
         self.vl_clustering.addItem(self.vs_clustering)
 
@@ -204,7 +218,7 @@ class Ui_KMeansWindow(object):
 
         self.retranslateUi(KMeansWindow)
 
-        self.tabw_sidebar.setCurrentIndex(1)
+        self.tabw_sidebar.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(KMeansWindow)
@@ -233,7 +247,8 @@ class Ui_KMeansWindow(object):
         self.tabw_sidebar.setTabText(self.tabw_sidebar.indexOf(self.tab_edit_points), QCoreApplication.translate("KMeansWindow", u"\u0422\u043e\u0447\u043a\u0438", None))
         self.l_clusters_count.setText(QCoreApplication.translate("KMeansWindow", u"\u041a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u043a\u043b\u0430\u0441\u0442\u0435\u0440\u043e\u0432", None))
         self.l_max_iterations.setText(QCoreApplication.translate("KMeansWindow", u"\u041c\u0430\u043a\u0441\u0438\u043c\u0443\u043c \u0438\u0442\u0435\u0440\u0430\u0446\u0438\u0439", None))
-        self.pb_clustering.setText(QCoreApplication.translate("KMeansWindow", u"\u041d\u0430\u0447\u0430\u0442\u044c", None))
+        self.pb_start_iter_clustering.setText(QCoreApplication.translate("KMeansWindow", u"\u041d\u0430\u0447\u0430\u0442\u044c", None))
+        self.pb_stop_restart_clustering.setText(QCoreApplication.translate("KMeansWindow", u"\u041e\u0441\u0442\u0430\u043d\u043e\u0432\u0438\u0442\u044c", None))
         self.tabw_sidebar.setTabText(self.tabw_sidebar.indexOf(self.tab_clustering), QCoreApplication.translate("KMeansWindow", u"\u041a\u043b\u0430\u0441\u0442\u0435\u0440\u0438\u0437\u0430\u0446\u0438\u044f", None))
     # retranslateUi
 
