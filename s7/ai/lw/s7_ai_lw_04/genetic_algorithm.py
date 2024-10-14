@@ -1,7 +1,5 @@
-import random
+import numpy as np
 import sympy as sp
-
-from chromosome import Chromosome, generate_population
 
 
 class OptDir:
@@ -9,16 +7,28 @@ class OptDir:
     MINIMIZATION = 'min'
 
 
+symbols = sp.symbols('x y')
+rng = np.random.default_rng()
+
+
 class GeneticAlgorithmIterator:
-    def __init__(self, func: sp.Expr, bounds: dict[str, float], opt_dir: str, population_size: int, max_iteration: int) -> None:
+
+    def __init__(self, func: sp.Expr, bounds: dict[str, tuple[float, float]], opt_dir: str, population_size: int, max_iteration: int) -> None:
+        if func.free_symbols != set(symbols):
+            raise ValueError('The given function must have the form f(x, y)')
+        if bounds.keys() != {'x', 'y'}:
+            raise ValueError('Given  bounds must have x and y keys')
+
         self.func = func
         self.bounds = bounds
         self.opt_dir = opt_dir
         self.population_size = population_size
         self.max_iteration = max_iteration
 
-        self.population = []
-        self.health = []
+        self.population: np.ndarray = np.empty((population_size, 2))
+        self.health: np.ndarray = np.empty(population_size)
+
+        self._np_func = sp.lambdify(symbols, self.func, 'numpy')
         self._initialization()
         self._evaluation()
 
@@ -27,7 +37,7 @@ class GeneticAlgorithmIterator:
     def __iter__(self) -> 'GeneticAlgorithmIterator':
         return self
 
-    def __next__(self) -> tuple[list[Chromosome], list[float]]:
+    def __next__(self) -> tuple[list[tuple[float, float]], list[float]]:
         if self.current_iteration < self.max_iteration:
             self._selection()
             self._recombination()
@@ -38,34 +48,30 @@ class GeneticAlgorithmIterator:
             raise StopIteration
 
     def _initialization(self) -> None:
-        self.population.clear()
-        self.population.extend(generate_population(self.population_size, **self.bounds))
+        low, high = zip(self.bounds['x'], self.bounds['y'])
+        self.population[:] = rng.uniform(low, high, (self.population_size, 2))
 
     def _evaluation(self) -> None:
-        self.health.clear()
-        self.health.extend(self.func.subs(ch.as_dict()) for ch in self.population)
+        self.health[:] = self._np_func(self.population[:, 0], self.population[:, 1])
 
     def _selection(self) -> None:
         match self.opt_dir:
             case OptDir.MAXIMIZATION:
-                shift = -min(self.health)
-                total_health = sum(self.health, start=len(self.population) * shift)
-                weights = [(shift + health) / total_health for health in self.health]
+                shift = -self.health.min()
+                total_health = self.health.sum() + self.population_size * shift
+                weights = (self.health + shift) / total_health
             case OptDir.MINIMIZATION:
-                shift = max(self.health)
-                total_health = -sum(self.health, start=-len(self.population) * shift)
-                weights = [(shift - health) / total_health for health in self.health]
+                shift = self.health.max()
+                total_health = -self.health.sum() + self.population_size * shift
+                weights = (shift - self.health) / total_health
             case _:
                 raise NotImplementedError()
 
-        population = self.population.copy()
-        self.population = random.choices(population, weights, k=len(population))
+        self.population[:] = rng.choice(self.population, self.population_size, p=weights, shuffle=False)
 
     def _recombination(self) -> None:
-        parents = self.population.copy()
-        self.population.clear()
-
-        while len(parents) != len(self.population):
-            parent1, parent2 = random.choices(parents, k=2)
-            genes = (parent1.x, parent2.y) if random.choice([True, False]) else (parent2.x, parent1.y)
-            self.population.append(Chromosome(*genes))
+        couples = self.population[rng.choice(self.population_size, (self.population_size, 2))]
+        gene_choices = np.random.choice([True, False], self.population_size)
+        children_xs = np.where(gene_choices, couples[:, 0, 0], couples[:, 1, 0])
+        children_ys = np.where(gene_choices, couples[:, 1, 1], couples[:, 0, 1])
+        self.population[:] = np.column_stack([children_xs, children_ys])
