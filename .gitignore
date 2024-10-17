@@ -102,6 +102,7 @@ doc/api/
 build/
 coverage/
 .metadata
+devtools_options.yaml
 
 ## Android/iOS/XCode related
 android/
