@@ -12,14 +12,19 @@ class MathPage extends StatefulWidget {
 }
 
 class _MathPageState extends State<MathPage> {
-  double x = 1.236;
-  double z = 4.5;
+  double? x = 1.236;
+  double? z = 4.5;
   String? a;
   String? y;
 
   void _solve() {
-    double yVal = (pow(z, 2).toDouble()) / (5 + pow(z, 2).toDouble() / 7);
-    double cosArg = (x - 30) * (pi / 180), sinArg = (yVal + 2) * (pi / 180);
+    bool xIsNull = x == null, zIsNull = z == null;
+    if (xIsNull || zIsNull) {
+      _showEmptyInputDialog(xIsNull, zIsNull);
+      return;
+    }
+    double yVal = (pow(z!, 2).toDouble()) / (5 + pow(z!, 2).toDouble() / 7);
+    double cosArg = (x! - 30) * (pi / 180), sinArg = (yVal + 2) * (pi / 180);
     double aVal = (2 * cos(cosArg)) / (1 / 3 + pow(sin(sinArg), 2));
     setState(() {
       y = yVal.toStringAsFixed(5);
@@ -32,6 +37,48 @@ class _MathPageState extends State<MathPage> {
       y = null;
       a = null;
     });
+  }
+
+  Future _showEmptyInputDialog(bool xIsNull, bool zIsNull) {
+    String message = '';
+    if (xIsNull && zIsNull) {
+      message = 'Введите значения для "x" и "z"';
+    } else if (xIsNull) {
+      message = 'Введите значение для "x"';
+    } else if (zIsNull) {
+      message = 'Введите значение для "z"';
+    }
+    return showDialog(
+      context: context,
+      builder: (BuildContext context) => Dialog(
+        child: Padding(
+          padding: EdgeInsets.all(32),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset('assets/images/smile-unknown.png'),
+              SizedBox(height: 16),
+              Text(
+                message,
+                style: TextStyle(fontSize: 18),
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(height: 8),
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Text(
+                  'Закрыть',
+                  style: TextStyle(fontSize: 18),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 
   @override
@@ -76,8 +123,7 @@ class _MathPageState extends State<MathPage> {
               inputFormatters: [
                 FilteringTextInputFormatter.allow(RegExp(r'(^-?\d*\.?\d*)'))
               ],
-              onChanged: (value) =>
-                  setState(() => x = double.tryParse(value) ?? x),
+              onChanged: (value) => setState(() => x = double.tryParse(value)),
             ),
             TextFormField(
               initialValue: z.toString(),
@@ -86,8 +132,7 @@ class _MathPageState extends State<MathPage> {
               inputFormatters: [
                 FilteringTextInputFormatter.allow(RegExp(r'(^-?\d*\.?\d*)'))
               ],
-              onChanged: (value) =>
-                  setState(() => z = double.tryParse(value) ?? z),
+              onChanged: (value) => setState(() => z = double.tryParse(value)),
             ),
             SizedBox(height: 16),
             Row(
