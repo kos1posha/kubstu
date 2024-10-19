@@ -1,4 +1,6 @@
+import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:s7_md_lw_05_to_06/prefs_manager.dart';
 
 class BarleyBreakPage extends StatefulWidget {
   const BarleyBreakPage({super.key});
@@ -65,47 +67,48 @@ class _BarleyBreakPageState extends State<BarleyBreakPage> {
 
   @override
   Widget build(BuildContext context) {
+    var adaptive = AdaptiveTheme.of(context);
     return Scaffold(
       appBar: AppBar(
         title: Text('Пятнашки'),
-        foregroundColor: ThemeData.light().primaryColor,
+        foregroundColor: adaptive.lightTheme.primaryColor,
         actions: [
-          IconButton(
-              onPressed: (history.isEmpty) ? null : _previous,
-              icon: Icon(Icons.replay)),
+          IconButton(onPressed: (history.isEmpty) ? null : _previous, icon: Icon(Icons.replay)),
           IconButton(
             onPressed: _randomize,
             icon: Icon(Icons.casino),
+          ),
+          IconButton(
+            onPressed: () async {
+              await Navigator.pushNamed(context, '/settings');
+              setState(() {});
+            },
+            icon: Icon(Icons.settings),
           ),
         ],
       ),
       body: Padding(
         padding: EdgeInsets.all(16),
-        child: GridView.builder(
-          itemCount: 16,
-          gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-            maxCrossAxisExtent: 100,
-            mainAxisSpacing: 10,
-            crossAxisSpacing: 10,
-          ),
-          itemBuilder: (context, index) {
+        child: GridView.count(
+          shrinkWrap: true,
+          crossAxisCount: 4,
+          crossAxisSpacing: 10,
+          mainAxisSpacing: 10,
+          children: List.generate(16, (index) {
             int x = index ~/ 4, y = index % 4;
             int item = bb[x][y];
-            if (item == 0) {
-              return SizedBox.shrink();
-            }
-            return FilledButton(
-              onPressed: () => _move((x: x, y: y)),
-              style: ButtonStyle(
-                shape: WidgetStateProperty.all<RoundedRectangleBorder>(
-                  RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(0),
-                  ),
-                ),
-              ),
-              child: Text('$item'),
-            );
-          },
+            return (item == 0)
+                ? SizedBox.shrink()
+                : FilledButton(
+                    style: ButtonStyle(
+                      shape: WidgetStateProperty.all(RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(PrefsManager.cellBorderRadius),
+                      )),
+                    ),
+                    onPressed: () => _move((x: x, y: y)),
+                    child: Text('$item', style: TextStyle(fontSize: PrefsManager.cellFontSize)),
+                  );
+          }),
         ),
       ),
     );
