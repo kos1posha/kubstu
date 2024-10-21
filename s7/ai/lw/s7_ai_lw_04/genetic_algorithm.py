@@ -66,7 +66,9 @@ class GeneticAlgorithmIterator:
                 weights = (shift - self.health) / total_health
             case _:
                 raise NotImplementedError()
-
+        
+        if not 0.9999 < abs(weights.sum()) < 1.0001:
+            raise StopIteration
         self.population[:] = rng.choice(self.population, self.population_size, p=weights, shuffle=False)
 
     def _recombination(self) -> None:
