@@ -1,5 +1,6 @@
 import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:s7_md_lw_05_to_06/notification_manager.dart';
 import 'package:s7_md_lw_05_to_06/prefs_manager.dart';
 import 'barley_break_page.dart';
 import 'settings_page.dart';
@@ -7,6 +8,7 @@ import 'settings_page.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await PrefsManager.init();
+  await NotificationManager.init();
   runApp(MainApp(
     savedThemeMode: await AdaptiveTheme.getThemeMode(),
     savedColorScheme: await getSavedColorScheme(),

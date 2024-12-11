@@ -1,5 +1,7 @@
 import 'package:adaptive_theme/adaptive_theme.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
+import 'package:s7_md_lw_05_to_06/notification_manager.dart';
 import 'package:s7_md_lw_05_to_06/prefs_manager.dart';
 
 class BarleyBreakPage extends StatefulWidget {
@@ -10,8 +12,14 @@ class BarleyBreakPage extends StatefulWidget {
 }
 
 class _BarleyBreakPageState extends State<BarleyBreakPage> {
-  List<List<int>> bb = List.generate(4, (i) => List.generate(4, (j) => 0));
+  List<List<int>> winCon = List.generate(4, (i) {
+    return List.generate(4, (j) {
+      int value = i * 4 + j + 1;
+      return value == 16 ? 0 : value;
+    });
+  });
   List<({int x, int y})> history = [];
+  late List<List<int>> bb = winCon.map((e) => e.toList()).toList();
 
   void _randomize() {
     List<int> random = List.generate(16, (i) => i);
@@ -37,6 +45,9 @@ class _BarleyBreakPageState extends State<BarleyBreakPage> {
           history.removeLast();
         }
       });
+      if (_isWinning()) {
+        NotificationManager.showNotification('Красавчик, выиграл', '');
+      }
     }
   }
 
@@ -59,10 +70,14 @@ class _BarleyBreakPageState extends State<BarleyBreakPage> {
         (c1.y == c2.y && (c1.x == c2.x + 1 || c1.x == c2.x - 1));
   }
 
+  bool _isWinning() {
+    return const DeepCollectionEquality().equals(bb, winCon);
+  }
+
   @override
   void initState() {
     super.initState();
-    _randomize();
+    // _randomize();
   }
 
   @override
@@ -70,25 +85,25 @@ class _BarleyBreakPageState extends State<BarleyBreakPage> {
     var adaptive = AdaptiveTheme.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text('Пятнашки'),
+        title: const Text('Пятнашки'),
         foregroundColor: adaptive.lightTheme.primaryColor,
         actions: [
-          IconButton(onPressed: (history.isEmpty) ? null : _previous, icon: Icon(Icons.replay)),
+          IconButton(onPressed: (history.isEmpty) ? null : _previous, icon: const Icon(Icons.replay)),
           IconButton(
             onPressed: _randomize,
-            icon: Icon(Icons.casino),
+            icon: const Icon(Icons.casino),
           ),
           IconButton(
             onPressed: () async {
               await Navigator.pushNamed(context, '/settings');
               setState(() {});
             },
-            icon: Icon(Icons.settings),
+            icon: const Icon(Icons.settings),
           ),
         ],
       ),
       body: Padding(
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         child: GridView.count(
           shrinkWrap: true,
           crossAxisCount: 4,
@@ -98,7 +113,7 @@ class _BarleyBreakPageState extends State<BarleyBreakPage> {
             int x = index ~/ 4, y = index % 4;
             int item = bb[x][y];
             return (item == 0)
-                ? SizedBox.shrink()
+                ? const SizedBox.shrink()
                 : FilledButton(
                     style: ButtonStyle(
                       shape: WidgetStateProperty.all(RoundedRectangleBorder(
