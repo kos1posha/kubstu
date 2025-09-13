@@ -1,0 +1,49 @@
+{% extends 'profile/form.html' %}
+{% load static %}
+
+{% block title %}Регистрация{% endblock %}
+
+{% block form-content %}
+
+  {% if form.errors %}
+    <div class="mt-15 px-card">
+      {% for field in form %}
+        {% for error in field.errors %}
+          <p class="invalid-feedback my-0 py-0 ">• {{ error|escape }}</p>
+        {% endfor %}
+      {% endfor %}
+    </div>
+  {% endif %}
+  <div class="content mt-15">
+    <form action="{% url 'profile:registration' %}" method="post">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="username" class="required">Имя пользователя</label>
+        <input class="form-control" name="username" id="username" maxlength="30" spellcheck="false" onkeyup="usernameInvalidFeedback(this, 'usernameFeedback')" placeholder="Имя пользователя" required>
+        <div class="form-text invalid-feedback" id="usernameFeedback" hidden>
+          Допускаются только латиница, кириллица, цифры, а также символы тире и подчеркивания.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="password" class="required">Пароль</label>
+        <input type="password" class="form-control" name="password1" id="password1" spellcheck="false" onkeyup="passwordInvalidFeedback(this, 'passwordFeedback'); password2InvalidFeedback(this, 'password1', 'password2Feedback');" placeholder="Пароль" required>
+        <div class="form-text invalid-feedback" id="passwordFeedback" hidden>
+          Пароль должен быть длинной минимум в 8 символов и не состоять из одних цифр.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="password2" class="required">Подтвердите пароль</label>
+        <input type="password" class="form-control" name="password2" id="password2" spellcheck="false" onkeyup="password2InvalidFeedback(this, 'password1', 'password2Feedback')" placeholder="Подтвердите пароль" required>
+        <div class="form-text invalid-feedback" id="password2Feedback" hidden>
+          Пароли не совпадают.
+        </div>
+      </div>
+      <button class="btn btn-primary btn-block">Зарегистрироваться</button>
+    </form>
+  </div>
+  <div class="px-card py-10 bg-light-lm bg-very-dark-dm rounded-bottom">
+    <p class="text-center font-size-12 m-0">Уже есть аккаунт?
+      <a href="{% url 'profile:login' %}" class="alert-link">Войдите</a>
+    </p>
+  </div>
+{% endblock %}

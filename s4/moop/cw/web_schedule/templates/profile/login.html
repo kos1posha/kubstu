@@ -1,0 +1,44 @@
+{% extends 'profile/form.html' %}
+{% load static %}
+
+{% block title %}Логин{% endblock %}
+
+{% block form-content %}
+  {% if form.errors %}
+    <p class="px-card invalid-feedback mt-5">Пароль и логин не подходят. Попробуйте еще раз.</p>
+  {% endif %}
+  <div class="content mt-15">
+    <form action="{% url 'profile:login' %}" method="post">
+      {% csrf_token %}
+      <div class="form-group">
+        <label class="required">Имя пользователя</label>
+        <input type="text" class="form-control" name="username" placeholder="Имя пользователя" autofocus required>
+      </div>
+      <div class="form-group">
+        <label class="required">Пароль</label>
+        <div class="input-group">
+          <input type="password" class="form-control" id="password" name="password" placeholder="Пароль" required>
+          <div class="input-group-append">
+            <input type="button" class="btn btn-square btn-action text-dark" value="—" onclick="passwordShowHide(this, 'password')">
+          </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="custom-control">
+          <div class="custom-checkbox">
+            <input type="checkbox" id="remember-me">
+            <label for="remember-me">Запомните меня</label>
+          </div>
+        </div>
+        <a class="hyperlink ml-auto" onclick="forgotPassword()" style="cursor: pointer">Забыли пароль?</a{#href="{% url 'profile:password_reset' %}"#}>
+      </div>
+      <button class="btn btn-primary btn-block">Войти</button>
+    </form>
+  </div>
+  <div class="px-card py-10 bg-light-lm bg-very-dark-dm rounded-bottom">
+    <p class="text-center font-size-12 m-0">
+      Нет аккаунта?
+      <a href="{% url 'profile:registration' %}" class="alert-link">Зарегистрируйтесь</a>
+    </p>
+  </div>
+{% endblock %}

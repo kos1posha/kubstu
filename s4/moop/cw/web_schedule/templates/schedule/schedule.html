@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+
+{% block title %}Расписание{% endblock %}
+
+{% block page-wrapper-classlist %}with-navbar with-sidebar{% endblock %}
+
+{% block out-content %}
+  <div class="sidebar bg-light-lm"></div>
+{% endblock %}
+
+{% block content %}
+  <div class="content ml-20 my-5">
+    <h5 class="font-size-14 m-0 mb-10 ml-20">Расписание</h5>
+  </div>
+  <hr>
+  <div class="content px-card">
+    <form method="get">
+      <div class="row">
+        <div class="form-group px-10">
+          <span class="font-size-16">Форма обучения</span>
+          <div class="row">
+            <div class="custom-radio">
+              <input id="ofo" type="radio" name="study-form" value="1" onclick="this.form.submit()" checked>
+              <label for="ofo">Очная</label>
+            </div>
+            <div class="custom-radio ml-20">
+              <input id="zfo" type="radio" name="study-form" value="0" onclick="this.form.submit()">
+              <label for="zfo">Заочная</label>
+            </div>
+            <div class="custom-radio ml-20">
+              <input id="fo" type="radio" name="study-form" value="-1" onclick="this.form.submit()">
+              <label for="fo">Не важно</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group text-right ml-auto px-10">
+          <span class="font-size-16">Учебный год</span>
+          <p class="mt-5">2022-2023</p>
+        </div>
+        <div class="form-group text-right px-10">
+          <span class="font-size-16">Семестр</span>
+          <p class="mt-5">2</p>
+        </div>
+        <div class="form-group text-right px-10">
+          <span class="font-size-16">Текущая неделя</span>
+          <p class="mt-5">Четная</p>
+        </div>
+        <div class="form-group text-right px-10">
+          <span class="font-size-16">День недели</span>
+          <p class="mt-5">{{ week_day }}</p>
+        </div>
+      </div>
+      <div class="row">
+        <label class="form-group col-8 px-10">
+          <span class="font-size-16">Институт</span>
+          <select class="form-control" name="department" id="select-department" onchange="this.form.submit()">
+            <option value="" hidden>Выберите институт</option>
+            {% for department in departments %}
+              <option value="{{ department.code }}" {% if department.code == selected_department %}selected{% endif %}>{{ department.title }}</option>
+            {% endfor %}
+          </select>
+        </label>
+        <label class="form-group col-2 px-10">
+          <span class="font-size-16">Курс</span>
+          <select class="form-control" name="course" id="select-course" onchange="this.form.submit()">
+            <option value="" hidden>Выберите курс</option>
+            {% for course in courses %}
+              <option value="{{ course }}" {% if course == selected_course %}selected{% endif %}>{{ course }}</option>
+            {% endfor %}
+          </select>
+        </label>
+        <label class="form-group col-2 px-10">
+          <span class="font-size-16">Группа</span>
+          <select class="form-control" name="group" id="select-group" onchange="this.form.submit()">
+            <option value="" hidden>Выберите группу</option>
+            {% for group in groups %}
+              <option value="{{ group }}" {% if group == selected_group %}selected{% endif %}>{{ group }}</option>
+            {% endfor %}
+          </select>
+        </label>
+      </div>
+    </form>
+    {% if timetable %}
+      <div class="row">
+        {% for week in timetable %}
+          <div class="col-6">
+            <div class="card p-0">
+              <div class="px-card border-bottom">
+                <label class="card-title text-capitalize mt-15 mb-10">{{ week.week_even }}</label>
+              </div>
+              <div class="content my-20">
+                {% for day in week.days %}
+                  <details class="collapse-panel pt-10">
+                    <summary class="collapse-header text-capitalize">
+                      {{ day.day_week }}
+                    </summary>
+                    <div class="collapse-content pt-10 pb-15">
+                      {% for pair in day.pairs %}
+                        <details class="collapse-panel pt-10">
+                          <summary class="collapse-header bottom">
+                            <strong>{{ pair.title }}</strong>
+                            <br>
+                            {{ pair.number }} пара ({{ pair.time }}) | {{ pair.full_type }}
+                          </summary>
+                          <div class="collapse-content py-10">
+                            <p class="my-5">Аудитория: {{ pair.classroom }}</p>
+                            <p class="my-5">Преподаватель: {{ pair.teacher_full_name }}</p>
+                            <p class="my-5">Период: {{ pair.period }}</p>
+                          </div>
+                        </details>
+                      {% endfor %}
+                    </div>
+                  </details>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      {% if selected_group %}
+        <h4 class="text-danger text-center" style="margin-top: 120px">Расписание отсутствует</h4>
+      {% else %}
+        <h4 class="text-center" style="margin-top: 120px">Выберите группу</h4>
+      {% endif %}<p></p>
+    {% endif %}
+  </div>
+{% endblock %}

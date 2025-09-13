@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}inform{% endblock %}
+
+{% block page-wrapper-classlist %}with-hidden-scrollbars{% endblock %}
+
+{% block navbar-content %}{% endblock %}
+
+{% block content %}
+  <div class="w-full position-fixed">
+    <div class="float-right">
+      <a href="/admin" class="btn btn-rounded btn-success mt-10 mr-10">Админка</a>
+      <button class="btn btn-action btn-square rounded-circle mr-10" onclick="halfmoon.toggleDarkMode()" style="width: 32px; height: 32px">
+        <span class="font-size-16 hidden-dm">☀</span>
+        <span class="font-size-16 hidden-lm">🌙</span>
+      </button>
+    </div>
+  </div>
+  <div class="text-center mt-20">
+    <a href="{% url 'schedule:schedule' %}">
+      <img src="{% static 'images/kubstu-logo.png' %}" class="align-self-center" alt="logo-blue" style="width: 150px; height: 150px">
+    </a>
+  </div>
+  <div class="card w-500 mx-auto p-0">
+    <div class="px-card text-center border-bottom pt-5">
+      <label class="card-title font-size-24 mx-0 mt-5">university schedule app</label>
+    </div>
+    {% block form-content %}{% endblock %}
+  </div>
+{% endblock %}

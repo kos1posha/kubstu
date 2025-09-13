@@ -1,0 +1,119 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru" class="auto-scaling-disabled">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="viewport" content="width=device-width">
+  <link href="{% static 'images/kubstu-logo.png' %}" rel="icon">
+  <title>{% block title %}{% endblock %}</title>
+  <link href="{% static 'html/css/halfmoon-variables.css' %}" rel="stylesheet">
+  <link href="{% static 'html/css/schedule.css' %}" rel="stylesheet">
+  {% block head %}{% endblock %}
+</head>
+<body class="with-custom-webkit-scrollbars with-custom-css-scrollbars" data-dm-shortcut-enabled="true" data-set-preferred-mode-onload="true">
+
+<div class="modal" id="logout-confirm-modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <h5 class="modal-title">Подтвердите действие на сайте</h5>
+      <p>Вы уверены, что хотите выйти из аккаунта?</p>
+      <div class="text-right mt-20">
+        <a href="{% url 'profile:logout' %}" class="btn mr-5" role="button">Да</a>
+        <a href="#" class="btn btn-primary" role="button">Нет, я передумал</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% block modal-content %}{% endblock %}
+<div class="page-wrapper {% block page-wrapper-classlist %}with-navbar{% endblock %}" data-sidebar-hidden="hidden">
+  <nav class="navbar bg-light-lm">
+    <div class="navbar-content">
+      <a href="{% url 'schedule:schedule' %}" class="navbar-brand">
+        <img src="{% static 'images/kubstu-logo.png' %}" class="kubstu-logo m-0" alt="kubstu-logo" style="height: 35px; width: 35px">
+        <span class="badge font-size-20 ml-10">univercity schedule app</span>
+      </a>
+    </div>
+    <div class="navbar-content ml-auto">
+      {% block navbar-content %}
+        <a href="/admin" class="btn btn-rounded btn-success mr-15">Админка</a>
+        {% if user.is_authenticated %}
+          <div class="dropdown with-arrow mr-15">
+            <button class="btn w-100" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Профиль</button>
+            <div class="dropdown-menu dropdown-menu-right w-200 pt-5 px-0">
+              <div class="row">
+                <label class="dropdown-header">{{ user.username }}</label>
+                <div class="ml-auto mt-5">
+                  <a href="#logout-confirm-modal" class="btn btn-sm btn-square bg-very-dark-dm bg-light-lm mr-5">🚪</a>
+                  <a href="{% url 'profile:profile' username=user.username %}" class="btn btn-sm btn-square bg-very-dark-dm bg-light-lm mr-10">⚙</a>
+                </div>
+              </div>
+              <div class="dropdown-divider mt-5"></div>
+              <div class="dropdown-content pt-0">
+                <p class="mt-5 mb-0">{{ user.first_name }} {{ user.last_name }}</p>
+                <p class="mt-5 mb-0">{{ user.agent.group_code }}</p>
+              </div>
+            </div>
+          </div>
+        {% else %}
+          <div class="dropdown with-arrow mr-15">
+            <button class="btn btn-primary w-100" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Войти</button>
+            <div class="dropdown-menu dropdown-menu-right w-250 w-sm-350 p-0 pt-5">
+              <label class="dropdown-header ml-5">Вход</label>
+              <div class="dropdown-content ml-5 mr-5">
+                <form action="{% url 'profile:login' %}" method="post">
+                  {% csrf_token %}
+                  <div class="form-group">
+                    <label for="username" class="required">Имя пользователя</label>
+                    <input class="form-control" name="username" id="username" placeholder="Имя пользователя" autofocus required>
+                  </div>
+                  <div class="form-group">
+                    <label class="required">Пароль</label>
+                    <div class="input-group">
+                      <input type="password" class="form-control" id="password" name="password" placeholder="Пароль" required>
+                      <div class="input-group-append">
+                        <input type="button" class="btn btn-square btn-action text-dark" value="—" onclick="passwordShowHide(this, 'password')">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="custom-control">
+                      <div class="custom-checkbox">
+                        <input type="checkbox" id="remember-me">
+                        <label for="remember-me">Запомните меня</label>
+                      </div>
+                    </div>
+                    <a class="hyperlink ml-auto" onclick="forgotPassword()" style="cursor: pointer">Забыли пароль?</a{#href="{% url 'profile:password_reset' %}"#}>
+                  </div>
+                  <button class="btn btn-primary btn-block">Войти</button>
+                </form>
+              </div>
+              <div class="dropdown-divider"></div>
+              <div class="dropdown-item bg-light-lm bg-very-dark-dm">
+                <p class="text-center mt-5 mb-5">
+                  Нет аккаунта?
+                  <a href="{% url 'profile:registration' %}" class="alert-link">Зарегистрируйтесь</a>
+                </p>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      {% endblock %}
+      <button class="btn btn-action btn-square rounded-circle" onclick="halfmoon.toggleDarkMode()" style="width: 32px; height: 32px">
+        <span class="font-size-16 hidden-dm">☀</span>
+        <span class="font-size-16 hidden-lm">🌙</span>
+      </button>
+    </div>
+  </nav>
+  {% block out-content %}{% endblock %}
+  <div class="content-wrapper">
+    {% block content %}{% endblock %}
+  </div>
+
+</div>
+<script src="{% static 'html/js/halfmoon.min.js' %}"></script>
+<script src="{% static 'html/js/schedule.js' %}"></script>
+
+</body>
+</html>

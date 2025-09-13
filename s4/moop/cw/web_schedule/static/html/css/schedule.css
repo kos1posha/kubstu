@@ -1,0 +1,13 @@
+.rounded-bottom-0 {
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+}
+
+.text-flex {
+    display: flex;
+    flex-flow: column;
+}
+
+.invalid-feedback-m {
+    margin-bottom: -20;
+}
