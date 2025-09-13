@@ -1,0 +1,29 @@
+name: s7_md_lw_14
+description: 'A new Flutter project.'
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: ^3.5.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+  path: ^1.9.0
+  sqflite: ^2.4.1
+  path_provider: ^2.1.5
+  home_widget: ^0.7.0
+  auto_size_text: ^3.0.0
+  flutter_background_service: ^5.1.0
+  flutter_local_notifications: ^18.0.1
+  socket_io_client: ^3.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/smile-angel.png
