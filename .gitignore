@@ -111,6 +111,10 @@ devtools_options.yaml
 android/
 ios/
 
+## Firebase related
+firebase.json
+firebase_options.dart
+
 ### Flutter ###
 
 
