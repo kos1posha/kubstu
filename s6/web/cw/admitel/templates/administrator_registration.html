@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{ block.super }} | Регистрация отеля{% endblock %}
+{% block content %}
+  <div class="position-absolute w-100 px-5 top-50 start-50 translate-middle">
+    <form method="post" action="{% url 'hotels:register_admin' branch_id %}" class="px-5 mx-3">
+      {% csrf_token %}
+      <h1 class="mb-4">Регистрация администратора</h1>
+      <div class="col-7">
+        <div class="row">
+          <div class="col-6">
+            <span class="lead">Имя</span>
+            <div class="mt-2 mb-3">
+              <input class="form-admin form-control form-control-lg{% if form.first_name.errors %} is-invalid{% endif %}"
+                     name="first_name">
+              {% if form.first_name.errors %}
+                <div class="invalid-feedback d-block">
+                  {% for error in form.first_name.errors %}
+                    {{ error }}<br>
+                  {% endfor %}
+                </div>
+              {% endif %}
+            </div>
+          </div>
+          <div class="col-6">
+            <span class="lead">Фамилия</span>
+            <div class="mt-2 mb-3">
+              <input class="form-admin form-control form-control-lg{% if form.last_name.errors %} is-invalid{% endif %}"
+                     name="last_name">
+              {% if form.last_name.errors %}
+                <div class="invalid-feedback d-block">
+                  {% for error in form.last_name.errors %}
+                    {{ error }}<br>
+                  {% endfor %}
+                </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-7">
+        <div class="row">
+          <div class="col-6">
+            <span class="lead">Адрес электронной почты</span>
+            <div class="mt-2 mb-3">
+              <input class="form-admin form-control form-control-lg{% if form.email.errors %} is-invalid{% endif %}"
+                     name="email" type="email" placeholder="example@mail.ru" aria-describedby="admin-email-help">
+              {% if form.email.errors %}
+                <div class="invalid-feedback d-block">
+                  {% for error in form.email.errors %}
+                    {{ error }}<br>
+                  {% endfor %}
+                </div>
+              {% else %}
+                <div id="admin-email-help" class="form-text">
+                  Адрес электронной почты будет использоваться администратором для входа
+                </div>
+              {% endif %}
+            </div>
+          </div>
+          <div class="col-6">
+            <span class="lead">Номер телефона</span>
+            <div class="mt-2 mb-3">
+              <input class="form-admin form-control form-control-lg{% if form.contact_phone.errors %} is-invalid{% endif %}"
+                     name="contact_phone">
+              {% if form.contact_phone.errors %}
+                <div class="invalid-feedback d-block">
+                  {% for error in form.contact_phone.errors %}
+                    {{ error }}<br>
+                  {% endfor %}
+                </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-7">
+        <div class="row">
+          <div class="col-6">
+            <span class="lead">Пароль</span>
+            <div class="mt-2 mb-4">
+              <input class="form-admin form-control form-control-lg{% if form.password1.errors %} is-invalid{% endif %}"
+                     name="password1" type="password" aria-describedby="admin-password1-help">
+              {% if form.password1.errors %}
+                <div class="invalid-feedback d-block">
+                  {% for error in form.password1.errors %}
+                    {{ error }}<br>
+                  {% endfor %}
+                </div>
+              {% else %}
+                <div id="admin-password1-help" class="form-text">
+                  Минимум 8 символов
+                </div>
+              {% endif %}
+            </div>
+          </div>
+          <div class="col-6">
+            <span class="lead">Повторите пароль</span>
+            <div class="mt-2 mb-4">
+              <input class="form-admin form-control form-control-lg{% if form.password2.errors %} is-invalid{% endif %}"
+                     name="password2" type="password">
+              {% if form.password2.errors %}
+                <div class="invalid-feedback d-block">
+                  Пароли не совпадают
+                </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+      <input type="hidden" value="{{ branch_id }}" name="branch">
+      <button class="btn btn-lg btn-light fw-bold border-white bg-white" type="submit" id="register">
+        Зарегистрировать
+      </button>
+      <a class="btn btn-link link-danger text-decoration-none fw-bold" href="{% url 'hotels:manage' %}">Отмена</a>
+    </form>
+  </div>
+{% endblock %}
+{% block extra_scripts %}
+  <script src="{% static 'administrator_registration.js' %}"></script>
+
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block title %}
+  {{ block.super }} | Администрирование
+{% endblock %}
+{% block content %}
+  <div class="position-absolute w-100 px-5 start-50 translate-middle-x">
+    <div class="px-5 mx-3" style="margin-top: 16vh">
+      <h1 class="mb-3">{{ branch.name }}</h1>
+      <span class="mb-3">
+        {{ branch.country }}, г. {{ branch.city }}, ул. {{ branch.street }} {{ branch.number }}
+      </span>
+      <div class="row mt-3">
+        {% for room in rooms %}
+          <div class="col-3">
+            <div class="card mb-3 px-0">
+              <img src="{{ room.thumbnail.url }}" class="card-img-top" alt="...">
+              <hr class="m-0">
+              <div class="card-body">
+                <span class="badge rounded-pill text-bg-primary text-white float-end">{{ room.state }}</span>
+                <h5 class="card-title">{{ room.name }}</h5>
+                <p class="card-text">{{ room.description }}</p>
+                <form method="post" action="{% url 'hotels:toggle_room' %}">
+                  {% csrf_token %}
+                  <input type="hidden" value="{{ room.id }}" name="id">
+                  <button class="btn btn-link link-info text-decoration-none p-0 float-end" type="submit">
+                    Изменить статус
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% endblock %}
+{% block admin_login_form %}
+  <h5>Вы вошли как администратора</h5>
+  <form method="post" action="{% url 'hotels:logout_a' %}">
+    {% csrf_token %}
+    <button class="btn btn-outline-danger text-white col-12">Выйти</button>
+  </form>
+{% endblock %}
+{% block login_nav_title %}
+  Параметры входа
+{% endblock %}

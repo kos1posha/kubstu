@@ -1,0 +1,205 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{ block.super }} | Управление отелем{% endblock %}
+{% block hotel_login_form %}
+  <h5>Вы вошли как отель</h5>
+  <form method="post" action="{% url 'hotels:logout_h' %}">
+    {% csrf_token %}
+    <input type="hidden" name="id" value="{{ hotel.id }}">
+    <button class="btn btn-outline-danger text-white col-12">Выйти</button>
+  </form>
+{% endblock %}
+{% block content %}
+  <div class="position-absolute w-100 px-5 start-50 translate-middle-x">
+    <div class="px-5 mx-3" style="margin-top: 16vh">
+      <h1 class="mb-3">{{ hotel.name }}</h1>
+      <div class="row">
+        <div class="col-4">
+          <div class="accordion" id="accordion-new">
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <div class="accordion-button bg-dark collapsed" data-bs-toggle="collapse" style="cursor: pointer"
+                     data-bs-target="#collapse-new" aria-expanded="false" aria-controls="collapse-new">
+                  Добавить филиал
+                </div>
+              </h2>
+              <div id="collapse-new" class="accordion-collapse collapse" data-bs-parent="#accordion-new">
+                <div class="accordion-body">
+                  <form method="post" class="row" action="{% url 'hotels:new_branch' %}">
+                    {% csrf_token %}
+                    <input type="hidden" value="{{ hotel.id }}" name="hotel">
+                    <div class="col-12 mb-1">
+                      <label for="name-input" class="form-label mb-1">Название</label>
+                      <input required class="form-control form-control-sm" id="name-input" name="name">
+                    </div>
+                    <div class="col-5 mb-1">
+                      <label for="country-input" class="form-label mb-1">Страна</label>
+                      <input required class="form-control form-control-sm" id="country-input" name="country">
+                    </div>
+                    <div class="col-7 mb-1">
+                      <label for="city-input" class="form-label mb-1">Город</label>
+                      <input required class="form-control form-control-sm" id="city-input" name="city">
+                    </div>
+                    <div class="col-9 mb-2">
+                      <label for="street-input" class="form-label mb-1">Улица</label>
+                      <input required class="form-control form-control-sm" id="street-input" name="street">
+                    </div>
+                    <div class="col-3 mb-2">
+                      <label for="number-input" class="form-label mb-1">Дом</label>
+                      <input required min="1" type="number" class="form-control form-control-sm" id="number-input" name="number">
+                    </div>
+                    <div class="offset-8 col">
+                      <button type="submit" class="btn btn-link link-primary text-decoration-none w-100">Добавить
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% for branch in object_list %}
+          <div class="col-4">
+            <div class="accordion" id="accordion-{{ branch.id }}">
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <div class="accordion-button bg-dark collapsed" data-bs-toggle="collapse" style="cursor: pointer"
+                       data-bs-target="#collapse-{{ branch.id }}" aria-expanded="false" aria-controls="collapse-{{ branch.id }}">
+                    {{ branch.name }}
+                  </div>
+                </h2>
+                <div id="collapse-{{ branch.id }}" class="accordion-collapse collapse" data-bs-parent="#accordion-{{ branch.id }}">
+                  <div class="accordion-body">
+                    Адрес:
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item text-info">
+                        {{ branch.country }}, г. {{ branch.city }}, ул. {{ branch.street }} {{ branch.number }}
+                      </li>
+                    </ul>
+                    <a href="{% url 'hotels:register_admin' branch.id %}" class="link-primary text-decoration-none float-end">Добавить</a>
+                    <span>Администраторы:</span>
+                    <ol class="list-group list-group-flush">
+                      {% for administrator in branch.administrator_set.all %}
+                        <li class="list-group-item">
+                          {{ administrator.full_name }}<br>
+                          <span class="small text-secondary">{{ administrator.contact_phone }}</span>
+                        </li>
+                      {% empty %}
+                        <li class="list-group-item text-secondary">Ни один не зарегистрирован</li>
+                      {% endfor %}
+                    </ol>
+                    <hr class="mt-2 mb-3" style="scale: 1.12">
+                    <button class="btn btn-link link-danger text-decoration-none px-0 float-end"
+                            data-bs-toggle="modal" data-bs-target="#delete-{{ branch.id }}-modal">
+                      Удалить
+                    </button>
+                    <a class="btn btn-link link-primary text-decoration-none px-0" data-bs-toggle="modal" data-bs-target="#rooms-{{ branch.id }}-modal">
+                      Просмотреть список номеров
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% endblock %}
+{% block modal %}
+  {% for branch in object_list %}
+    <div class="modal fade" id="delete-{{ branch.id }}-modal" tabindex="-1" aria-labelledby="delete-{{ branch.id }}-modal-label" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="delete-{{ branch.id }}-modal-label">Подтвердите действие</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            Вы уверены, что хотите уделить филиал "{{ branch.name }}"
+          </div>
+          <div class="modal-footer">
+            <button id="hehe" type="button" class="btn btn-light col-12 col-md" data-bs-dismiss="modal">Отмена</button>
+            <form class="col-12 col-md" method="post" action="{% url 'hotels:delete_branch' %}">
+              {% csrf_token %}
+              <input type="hidden" value="{{ branch.id }}" name="id">
+              <button type="submit" class="btn btn-danger col-12">Да, сноси</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="rooms-{{ branch.id }}-modal" aria-labelledby="rooms-{{ branch.id }}-modal">
+      <div class="modal-dialog modal-fullscreen modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5 ms-3" id="rooms-{{ branch.id }}-modal">{{ branch.name }} - Номера</h1>
+            <button type="button" class="btn-close me-3" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <input type="checkbox" class="btn-check" id="btn-check-4" autocomplete="off" data-bs-toggle="collapse" data-bs-target="#collapse-2-{{ branch.id }}" aria-expanded="false" aria-controls="collapse-2-{{ branch.id }}">
+            <label class="btn btn-outline-primary text-white border-3 mb-3 ms-3" for="btn-check-4">Новая комната</label>
+            <div class="collapse" id="collapse-2-{{ branch.id }}">
+              <form method="post" action="{% url 'hotels:new_room' %}" enctype="multipart/form-data">
+                <div class="row mx-3">
+                  <div class="card col-4 mb-3 px-0 overflow-hidden">
+                    <label for="image" style="cursor: pointer;">
+                      <img src="https://placehold.co/400x200" alt="..." class="card-img-top img-fluid" id="preview-{{ branch.id }}-image">
+                    </label>
+                    <input name="thumbnail" required type="file" id="image" accept="image/*" class="d-none" onchange="previewImage(event, {{ branch.id }})">
+                    <hr class="m-0">
+                    <div class="card-body">
+                      {% csrf_token %}
+                      <input type="hidden" value="{{ branch.id }}" name="branch">
+                      <input required class="form-control mb-3" type="text" name="name" placeholder="Название новой комнаты">
+                      <textarea required class="form-control" name="description" rows="3" placeholder="Описание"></textarea>
+                      <button class="btn btn-link link-primary text-decoration-none p-0 mt-3 mb-1 float-end"
+                              type="submit">
+                        Сохранить
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="row px-3">
+              {% for room in branch.room_set.all %}
+                <div class="col-4">
+                  <div class="card mb-3 px-0">
+                    <img src="{{ room.thumbnail.url }}" class="card-img-top" alt="...">
+                    <hr class="m-0">
+                    <div class="card-body">
+                      <span class="badge rounded-pill text-bg-primary text-white float-end">{{ room.state }}</span>
+                      <h5 class="card-title">{{ room.name }}</h5>
+                      <p class="card-text">{{ room.description }}</p>
+                      {% if room.is_busy != True %}
+                        <form method="post" action="{% url 'hotels:delete_room' %}">
+                          {% csrf_token %}
+                          <input type="hidden" value="{{ room.id }}" name="id">
+                          <button class="btn btn-link link-danger text-decoration-none p-0 float-end" type="submit">
+                            Удалить
+                          </button>
+                        </form>
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+{% endblock %}
+{% block login_nav_title %}
+  Параметры входа
+{% endblock %}
+{% block extra_scripts %}
+  <script>
+      function previewImage(event, id) {
+          const image = document.getElementById(`preview-${id}-image`);
+          image.src = URL.createObjectURL(event.target.files[0]);
+      }
+  </script>
+{% endblock %}

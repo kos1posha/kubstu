@@ -1,0 +1,11 @@
+from .administrator_login_view import AdministratorLoginView, AdministratorLogoutView
+from .administrator_registration_view import AdministratorRegistrationView
+from .administrator_view import AdministratorView
+from .hotel_create_view import HotelCreateView
+from .hotel_login_view import HotelLoginView, HotelLogoutView
+from .manager_view import ManagerView
+from .branch_create_view import BranchCreateView
+from .branch_delete_view import BranchDeleteView
+from .room_create_view import RoomCreateView
+from .room_delete_view import RoomDeleteView
+from .room_toggle_view import RoomToggleView

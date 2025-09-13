@@ -1,0 +1,3 @@
+from .administrator_registration_form import AdministratorRegistrationForm
+from .hotel_create_form import HotelCreateForm
+from .hotel_login_form import HotelLoginForm, HotelLogoutForm

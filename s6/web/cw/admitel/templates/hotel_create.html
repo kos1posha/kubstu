@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{ block.super }} | Регистрация отеля{% endblock %}
+{% block content %}
+  <div class="position-absolute w-100 px-5 top-50 start-50 translate-middle">
+    <form method="post" action="{% url 'hotels:new' %}" class="px-5 mx-3">
+      {% csrf_token %}
+      <div class="pb-5 my-auto">
+        <h1>Регистрация отеля</h1>
+        <span class="lead">Укажите, пожалуйста, название вашего отеля</span>
+        <div class="col-5 mt-2 mb-4">
+          <input class="form-hotel form-control form-control-lg{% if form.name.errors %} is-invalid{% endif %}" id="hotel-name"
+                 name="name" placeholder="Самый лучший отель" aria-describedby="hotel-name-help">
+          {% if form.name.errors %}
+            <div class="invalid-feedback d-block">
+              {% for error in form.name.errors %}
+                {{ error }}<br>
+              {% endfor %}
+            </div>
+          {% else %}
+            <div id="hotel-name-help" class="form-text">
+              Не указывайте форму организации
+            </div>
+          {% endif %}
+        </div>
+        <div class="collapse multi-collapse-group-2 {% if not form.errors %} show{% endif %}" id="multi-collapse-3">
+          <button class="btn btn-lg btn-light fw-bold border-white bg-white" type="button" data-bs-toggle="collapse"
+                  data-bs-target=".multi-collapse-group-2" aria-expanded="false" id="continue"
+                  aria-controls="multi-collapse-3 multi-collapse-4 multi-collapse-5">
+            Продолжить
+          </button>
+        </div>
+        <div class="collapse multi-collapse-group-2 {% if form.errors %} show{% endif %}" id="multi-collapse-4">
+          <span class="lead">Первый ключ доступа</span>
+          <div class="col-5 mt-2 mb-4">
+            <input class="form-hotel form-control form-control-lg{% if form.key1.errors or form.key2.errors %} is-invalid{% endif %}"
+                   type="password" id="hotel-key-1" name="key1" placeholder="super-puper-secret"
+                   aria-describedby="hotel-key1-help">
+            {% if form.key1.errors %}
+              <div class="invalid-feedback d-block">
+                {% for error in form.key1.errors %}
+                  {{ error }}<br>
+                {% endfor %}
+              </div>
+            {% else %}
+              <div id="hotel-key1-help" class="form-text">
+                Ключи используются для доступа к странице отеля
+              </div>
+            {% endif %}
+          </div>
+          <div class="col-5 mt-2 mb-4">
+            <span class="lead">Второй ключ доступа</span>
+            <input class="form-hotel form-control form-control-lg{% if form.key2.errors %} is-invalid{% endif %}" type="password" id="hotel-key-2" name="key2"
+                   placeholder="super-puper-duper-secret" aria-describedby="hotel-key2-help">
+            {% if form.key2.errors %}
+              <div class="invalid-feedback d-block">
+                {% for error in form.key2.errors %}
+                  {{ error }}<br>
+                {% endfor %}
+              </div>
+            {% else %}
+              <div id="hotel-key2-help" class="form-text">
+                Второй ключ должен отличаться от первого
+              </div>
+            {% endif %}
+          </div>
+        </div>
+        <div class="collapse multi-collapse-group-2 {% if form.errors %} show{% endif %}" id="multi-collapse-5">
+          <button class="btn btn-lg btn-light fw-bold border-white bg-white" type="submit" id="register">
+            Зарегистрироваться
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+{% endblock %}
+{% block extra_scripts %}
+  <script src="{% static 'hotel_create.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,161 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extra_head %}
+  <style>
+      #hehe {
+          min-width: 132px;
+          text-align: center;
+          position: relative;
+      }
+
+      #hehe::after {
+          content: "А я и так знал!";
+      }
+
+      #hehe:hover::after {
+          content: "Не бреши!";
+      }
+  </style>
+{% endblock %}
+{% block content %}
+  <div class="position-absolute w-100 px-5 top-50 start-50 translate-middle">
+    <div class="px-5 mx-2">
+      <div class="collapse multi-collapse-group-1 show" id="multi-collapse-1">
+        <div id="main-carousel" class="carousel slide pointer-event text-center">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="main-container mx-auto px-3">
+                <h1>Adm!tel</h1>
+                <p class="lead" style="max-height: 40em">
+                  Веб-сервис для администрирования отелей<br>
+                  Быть администратором тяжело, лучше быть просто админом<br>
+                  Ведь быть проще - искать проще - работать проще
+                </p>
+                <button class="btn btn-lg btn-light fw-bold border-white bg-white" type="button" data-bs-target="#main-carousel" data-bs-slide="next">
+                  Начать
+                </button>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="main-container mx-auto px-3">
+                <h1>Вы же знаете, что делаете?</h1>
+                <p class="lead" style="max-height: 40em">
+                  Возможно нам рановато знакомиться<br>
+                  Или может нас уже познакомили<br>
+                  Прочтите
+                  <a href="" class="text-white" data-bs-toggle="modal" data-bs-target="#this-modal">это</a>,
+                  а уж там решим
+                </p>
+                <button class="btn btn-lg btn-light fw-bold border-white bg-white" type="button" data-bs-toggle="collapse"
+                        data-bs-target=".multi-collapse-group-1" aria-expanded="false"
+                        aria-controls="multi-collapse-1 multi-collapse-2">
+                  Давайте уже начнем!
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="collapse multi-collapse-group-1" id="multi-collapse-2">
+        <form method="post" action="{% url 'hotels:new' %}">
+          {% csrf_token %}
+          <div class="pb-5 mb-auto">
+            <h1>Регистрация отеля</h1>
+            <span class="lead">Укажите, пожалуйста, название вашего отеля</span>
+            <div class="col-5 mt-2 mb-4">
+              <input class="form-control form-control-lg{% if form.name.errors %} is-invalid{% endif %}" id="hotel-name"
+                     name="name" placeholder="Самый лучший отель" aria-describedby="hotel-name-help">
+              {% if form.name.errors %}
+                <div class="invalid-feedback d-block">
+                  {% for error in form.name.errors %}
+                    {{ error }}<br>
+                  {% endfor %}
+                </div>
+              {% else %}
+                <div id="hotel-name-help" class="form-text">
+                  Не указывайте форму организации
+                </div>
+              {% endif %}
+            </div>
+            <div class="collapse multi-collapse-group-2 show" id="multi-collapse-3">
+              <button class="btn btn-lg btn-light fw-bold border-white bg-white" type="button" data-bs-toggle="collapse"
+                      data-bs-target=".multi-collapse-group-2" aria-expanded="false" id="continue"
+                      aria-controls="multi-collapse-3 multi-collapse-4 multi-collapse-5">
+                Продолжить
+              </button>
+            </div>
+            <div class="collapse multi-collapse-group-2" id="multi-collapse-4">
+              <span class="lead">Первый ключ доступа</span>
+              <div class="col-5 mt-2 mb-4">
+                <input class="form-control form-control-lg{% if form.key1.errors %} is-invalid{% endif %}" type="password" id="hotel-key-1" name="key1"
+                       placeholder="super-puper-secret" aria-describedby="hotel-key1-help">
+                {% if form.key1.errors %}
+                  <div class="invalid-feedback d-block">
+                    {% for error in form.key1.errors %}
+                      {{ error }}<br>
+                    {% endfor %}
+                  </div>
+                {% else %}
+                  <div id="hotel-key1-help" class="form-text">
+                    Ключи используются для доступа к странице отеля
+                  </div>
+                {% endif %}
+              </div>
+              <div class="col-5 mt-2 mb-4">
+                <span class="lead">Второй ключ доступа</span>
+                <input class="form-control form-control-lg{% if form.key2.errors %} is-invalid{% endif %}" type="password" id="hotel-key-2" name="key2"
+                       placeholder="super-puper-duper-secret" aria-describedby="hotel-key2-help">
+                {% if form.key2.errors %}
+                  <div class="invalid-feedback d-block">
+                    {% for error in form.key2.errors %}
+                      {{ error }}<br>
+                    {% endfor %}
+                  </div>
+                {% else %}
+                  <div id="hotel-key2-help" class="form-text">
+                    Второй ключ должен отличаться от первого
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+            <div class="collapse multi-collapse-group-2" id="multi-collapse-5">
+              <button class="btn btn-lg btn-light fw-bold border-white bg-white" type="submit" id="register">
+                Зарегистрироваться
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+{% block modal %}
+  <div class="modal fade" id="this-modal" tabindex="-1" aria-labelledby="this-modal-label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="this-modal-label">Как устроен Adm!tel</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          Если ваш отель уже зарегистрирован у нас, то вам
+          <span class="fw-bold">не надо продолжать регистрацию</span>.<br><br>
+          Регистрацией администраторов занимается сам отель,
+          а вы уже должны были получить данные от входа.<br><br>
+          Если это так, то мы уже вас знаем! Нажмите на кнопку
+          <div class="nav nav-masthead d-inline-flex">
+            <a class="nav-link fw-bold p-0" href="#">Вы меня уже знаете</a>
+          </div>
+          , чтобы войти как администратор.
+        </div>
+        <div class="modal-footer">
+          <button id="hehe" type="button" class="btn btn-outline-light col-12 col-md" data-bs-dismiss="modal"></button>
+          <button type="button" class="btn btn-primary col-12 col-md" data-bs-dismiss="modal">Все, теперь понял</button>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+{% block extra_scripts %}
+  <script src="{% static 'hotel_create.js' %}"></script>
+{% endblock %}
