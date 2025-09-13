@@ -6,6 +6,10 @@ class OptDir:
     MAXIMIZATION = 'max'
     MINIMIZATION = 'min'
 
+    @classmethod
+    def index(cls, index: int) -> str:
+        return [OptDir.MAXIMIZATION, OptDir.MINIMIZATION][index]
+
 
 symbols = sp.symbols('x y')
 rng = np.random.default_rng()
